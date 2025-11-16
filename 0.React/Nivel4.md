@@ -20,5 +20,5 @@ npx create-react-app nombre_de_tu_app
 Nota !!!
 
 ```
-Actualmente, todos los proyectos modelos utilizan vite por su rapides, Cra esta quedando obsoleto
+Actualmente, todos los proyectos modernos utilizan vite por su rapidez, CRA esta quedando obsoleto por ser muy lento
 ```

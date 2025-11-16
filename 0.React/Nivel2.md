@@ -13,7 +13,7 @@ El DOM (Document Object Model) es una representación estructurada del documento
 </div>
 ```
 
-- Dom, representado como un rabol
+- Dom, es representado como un rabol
 
 ```html
 --
