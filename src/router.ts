@@ -4,7 +4,7 @@ import FormPage from './pages/FormPage'
 import Layout from './layout/AppLayout'
 import Markdown from './pages/Markdown'
 import CodeChallengue from './pages/CodeChallengePage'
-import ThreePage from './pages/componente/ThreePage'
+import LessonRouter from './router/LessonRouter'
 
 export const router = createBrowserRouter([
   {
@@ -29,12 +29,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'lesson/:lessonId/:nivelId',
-        children: [
-          {
-            path: '1',
-            Component: ThreePage,
-          },
-        ],
+        Component: LessonRouter,
       },
     ],
   },

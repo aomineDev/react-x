@@ -4,9 +4,7 @@ En React, los eventos se manejan como funciones que se ejecutan cuando el usuari
 
 Son equivalentes a eventos del DOM, pero se escriben en camelCase y se pasan como funciones, no como strings.
 
-```Nota
-React NO modifica directamente el DOM, sino que recibe tu intención a través de handlers.
-```
+> React NO modifica directamente el DOM, sino que recibe tu intención a través de handlers.
 
 vamos a construir un pequeño “Formulario de saludo”.
 Incluye 3 interacciones:
@@ -32,7 +30,7 @@ export default function App() {
       <input type="text" placeholder="Escribe tu nombre..." />
       <button>Saludar</button>
     </div>
-  );
+  )
 }
 ```
 
@@ -40,13 +38,13 @@ export default function App() {
 
 Queremos que el botón muestre un mensaje cuando el usuario haga clic.
 
-- Declaramos la función **handleClick**.
-- La pasamos al botón usando **onClick={handleClick}**.
+- Declaramos la función `handleClick`.
+- La pasamos al botón usando `onClick={handleClick}`.
 
 ```jsx
 export default function App() {
   function handleClick() {
-    alert("Botón presionado");
+    alert('Botón presionado')
   }
 
   return (
@@ -56,7 +54,7 @@ export default function App() {
       <input type="text" placeholder="Escribe tu nombre..." />
       <button onClick={handleClick}>Saludar</button>
     </div>
-  );
+  )
 }
 ```
 
@@ -66,7 +64,7 @@ Queremos guardar lo que el usuario escribe en el input.
 
 Añadimos:
 
-- Una variable de estado **name**
+- Una variable de estado `name`
 
 ```jsx
 import { useState } from "react";
@@ -80,32 +78,28 @@ export default function App() {
 
 Una vez implementado, añadimos:
 
-- Un manejador handleChange que lee **event.target.value**
+- Un manejador handleChange que lee `event.target.value`
 
 ```jsx
-import { useState } from "react";
+import { useState } from 'react'
 
 export default function App() {
-  const [name, setName] = useState("");
+  const [name, setName] = useState('')
 
   function handleChange(event) {
-    setName(event.target.value);
-    console.log("Nuevo valor:", event.target.value);
+    setName(event.target.value)
+    console.log('Nuevo valor:', event.target.value)
   }
 
   return (
     <div>
       <h1>Formulario de saludo</h1>
 
-      <input
-        type="text"
-        placeholder="Escribe tu nombre..."
-        onChange={handleChange}
-      />
+      <input type="text" placeholder="Escribe tu nombre..." onChange={handleChange} />
 
       <button onClick={handleClick}>Saludar</button>
     </div>
-  );
+  )
 }
 ```
 
@@ -117,9 +111,9 @@ Ahora queremos que el saludo dependa del texto que escribió el usuario.
 
 Añadimos:
 
-- **handleSubmit**
+- `handleSubmit`
 
-- **event.preventDefault()** (para evitar que el navegador recargue la página)
+- `event.preventDefault()` (para evitar que el navegador recargue la página)
 
 ```jsx
 import { useState } from "react";
@@ -135,52 +129,48 @@ export default function App() {
 }
 ```
 
-Por ultimo, envolvemos el input en un formulario y usamos la función **handleSubmit**.
+Por ultimo, envolvemos el input en un formulario y usamos la función `handleSubmit`.
 
 ```jsx
-import { useState } from "react";
+import { useState } from 'react'
 
 export default function App() {
   function handleSubmit(event) {
-    event.preventDefault();
-    alert("Hola " + name);
+    event.preventDefault()
+    alert('Hola ' + name)
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <h1>Formulario de saludo</h1>
 
-      <input
-        type="text"
-        placeholder="Escribe tu nombre..."
-        onChange={handleChange}
-      />
+      <input type="text" placeholder="Escribe tu nombre..." onChange={handleChange} />
 
       <button>Enviar</button>
     </form>
-  );
+  )
 }
 ```
 
 ## Paso 5 — Unión de todos los pasos (Ejemplo final para Sandpack)
 
 ```jsx
-import { useState } from "react";
+import { useState } from 'react'
 
 export default function GreetingApp() {
-  const [name, setName] = useState("");
+  const [name, setName] = useState('')
 
   function handleClick() {
-    alert("Hiciste clic en el botón de saludo");
+    alert('Hiciste clic en el botón de saludo')
   }
 
   function handleChange(event) {
-    setName(event.target.value);
+    setName(event.target.value)
   }
 
   function handleSubmit(event) {
-    event.preventDefault();
-    alert("Hola " + name);
+    event.preventDefault()
+    alert('Hola ' + name)
   }
 
   return (
@@ -190,19 +180,15 @@ export default function GreetingApp() {
       {/* onSubmit */}
       <form onSubmit={handleSubmit}>
         {/* onChange */}
-        <input
-          type="text"
-          placeholder="Escribe tu nombre..."
-          onChange={handleChange}
-        />
+        <input type="text" placeholder="Escribe tu nombre..." onChange={handleChange} />
 
         {/* onClick */}
         <button onClick={handleClick}>Clic saludo</button>
         <button>Enviar</button>
       </form>
     </div>
-  );
+  )
 }
 ```
 
-**Ahora es tu turno de implementarlo, gran trabajo**
+`Ahora es tu turno de implementarlo, gran trabajo`
