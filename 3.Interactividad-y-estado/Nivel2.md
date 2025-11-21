@@ -1,4 +1,4 @@
-# Nivel 2: Handlers (Funciones manejadoras de eventos)
+# Nivel 2 - Handlers (Funciones manejadoras de eventos)
 
 Los handlers son funciones que React ejecuta cuando ocurre un evento en la UI.
 
@@ -11,55 +11,77 @@ React no llama automáticamente a la función: tú le pasas la función, y React
 
 ```
 
-Los handlers:
+## Paso 1 - Crea el componente y define una función manejadora
 
-- Se definen dentro del componente (por lo general).
-- Su nombre empieza con handle por convención.
-- Son puentes entre la UI y la lógica del componente.
+Primero, define tu componente y dentro de él crea una función llamada handleClick.
 
-Ejemplos comunes:
-
-- handleClick
-- handleChange
-- handleSubmit
-- handleKeyDown
-- handleMouseEnter
-
-## Declarar handlers dentro del componente
-
-```js
-export default function Button() {
+```jsx
+export default function App() {
   function handleClick() {
-    alert("Hiciste clic");
+    console.log("Botón presionado");
   }
 
-  return <button onClick={handleClick}>Clic</button>;
+  return <div>Componente cargado</div>;
 }
 ```
 
-Esto sigue el patrón recomendado:
+En este punto:
 
-- Declaras la función dentro del componente.
-- La pasas al JSX sin ejecutarla (sin paréntesis).
-- React la ejecuta cuando ocurre el evento.
+- Ya existe un handler.
+- Aún no está conectado a nada.
+- No se ejecutará hasta que tú lo enlaces a un evento.
 
-## Por qué los handlers se definen dentro del componente?
+## Paso 2 - Enlaza el handler a un botón usando onClick
 
-Porque así pueden acceder a:
+Ahora conecta la función al evento del botón.
 
+```
+Recuerda: pasas la función, no la ejecutas → es decir, sin paréntesis.
+```
+
+```jsx
+export default function App() {
+  function handleClick() {
+    console.log("Botón presionado");
+  }
+
+  return <button onClick={handleClick}>Presionar</button>;
+}
+```
+
+Ahora sí:
+
+- React ejecutará handleClick cuando el usuario haga clic.
+
+- **onClick={handleClick}** significa:
+
+```
+“React, aquí tienes la función. Llama a esta función cuando ocurra el clic.”
+```
+
+## Paso 3 - Usa datos dentro del handler
+
+Los handlers viven dentro del componente para poder usar props, estado o datos internos.
+
+Agreguemos un mensaje dinámico:
+
+```jsx
+export default function App() {
+  const mensaje = "Gracias por hacer clic";
+
+  function handleClick() {
+    console.log(mensaje);
+  }
+
+  return <button onClick={handleClick}>Presionar</button>;
+}
+```
+
+Gracias a estar dentro del componente, el handler puede acceder a:
+
+- mensaje
 - props
-- estado
-- valores derivados
-- otras funciones del componente
+- state
+- cualquier valor que declares dentro del componente
 
-Ejemplo:
-
-```js
-export default function Welcome({ nombre }) {
-  function handleGreet() {
-    alert("Hola " + nombre);
-  }
-
-  return <button onClick={handleGreet}>Saludar</button>;
-}
-```
+**Ahora es tu turno de implementarlo, gran trabajo**
