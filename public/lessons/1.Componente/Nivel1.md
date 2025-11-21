@@ -31,14 +31,14 @@ Si quieres mostrar varios elementos, debes envolverlos dentro de un contenedor.
 
 - Existe 3 formas de retornar contenido de un componenente
 
-1. Usando una etiqueta div
+1. Usando una etiqueta `div`
 
 ```js
 return (
   <div>
     <h1>Bienvenido a React </h1>
   </div>
-);
+)
 ```
 
 2. Usando un fragmento
@@ -48,13 +48,13 @@ return (
   <>
     <h1>Bienvenido a React </h1>
   </>
-);
+)
 ```
 
 3. En una sola linea
 
 ```js
-return <h1>Bienvenido a React </h1>;
+return <h1>Bienvenido a React </h1>
 ```
 
 Nota

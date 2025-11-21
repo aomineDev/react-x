@@ -56,7 +56,7 @@ const Markdown = ({ children }: MarkdownProps) => {
           {
             theme: {
               dark: 'rose-pine',
-              light: 'github-light',
+              light: 'catppuccin-latte',
             },
             bypassInlineCodes: true,
           },
