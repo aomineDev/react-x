@@ -85,3 +85,5 @@ function InfoPanel({ count }) {
   return <p>Valor actual del contador: {count}</p>;
 }
 ```
+
+**Ahora es tu turno de implementarlo, gran trabajo**
