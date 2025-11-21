@@ -1,4 +1,4 @@
-# Nivel 1: Eventos (onClick, onChange, onSubmit)
+# Nivel 1 - Eventos (onClick, onChange, onSubmit)
 
 En React, los eventos se manejan como funciones que se ejecutan cuando el usuario interactúa con la UI.
 
@@ -8,97 +8,201 @@ Son equivalentes a eventos del DOM, pero se escriben en camelCase y se pasan com
 React NO modifica directamente el DOM, sino que recibe tu intención a través de handlers.
 ```
 
-## OnClick — Evento de clic
+vamos a construir un pequeño “Formulario de saludo”.
+Incluye 3 interacciones:
 
-Para agregar un controlador de evento, primero definirás una función y luego la pasarás como una prop a la etiqueta JSX apropiada.
+- Un botón que responde al clic (onClick)
 
-Por ejemplo, este es un botón que no hace nada todavía:
+- Un input que reacciona al texto que el usuario escribe (onChange)
 
-```js
-export default function Button() {
-  return <button>No hago nada</button>;
-}
-```
+- Un formulario que se envía sin recargar la página (onSubmit)
 
-Puedes hacer que muestre un mensaje cuando un usuario haga clic siguiendo estos tres pasos:
+Todo terminará en un ejemplo final funcional.
 
-1. Declara una función llamada handleClick dentro de tu componente Button.
-2. Implementa la lógica dentro de esa función (utiliza alert para mostrar el mensaje).
-3. Agrega onClick={handleClick} al JSX del <button>.
+## Paso 1 - Crear el componente base
 
-```js
-export default function Button() {
-  function handleClick() {
-    alert("¡Me hiciste clic!");
-  }
+Comenzamos con un componente vacío. Solo muestra un título y un input que todavía no hace nada.
 
-  return <button onClick={handleClick}>Hazme clic</button>;
-}
-```
-
-Definiste la función handleClick y luego la pasaste como una prop al button. handleClick es un controlador de evento. Las funciones controladoras de evento:
-
-Usualmente están definidas dentro de tus componentes.
-Tienen nombres que empiezan con handle, seguido del nombre del evento.
-
-```Nota
-Por convención, es común llamar a los controladores de eventos como handle seguido del nombre del evento. A menudo verás onClick={handleClick}, onMouseEnter={handleMouseEnter}, etcétera.
-```
-
-## onChange — Detectar cambios en inputs
-
-onChange se ejecuta cuando el usuario escribe en un `<input>`, selecciona un `<select>` o marca un `<checkbox>`.
-
-Es uno de los eventos del formulario que se actualiza cuando se modifica el campo de entrada.
-
-```js
-export default function InputExample() {
-  function handleChange(event) {
-    console.log("Nuevo valor:", event.target.value);
-  }
-
+```jsx
+export default function App() {
   return (
-    <input type="text" placeholder="Escribe algo..." onChange={handleChange} />
+    <div>
+      <h1>Formulario de saludo</h1>
+
+      <input type="text" placeholder="Escribe tu nombre..." />
+      <button>Saludar</button>
+    </div>
   );
 }
 ```
 
-¿Qué contiene event.target.value?
+## Paso 2 - Manejar un clic (onClick)
 
-- Para inputs de texto → el texto que el usuario escribe
+Queremos que el botón muestre un mensaje cuando el usuario haga clic.
 
-- Para checkboxes → event.target.checked
+- Declaramos la función **handleClick**.
+- La pasamos al botón usando **onClick={handleClick}**.
 
-- Para selects → option seleccionada
+```jsx
+export default function App() {
+  function handleClick() {
+    alert("Botón presionado");
+  }
 
-## onSubmit — Manejar envíos de formularios
+  return (
+    <div>
+      <h1>Formulario de saludo</h1>
 
-Cuando el usuario envía un formulario, React ejecuta la función asignada a onSubmit.
-
-Es importante evitar el comportamiento por defecto del navegador (refrescar la página):
-
-```js
-event.preventDefault();
+      <input type="text" placeholder="Escribe tu nombre..." />
+      <button onClick={handleClick}>Saludar</button>
+    </div>
+  );
+}
 ```
 
-formulario que evita refresh
+## Paso 3 - Detectar lo que el usuario escribe (onChange)
 
-```js
-export default function FormExample() {
+Queremos guardar lo que el usuario escribe en el input.
+
+Añadimos:
+
+- Una variable de estado **name**
+
+```jsx
+import { useState } from "react";
+
+export default function App() {
+  const [name, setName] = useState("");
+
+  ...
+}
+```
+
+Una vez implementado, añadimos:
+
+- Un manejador handleChange que lee **event.target.value**
+
+```jsx
+import { useState } from "react";
+
+export default function App() {
+  const [name, setName] = useState("");
+
+  function handleChange(event) {
+    setName(event.target.value);
+    console.log("Nuevo valor:", event.target.value);
+  }
+
+  return (
+    <div>
+      <h1>Formulario de saludo</h1>
+
+      <input
+        type="text"
+        placeholder="Escribe tu nombre..."
+        onChange={handleChange}
+      />
+
+      <button onClick={handleClick}>Saludar</button>
+    </div>
+  );
+}
+```
+
+Ahora reconocemos lo que el usuario escribe.
+
+## Paso 4 - Manejar el submit del formulario (onSubmit)
+
+Ahora queremos que el saludo dependa del texto que escribió el usuario.
+
+Añadimos:
+
+- **handleSubmit**
+
+- **event.preventDefault()** (para evitar que el navegador recargue la página)
+
+```jsx
+import { useState } from "react";
+
+export default function App() {
+
   function handleSubmit(event) {
     event.preventDefault();
-    alert("Formulario enviado");
+    alert("Hola " + name);
+  }
+
+  ...
+}
+```
+
+Por ultimo, envolvemos el input en un formulario y usamos la función **handleSubmit**.
+
+```jsx
+import { useState } from "react";
+
+export default function App() {
+  function handleSubmit(event) {
+    event.preventDefault();
+    alert("Hola " + name);
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" placeholder="Tu nombre" />
+      <h1>Formulario de saludo</h1>
+
+      <input
+        type="text"
+        placeholder="Escribe tu nombre..."
+        onChange={handleChange}
+      />
+
       <button>Enviar</button>
     </form>
   );
 }
 ```
 
-```Nota
-Siempre usa preventDefault() dentro de formularios en React, a menos que desees un comportamiento tradicional del navegador.
+## Paso 5 — Unión de todos los pasos (Ejemplo final para Sandpack)
+
+```jsx
+import { useState } from "react";
+
+export default function GreetingApp() {
+  const [name, setName] = useState("");
+
+  function handleClick() {
+    alert("Hiciste clic en el botón de saludo");
+  }
+
+  function handleChange(event) {
+    setName(event.target.value);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    alert("Hola " + name);
+  }
+
+  return (
+    <div>
+      <h1>Formulario de saludo</h1>
+
+      {/* onSubmit */}
+      <form onSubmit={handleSubmit}>
+        {/* onChange */}
+        <input
+          type="text"
+          placeholder="Escribe tu nombre..."
+          onChange={handleChange}
+        />
+
+        {/* onClick */}
+        <button onClick={handleClick}>Clic saludo</button>
+        <button>Enviar</button>
+      </form>
+    </div>
+  );
+}
 ```
+
+**Ahora es tu turno de implementarlo, gran trabajo**
