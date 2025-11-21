@@ -28,15 +28,15 @@ Biografía: `<textarea>`
 ## Paso 1 — Definir el estado inicial
 
 ```jsx
-import { useState } from "react";
+import { useState } from 'react'
 
-export default function UserPreferences() {
+export default function App() {
   const [form, setForm] = useState({
-    nombre: "",
-    rol: "user",
+    nombre: '',
+    rol: 'user',
     aceptaTerminos: false,
-    bio: "",
-  });
+    bio: '',
+  })
 
   // ...
 }
@@ -46,12 +46,12 @@ export default function UserPreferences() {
 
 ```jsx
 function handleChange(event) {
-  const { name, value } = event.target;
+  const { name, value } = event.target
 
   setForm((prev) => ({
     ...prev,
     [name]: value,
-  }));
+  }))
 }
 ```
 
@@ -63,16 +63,16 @@ Este handler sirve para:
 
 ## Paso 3 — Handler especial para checkbox
 
-(porque checkbox no usa **value**, sino **checked**)
+(porque checkbox no usa `value`, sino `checked`)
 
 ```jsx
 function handleCheckbox(event) {
-  const { name, checked } = event.target;
+  const { name, checked } = event.target
 
   setForm((prev) => ({
     ...prev,
     [name]: checked,
-  }));
+  }))
 }
 ```
 
@@ -121,7 +121,7 @@ return (
     <hr />
     <pre>{JSON.stringify(form, null, 2)}</pre>
   </div>
-);
+)
 ```
 
-**Ahora es tu turno de implementarlo, gran trabajo**
+`Ahora es tu turno de implementarlo, gran trabajo`
