@@ -9,6 +9,17 @@ En React, un **efecto secundario** es cualquier operación que afecta algo fuera
 - Sincronizar datos con localStorage
 - Registrar información en consola para debugging
 
+### Ciclo de vida de un componente
+
+Un componente en React pasa por **4 fases principales**:
+
+1. **Montaje (Mounting)** → cuando aparece en el DOM.  
+2. **Actualización (Updating)** → cuando cambian sus props o estado.  
+3. **Desmontaje (Unmounting)** → cuando se elimina del DOM.  
+4. **Manejo de errores (Error Handling)** → cuando ocurre un fallo en un hijo.
+
+![Ciclo de vida de un componente](https://i.imgur.com/FOKbmdR.gif)
+
 ### El Problema que Resuelve
 
 Si quieres ejecutar código cuando cambia un estado, no puedes ponerlo directamente en el cuerpo del componente porque se ejecutaría en cada render de manera descontrolada.
