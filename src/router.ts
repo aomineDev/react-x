@@ -4,6 +4,7 @@ import FormPage from './pages/FormPage'
 import Layout from './layout/AppLayout'
 import Markdown from './pages/Markdown'
 import CodeChallengue from './pages/CodeChallengePage'
+import ThreePage from './pages/componente/ThreePage'
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,15 @@ export const router = createBrowserRouter([
       {
         path: 'markdown',
         Component: Markdown,
+      },
+      {
+        path: 'lesson/:lessonId/:nivelId',
+        children: [
+          {
+            path: '1',
+            Component: ThreePage,
+          },
+        ],
       },
     ],
   },
