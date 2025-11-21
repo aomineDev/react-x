@@ -6,22 +6,19 @@ Son el puente entre la interacción del usuario y la lógica del componente.
 
 Un handler puede leer datos, actualizar el estado, validar información o ejecutar cualquier lógica que necesites.
 
-```
-React no llama automáticamente a la función: tú le pasas la función, y React decide cuándo ejecutarla.
-
-```
+> React no llama automáticamente a la función: tú le pasas la función, y React decide cuándo ejecutarla.
 
 ## Paso 1 - Crea el componente y define una función manejadora
 
-Primero, define tu componente y dentro de él crea una función llamada handleClick.
+Primero, define tu componente y dentro de él crea una función llamada `handleClick`.
 
 ```jsx
 export default function App() {
   function handleClick() {
-    console.log("Botón presionado");
+    console.log('Botón presionado')
   }
 
-  return <div>Componente cargado</div>;
+  return <div>Componente cargado</div>
 }
 ```
 
@@ -42,10 +39,10 @@ Recuerda: pasas la función, no la ejecutas → es decir, sin paréntesis.
 ```jsx
 export default function App() {
   function handleClick() {
-    console.log("Botón presionado");
+    console.log('Botón presionado')
   }
 
-  return <button onClick={handleClick}>Presionar</button>;
+  return <button onClick={handleClick}>Presionar</button>
 }
 ```
 
@@ -53,11 +50,9 @@ Ahora sí:
 
 - React ejecutará handleClick cuando el usuario haga clic.
 
-- **onClick={handleClick}** significa:
+- `onClick={handleClick}` significa:
 
-```
-“React, aquí tienes la función. Llama a esta función cuando ocurra el clic.”
-```
+> “React, aquí tienes la función. Llama a esta función cuando ocurra el clic.”
 
 ## Paso 3 - Usa datos dentro del handler
 
@@ -67,13 +62,13 @@ Agreguemos un mensaje dinámico:
 
 ```jsx
 export default function App() {
-  const mensaje = "Gracias por hacer clic";
+  const mensaje = 'Gracias por hacer clic'
 
   function handleClick() {
-    console.log(mensaje);
+    console.log(mensaje)
   }
 
-  return <button onClick={handleClick}>Presionar</button>;
+  return <button onClick={handleClick}>Presionar</button>
 }
 ```
 
@@ -84,4 +79,4 @@ Gracias a estar dentro del componente, el handler puede acceder a:
 - state
 - cualquier valor que declares dentro del componente
 
-**Ahora es tu turno de implementarlo, gran trabajo**
+`Ahora es tu turno de implementarlo, gran trabajo`

@@ -23,18 +23,18 @@ Queremos construir un pequeño ejemplo de lista de tareas, donde:
 
 ## Paso 1 — Declarar un estado con un array
 
-Usaremos **useState** para guardar una lista inicial de tareas:
+Usaremos `useState` para guardar una lista inicial de tareas:
 
 ```jsx
-import { useState } from "react";
+import { useState } from 'react'
 
 export default function App() {
   const [tasks, setTasks] = useState([
-    { id: 1, text: "Aprender React", done: false },
-    { id: 2, text: "Practicar useState", done: false },
-  ]);
+    { id: 1, text: 'Aprender React', done: false },
+    { id: 2, text: 'Practicar useState', done: false },
+  ])
 
-  return <div>Tareas: {tasks.length}</div>;
+  return <div>Tareas: {tasks.length}</div>
 }
 ```
 
@@ -57,19 +57,19 @@ return (
       </div>
     ))}
   </div>
-);
+)
 ```
 
 ## Paso 3 — Agregar una nueva tarea
 
-Queremos un input y un botón que agregue una tarea.
+Queremos un `input` y un botón que agregue una tarea.
 
 - Creamos un estado para el texto actual.
-- Creamos un handler addTask.
-- Usamos el setter basado en prevTasks.
+- Creamos un `handler addTask`.
+- Usamos el setter basado en `prevTasks`.
 
 ```jsx
-const [newTask, setNewTask] = useState("");
+const [newTask, setNewTask] = useState('')
 
 function addTask() {
   setTasks((prev) => [
@@ -79,9 +79,9 @@ function addTask() {
       text: newTask,
       done: false,
     },
-  ]);
+  ])
 
-  setNewTask(""); // limpiar el input
+  setNewTask('') // limpiar el input
 }
 ```
 
@@ -104,37 +104,31 @@ Necesitamos un handler que reciba el id y cambie solo esa tarea.
 
 ```js
 function toggleTask(id) {
-  setTasks((prev) =>
-    prev.map((task) => (task.id === id ? { ...task, done: !task.done } : task))
-  );
+  setTasks((prev) => prev.map((task) => (task.id === id ? { ...task, done: !task.done } : task)))
 }
 ```
 
 Luego conectamos el checkbox:
 
 ```js
-<input
-  type="checkbox"
-  checked={task.done}
-  onChange={() => toggleTask(task.id)}
-/>
+<input type="checkbox" checked={task.done} onChange={() => toggleTask(task.id)} />
 ```
 
 ## Paso 5 — Resultado final
 
 ```jsx
-import { useState } from "react";
+import { useState } from 'react'
 
 export default function App() {
   const [tasks, setTasks] = useState([
-    { id: 1, text: "Aprender React", done: false },
-    { id: 2, text: "Practicar useState", done: false },
-  ]);
+    { id: 1, text: 'Aprender React', done: false },
+    { id: 2, text: 'Practicar useState', done: false },
+  ])
 
-  const [newTask, setNewTask] = useState("");
+  const [newTask, setNewTask] = useState('')
 
   function addTask() {
-    if (newTask.trim() === "") return;
+    if (newTask.trim() === '') return
 
     setTasks((prev) => [
       ...prev,
@@ -143,17 +137,13 @@ export default function App() {
         text: newTask,
         done: false,
       },
-    ]);
+    ])
 
-    setNewTask("");
+    setNewTask('')
   }
 
   function toggleTask(id) {
-    setTasks((prev) =>
-      prev.map((task) =>
-        task.id === id ? { ...task, done: !task.done } : task
-      )
-    );
+    setTasks((prev) => prev.map((task) => (task.id === id ? { ...task, done: !task.done } : task)))
   }
 
   return (
@@ -162,11 +152,7 @@ export default function App() {
 
       {tasks.map((task) => (
         <div key={task.id}>
-          <input
-            type="checkbox"
-            checked={task.done}
-            onChange={() => toggleTask(task.id)}
-          />
+          <input type="checkbox" checked={task.done} onChange={() => toggleTask(task.id)} />
           {task.text}
         </div>
       ))}
@@ -182,8 +168,8 @@ export default function App() {
 
       <button onClick={addTask}>Agregar</button>
     </div>
-  );
+  )
 }
 ```
 
-**Ahora es tu turno de implementarlo, gran trabajo**
+`Ahora es tu turno de implementarlo, gran trabajo`

@@ -9,48 +9,46 @@ Cuando el estado cambia, React vuelve a renderizar el componente para mostrar la
 Primero traemos el hook desde React:
 
 ```jsx
-import { useState } from "react";
+import { useState } from 'react'
 ```
 
 ## Paso 2 - Declarar estado
 
-Construyamos un pequeño contador de “Likes”, como si estuviéramos armando un prototipo para una app social.
+Construyamos un pequeño contador de `Likes`, como si estuviéramos armando un prototipo para una app social.
 
 Declaramos el estado dentro del componente:
 
 ```jsx
-import { useState } from "react";
+import { useState } from 'react'
 
 export default function App() {
-  const [likes, setLikes] = useState(0);
+  const [likes, setLikes] = useState(0)
 
-  return <button>Likes: {likes}</button>;
+  return <button>Likes: {likes}</button>
 }
 ```
 
-- likes es el valor actual
-- setLikes es la función que cambia ese valor
-- useState(0) indica que el contador inicia en 0
+- `likes` es el valor actual
+- `setLikes` es la función que cambia ese valor
+- `useState(0)` indica que el contador inicia en 0
 
-```Nota
-La convención es nombrar variables de estado como [algo, setAlgo] usando desestructuración de arrays.
-```
+> La convención es nombrar variables de estado como `[algo, setAlgo]` usando desestructuración de arrays.
 
 ## Paso 3 — Actualizar estado al hacer clic
 
 Ahora le damos vida real: cuando el usuario hace clic, incrementamos los likes.
 
 ```jsx
-import { useState } from "react";
+import { useState } from 'react'
 
 export default function App() {
-  const [likes, setLikes] = useState(0);
+  const [likes, setLikes] = useState(0)
 
   function handleLike() {
-    setLikes(likes + 1);
+    setLikes(likes + 1)
   }
 
-  return <button onClick={handleLike}>Likes: {likes}</button>;
+  return <button onClick={handleLike}>Likes: {likes}</button>
 }
 ```
 
@@ -61,4 +59,4 @@ Aquí pasa algo crucial:
 - React vuelve a renderizar
 - El botón muestra el nuevo número
 
-**Ahora es tu turno de implementarlo, gran trabajo**
+`Ahora es tu turno de implementarlo, gran trabajo`
