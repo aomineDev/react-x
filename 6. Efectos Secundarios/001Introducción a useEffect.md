@@ -7,13 +7,13 @@ Para ejecutar código después del render, React utiliza el hook `useEffect`.
 En esta actividad aprenderás a utilizar `useEffect` en tus componentes.
 
 El hook que permite ejecutar efectos secundarios es `useEffect`. Aquí un ejemplo de cómo utilizar `useEffect` en un componente:
-## 1. Importar los Hooks
+## Paso 1 - Importar los Hooks
 ```javascript
 import { useState, useEffect } from 'react';
 ```
 - Debes importar `useEffect` desde React junto con otros hooks
 
-## 2. Crear el efecto con `useEffect`
+## Paso 2 - Crear el efecto con `useEffect`
 ```javascript
 function App() {
   const [contador, setContador] = useState(0);
@@ -25,7 +25,7 @@ function App() {
 - Por defecto, el código dentro de `useEffect` se ejecuta después de cada render
 - Muestra en consola el valor actual del contador.
 - No tiene array de dependencias, por eso se ejecuta siempre.
-## 3. Render y actualización del estado
+## Paso 3 - Render y actualización del estado
 ```javascript
   return (
     <button onClick={() => setContador(contador + 1)}>
