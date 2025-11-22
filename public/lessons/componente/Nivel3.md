@@ -8,7 +8,7 @@ Las llaves `{}` te permiten ejecutar código JavaScript dentro de JSX. Puedes us
 
 ---
 
-## 1 - Muestra el nombre del producto con una variable
+## Paso 1 - Muestra el nombre del producto con una variable
 
 Comienza creando una tarjeta con el nombre del producto usando una variable:
 
@@ -26,7 +26,9 @@ export default function TarjetaProducto() {
 
 Las llaves `{}` te permiten insertar JavaScript dentro de JSX.
 
-## 2 - Agrega el precio y realiza una operacion matemática
+---
+
+## Paso 2 - Agrega el precio y realiza una operacion matemática
 
 Ahora agrega el precio del producto y calcula el precio con IGV:
 
@@ -39,7 +41,7 @@ Dentro de `{}` puedes ejecutar operaciones matemáticas.
 
 ---
 
-## 3 - Muestra disponibilidad con un ternario
+## Paso 3 - Muestra disponibilidad con un ternario
 
 Agrega un mensaje de disponibilidad que cambie según el stock:
 
@@ -49,7 +51,9 @@ Agrega un mensaje de disponibilidad que cambie según el stock:
 
 El operador ternario `condición ? siTrue : siFalse` te permite mostrar contenido diferente según una condición. Si `stock > 0` muestra "Disponible", sino "Agotado".
 
-## 4 - Agrega estilos dinámicos con doble llave
+---
+
+## Paso 4 - Agrega estilos dinámicos con doble llave
 
 Aplica estilos en línea según la disponibilidad del producto:
 
@@ -59,7 +63,9 @@ Aplica estilos en línea según la disponibilidad del producto:
 
 `{{}}` → la primera `{}` inserta JavaScript, la segunda `{}` es el objeto de estilos.
 
-## 5 - Uniendo todas las partes
+---
+
+## Paso 5 - Resultado final
 
 ```jsx
 export default function TarjetaProducto() {

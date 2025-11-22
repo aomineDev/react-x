@@ -3,14 +3,11 @@ const props = {
   markdownUrl: 'lessons/componente/Nivel2.md',
   files: {
     '/App.js': `export default function Usuario() {
-    return (
-    <></>
-    )
 }
 `,
   },
 }
-const TwoPage = () => {
+const Level2 = () => {
   return <Lesson {...props}></Lesson>
 }
-export default TwoPage
+export default Level2
