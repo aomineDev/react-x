@@ -16,7 +16,7 @@ Ambos dependen del mismo estado, por lo tanto el estado debe vivir en el compone
 
 ## Paso 1 — Componente padre que guarda el estado
 
-```jsx
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 import { useState } from 'react'
 
 export default function App() {
@@ -41,7 +41,7 @@ Aquí ocurre la magia:
 
 ## Paso 2 — Componente que modifica el estado
 
-```jsx
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 function CounterButton({ count, setCount }) {
   function handleClick() {
     setCount(count + 1)
@@ -53,7 +53,7 @@ function CounterButton({ count, setCount }) {
 
 ## Paso 3 — Componente que solo lee el estado
 
-```jsx
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 function InfoPanel({ count }) {
   return <p>Valor actual del contador: {count}</p>
 }
@@ -61,7 +61,7 @@ function InfoPanel({ count }) {
 
 ## Paso 4 — Resultado final
 
-```jsx
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 import { useState } from 'react'
 
 export default function App() {

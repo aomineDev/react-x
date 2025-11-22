@@ -27,7 +27,7 @@ Biografía: `<textarea>`
 
 ## Paso 1 — Definir el estado inicial
 
-```jsx
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 import { useState } from 'react'
 
 export default function App() {
@@ -44,7 +44,7 @@ export default function App() {
 
 ## Paso 2 — Handler genérico para inputs de texto, select y textarea
 
-```jsx
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 function handleChange(event) {
   const { name, value } = event.target
 
@@ -65,7 +65,7 @@ Este handler sirve para:
 
 (porque checkbox no usa `value`, sino `checked`)
 
-```jsx
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 function handleCheckbox(event) {
   const { name, checked } = event.target
 
@@ -78,7 +78,7 @@ function handleCheckbox(event) {
 
 ## Paso 4 — Construir el formulario en JSX
 
-```jsx
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 return (
   <div className="card">
     <h2>Preferencias del Usuario</h2>

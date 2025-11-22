@@ -25,7 +25,7 @@ Queremos construir un pequeño ejemplo de lista de tareas, donde:
 
 Usaremos `useState` para guardar una lista inicial de tareas:
 
-```jsx
+```jsx showLineNumbers {4} title="App.tsx" /MarkdownHooks/
 import { useState } from 'react'
 
 export default function App() {
@@ -45,7 +45,7 @@ export default function App() {
 
 Para renderizar la lista:
 
-```jsx
+```jsx showLineNumbers {5} title="App.tsx" /MarkdownHooks/
 return (
   <div>
     <h2>Mis tareas</h2>
@@ -68,7 +68,7 @@ Queremos un `input` y un botón que agregue una tarea.
 - Creamos un `handler addTask`.
 - Usamos el setter basado en `prevTasks`.
 
-```jsx
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 const [newTask, setNewTask] = useState('')
 
 function addTask() {
@@ -87,7 +87,7 @@ function addTask() {
 
 JSX para escribir y agregar:
 
-```js
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 <input
   type="text"
   value={newTask}
@@ -102,7 +102,7 @@ JSX para escribir y agregar:
 
 Necesitamos un handler que reciba el id y cambie solo esa tarea.
 
-```js
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 function toggleTask(id) {
   setTasks((prev) => prev.map((task) => (task.id === id ? { ...task, done: !task.done } : task)))
 }
@@ -110,13 +110,13 @@ function toggleTask(id) {
 
 Luego conectamos el checkbox:
 
-```js
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 <input type="checkbox" checked={task.done} onChange={() => toggleTask(task.id)} />
 ```
 
 ## Paso 5 — Resultado final
 
-```jsx
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 import { useState } from 'react'
 
 export default function App() {

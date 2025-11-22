@@ -10,7 +10,7 @@ La idea será construir un pequeño ejemplo práctico:
 
 Imagina que tienes un panel donde el usuario puede activar o desactivar la edición de un bloque de texto. El estado debe alternar entre editable y no editable, y la mejor manera de hacerlo es actualizando usando el valor previo:
 
-```js
+```jsx showLineNumbers {1} title="App.tsx" /MarkdownHooks/
 setIsEditable((prev) => !prev)
 ```
 
@@ -20,7 +20,7 @@ Esto evita errores cuando React agrupa o aplaza actualizaciones.
 
 Primero definimos la propiedad que controlaremos.
 
-```jsx
+```jsx showLineNumbers {4} title="App.tsx" /MarkdownHooks/x
 import { useState } from 'react'
 
 export default function App() {
@@ -36,7 +36,7 @@ export default function App() {
 
 Ahora queremos que el `<div>` sea editable solo cuando `isEditable` sea `true`.
 
-```js
+```jsx showLineNumbers {5} title="App.tsx" /MarkdownHooks/
 export default function App() {
   const [isEditable, setIsEditable] = useState(true)
 
@@ -52,7 +52,7 @@ export default function App() {
 
 Para alternar el valor (toggle) es obligatorio usar la forma basada en el estado previo:
 
-```js
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 function toggleEditable() {
   setIsEditable((prev) => !prev)
 }
@@ -60,7 +60,7 @@ function toggleEditable() {
 
 Esto es más seguro que:
 
-```js
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 setIsEditable(!isEditable)
 ```
 
@@ -68,7 +68,7 @@ Evitarlo cuando depende del estado anterior.
 
 ## Paso 4 — Unir todo (ejemplo final)
 
-```js
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 import { useState } from 'react'
 
 export default function App() {
