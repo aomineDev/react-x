@@ -16,8 +16,8 @@ const props = {
   },
 }
 
-const ThreePage = () => {
+const Level3 = () => {
   return <Lesson {...props}></Lesson>
 }
 
-export default ThreePage
+export default Level3

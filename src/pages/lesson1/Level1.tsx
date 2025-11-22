@@ -4,12 +4,11 @@ const props = {
   markdownUrl: 'lessons/componente/Nivel1.md',
   files: {
     '/App.js': `export default function Saludo() {
- 
 }
 `,
   },
 }
-const OnePage = () => {
+const Level1 = () => {
   return <Lesson {...props}></Lesson>
 }
-export default OnePage
+export default Level1

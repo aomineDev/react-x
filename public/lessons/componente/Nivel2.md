@@ -8,7 +8,7 @@ JSX (JavaScript XML) es una extensión de sintaxis que te permite escribir códi
 
 ---
 
-## 1 - Crea el contenedor y el titulo
+## Paso 1 - Crea el contenedor y el titulo
 
 Agrega un div con una clase y un titulo dentro del componenete
 
@@ -22,9 +22,9 @@ En JSX usas `className` en lugar de `class` porque `class` es una palabra reserv
 
 ---
 
-## 2 - Agrega la imagen de perfil
+## Paso 2 - Agrega la imagen de perfil
 
-Dentro del contenedor, debajo del título, agrega la imagen
+Dentro del contenedor, debajo del título, agrega la imagen `<img/>`
 
 ```html
 <img src="imagen" alt="Foto de perfil" />
@@ -38,7 +38,7 @@ En jsx, todas las etiquetas deben cerrarse `<img/>`
 
 ---
 
-## 3 - Agrega información del usuario
+## Paso 3 - Agrega información del usuario
 
 Agrega más detalles del perfil con un párrafo y un salto de línea:
 
@@ -52,7 +52,7 @@ Agrega más detalles del perfil con un párrafo y un salto de línea:
 
 ---
 
-## 4 - Agrega un formulario de contacto
+## Paso 4 - Agrega un formulario de contacto
 
 Completa la tarjeta agregando un campo de entrada con su etiqueta:
 
@@ -62,7 +62,9 @@ Completa la tarjeta agregando un campo de entrada con su etiqueta:
 
 En JSX se usa `htmlFor`, no for.
 
-## 5 - Union de todos los pasos
+---
+
+## Paso 5 - Union de todos los pasos
 
 ```jsx
 export default function Usuario() {
