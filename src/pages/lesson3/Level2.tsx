@@ -1,7 +1,7 @@
 import Lesson from '@/components/Lesson'
 
 const props = {
-  markdownUrl: 'lessons/interactividad-y-estado/Nivel1.md',
+  markdownUrl: 'lessons/interactividad-y-estado/Nivel2.md',
   files: {
     '/App.js': `export default function App() {
  
@@ -9,7 +9,7 @@ const props = {
 `,
   },
 }
-const Level1 = () => {
+const Level2 = () => {
   return <Lesson {...props}></Lesson>
 }
-export default Level1
+export default Level2

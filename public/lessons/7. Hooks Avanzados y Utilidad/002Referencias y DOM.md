@@ -8,19 +8,19 @@ En esta actividad aprenderás a usar `useRef` para acceder al DOM y almacenar va
 
 `useRef` retorna un objeto con una propiedad `current` que persiste durante toda la vida del componente. Aquí un ejemplo:
 
-## 1. Importación del hook
+## Paso 1 - Importación del hook
 ```javascript
 import { useRef } from 'react';
 ```
 - Se importa `useRef`, un hook que permite crear una referencia que no se pierde entre renders.
-## 2. Crear una referencia
+## Paso 2 - Crear una referencia
 ```javascript
 const inputRef = useRef(null);
 ```
 - `useRef` devuelve un objeto con una propiedad `.current`.
 - Aquí `.current` comenzará como `null`.
 - Esta referencia apuntará al `<input>` cuando React lo renderice.
-## 3. Función que usa la referencia
+## Paso 3 - Función que usa la referencia
 ```javascript
 const enfocarInput = () => {
   inputRef.current.focus();
@@ -29,7 +29,7 @@ const enfocarInput = () => {
 - Se accede al elemento DOM real mediante `inputRef.current`.
 - Se llama al método `.focus()` para enfocar el input.
 
-## 4. Asociar la referencia al elemento
+## Paso 4 - Asociar la referencia al elemento
 ```javascript
 <input ref={inputRef} type="text" />
 ```
@@ -37,7 +37,7 @@ const enfocarInput = () => {
 
 - Después del render, `inputRef.current` será el input real del DOM.
 
-## 5. Botón que activa la acción
+## Paso 5 - Botón que activa la acción
 ```javascript
 <button onClick={enfocarInput}>Enfocar</button>
 ```

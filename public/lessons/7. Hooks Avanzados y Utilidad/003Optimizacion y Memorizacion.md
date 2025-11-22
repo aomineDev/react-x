@@ -8,7 +8,7 @@ En esta actividad aprenderás a optimizar componentes con memorización.
 
 `useMemo` memoriza el resultado de un cálculo, y `useCallback` memoriza una función. Aquí un ejemplo:
 
-## Estados del componente
+## Paso 1 - Estados del componente
 ```javascript
   const [count, setCount] = useState(0);
   const [input, setInput] = useState('');
@@ -17,7 +17,7 @@ En esta actividad aprenderás a optimizar componentes con memorización.
 
 - input: agregado solo para demostrar que cambios externos no afectan el cálculo memorizado.
 
-## Memorizar un cálculo costoso (useMemo)
+## Paso 2 - Memorizar un cálculo costoso (useMemo)
 ```javascript
   const calculoCostoso = useMemo(() => {
     console.log('Calculando...');
@@ -28,14 +28,14 @@ En esta actividad aprenderás a optimizar componentes con memorización.
 - Si otro estado cambia (como input), no se recalcula.
 - Ideal para operaciones pesadas (loops, filtros grandes, cálculos matemáticos).
 
-## Memorizar una función (useCallback)
+## Paso 3 - Memorizar una función (useCallback)
 ```javascript
   const incrementar = useCallback(() => {
     setCount(c => c + 1);
   }, []);
 ```
 
-## Render del resultado memorizado
+## Paso 4 - Render del resultado memorizado
 ```javascript
 return <div>{calculoCostoso}</div>;
 ```

@@ -19,7 +19,7 @@ A continuación, vamos a construir un formulario donde:
 ```jsx
 import { useState } from 'react'
 
-export default function BasicFormValidation() {
+export default function App() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
 
@@ -89,7 +89,7 @@ function handleSubmit(e) {
 ```jsx
 import { useState } from 'react'
 
-export default function BasicFormValidation() {
+export default function App() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
 
@@ -134,3 +134,5 @@ export default function BasicFormValidation() {
   )
 }
 ```
+
+`Ahora es tu turno de implementarlo, gran trabajo`

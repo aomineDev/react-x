@@ -10,9 +10,7 @@ Eso significa:
 
 - El JSX siempre muestra el valor actual del estado.
 
-```
-React no deja el input “a la deriva”: tú controlas su valor.
-```
+> React no deja el input “a la deriva”: tú controlas su valor.
 
 Vamos a construir un pequeño formulario que muestre:
 
@@ -24,15 +22,15 @@ Un mensaje dinámico debajo del input
 
 ## Paso 1 — Declarar estado para guardar lo que el usuario escribe
 
-Creamos un estado llamado **nombre** para guardar el texto:
+Creamos un estado llamado `nombre` para guardar el texto:
 
 ```jsx
-import { useState } from "react";
+import { useState } from 'react'
 
 export default function App() {
-  const [nombre, setNombre] = useState(""); // estado inicial vacío
+  const [nombre, setNombre] = useState('') // estado inicial vacío
 
-  return <div></div>;
+  return <div></div>
 }
 ```
 
@@ -40,16 +38,16 @@ export default function App() {
 
 Ahora enlazamos:
 
-- **value={nombre}** → React controla el valor.
+- `value={nombre}` → React controla el valor.
 
-- **onChange={handleChange}** → actualizamos el estado al escribir.
+- `onChange={handleChange}` → actualizamos el estado al escribir.
 
 ```jsx
 export default function App() {
-  const [nombre, setNombre] = useState("");
+  const [nombre, setNombre] = useState('')
 
   function handleChange(event) {
-    setNombre(event.target.value); // lo que escribe el usuario
+    setNombre(event.target.value) // lo que escribe el usuario
   }
 
   return (
@@ -61,7 +59,7 @@ export default function App() {
         onChange={handleChange} // manejar texto
       />
     </div>
-  );
+  )
 }
 ```
 
@@ -70,25 +68,20 @@ export default function App() {
 Así comprobamos que el input está completamente controlado:
 
 ```jsx
-export default function FormName() {
-  const [nombre, setNombre] = useState("");
+export default function App() {
+  const [nombre, setNombre] = useState('')
 
   function handleChange(event) {
-    setNombre(event.target.value);
+    setNombre(event.target.value)
   }
 
   return (
     <div>
-      <input
-        type="text"
-        placeholder="Escribe tu nombre"
-        value={nombre}
-        onChange={handleChange}
-      />
+      <input type="text" placeholder="Escribe tu nombre" value={nombre} onChange={handleChange} />
 
-      <p>Tu nombre es: {nombre || "—"}</p>
+      <p>Tu nombre es: {nombre || '—'}</p>
     </div>
-  );
+  )
 }
 ```
 
@@ -99,13 +92,13 @@ Un input controlado siempre sigue esta fórmula:
 1. Un estado
 
 ```jsx
-const [value, setValue] = useState("");
+const [value, setValue] = useState('')
 ```
 
 2. El input muestra ese estado
 
 ```jsx
-value = { value };
+value = { value }
 ```
 
 3. El onChange actualiza el estado
@@ -116,4 +109,4 @@ onChange={(e) => setValue(e.target.value)}
 
 Así React siempre sabe qué hay dentro del input.
 
-**Ahora es tu turno de implementarlo, gran trabajo**
+`Ahora es tu turno de implementarlo, gran trabajo`
