@@ -1,24 +1,15 @@
-import Lesson from '@/components/lesson/Lesson'
-
-const props = {
-  markdownUrl: 'content.md',
-  files: {
-    '/App.js': `export default function App() {
-  return (
-		<>
-			<h1>Hello world</h1>
-		</>
-	)
-}
-`,
-    '/Button.jsx': `export default () => <button>Hello</button>`,
-  },
-  lesson: 'Introducción',
-  nivel: 'Nivel 1',
-}
+import { Button } from '@/components/ui/button'
+import { Link } from 'react-router'
 
 const HomePage = () => {
-  return <Lesson {...props}></Lesson>
+  return (
+    <>
+      <h1>Niveles</h1>
+      <Button asChild>
+        <Link to="lesson/1/1">Nivel 1</Link>
+      </Button>
+    </>
+  )
 }
 
 export default HomePage

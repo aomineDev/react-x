@@ -1,4 +1,4 @@
-# Nivel 1: Creando tu Primer Componente
+# Creando tu Primer Componente
 
 En React, un componente es una función que devuelve parte de la interfaz de usuario (UI). Cada botón, tarjeta o página puede ser un componente.
 
@@ -36,7 +36,7 @@ return (
 
 Si no quieres un `<div>` extra en tu HTML, usa un **Fragment** `<></>`
 
-```jsx
+```jsx showLineNumbers {2, 4}
 return (
   <>
     <h1>Bienvenido a React</h1>
@@ -44,7 +44,7 @@ return (
 )
 ```
 
-`Los Fragments mantienen tu DOM limpio sin agregar elementos HTML innecesarios. `
+> Los Fragments mantienen tu DOM limpio sin agregar elementos HTML innecesarios.
 
 ---
 

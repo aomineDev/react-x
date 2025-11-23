@@ -14,6 +14,7 @@ import {
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog'
 import Confetti from '@/components/Confetti'
+import { Link } from 'react-router'
 
 interface TestRunnerProps {
   onClick: () => void
@@ -102,7 +103,9 @@ const TestRunner = ({ onClick }: TestRunnerProps) => {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogAction>
-              Continuar <ArrowRight />
+              <Link to="/" className="flex items-center gap-2">
+                Continuar <ArrowRight />
+              </Link>
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

@@ -4,9 +4,9 @@ import FormPage from './pages/FormPage'
 import Layout from './layout/AppLayout'
 import Markdown from './pages/Markdown'
 import CodeChallengue from './pages/CodeChallengePage'
-import LessonRouter from './router/LessonRouter'
-import Lesson1Quizz1 from './pages/lesson1Quizz/Lesson1Quizz1'
-import Lesson3Quizz6 from './pages/lesson3Quizz/Lesson3Quizz6'
+import LessonPage from '@/pages/LessonPage'
+import Lesson1Quizz1 from '@/pages/quizz/lesson1Quizz/Lesson1Quizz1'
+import Lesson3Quizz6 from '@/pages/quizz/lesson3Quizz/Lesson3Quizz6'
 
 export const router = createBrowserRouter([
   {
@@ -31,10 +31,10 @@ export const router = createBrowserRouter([
       },
       {
         path: 'lesson/:lessonId/:nivelId',
-        Component: LessonRouter,
+        Component: LessonPage,
       },
       {
-        path: 'quizz1',
+        path: 'quizz/1/1',
         Component: Lesson1Quizz1,
       },
       {

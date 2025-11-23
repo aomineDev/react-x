@@ -1,4 +1,4 @@
-import OneSelect from '../../components/quizz/OneSelect'
+import OneSelect from '@/components/quizz/OneSelect'
 import CodeBlock from '@/components/CodeBlock'
 export default function Lesson1Quizz1() {
   const opciones = {

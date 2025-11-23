@@ -1,4 +1,4 @@
-# Nivel 1: React
+# React
 
 ## Historia
 

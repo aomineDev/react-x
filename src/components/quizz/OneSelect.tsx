@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from 'react'
 import '../../assets/styles/Quizz1.css'
+import { Button } from '../ui/button'
 interface Opciones {
   pregunta: string
   codigo?: ReactNode
@@ -90,28 +91,32 @@ export default function OneSelect({ opciones }: { opciones?: Opciones }) {
   }
 
   return (
-    <div>
-      <h1 className="nivel">{nivel}</h1>
-      <div className="quizz-container">
+    <div className="h-[calc(100vh-61px)]">
+      <div className="max-h-full flex flex-col gap-5  items-center overflow-auto p-5">
+        <h1 className="text-4xl capitalize font-bold primary-gradient">{nivel}</h1>
         <h3>{pregunta}</h3>
         {codigo && <div>{codigo}</div>}
-
-        <div className="options-container">
+        <div className="flex flex-col gap-4 w-100">
           {listaOpciones.map((opcion) => (
-            <button
+            <Button
               key={opcion.clave}
-              className={getClaseOpcion(opcion.clave)}
+              className=""
               onClick={() => setSeleccion(opcion.clave)}
               disabled={estado !== 'pendiente'}
+              variant="outline"
             >
               {opcion.texto}
-            </button>
+            </Button>
           ))}
         </div>
-
-        <button className={getClaseBoton()} disabled={!seleccion} onClick={handleBotonPrincipal}>
+        <Button
+          className="bg-green-500 hover:bg-green-600 text-white w-100 cursor-pointer"
+          size="lg"
+          disabled={!seleccion}
+          onClick={handleBotonPrincipal}
+        >
           {getTextoBoton()}
-        </button>
+        </Button>
       </div>
     </div>
   )

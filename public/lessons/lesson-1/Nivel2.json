@@ -1,0 +1,10 @@
+{
+  "markdownUrl": "lessons/lesson-1/Nivel2.md",
+  "lesson": "Componentes",
+  "nivel": "Nivel 2",
+  "next": "/lesson/1/3",
+  "prev": "/lesson/1/1",
+  "files": {
+    "/App.js": "export default function Saludo() {\n}"
+  }
+}

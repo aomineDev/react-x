@@ -1,4 +1,4 @@
-# Nivel 2: Sintanxis de JSX
+# Sintanxis de JSX
 
 JSX (JavaScript XML) es una extensión de sintaxis que te permite escribir código similar a HTML dentro de JavaScript. Es la forma principal de crear componentes en React.
 

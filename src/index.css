@@ -138,6 +138,10 @@
     scrollbar-color: rgba(255 255 255 / 0.2) transparent;
   }
 
+  .primary-gradient {
+    @apply bg-linear-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent;
+  }
+
   /* PRETTY CODE HIGHLIGHT */
 
   /* Theme */
