@@ -6,6 +6,7 @@ import Markdown from './pages/Markdown'
 import CodeChallengue from './pages/CodeChallengePage'
 import LessonRouter from './router/LessonRouter'
 import Lesson1Quizz1 from './pages/lesson1Quizz/Lesson1Quizz1'
+import Lesson3Quizz6 from './pages/lesson3Quizz/Lesson3Quizz6'
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
       {
         path: 'quizz1',
         Component: Lesson1Quizz1,
+      },
+      {
+        path: 'quizz2',
+        Component: Lesson3Quizz6,
       },
     ],
   },
