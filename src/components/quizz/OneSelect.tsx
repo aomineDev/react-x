@@ -8,24 +8,85 @@ interface Opciones {
   correcta: string
 }
 
-export default function OneSelect({ opciones }: { opciones: Opciones }) {
+type EstadoRespuesta = 'pendiente' | 'correcto' | 'incorrecto'
+
+export default function OneSelect({ opciones }: { opciones?: Opciones }) {
+  const [seleccion, setSeleccion] = useState<string>('')
+  const [estado, setEstado] = useState<EstadoRespuesta>('pendiente')
+
+  if (!opciones) {
+    return <div>No hay pregunta disponible</div>
+  }
+
   const { pregunta, nivel, codigo, opciones: listaOpciones, correcta } = opciones
-  const [seleccion, setSeleccion] = useState('')
-  const [estado, setEstado] = useState('')
-  const [nombre, setNombre] = useState('Check')
-  const [color, setColor] = useState('color-btn')
-  console.log(color)
+
   const handleSelect = () => {
-    if (seleccion === null) return
+    if (!seleccion) return
+
     if (seleccion === correcta) {
       setEstado('correcto')
-      setColor('color-check')
-      setNombre('Continuar')
     } else {
       setEstado('incorrecto')
-      setColor('color-err')
-      setNombre('Intentalo de nuevo ')
     }
+  }
+
+  const handleContinuar = () => {
+    console.log('Continuar al siguiente quiz')
+    resetQuiz()
+  }
+
+  const resetQuiz = () => {
+    setSeleccion('')
+    setEstado('pendiente')
+  }
+
+  const handleBotonPrincipal = () => {
+    if (estado === 'correcto') {
+      handleContinuar()
+    } else if (estado === 'incorrecto') {
+      resetQuiz()
+    } else {
+      handleSelect()
+    }
+  }
+
+  const getTextoBoton = () => {
+    switch (estado) {
+      case 'correcto':
+        return 'Continuar'
+      case 'incorrecto':
+        return 'Intentarlo de nuevo'
+      default:
+        return 'Verificar'
+    }
+  }
+
+  const getClaseOpcion = (clave: string) => {
+    const clases = ['quizz-option']
+
+    if (seleccion === clave) {
+      clases.push('selected')
+
+      if (estado === 'correcto') {
+        clases.push('color-check')
+      } else if (estado === 'incorrecto') {
+        clases.push('color-err')
+      }
+    }
+
+    return clases.join(' ')
+  }
+
+  const getClaseBoton = () => {
+    const clases = ['color-btn']
+
+    if (estado === 'correcto') {
+      clases.push('color-check')
+    } else if (estado === 'incorrecto') {
+      clases.push('color-err')
+    }
+
+    return clases.join(' ')
   }
 
   return (
@@ -33,30 +94,23 @@ export default function OneSelect({ opciones }: { opciones: Opciones }) {
       <h1 className="nivel">{nivel}</h1>
       <div className="quizz-container">
         <h3>{pregunta}</h3>
-        <h1>{codigo}</h1>
+        {codigo && <div>{codigo}</div>}
+
         <div className="options-container">
-          {listaOpciones.map((o) => (
+          {listaOpciones.map((opcion) => (
             <button
-              key={o.clave}
-              className={`quizz-option 
-    ${seleccion === o.clave ? 'selected' : ''} 
-    ${seleccion === o.clave && estado === 'correcto' ? 'color-check' : ''} 
-    ${seleccion === o.clave && estado === 'incorrecto' ? 'color-err' : ''}`}
-              onClick={() => setSeleccion(o.clave)}
+              key={opcion.clave}
+              className={getClaseOpcion(opcion.clave)}
+              onClick={() => setSeleccion(opcion.clave)}
+              disabled={estado !== 'pendiente'}
             >
-              {o.texto}
+              {opcion.texto}
             </button>
           ))}
         </div>
 
-        <button
-          className={`color-btn ${
-            estado === 'correcto' ? 'color-check' : estado === 'incorrecto' ? 'color-err' : ''
-          }`}
-          disabled={!seleccion}
-          onClick={handleSelect}
-        >
-          {nombre}
+        <button className={getClaseBoton()} disabled={!seleccion} onClick={handleBotonPrincipal}>
+          {getTextoBoton()}
         </button>
       </div>
     </div>
