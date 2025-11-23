@@ -1,7 +1,7 @@
 import CodeChallenge from '@/components/challenge/CodeChallengue'
 
 const props = {
-  markdownUrl: '',
+  markdownUrl: 'content.md',
   files: {
     '/App.js': `export default function Counter() {
   // Tu código aquí
@@ -52,27 +52,8 @@ test('usa useState', () => {
   },
 }
 
-// solution: `import { useState } from 'react';
-
-// export default function Counter() {
-//   const [count, setCount] = useState(0);
-
-//   const increment = () => {
-//     if (count < 10) {
-//       setCount(count + 1);
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <h2>Contador: {count}</h2>
-//       <button onClick={increment}>Incrementar</button>
-//     </div>
-//   );
-// }`
-
 const CodeChallengue = () => {
-  return <CodeChallenge {...props} showTest></CodeChallenge>
+  return <CodeChallenge {...props}></CodeChallenge>
 }
 
 export default CodeChallengue

@@ -15,7 +15,7 @@ const Header = () => {
   return (
     <nav className="flex items-center justify-between px-10 py-3 border-b border-gray-600">
       <h1 className="text-brand dark:text-white font-bold uppercase text-xl">Header</h1>
-      <div className="flex gap-4">
+      <div className="hidden gap-4 sm:flex">
         <NavItem title="Home" to="/" Icon={House} />
         <NavItem title="Challengue" to="/challenge" />
         <NavItem title="Form" to="/form" Icon={Book} />

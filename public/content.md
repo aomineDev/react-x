@@ -30,19 +30,24 @@ Here is an example of a plugin to highlight code:
 This is an array `[1, 2, 3]{:js}` of numbers 1 through 3.
 
 ```jsx showLineNumbers {4} title="Markdown.tsx" /MarkdownHooks/
-import React from 'react'
-import ReactDom from 'react-dom'
-import { MarkdownHooks } from 'react-markdown'
-import rehypeStarryNight from 'rehype-starry-night'
+import { useState } from 'react'
 
-const markdown = `
-# Your markdown here
-`
+export default function Counter() {
+  const [count, setCount] = useState(0)
 
-ReactDom.render(
-	<MarkdownHooks rehypePlugins={[rehypeStarryNight]}>{markdown}</MarkdownHooks>,
-	document.querySelector('#content')
-)
+  const increment = () => {
+    if (count < 10) {
+      setCount(count + 1)
+    }
+  }
+
+  return (
+    <div>
+      <h2>Contador: {count}</h2>
+      <button onClick={increment}>Incrementar</button>
+    </div>
+  )
+}
 ```
 
 Pretty neat, eh?

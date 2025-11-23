@@ -5,19 +5,12 @@ import {
   SandpackLayout,
   SandpackTests,
 } from '@codesandbox/sandpack-react'
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from '@/components/ui/alert-dialog'
-import { atomDark as theme } from '@codesandbox/sandpack-themes'
-import { useRef, useState } from 'react'
-import TestListener from './TestRunner'
+
+import { atomDark, aquaBlue } from '@codesandbox/sandpack-themes'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import TestRunner from './TestRunner'
+import { useTheme } from '@/store/theme'
+import Markdown from '@/components/Markdown'
 
 interface CodeChallengeProps {
   markdownUrl: string
@@ -27,78 +20,82 @@ interface CodeChallengeProps {
 }
 
 const CodeChallenge = ({ markdownUrl, files, testFiles, showTest }: CodeChallengeProps) => {
-  console.log(markdownUrl)
-  const [showModal, setShowModal] = useState(false)
+  const [markdown, setMarkdown] = useState('')
   const testRunnerRef = useRef<HTMLDivElement>(null)
+  const theme = useTheme((state) => state.theme)
 
-  const handleClick = () => {
-    if (testRunnerRef.current) {
-      console.log(testRunnerRef.current)
-      const runTestsBtn: HTMLButtonElement | null =
-        testRunnerRef.current.querySelector('button.sp-button')
-      if (runTestsBtn !== null) {
-        runTestsBtn.click()
-      }
+  useEffect(() => {
+    fetch(markdownUrl)
+      .then((response) => response.text())
+      .then((text) => setMarkdown(text))
+  }, [markdownUrl])
+
+  const handleClick = useCallback(() => {
+    if (!testRunnerRef.current) return
+
+    const runTestsBtn: HTMLButtonElement | null =
+      testRunnerRef.current.querySelector('button.sp-button')
+
+    if (runTestsBtn !== null) runTestsBtn.click()
+  }, [])
+
+  const allFiles = useMemo(() => {
+    return { ...files, ...testFiles }
+  }, [files, testFiles])
+
+  const visibleFiles = useMemo(() => {
+    return showTest ? [...Object.keys(files), ...Object.keys(testFiles)] : [...Object.keys(files)]
+  }, [files, testFiles, showTest])
+
+  const dependencies = useMemo(() => {
+    return {
+      dependencies: {
+        '@testing-library/react': 'latest',
+        '@testing-library/jest-dom': 'latest',
+        '@testing-library/dom': 'latest',
+      },
     }
-  }
-
-  const visibleFiles = showTest
-    ? [...Object.keys(files), ...Object.keys(testFiles)]
-    : [...Object.keys(files)]
+  }, [])
 
   return (
     <>
       <div className="w-full h-[calc(100vh-61px)]">
-        <button onClick={handleClick}>click</button>
         <SandpackProvider
           className="h-full!"
           template="react"
-          files={{ ...files, ...testFiles }}
-          theme={theme}
+          files={allFiles}
+          theme={theme === 'dark' ? atomDark : aquaBlue}
           options={{
             activeFile: Object.keys(files)[0],
             visibleFiles,
           }}
-          customSetup={{
-            dependencies: {
-              '@testing-library/react': 'latest',
-              '@testing-library/jest-dom': 'latest',
-              '@testing-library/dom': 'latest',
-            },
-          }}
+          customSetup={dependencies}
         >
-          <SandpackLayout className="flex-col h-full">
-            <SandpackCodeEditor
-              showLineNumbers
-              wrapContent
-              showTabs
-              showRunButton
-              showInlineErrors
-            />
-            <SandpackPreview showOpenInCodeSandbox={false} />
-            <div ref={testRunnerRef}>
-              <SandpackTests watchMode={false} hidden />
+          <div className="grid grid-cols-2 grid-rows-2 h-full">
+            <div className="max-h-full overflow-y-auto custom-scroll">
+              <Markdown full>{markdown}</Markdown>
             </div>
-          </SandpackLayout>
-          <TestListener />
+
+            <SandpackLayout className="row-span-2 flex-col h-full">
+              <SandpackCodeEditor
+                showLineNumbers
+                wrapContent
+                showTabs
+                showRunButton
+                showInlineErrors
+                className="custom-scroll"
+              />
+              <SandpackPreview showOpenInCodeSandbox={false} />
+            </SandpackLayout>
+            <div>
+              <TestRunner onClick={handleClick} />
+            </div>
+          </div>
+          <div ref={testRunnerRef}>
+            <SandpackTests watchMode={false} hidden />
+          </div>
         </SandpackProvider>
       </div>
-
-      <AlertDialog open={showModal}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-            <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete your account and remove
-              your data from our servers.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel onClick={() => setShowModal(false)}>Cancel</AlertDialogCancel>
-            <AlertDialogAction>Continue</AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
     </>
   )
 }
