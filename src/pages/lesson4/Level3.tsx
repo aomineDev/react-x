@@ -1,4 +1,4 @@
-import Lesson from '@/components/Lesson'
+import Lesson from '@/components/lesson/Lesson'
 
 const props = {
   markdownUrl: 'lessons/formularios/Nivel3.md',

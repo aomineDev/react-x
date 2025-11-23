@@ -1,4 +1,4 @@
-import Lesson from '@/lesson/Lesson'
+import Lesson from '@/components/lesson/Lesson'
 
 const props = {
   markdownUrl: 'content.md',
@@ -13,6 +13,8 @@ const props = {
 `,
     '/Button.jsx': `export default () => <button>Hello</button>`,
   },
+  lesson: 'Introducción',
+  nivel: 'Nivel 1',
 }
 
 const HomePage = () => {
