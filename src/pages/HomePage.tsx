@@ -1,7 +1,7 @@
-import Lesson from '@/components/Lesson'
+import Lesson from '@/lesson/Lesson'
 
 const props = {
-  markdownUrl: 'lessons/1.Componente/Nivel1.md',
+  markdownUrl: 'content.md',
   files: {
     '/App.js': `export default function App() {
   return (
