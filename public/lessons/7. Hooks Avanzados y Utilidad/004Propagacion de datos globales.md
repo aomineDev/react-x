@@ -12,14 +12,14 @@ Context permite compartir valores entre componentes sin pasar props manualmente.
 ```javascript
 import { createContext, useContext, useState } from 'react';
 ```
-## 1. `createContext`
+## Paso 1 - `createContext`
 ```javascript
 const TemaContext = createContext();
 ```
 - Crea un contexto llamado TemaContext.
 - Sirve para compartir datos (en este caso, el tema) entre componentes.
 
-## 2. Estado en el componente principal
+## Paso 2 - Estado en el componente principal
 ```javascript
 export default function App() {
   const [tema, setTema] = useState('claro');
@@ -27,7 +27,7 @@ export default function App() {
  - Se define un estado `tema` con valor inicial `"claro"`.
 - `setTema` es la función para cambiar el estado.
 
-## 3. Proveedor del contexto
+## Paso 3 - Proveedor del contexto
 ```javascript
   return (
     <TemaContext.Provider value={{ tema, setTema }}>
@@ -39,7 +39,7 @@ export default function App() {
 - Proporciona el valor { `tema`, `setTema` } a todos los componentes dentro de él.
 - Así, `ComponenteHijo` puede acceder directamente al tema y a la función para cambiarlo.
 
-## 4.Consumidor del contexto
+## Paso 4 - Consumidor del contexto
 ```javascript
 function ComponenteHijo() {
   const { tema, setTema } = useContext(TemaContext);
@@ -47,7 +47,7 @@ function ComponenteHijo() {
 - `useContext` permite acceder al valor del contexto (`tema` y `setTema`).
 - Ya no es necesario recibirlos como props.
 
-## 5.Componente hijo
+## Paso 5 - Componente hijo
 ```javascript
   return <button onClick={() => setTema('oscuro')}>{tema}</button>;
 ```
@@ -62,14 +62,6 @@ Tres pasos para usar Context:
 
 ---
 
-## Crear el Context
-
-Ya está creado `TemaContext` usando `createContext()`.
-
-## Proveer el valor en el Provider
-
-El `TemaContext.Provider` ya está configurado con el valor `{ tema, cambiarTema }`.
-
 ## Consumir el Context en los componentes
 
 En `Header` y `Contenido`, usa `useContext(TemaContext)` para obtener `tema` y `cambiarTema`.
@@ -78,7 +70,6 @@ Implementa:
 ```javascript
 const { tema, cambiarTema } = useContext(TemaContext);
 ```
-
 ---
 
 Implementa el código. Observa cómo ambos componentes pueden acceder al tema sin necesidad de pasar props.
