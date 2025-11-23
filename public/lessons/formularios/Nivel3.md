@@ -16,7 +16,7 @@ A continuación, vamos a construir un formulario donde:
 
 ## Paso 1 — Crear estados para los inputs y los errores
 
-```jsx
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 import { useState } from 'react'
 
 export default function App() {
@@ -34,7 +34,7 @@ export default function App() {
 
 Inputs controlados:
 
-```jsx
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 <input
   type="text"
   value={name}
@@ -50,7 +50,7 @@ Inputs controlados:
 
 ## Paso 3 — Validar en el onSubmit
 
-```jsx
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 function handleSubmit(e) {
   e.preventDefault()
 
@@ -75,7 +75,7 @@ function handleSubmit(e) {
 
 ## Paso 4 — Mostrar errores debajo de cada input
 
-```jsx
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 {
   errors.name && <p style={{ color: 'red' }}>{errors.name}</p>
 }
@@ -86,7 +86,7 @@ function handleSubmit(e) {
 
 ## Paso 5 — Resultado final
 
-```jsx
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 import { useState } from 'react'
 
 export default function App() {

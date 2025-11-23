@@ -12,7 +12,7 @@ Un handler puede leer datos, actualizar el estado, validar información o ejecut
 
 Primero, define tu componente y dentro de él crea una función llamada `handleClick`.
 
-```jsx
+```jsx showLineNumbers {2-4} title="App.tsx" /MarkdownHooks/
 export default function App() {
   function handleClick() {
     console.log('Botón presionado')
@@ -36,7 +36,7 @@ Ahora conecta la función al evento del botón.
 Recuerda: pasas la función, no la ejecutas → es decir, sin paréntesis.
 ```
 
-```jsx
+```jsx showLineNumbers {6} title="App.tsx" /MarkdownHooks/
 export default function App() {
   function handleClick() {
     console.log('Botón presionado')
@@ -60,7 +60,7 @@ Los handlers viven dentro del componente para poder usar props, estado o datos i
 
 Agreguemos un mensaje dinámico:
 
-```jsx
+```jsx showLineNumbers {2} title="App.tsx" /MarkdownHooks/
 export default function App() {
   const mensaje = 'Gracias por hacer clic'
 

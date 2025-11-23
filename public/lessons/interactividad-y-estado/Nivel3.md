@@ -8,7 +8,7 @@ Cuando el estado cambia, React vuelve a renderizar el componente para mostrar la
 
 Primero traemos el hook desde React:
 
-```jsx
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 import { useState } from 'react'
 ```
 
@@ -18,7 +18,7 @@ Construyamos un pequeño contador de `Likes`, como si estuviéramos armando un p
 
 Declaramos el estado dentro del componente:
 
-```jsx
+```jsx showLineNumbers {4} title="App.tsx" /MarkdownHooks/
 import { useState } from 'react'
 
 export default function App() {
@@ -38,7 +38,7 @@ export default function App() {
 
 Ahora le damos vida real: cuando el usuario hace clic, incrementamos los likes.
 
-```jsx
+```jsx showLineNumbers {6-8,10} title="App.tsx" /MarkdownHooks/
 import { useState } from 'react'
 
 export default function App() {

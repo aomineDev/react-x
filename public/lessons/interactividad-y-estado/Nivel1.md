@@ -21,7 +21,7 @@ Todo terminará en un ejemplo final funcional.
 
 Comenzamos con un componente vacío. Solo muestra un título y un input que todavía no hace nada.
 
-```jsx
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 export default function App() {
   return (
     <div>
@@ -41,7 +41,7 @@ Queremos que el botón muestre un mensaje cuando el usuario haga clic.
 - Declaramos la función `handleClick`.
 - La pasamos al botón usando `onClick={handleClick}`.
 
-```jsx
+```jsx showLineNumbers {2-4,11} title="App.tsx" /MarkdownHooks/
 export default function App() {
   function handleClick() {
     alert('Botón presionado')
@@ -66,7 +66,7 @@ Añadimos:
 
 - Una variable de estado `name`
 
-```jsx
+```jsx showLineNumbers {4} title="App.tsx" /MarkdownHooks/
 import { useState } from "react";
 
 export default function App() {
@@ -80,7 +80,7 @@ Una vez implementado, añadimos:
 
 - Un manejador handleChange que lee `event.target.value`
 
-```jsx
+```jsx showLineNumbers {6-9,15} title="App.tsx" /MarkdownHooks/
 import { useState } from 'react'
 
 export default function App() {
@@ -115,7 +115,7 @@ Añadimos:
 
 - `event.preventDefault()` (para evitar que el navegador recargue la página)
 
-```jsx
+```jsx showLineNumbers {5-8} title="App.tsx" /MarkdownHooks/
 import { useState } from "react";
 
 export default function App() {
@@ -131,7 +131,7 @@ export default function App() {
 
 Por ultimo, envolvemos el input en un formulario y usamos la función `handleSubmit`.
 
-```jsx
+```jsx showLineNumbers {10} title="App.tsx" /MarkdownHooks/
 import { useState } from 'react'
 
 export default function App() {
@@ -154,10 +154,10 @@ export default function App() {
 
 ## Paso 5 — Unión de todos los pasos (Ejemplo final para Sandpack)
 
-```jsx
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 import { useState } from 'react'
 
-export default function GreetingApp() {
+export default function App() {
   const [name, setName] = useState('')
 
   function handleClick() {

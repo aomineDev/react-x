@@ -24,7 +24,7 @@ Un mensaje dinámico debajo del input
 
 Creamos un estado llamado `nombre` para guardar el texto:
 
-```jsx
+```jsx showLineNumbers {4} title="App.tsx" /MarkdownHooks/
 import { useState } from 'react'
 
 export default function App() {
@@ -42,7 +42,7 @@ Ahora enlazamos:
 
 - `onChange={handleChange}` → actualizamos el estado al escribir.
 
-```jsx
+```jsx showLineNumbers {5,13-14} title="App.tsx" /MarkdownHooks/
 export default function App() {
   const [nombre, setNombre] = useState('')
 
@@ -67,7 +67,7 @@ export default function App() {
 
 Así comprobamos que el input está completamente controlado:
 
-```jsx
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 export default function App() {
   const [nombre, setNombre] = useState('')
 
@@ -91,19 +91,19 @@ Un input controlado siempre sigue esta fórmula:
 
 1. Un estado
 
-```jsx
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 const [value, setValue] = useState('')
 ```
 
 2. El input muestra ese estado
 
-```jsx
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 value = { value }
 ```
 
 3. El onChange actualiza el estado
 
-```jsx
+```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 onChange={(e) => setValue(e.target.value)}
 ```
 
