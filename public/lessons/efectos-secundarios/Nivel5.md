@@ -6,39 +6,42 @@ Para escribir efectos eficientes, necesitas entender estas situaciones y cómo e
 
 En esta actividad aprenderás a identificar y corregir errores comunes con efectos.
 
-## Bucle Infinito
+## **Paso 1 - Bucle Infinito**
 
 Este código crea un bucle infinito:
+
 ```javascript
-const [count, setCount] = useState(0);
+const [count, setCount] = useState(0)
 
 useEffect(() => {
-  setCount(count + 1); // Cambia el estado
-}); // Sin dependencias, se ejecuta en cada render
+  setCount(count + 1) // Cambia el estado
+}) // Sin dependencias, se ejecuta en cada render
 ```
 
 El problema: cada cambio causa un render, que ejecuta el efecto, que cambia el estado, que causa otro render...
 
 **Solución**: Agrega el array de dependencias correcto.
 
-## Stale Closure (Cierre Obsoleto)
+## **Paso 2 - Stale Closure (Cierre Obsoleto)**
 
 Este código no funciona como esperas:
+
 ```javascript
 useEffect(() => {
   const intervalo = setInterval(() => {
-    setCount(count + 1); // Siempre usa el valor inicial
-  }, 1000);
-  
-  return () => clearInterval(intervalo);
-}, []); // El efecto solo se ejecuta una vez
+    setCount(count + 1) // Siempre usa el valor inicial
+  }, 1000)
+
+  return () => clearInterval(intervalo)
+}, []) // El efecto solo se ejecuta una vez
 ```
 
-El problema: `count` dentro del intervalo siempre tiene el valor inicial porque el efecto solo se ejecutó una vez.
+> El problema: `count` dentro del intervalo siempre tiene el valor inicial porque el efecto solo se ejecutó una vez.
 
 **Solución**: Usa la forma funcional de setState:
+
 ```javascript
-setCount(prevCount => prevCount + 1);
+setCount((prevCount) => prevCount + 1)
 ```
 
 ---
@@ -50,8 +53,9 @@ En el primer `useEffect`, agrega el array de dependencias `[]` para que solo se 
 ## Corregir el stale closure
 
 En el segundo `useEffect`, cambia `setContador(contador + 1)` por la forma funcional:
+
 ```javascript
-setContador(c => c + 1)
+setContador((c) => c + 1)
 ```
 
 ---
