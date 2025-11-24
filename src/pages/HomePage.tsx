@@ -8,6 +8,9 @@ const HomePage = () => {
       <Button asChild>
         <Link to="lesson/1/1">Nivel 1</Link>
       </Button>
+      <Button asChild>
+        <Link to="lesson/2/1">Nivel 2</Link>
+      </Button>
     </>
   )
 }

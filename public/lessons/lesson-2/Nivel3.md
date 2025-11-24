@@ -1,4 +1,4 @@
-# Nivel 3: Children Props
+# Children Props
 
 Hasta ahora has pasado datos específicos como `nombre`, `edad`, etc. Pero ¿qué pasa cuando quieres que un componente **envuelva** a otros elementos?
 
@@ -85,15 +85,12 @@ El contenido dentro de la tarjeta sigue viniendo del children
 ## Paso 3 - Resultado final de `TarjetaEmpleado.tsx`
 
 ```jsx
-import TarjetaEmpleado from './TarjetaEmpleado.jsx'
-
-export default function App() {
+export default function TarjetaEmpleado({ children, profesion, color }) {
   return (
-    <TarjetaEmpleado profesion="Arquitecto" color="#4CAF50">
-      <h1>Nombre del Empleado : Leonardo</h1>
-      <h2>Apellido: Murillo Alejandro</h2>
-      <h2>Edad: 19 años</h2>
-    </TarjetaEmpleado>
+    <>
+      {children}
+      <h2 style={{ color }}> Su profesion es {profesion}</h2>
+    </>
   )
 }
 ```

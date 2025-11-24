@@ -1,0 +1,10 @@
+{
+  "markdownUrl": "lessons/lesson-1/Nivel5.md",
+  "lesson": "Componentes",
+  "nivel": "Nivel 5",
+  "next": "/lesson/2/4",
+  "prev": "/lesson/1/2",
+  "files": {
+    "/App.js": "export default function VideoJuego() {\n}"
+  }
+}
