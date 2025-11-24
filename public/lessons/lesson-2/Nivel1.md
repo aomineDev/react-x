@@ -1,4 +1,4 @@
-# Nivel 1: Componentes dinamicos
+# Componentes dinamicos
 
 Las **props** permiten que los componentes reciban datos del componente padre. Son como los argumentos de una función, hacen que tus componentes sean dinámicos y reutilizables.
 

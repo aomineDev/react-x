@@ -30,6 +30,7 @@ export default function Lesson1Quizz1() {
       { clave: 'd', texto: 'Lima' },
     ],
     correcta: 'd',
+    next: '/lesson/1/2',
   }
   return (
     <>

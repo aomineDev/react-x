@@ -1,0 +1,10 @@
+{
+  "markdownUrl": "lessons/lesson-2/Nivel3.md",
+  "lesson": "Props",
+  "nivel": "Nivel 3",
+  "next": "/quizz/1/1",
+  "files": {
+    "/App.js": "export default function App() {\n}",
+    "/TarjetaEmpleado.jsx": "export default function TarjetaEmpleado({children }) {\n}"
+  }
+}

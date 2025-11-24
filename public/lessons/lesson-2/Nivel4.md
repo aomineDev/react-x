@@ -1,4 +1,4 @@
-# Nivel 4: Desestructuración y Valores por Defecto
+# Desestructuración y Valores por Defecto
 
 Hasta ahora has escrito `props.nombre`, `props.edad` muchas veces. Existe una forma más limpia y profesional de trabajar con props.
 

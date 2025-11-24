@@ -1,4 +1,4 @@
-# Nivel 5: Callbacks como Props
+# Callbacks como Props
 
 Hasta ahora has pasado datos (strings, números, objetos) como props. Pero ¿cómo haces que un hijo le "avise" al padre cuando algo sucede? La respuesta, **funciones como props**.
 

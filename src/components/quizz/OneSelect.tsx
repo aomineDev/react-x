@@ -1,12 +1,24 @@
 import { useState, type ReactNode } from 'react'
-import '../../assets/styles/Quizz1.css'
 import { Button } from '../ui/button'
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogTitle,
+  AlertDialogFooter,
+  AlertDialogHeader,
+} from '@/components/ui/alert-dialog'
+import { ArrowRight, Trophy } from 'lucide-react'
+import Confetti from '@/components/Confetti'
+import { Link } from 'react-router'
 interface Opciones {
   pregunta: string
   codigo?: ReactNode
   nivel: string
   opciones: { clave: string; texto: string }[]
   correcta: string
+  next: string
 }
 
 type EstadoRespuesta = 'pendiente' | 'correcto' | 'incorrecto'
@@ -14,26 +26,25 @@ type EstadoRespuesta = 'pendiente' | 'correcto' | 'incorrecto'
 export default function OneSelect({ opciones }: { opciones?: Opciones }) {
   const [seleccion, setSeleccion] = useState<string>('')
   const [estado, setEstado] = useState<EstadoRespuesta>('pendiente')
+  const [showModal, setShowModal] = useState(false)
 
+  const [success, setSuccess] = useState(false)
   if (!opciones) {
     return <div>No hay pregunta disponible</div>
   }
 
-  const { pregunta, nivel, codigo, opciones: listaOpciones, correcta } = opciones
+  const { pregunta, nivel, codigo, opciones: listaOpciones, correcta, next } = opciones
 
   const handleSelect = () => {
     if (!seleccion) return
 
     if (seleccion === correcta) {
       setEstado('correcto')
+      setSuccess(true)
+      setShowModal(true)
     } else {
       setEstado('incorrecto')
     }
-  }
-
-  const handleContinuar = () => {
-    console.log('Continuar al siguiente quiz')
-    resetQuiz()
   }
 
   const resetQuiz = () => {
@@ -42,9 +53,7 @@ export default function OneSelect({ opciones }: { opciones?: Opciones }) {
   }
 
   const handleBotonPrincipal = () => {
-    if (estado === 'correcto') {
-      handleContinuar()
-    } else if (estado === 'incorrecto') {
+    if (estado === 'incorrecto') {
       resetQuiz()
     } else {
       handleSelect()
@@ -52,44 +61,40 @@ export default function OneSelect({ opciones }: { opciones?: Opciones }) {
   }
 
   const getTextoBoton = () => {
-    switch (estado) {
-      case 'correcto':
-        return 'Continuar'
-      case 'incorrecto':
-        return 'Intentarlo de nuevo'
-      default:
-        return 'Verificar'
+    if (estado == 'correcto') {
+      return 'Correcto'
     }
+    if (estado === 'incorrecto') {
+      return 'Intentarlo de nuevo'
+    }
+    return 'Verificar'
   }
-
   const getClaseOpcion = (clave: string) => {
-    const clases = ['quizz-option']
+    let clases = 'w-full text-left border-2 transition-all duration-200'
 
     if (seleccion === clave) {
-      clases.push('selected')
-
       if (estado === 'correcto') {
-        clases.push('color-check')
+        clases += ' border-green-500 bg-green-50 text-green-800'
       } else if (estado === 'incorrecto') {
-        clases.push('color-err')
+        clases += ' border-red-500 bg-red-50 text-red-800'
+      } else {
+        clases += ' border-blue-500 bg-blue-50 text-blue-800'
       }
+    } else {
+      clases += ' border-gray-300 bg-white hover:bg-gray-50 text-gray-700'
     }
 
-    return clases.join(' ')
+    return clases
   }
 
   const getClaseBoton = () => {
-    const clases = ['color-btn']
-
     if (estado === 'correcto') {
-      clases.push('color-check')
+      return 'bg-green-600 hover:bg-green-700 text-white w-100'
     } else if (estado === 'incorrecto') {
-      clases.push('color-err')
+      return 'bg-red-600 hover:bg-red-700 text-white w-100'
     }
-
-    return clases.join(' ')
+    return 'bg-blue-600 hover:bg-blue-700 text-white w-100'
   }
-
   return (
     <div className="h-[calc(100vh-61px)]">
       <div className="max-h-full flex flex-col gap-5  items-center overflow-auto p-5">
@@ -100,7 +105,7 @@ export default function OneSelect({ opciones }: { opciones?: Opciones }) {
           {listaOpciones.map((opcion) => (
             <Button
               key={opcion.clave}
-              className=""
+              className={getClaseOpcion(opcion.clave)}
               onClick={() => setSeleccion(opcion.clave)}
               disabled={estado !== 'pendiente'}
               variant="outline"
@@ -110,13 +115,36 @@ export default function OneSelect({ opciones }: { opciones?: Opciones }) {
           ))}
         </div>
         <Button
-          className="bg-green-500 hover:bg-green-600 text-white w-100 cursor-pointer"
+          className={getClaseBoton()}
           size="lg"
           disabled={!seleccion}
           onClick={handleBotonPrincipal}
         >
           {getTextoBoton()}
         </Button>
+        <AlertDialog open={showModal}>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>¡Reto Superado!</AlertDialogTitle>
+              <AlertDialogDescription>
+                <div className="p-5 flex justify-center">
+                  <Trophy className="text-yellow-500" size={75}></Trophy>
+                </div>
+                ¡Felicitaciones, has superado el reto! Puedes avanzar a la siguiente sección.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogAction>
+                <Link to={`${next}`} className="flex items-center gap-2">
+                  Continuar <ArrowRight />
+                </Link>
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+
+        <Confetti show={success && showModal} />
+        <Confetti show={success && showModal} fall />
       </div>
     </div>
   )

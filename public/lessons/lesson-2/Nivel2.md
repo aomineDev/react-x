@@ -1,4 +1,4 @@
-# Nivel 2: Tipos de Datos en Props
+# Tipos de Datos en Props
 
 En el nivel anterior solo pasaste strings y números. Ahora aprenderás a pasar arrays, objetos y booleanos para crear componentes más completos.
 
