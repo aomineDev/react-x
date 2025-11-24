@@ -1,0 +1,10 @@
+{
+  "markdownUrl": "lessons/lesson-5/Nivel4.md",
+  "lesson": "Renderizado",
+  "nivel": "Nivel 4",
+  "next": "/lesson/5/5",
+  "prev": "/lesson/5/3",
+  "files": {
+    "/App.js": "import { useState } from 'react'\n\nexport default function App() {\n  const [count, setCount] = useState(0)\n\n  const users = Array.from({ length: 1000 }, (_, i) => ({\n    id: i,\n    name: `Usuario ${i}`,\n  }))\n\n  return (\n    <div>\n      <button onClick={() => setCount(count + 1)}>Incrementar contador ({count})</button>\n\n      <UserList users={users} />\n    </div>\n  )\n}\n\nfunction UserList({ users }) {\n  console.log('Renderizando <UserList>...')\n  return (\n    <ul>\n      {users.map((u) => (\n        <li key={u.id}>{u.name}</li>\n      ))}\n    </ul>\n  )\n}"
+  }
+}
