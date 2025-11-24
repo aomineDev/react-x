@@ -84,7 +84,7 @@ El contenido dentro de la tarjeta sigue viniendo del children
 
 ## Paso 3 - Resultado final de `TarjetaEmpleado.tsx`
 
-```jsx
+```jsx showLineNumbers {1, 11}
 export default function TarjetaEmpleado({ children, profesion, color }) {
   return (
     <>
@@ -99,7 +99,7 @@ export default function TarjetaEmpleado({ children, profesion, color }) {
 
 ## Paso 4 - Resultado final de `App.js`
 
-```jsx
+```jsx showLineNumbers
 import TarjetaEmpleado from './TarjetaEmpleado.jsx'
 
 export default function App() {

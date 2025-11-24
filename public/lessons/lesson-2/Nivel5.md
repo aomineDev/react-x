@@ -9,11 +9,11 @@ Construiremos un panel de notifaciones con botones que envían un mensaje al com
 
 ---
 
-## Paso 1 - Tu primer callback el hijo ejecuta una funcion del padre
+## Paso 1 - Tu primer callback, el hijo ejecuta una funcion del padre
 
 Comienza creando un botón que ejecuta una función del padre:
 
-```jsx
+```jsx showLineNumbers
 export default function Boton({ accion }) {
   return <button onClick={accion}>Click aquí</button>
 }
@@ -44,11 +44,11 @@ export default function App() {
 
 ---
 
-## Paso 2 - Se pasa datos desde el hijo al padre
+## Paso 2 - Pasa datos desde el hijo al padre
 
 Ahora haz que el botón le diga al padre que boton fue presionado
 
-```jsx
+```jsx showLineNumbers
 export default function Boton({ etiqueta, accion }) {
   return <button onClick={() => accion(etiqueta)}>{etiqueta}</button>
 }
@@ -56,7 +56,7 @@ export default function Boton({ etiqueta, accion }) {
 
 y en `App.tsx`
 
-```jsx
+```jsx showLineNumbers
 import Boton from './Boton.jsx'
 
 export default function App() {
@@ -82,7 +82,7 @@ Cuando necesitas pasar argumentos, usas una función flecha: `onClick={() => acc
 
 ## Paso 3 - Resultado final en `App.js`
 
-```jsx
+```jsx showLineNumbers
 import Boton from './Boton.jsx'
 
 export default function App() {
@@ -106,7 +106,7 @@ export default function App() {
 
 ## Paso 4 - Resultado final en `Boton.tsx`
 
-```jsx
+```jsx showLineNumbers
 export default function Boton({ etiqueta, accion }) {
   return <button onClick={() => accion(etiqueta)}>{etiqueta}</button>
 }

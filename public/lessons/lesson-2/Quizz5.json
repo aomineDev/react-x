@@ -1,0 +1,14 @@
+{
+  "type": "one-select",
+  "nivel": "Quizz 5",
+  "pregunta": "¿Dónde está el error?",
+  "codigo": "function App() {\n  function manejarSaludo() {\n    alert('Hola!');\n  }\n\n  return <Boton onClick={manejarSaludo()} />;\n}\n\nfunction Boton({ onClick }) {\n  return <button onClick={onClick}>Saludar</button>;\n}",
+  "opciones": [
+    { "clave": "a", "texto": "manejarSaludo() tiene paréntesis, debería ser manejarSaludo" },
+    { "clave": "b", "texto": "Falta el prop 'children' en Boton" },
+    { "clave": "c", "texto": "alert() no se puede usar en React" },
+    { "clave": "d", "texto": "No hay error, funciona correctamente" }
+  ],
+  "correcta": "a",
+  "next": "/lesson/3/1"
+}

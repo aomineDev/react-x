@@ -1,0 +1,14 @@
+{
+  "type": "one-select",
+  "nivel": "Quizz 2",
+  "pregunta": "¿Donde esta el error?",
+  "codigo": "export default function TarjetaProducto() {\n  return (\n    <div className='producto-card'>\n      <h2>Producto Destacado</h2>\n      <img src='https://picsum.photos/200' alt='Foto del producto' />\n      <p>Nombre: Audífonos Pro</p>\n      <button className='btn-comprar'>Comprar ahora</button>\n      <label for='cantidad'>Cantidad:</label>\n      <input type='number' id='cantidad'/>\n    </div>\n  );\n}",
+  "opciones": [
+    { "clave": "d", "texto": "className está mal escrito" },
+    { "clave": "c", "texto": "El <img> no tiene atributo alt" },
+    { "clave": "b", "texto": "Falta un <div> envolviendo a todo el contenido" },
+    { "clave": "a", "texto": "La etiqueta <label> usa for en lugar de htmlFor " }
+  ],
+  "correcta": "a",
+  "next": "/lesson/1/3"
+}

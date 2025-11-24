@@ -2,9 +2,5 @@
   "markdownUrl": "lessons/lesson-1/Nivel1.md",
   "lesson": "Componentes",
   "nivel": "Nivel 1",
-  "next": "/quizz/1/1",
-  "files": {
-    "/App.js": "export default function Saludo() {\n}",
-    "/Button.jsx": "export default () => <button>Hello</button>"
-  }
+  "next": "/lesson/1/2"
 }

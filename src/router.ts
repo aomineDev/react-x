@@ -5,7 +5,7 @@ import Layout from './layout/AppLayout'
 import Markdown from './pages/Markdown'
 import CodeChallengue from './pages/CodeChallengePage'
 import LessonPage from '@/pages/LessonPage'
-import Lesson1Quizz1 from '@/pages/quizz/lesson1Quizz/Lesson1Quizz1'
+
 import QuizPage from './pages/QuizzPage'
 
 export const router = createBrowserRouter([
@@ -36,10 +36,6 @@ export const router = createBrowserRouter([
       {
         path: 'quizz/:lessonId/:quizzId',
         Component: QuizPage,
-      },
-      {
-        path: 'quizz/1/1',
-        Component: Lesson1Quizz1,
       },
     ],
   },

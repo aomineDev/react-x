@@ -1,0 +1,7 @@
+{
+  "type": "truefalse",
+  "pregunta": "Dentro de las llaves {} no se pueden hacer operaciones matemáticas, solo mostrar texto.",
+  "nivel": "Quizz 3",
+  "correcta": "F",
+  "next": "/lesson/1/4"
+}

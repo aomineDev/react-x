@@ -2,7 +2,7 @@
   "markdownUrl": "lessons/lesson-1/Nivel4.md",
   "lesson": "Componentes",
   "nivel": "Nivel 4",
-  "next": "/lesson/1/5",
+  "next": "/quizz/1/4",
   "prev": "/lesson/1/3",
   "files": {
     "/App.js": "export default function Producto() {\n}"
