@@ -1,92 +1,120 @@
 import { useState, type ReactNode } from 'react'
-import '../../assets/styles/Quizz1.css'
+import { Button } from '@/components/ui/button'
 
-interface TrueFalseProps {
+interface Opciones {
   pregunta: string
   codigo?: ReactNode
-  nivel?: string
-  correcta: 'true' | 'false'
+  nivel: string
+  opciones: { clave: string; texto: string }[]
+  correcta: string
 }
 
-export default function TrueFalse({ pregunta, codigo, nivel = 'Quiz', correcta }: TrueFalseProps) {
-  const [seleccion, setSeleccion] = useState<'' | 'true' | 'false'>('')
-  const [estado, setEstado] = useState<'' | 'correcto' | 'incorrecto'>('')
-  const [botonTexto, setBotonTexto] = useState('Comprobar')
+type EstadoRespuesta = 'pendiente' | 'correcto' | 'incorrecto'
 
-  function handleCheck() {
+export default function TrueFalse({ opciones }: { opciones?: Opciones }) {
+  const [seleccion, setSeleccion] = useState<string>('')
+  const [estado, setEstado] = useState<EstadoRespuesta>('pendiente')
+
+  if (!opciones) {
+    return <div>No hay pregunta disponible</div>
+  }
+
+  const { pregunta, nivel, codigo, opciones: listaOpciones, correcta } = opciones
+
+  const handleSelect = () => {
     if (!seleccion) return
-
-    if (estado === 'incorrecto') {
-      setSeleccion('')
-      setEstado('')
-      setBotonTexto('Comprobar')
-      return
-    }
 
     if (seleccion === correcta) {
       setEstado('correcto')
-      setBotonTexto('Continuar')
     } else {
       setEstado('incorrecto')
-      setBotonTexto('Intentarlo de nuevo')
     }
   }
 
-  function handleSelect(value: 'true' | 'false') {
-    if (estado === 'incorrecto') {
-      setEstado('')
-      setBotonTexto('Comprobar')
+  const resetQuiz = () => {
+    setSeleccion('')
+    setEstado('pendiente')
+  }
+
+  const handleBotonPrincipal = () => {
+    if (estado === 'correcto') {
+      console.log('Continuar al siguiente quiz')
+      resetQuiz()
+    } else if (estado === 'incorrecto') {
+      resetQuiz()
+    } else {
+      handleSelect()
     }
-    setSeleccion(value)
+  }
+
+  const getTextoBoton = () => {
+    switch (estado) {
+      case 'correcto':
+        return 'Continuar'
+      case 'incorrecto':
+        return 'Intentarlo de nuevo'
+      default:
+        return 'Verificar'
+    }
   }
 
   return (
-    <div>
-      <h1 id="quiz-nivel" className="nivel">
-        {nivel}
-      </h1>
-      <div className="quizz-container" role="group" aria-labelledby="quiz-nivel">
-        <h3>{pregunta}</h3>
+    <div className="h-[calc(100vh-61px)]">
+      <div className="max-h-full flex flex-col gap-6 items-center overflow-auto p-5">
+        {/* Nivel */}
+        <h1 className="text-4xl capitalize font-bold bg-gradient-to-r from-indigo-500 to-blue-500 bg-clip-text text-transparent">
+          {nivel}
+        </h1>
 
-        {codigo && <div className="code-block">{codigo}</div>}
+        {/* Pregunta */}
+        <h3 className="text-lg text-center font-medium">{pregunta}</h3>
 
-        <div className="options-container" role="radiogroup" aria-label="Opciones Verdadero Falso">
-          <button
-            type="button"
-            role="radio"
-            disabled={estado === 'correcto'}
-            aria-checked={seleccion === 'true'}
-            className={`quizz-option ${seleccion === 'true' ? 'selected' : ''} ${
-              seleccion === 'true' && estado === 'correcto' ? 'color-check' : ''
-            } ${seleccion === 'true' && estado === 'incorrecto' ? 'color-err' : ''}`}
-            onClick={() => handleSelect('true')}
-          >
-            Verdadero
-          </button>
+        {/* Código opcional */}
+        {codigo && <div className="w-full bg-muted p-4 rounded-lg text-sm">{codigo}</div>}
 
-          <button
-            type="button"
-            role="radio"
-            disabled={estado === 'correcto'}
-            aria-checked={seleccion === 'false'}
-            className={`quizz-option ${seleccion === 'false' ? 'selected' : ''} ${
-              seleccion === 'false' && estado === 'correcto' ? 'color-check' : ''
-            } ${seleccion === 'false' && estado === 'incorrecto' ? 'color-err' : ''}`}
-            onClick={() => handleSelect('false')}
-          >
-            Falso
-          </button>
+        {/* Opciones */}
+        <div className="flex flex-col gap-4 w-full max-w-md">
+          {listaOpciones.map((opcion) => {
+            const esSeleccionada = seleccion === opcion.clave
+
+            const color =
+              estado === 'correcto' && esSeleccionada
+                ? 'border-green-500 text-green-700'
+                : estado === 'incorrecto' && esSeleccionada
+                ? 'border-red-500 text-red-600'
+                : ''
+
+            return (
+              <Button
+                key={opcion.clave}
+                variant="outline"
+                disabled={estado !== 'pendiente'}
+                onClick={() => setSeleccion(opcion.clave)}
+                className={`w-full py-6 text-base justify-start ${color} ${
+                  esSeleccionada ? 'bg-accent' : ''
+                }`}
+              >
+                {opcion.texto}
+              </Button>
+            )
+          })}
         </div>
 
-        <button
-          className={`color-btn ${
-            estado === 'correcto' ? 'color-check' : estado === 'incorrecto' ? 'color-err' : ''
-          }`}
-          onClick={handleCheck}
+        {/* Botón principal */}
+        <Button
           disabled={!seleccion}
+          onClick={handleBotonPrincipal}
+          size="lg"
+          className={`w-full max-w-md text-white text-lg py-6 ${
+            estado === 'correcto'
+              ? 'bg-green-500 hover:bg-green-600'
+              : estado === 'incorrecto'
+              ? 'bg-red-500 hover:bg-red-600'
+              : 'bg-blue-500 hover:bg-blue-600'
+          }`}
         >
-          {botonTexto}
-        </button>
+          {getTextoBoton()}
+        </Button>
       </div>
     </div>
   )

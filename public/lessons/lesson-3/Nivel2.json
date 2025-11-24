@@ -1,0 +1,10 @@
+{
+  "markdownUrl": "lessons/lesson-3/Nivel2.md",
+  "lesson": "Interactividad y estado",
+  "nivel": "Nivel 2",
+  "next": "/lesson/3/3",
+  "prev": "/lesson/3/1",
+  "files": {
+    "/App.js": "export default function App() {\n}"
+  }
+}

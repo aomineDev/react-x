@@ -32,9 +32,7 @@ En este punto:
 
 Ahora conecta la función al evento del botón.
 
-```
-Recuerda: pasas la función, no la ejecutas → es decir, sin paréntesis.
-```
+> Recuerda: pasas la función, no la ejecutas → es decir, sin paréntesis.
 
 ```jsx showLineNumbers {6} title="App.tsx" /MarkdownHooks/
 export default function App() {

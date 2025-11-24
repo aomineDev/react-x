@@ -55,7 +55,7 @@ Aquí todo se re-renderiza cuando solo cambia `count`.
 
 En la consola vemos lo siguiente:
 
-```
+```nota
 Header render
 ProductList render
 ```
