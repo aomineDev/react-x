@@ -12,13 +12,13 @@ JSX (JavaScript XML) es una extensión de sintaxis que te permite escribir códi
 
 Agrega un div con una clase y un titulo dentro del componenete
 
-```html
+```jsx showLineNumbers
 <div className="tarjeta">
   <h1 className="titulo">Perfil de Usuario</h1>
 </div>
 ```
 
-En JSX usas `className` en lugar de `class` porque `class` es una palabra reservada en JavaScript.
+En JSX se usa `className` en lugar de `class` porque `class` es una palabra reservada en JavaScript.
 
 ---
 
@@ -26,7 +26,7 @@ En JSX usas `className` en lugar de `class` porque `class` es una palabra reserv
 
 Dentro del contenedor, debajo del título, agrega la imagen `<img/>`
 
-```html
+```jsx showLineNumbers
 <img src="imagen" alt="Foto de perfil" />
 ```
 
@@ -42,7 +42,7 @@ En jsx, todas las etiquetas deben cerrarse `<img/>`
 
 Agrega más detalles del perfil con un párrafo y un salto de línea:
 
-```html
+```jsx showLineNumbers
 <br />
 <p>Sebastian García</p>
 <p>Desarrolladoror Frontend</p>
@@ -56,7 +56,7 @@ Agrega más detalles del perfil con un párrafo y un salto de línea:
 
 Completa la tarjeta agregando un campo de entrada con su etiqueta:
 
-```html
+```jsx showLineNumbers
 <label htmlFor="email">Email:</label> <input type="email" id="email" />
 ```
 
@@ -66,7 +66,7 @@ En JSX se usa `htmlFor`, no for.
 
 ## Paso 5 - Union de todos los pasos
 
-```jsx
+```jsx showLineNumbers
 export default function Usuario() {
   return (
     <>

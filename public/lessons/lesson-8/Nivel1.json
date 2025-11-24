@@ -1,0 +1,9 @@
+{
+  "markdownUrl": "lessons/lesson-8/Nivel1.md",
+  "lesson": "Arquitectura y composicion",
+  "nivel": "Nivel 1",
+  "next": "/lesson/8/2",
+  "files": {
+    "/App.js": "import React from 'react';\r\n\r\n// Implementa aqu\u00ED el componente Tarjeta\r\n\r\n// Implementa aqu\u00ED el componente Alerta\r\n\r\nfunction App() {\r\n  return (\r\n    <div style={{ padding: '20px' }}>\r\n      <h1>Componentes Contenedores</h1>\r\n      \r\n      <Tarjeta>\r\n        <h2>Perfil de Usuario</h2>\r\n        <p><strong>Nombre:</strong> Juan P\u00E9rez</p>\r\n        <p><strong>Email:</strong> juan@example.com</p>\r\n        <button style={{ \r\n          padding: '8px 16px', \r\n          backgroundColor: '#3b82f6', \r\n          color: 'white', \r\n          border: 'none', \r\n          borderRadius: '4px',\r\n          cursor: 'pointer'\r\n        }}>\r\n          Editar Perfil\r\n        </button>\r\n      </Tarjeta>\r\n      \r\n      <Tarjeta>\r\n        <h2>Estad\u00EDsticas</h2>\r\n        <p>Visitas: 1,234</p>\r\n        <p>Seguidores: 567</p>\r\n        <p>Publicaciones: 89</p>\r\n      </Tarjeta>\r\n      \r\n      <Alerta tipo=\"info\">\r\n        <strong>Informaci\u00F3n:</strong> Tu sesi\u00F3n expirar\u00E1 en 10 minutos\r\n      </Alerta>\r\n      \r\n      <Alerta tipo=\"exito\">\r\n        <strong>\u00C9xito:</strong> Los cambios se guardaron correctamente\r\n      </Alerta>\r\n      \r\n      <Alerta tipo=\"error\">\r\n        <strong>Error:</strong> No se pudo conectar con el servidor\r\n      </Alerta>\r\n    </div>\r\n  );\r\n}\r\n\r\nexport default App;"
+  }
+}

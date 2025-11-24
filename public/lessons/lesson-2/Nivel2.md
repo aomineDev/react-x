@@ -9,17 +9,17 @@ En el nivel anterior solo pasaste strings y números. Ahora aprenderás a pasar 
 
 ## Paso 1 - Crea la ficha básica con strings y números
 
-En el componente `App.js`, agrega el componente `FichaLibro.tsx` enviando el `titulo`, `autor` y `paginas`
+En el componente `App.js`, agrega el componente `FichaLibro.tsx` enviando el titulo, autor y paginas
 
-```jsx
+```jsx showLineNumbers {2}
 export default function App() {
-  return <FichaLibro titulo="1984" autor="George Orwell" paginas={328} />
+  return <FichaLibro titulo="1984" autor="GeorgeOrwell" paginas={328} />
 }
 ```
 
 En el componente `FichaLibro.tsx`, muestralo
 
-```jsx
+```jsx showLineNumbers {4,5,6}
 export default function FichaLibro(props) {
   return (
     <div className="ficha-libro">
@@ -31,7 +31,7 @@ export default function FichaLibro(props) {
 }
 ```
 
-Los strings como `"1984"` van entre comillas. Los números como `{328}` van entre llaves. React distingue entre tipos de datos automáticamente.
+> Los strings van entre comillas y los números van entre llaves, React los distingue
 
 ---
 
@@ -39,7 +39,7 @@ Los strings como `"1984"` van entre comillas. Los números como `{328}` van entr
 
 Ahora en el `FichaLibro.tsx`indica si el libro está disponible usando un valor booleano:
 
-```jsx
+```jsx showLineNumbers {1, 3}
 <p style={{ color: props.disponible ? 'green' : 'red' }}>
   Disponibilidad:
   {props.disponible ? 'Disponible' : 'No disponible'}
@@ -48,7 +48,7 @@ Ahora en el `FichaLibro.tsx`indica si el libro está disponible usando un valor 
 
 Y en el componente padre `App.js`
 
-```jsx
+```jsx showLineNumbers {3}
 <FichaLibro
   {/* props anteriores */}
   disponible={true}
@@ -61,7 +61,7 @@ Y en el componente padre `App.js`
 
 Ahora en `FichaLibro.tsx` agrega las categorías del libro usando un array:
 
-```jsx
+```jsx showLineNumbers {3,4}
 <h3>Categoría:</h3>
 <ul>
   {props.categorias.map((categoria, index) => (
@@ -72,7 +72,7 @@ Ahora en `FichaLibro.tsx` agrega las categorías del libro usando un array:
 
 y en el componente padre `App.js`
 
-```jsx
+```jsx showLineNumbers {3}
 <FichaLibro
   {/* props anteriores */}
   categorias={["Ficción", "Distopía", "Clásico"]}
@@ -85,7 +85,7 @@ y en el componente padre `App.js`
 
 Ahora en `FichaLibro.tsx`agrega los datos de la editorial usando un objeto:
 
-```jsx
+```jsx showLineNumbers {3,4,5}
 <div className="editorial">
   <h3>Editorial</h3>
   <p>Nombre: {props.editorial.nombre}</p>
@@ -96,7 +96,7 @@ Ahora en `FichaLibro.tsx`agrega los datos de la editorial usando un objeto:
 
 y en el componente padre `App.js`
 
-```jsx
+```jsx showLineNumbers {3,4,5,6}
 <FichaLibro
   {/* props anteriores */}
   editorial={{
@@ -111,7 +111,7 @@ y en el componente padre `App.js`
 
 ## Paso 5 - Resultado final en `FichaLibro.tsx`
 
-```jsx
+```jsx showLineNumbers
 export default function FichaLibro(props) {
   return (
     <div className="ficha-libro">
@@ -144,7 +144,7 @@ export default function FichaLibro(props) {
 
 ## Paso 6 - Resultado final en `App.js`
 
-```jsx
+```jsx showLineNumbers
 import FichaLibro from './FichaLibro.jsx'
 export default function App() {
   return (

@@ -10,9 +10,9 @@ Las **props** permiten que los componentes reciban datos del componente padre. S
 
 ## Paso 1 - Pasa el nombre como prop
 
-En el componente `App.js`, agrega el componente `TarjetaPerfil.tsx` enviando el nombre:
+En el componente `App.js`, agrega el componente `TarjetaPerfil.tsx` enviando un nombre
 
-```jsx
+```jsx showLineNumbers {6}
 import TarjetaPerfil from './TarjetaPerfil.jsx'
 
 export default function App() {
@@ -24,9 +24,9 @@ export default function App() {
 }
 ```
 
-En el componente `TarjetaPerfil.tsx`, muestralo
+En el componente `TarjetaPerfil.tsx`, muestralo atraves del `prop`
 
-```jsx
+```jsx showLineNumbers {4}
 export default function TarjetaPerfil(props) {
   return (
     <div className="tarjeta">
@@ -42,13 +42,13 @@ export default function TarjetaPerfil(props) {
 
 En `App.js`, agrega la prop
 
-```js
+```jsx showLineNumbers
 username = 'leonardo19'
 ```
 
 En `tarjetaPerfil.jsx`, muestralo asi
 
-```jsx
+```jsx showLineNumbers
 <p>Nombre de usuario: @{props.username}</p>
 ```
 
@@ -58,14 +58,14 @@ En `tarjetaPerfil.jsx`, muestralo asi
 
 En `App.js`, agrega las nuevas props
 
-```jsx
+```jsx showLineNumbers
 bio="Desarrollador Frontend | React lover💙"
 seguidores={1250}
 ```
 
 En `TarjetaPerfil.jsx`, muestralas
 
-```jsx
+```jsx showLineNumbers
 <p>Biografia: {props.bio}</p>
 <p>Seguidores: {props.seguidores} folowers</p>
 ```
@@ -74,7 +74,7 @@ En `TarjetaPerfil.jsx`, muestralas
 
 ## Paso 4 - Resultado final es `App.js`
 
-```jsx
+```jsx showLineNumbers
 import TarjetaPerfil from './TarjetaPerfil.jsx'
 
 export default function App() {
@@ -93,7 +93,7 @@ export default function App() {
 
 ## Paso 5 - Resultado final es `TarjetaPerfil.tsx`
 
-```jsx
+```jsx showLineNumbers
 export default function TarjetaPerfil(props) {
   return (
     <div className="tarjeta">

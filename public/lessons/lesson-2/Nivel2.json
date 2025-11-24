@@ -2,7 +2,8 @@
   "markdownUrl": "lessons/lesson-2/Nivel2.md",
   "lesson": "Props",
   "nivel": "Nivel 2",
-  "next": "/quizz/1/1",
+  "next": "/lesson/2/3",
+  "prev": "/lesson/2/1",
   "files": {
     "/App.js": "export default function App() {\n}",
     "/TarjeaPerfil.jsx": "export default function FichaLibro(props) {\n}"
