@@ -11,7 +11,7 @@ Hasta ahora has escrito `props.nombre`, `props.edad` muchas veces. Existe una fo
 
 Observa cuántas veces se repite `props.` en el componente `TarjetaUsuario.jsx`
 
-```jsx
+```jsx showLineNumbers
 export default function TarjetaUsuario(props) {
   return (
     <div>
@@ -26,7 +26,7 @@ export default function TarjetaUsuario(props) {
 
 y en el componenete padre `App.js`
 
-```jsx
+```jsx showLineNumbers
 import TarjetaUsuario from './TarjetaUsuario.tsx'
 
 export default function App() {
@@ -51,7 +51,7 @@ El código funciona, pero escribir `props.` antes de cada propiedad hace el cód
 
 Extrae las props directamente en los parámetros de la función en `TarjetaUsuario.tsx`
 
-```jsx
+```jsx showLineNumbers
 export default function TarjetaUsuario({ nombre, profesion, ubicacion, experiencia }) {
   return (
     <div className="tarjeta">
@@ -66,7 +66,7 @@ export default function TarjetaUsuario({ nombre, profesion, ubicacion, experienc
 
 y en `App.js` se usa normalmente
 
-```jsx
+```jsx showLineNumbers
 import TarjetaUsuario from './TarjetaUsuario.tsx'
 
 export default function App() {
@@ -91,7 +91,7 @@ La desestructuración `{ nombre, profesion, ubicacion, experiencia }` extrae las
 
 Crea otra tarjeta con otros campos y no le agreges ni la `ubicacion` ni `experiencia`
 
-```jsx
+```jsx showLineNumbers
 import TarjetaUsuario from './TarjetaUsuario.tsx'
 
 export default function App() {
@@ -116,7 +116,7 @@ export default function App() {
 
 y en `TarjetaUsuario.tsx` agregale una ubicacion por default
 
-```jsx
+```jsx showLineNumbers
 export default function TarjetaUsuario({
   nombre,
   profesion,
@@ -140,7 +140,7 @@ Los valores por defecto se definen con `propiedad = valor`. Si no se pasa `ubica
 
 ## Paso 5 - Resultado final de `App.js`
 
-```jsx
+```jsx showLineNumbers
 import TarjetaUsuario from './TarjetaUsuario.tsx'
 
 export default function App() {
@@ -167,7 +167,7 @@ export default function App() {
 
 ## Paso 6 - Resultado final de `TarjeUsuario.tsx`
 
-```jsx
+```jsx showLineNumbers
 export default function TarjetaUsuario({
   nombre,
   profesion,

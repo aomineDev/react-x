@@ -1,0 +1,14 @@
+{
+  "type": "one-select",
+  "nivel": "Quizz 4",
+  "pregunta": "¿Qué se mostrará en el campo de ubicación?",
+  "codigo": "function TarjetaUsuario({\n  nombre,\n  profesion,\n  ubicacion = 'No especificado',\n  experiencia = 0,\n}) {\n  return (\n    <div>\n      <h2>{nombre}</h2>\n      <p>{profesion}</p>\n      <p>{ubicacion}</p>\n      <p>{experiencia} años de experiencia</p>\n    </div>\n  );\n}\n\nexport default function App() {\n  return (\n    <TarjetaUsuario\n      nombre='Lucía Torres'\n      profesion='Analista QA'\n      experiencia={3}\n    />\n  );\n}",
+  "opciones": [
+    { "clave": "a", "texto": "Ubicación no especificada" },
+    { "clave": "b", "texto": "No especificado" },
+    { "clave": "c", "texto": "undefined" },
+    { "clave": "d", "texto": "Nada, da error" }
+  ],
+  "correcta": "b",
+  "next": "/lesson/2/5"
+}
