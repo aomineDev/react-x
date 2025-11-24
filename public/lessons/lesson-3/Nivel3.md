@@ -1,4 +1,4 @@
-# Nivel 3 — Estado en React con useState
+# Estado en React con useState
 
 En muchos componentes necesitas manejar información que cambia a medida que el usuario interactúa. React maneja estos cambios usando estado, una especie de pequeña “memoria viva” dentro del componente.
 

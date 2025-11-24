@@ -1,4 +1,4 @@
-# Nivel 4 – Actualización de Estado Basada en el Estado Anterior (prevState)
+# Actualización de Estado Basada en el Estado Anterior (prevState)
 
 En este nivel aprenderás cómo actualizar estado usando el valor anterior, una técnica esencial cuando el nuevo estado depende directamente del estado previo.
 

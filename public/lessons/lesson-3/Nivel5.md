@@ -1,4 +1,4 @@
-# Nivel 5 — Estado con Objetos y Arrays en React
+# Estado con Objetos y Arrays en React
 
 Hasta ahora manejaste estados simples: números y booleanos.
 Pero en aplicaciones reales casi siempre trabajas con objetos y arreglos: usuarios, listas de tareas, formularios, etc.

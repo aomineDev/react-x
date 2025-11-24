@@ -1,4 +1,4 @@
-# Nivel 6 – Compartir Estado Entre Componentes en React
+# Compartir Estado Entre Componentes en React
 
 Cuando tienes dos o más componentes que necesitan acceder o modificar el mismo estado, NO debes duplicar ese estado.
 
