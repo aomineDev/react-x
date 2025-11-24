@@ -1,0 +1,14 @@
+{
+  "type": "one-select",
+  "nivel": "Quizz 2",
+  "pregunta": "¿Dónde está el error en este código?",
+  "codigo": "function Productos() {\n  const productos = [ { id: 1, nombre: \"Laptop\", precio: 1200 },\n    { id: 2, nombre: \"Mouse\", precio: 25 },\n  ];\n\n  return (\n    <ul>\n      {productos.map((producto) => (\n        <li key={producto.id}>\n          {producto.nombre} - {producto.precio}\n        </li>\n      ))}\n    </ul>\n  );\n}",
+  "opciones": [
+    { "clave": "a", "texto": "Roma" },
+    { "clave": "b", "texto": "Madrid" },
+    { "clave": "c", "texto": "París" },
+    { "clave": "d", "texto": "Lima" }
+  ],
+  "correcta": "d",
+  "next": "/lesson/3/3"
+}

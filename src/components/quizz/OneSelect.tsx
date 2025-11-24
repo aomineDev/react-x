@@ -12,6 +12,7 @@ import {
 import { ArrowRight, Trophy } from 'lucide-react'
 import Confetti from '@/components/Confetti'
 import { Link } from 'react-router'
+import CodeBlock from '../CodeBlock'
 interface Opciones {
   pregunta: string
   codigo?: ReactNode
@@ -100,7 +101,7 @@ export default function OneSelect({ opciones }: { opciones?: Opciones }) {
       <div className="max-h-full flex flex-col gap-5  items-center overflow-auto p-5">
         <h1 className="text-4xl capitalize font-bold primary-gradient">{nivel}</h1>
         <h3>{pregunta}</h3>
-        {codigo && <div>{codigo}</div>}
+        {codigo && <CodeBlock>{codigo.toString()}</CodeBlock>}
         <div className="flex flex-col gap-4 w-100">
           {listaOpciones.map((opcion) => (
             <Button
