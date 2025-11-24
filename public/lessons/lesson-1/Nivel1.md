@@ -10,7 +10,7 @@ En React, un componente es una función que devuelve parte de la interfaz de usu
 
 ## Paso 1 - Define tu componente
 
-Crea un componente llamado `Saludo`.
+Crea un componente llamado **Saludo** y agrega un **export** para poder reutilizarlo.
 
 ```jsx
 export default function Saludo() {}
@@ -20,7 +20,7 @@ export default function Saludo() {}
 
 ## Paso 2 - Retorna contenido JSX
 
-React requiere que cada componente retorne **un único elemento contenedor**. Agrega un return:
+React requiere que cada componente retorne **un único elemento contenedor**, agrega un return con un `<div>`
 
 ```jsx
 return (

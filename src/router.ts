@@ -7,6 +7,9 @@ import CodeChallengue from './pages/CodeChallengePage'
 import LessonPage from '@/pages/LessonPage'
 import Lesson1Quizz1 from '@/pages/quizz/lesson1Quizz/Lesson1Quizz1'
 import Lesson3Quizz6 from '@/pages/quizz/lesson3Quizz/Lesson3Quizz6'
+import Lesson1Quizz2 from './pages/quizz/lesson1Quizz/Lesson1Quizz2'
+import Lesson1Quizz4 from './pages/quizz/lesson1Quizz/Lesson1Quizz4'
+import Lesson1Quizz5 from './pages/quizz/lesson1Quizz/Lesson1Quizz5'
 
 export const router = createBrowserRouter([
   {
@@ -36,6 +39,18 @@ export const router = createBrowserRouter([
       {
         path: 'quizz/1/1',
         Component: Lesson1Quizz1,
+      },
+      {
+        path: 'quizz/1/2',
+        Component: Lesson1Quizz2,
+      },
+      {
+        path: 'quizz/1/4',
+        Component: Lesson1Quizz4,
+      },
+      {
+        path: 'quizz/1/5',
+        Component: Lesson1Quizz5,
       },
       {
         path: 'quizz2',

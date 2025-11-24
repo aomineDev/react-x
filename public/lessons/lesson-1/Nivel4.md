@@ -1,4 +1,4 @@
-# Nivel 4: Renderizado Condicional
+# Renderizado Condicional
 
 El renderizado condicional te permite mostrar diferentes elementos según una condición.
 
@@ -8,11 +8,11 @@ En este nivel crearás un componente de Producto que sera para una labtop, donde
 
 ---
 
-## Paso 1 - Define la variable del descuento
+## Paso 1 - Agrega una variable descuento
 
 Empieza creando una variable booleana para controlar el ternario
 
-```jsx
+```jsx showLineNumbers
 let tieneDescuento = true
 ```
 
@@ -22,7 +22,7 @@ let tieneDescuento = true
 
 Crea el ternario para controlar el descuento del producto
 
-```jsx
+```jsx showLineNumbers {2,4}
 {
   tieneDescuento ? (
     <p style={{ color: 'red' }}>S/ {1500 - 1500 * 0.25} Con descuento</p>
@@ -32,17 +32,15 @@ Crea el ternario para controlar el descuento del producto
 }
 ```
 
-```
-Añade estilos para apresiar mejor el descuento, el precio puede ser estatico o puede ser dinamico depende de ti, juega con las variables
-```
+> Añade estilos para apresiar mejor el descuento, el precio puede ser estatico o puede ser dinamico depende de ti, juega con las variables
 
 ---
 
-## Paso 3 - Define una variable para controlar el descuento
+## Paso 3 - Agrega una variable para controlar el descuento del producto
 
 Ahora crea una variable numerica para controlar si el producto tiene bajo stock
 
-```jsx
+```jsx showLineNumbers
 let stock = 2
 ```
 
@@ -52,7 +50,7 @@ let stock = 2
 
 Crea el operador `&&` para controlar el stock del producto
 
-```jsx
+```jsx showLineNumbers {2}
 {
   stock < 5 && stock > 0 && (
     <p
@@ -68,15 +66,13 @@ Crea el operador `&&` para controlar el stock del producto
 }
 ```
 
-```
-Añade estilos para apreciar mejor el stock disponible
-```
+> Añade estilos para apreciar mejor el stock disponible
 
 ---
 
 ## 5 - Resultado final
 
-```jsx
+```jsx showLineNumbers
 export default function Producto() {
   const tieneDescuento = true
   const stock = 2

@@ -1,4 +1,4 @@
-# Nivel 3: Expresiones JavaScript en JSX
+# Expresiones JavaScript en JSX
 
 Las llaves `{}` te permiten ejecutar código JavaScript dentro de JSX. Puedes usarlas para mostrar variables, realizar cálculos y hacer estilos dinámicos.
 
@@ -8,11 +8,11 @@ Las llaves `{}` te permiten ejecutar código JavaScript dentro de JSX. Puedes us
 
 ---
 
-## Paso 1 - Muestra el nombre del producto con una variable
+## Paso 1 - Agrega el nombre del producto
 
-Comienza creando una tarjeta con el nombre del producto usando una variable:
+Comienza creando un componenente con el nombre del producto
 
-```jsx
+```jsx showLineNumbers {2 , 6 }
 export default function TarjetaProducto() {
   const nombre = 'Laptop HP'
 
@@ -28,25 +28,46 @@ Las llaves `{}` te permiten insertar JavaScript dentro de JSX.
 
 ---
 
-## Paso 2 - Agrega el precio y realiza una operacion matemática
+## Paso 2 - Agrega un precio al producto y realiza una operacion matemática
 
-Ahora agrega el precio del producto y calcula el precio con IGV:
+Muestra el precio del producto y calcula el precio con IGV
 
-```jsx
-<p>Precio: ${precio}</p>
-<p>Precio con IGV: ${precio * 1.18}</p>
+```jsx showLineNumbers {3, 7,8}
+export default function TarjetaProducto() {
+  const nombre = 'Laptop HP'
+  const precio = 1500
+  return (
+    <div>
+      <h2>{nombre}</h2>
+      <p>Precio: {precio}</p>
+      <p>Precio con IGV: {precio * 1.18}</p>
+    </div>
+  )
+}
 ```
 
 Dentro de `{}` puedes ejecutar operaciones matemáticas.
 
 ---
 
-## Paso 3 - Muestra disponibilidad con un ternario
+## Paso 3 - Agrega un stock y valida la disponibilidad con un ternario
 
-Agrega un mensaje de disponibilidad que cambie según el stock:
+Muestra un mensaje de disponibilidad que cambie según el stock:
 
-```jsx
-<p>{stock > 0 ? 'Disponible' : 'Agotado'}</p>
+```jsx showLineNumbers {4, 10}
+export default function TarjetaProducto() {
+  const nombre = 'Laptop HP'
+  const precio = 1500
+  const stock = 0
+  return (
+    <div>
+      <h2>{nombre}</h2>
+      <p>Precio: {precio}</p>
+      <p>Precio con IGV: {precio * 1.18}</p>
+      <p>{stock > 0 ? 'Disponible' : 'Agotado'}</p>
+    </div>
+  )
+}
 ```
 
 El operador ternario `condición ? siTrue : siFalse` te permite mostrar contenido diferente según una condición. Si `stock > 0` muestra "Disponible", sino "Agotado".
@@ -57,7 +78,7 @@ El operador ternario `condición ? siTrue : siFalse` te permite mostrar contenid
 
 Aplica estilos en línea según la disponibilidad del producto:
 
-```jsx
+```jsx showLineNumbers
 <p style={{ color: stock > 0 ? 'green' : 'red' }}>{stock > 0 ? 'Disponible' : 'Agotado'}</p>
 ```
 
@@ -67,7 +88,7 @@ Aplica estilos en línea según la disponibilidad del producto:
 
 ## Paso 5 - Resultado final
 
-```jsx
+```jsx showLineNumbers
 export default function TarjetaProducto() {
   const nombre = 'Laptop HP'
   const precio = 1500
