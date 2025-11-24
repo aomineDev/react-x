@@ -60,6 +60,14 @@ const HomePage = () => {
           <Link to="lesson/7/1">Tomar leccion</Link>
         </Button>
       </div>
+
+      <div>
+        <h2>8. Patornes y mejores practicas</h2>
+
+        <Button asChild>
+          <Link to="lesson/8/1">Tomar leccion</Link>
+        </Button>
+      </div>
     </>
   )
 }

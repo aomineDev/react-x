@@ -22,8 +22,13 @@ const HomePage = ({ config: { markdownUrl, files, lesson, nivel, next, prev } }:
 
   return (
     <div className="min-w-full h-[calc(100vh-61px)] flex flex-col md:flex-row">
-      <div className="basis-1/2 overflow-y-scroll custom-scroll relative">
-        <div className="p-5 flex items-center justify-between sticky top-0 left-o w-full bg-background z-50 border-b border-gray-500">
+      <div className="basis-1/2 grow overflow-y-scroll custom-scroll relative">
+        <div
+          className={
+            'p-5 flex items-center justify-between sticky top-0 left-o w-full bg-background z-50 border-b border-gray-300 dark:border-gray-700 ' +
+            (files === undefined ? 'mb-5 max-w-[65ch] mx-auto' : '')
+          }
+        >
           <h2 className="text-sm text-gray-400 capitalize">{`${lesson} - ${nivel}`}</h2>
           <div className="flex gap-2">
             {prev && (
@@ -40,11 +45,17 @@ const HomePage = ({ config: { markdownUrl, files, lesson, nivel, next, prev } }:
             </Button>
           </div>
         </div>
-        <Markdown full>{markdown}</Markdown>
+        {files === undefined ? (
+          <Markdown>{markdown}</Markdown>
+        ) : (
+          <Markdown full>{markdown}</Markdown>
+        )}
       </div>
-      <div className="basis-1/2">
-        <LessonCode files={files}></LessonCode>
-      </div>
+      {files !== undefined && (
+        <div className="basis-1/2">
+          <LessonCode files={files}></LessonCode>
+        </div>
+      )}
     </div>
   )
 }

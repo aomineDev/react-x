@@ -29,7 +29,7 @@ Here is an example of a plugin to highlight code:
 
 This is an array `[1, 2, 3]{:js}` of numbers 1 through 3.
 
-```jsx showLineNumbers {4} title="Markdown.tsx" /MarkdownHooks/
+```jsx showLineNumbers{12} {4} title="Markdown.tsx" /setCount/ /increment/#v /Contador/#i /return/#s
 import { useState } from 'react'
 
 export default function Counter() {
@@ -52,49 +52,45 @@ export default function Counter() {
 
 Pretty neat, eh?
 
-## GitHub flavored `markdown` (GFM)
+---
 
-For GFM, you can _also_ use a plugin:
-[~remark-gfm~](https://github.com/remarkjs/react-markdown#use).
-It adds support for GitHub-specific extensions to the language:
-tables, strikethrough, tasklists, and literal URLs.
+## <span class='custom-order'>4</span> GFM
 
-These features **do not work by default**.
-👆 Use the toggle above to add the plugin.
-
-|    Feature | Support              |
-| ---------: | :------------------- |
-| CommonMark | 100%                 |
-|        GFM | 100% w/ ~remark-gfm~ |
-
-~~strikethrough~~
-
-- [ ] task list
-- [x] checked item
-
-https://example.
-
-# GFM
-
-## Autolink literals
+### <span class='custom-order'>1</span> Autolink literals
 
 www.example.com, https://example.com, and contact@example.com.
 
-## Strikethrough
+### <span class='custom-order'>2</span> Strikethrough
 
 ~one~ or ~~two~~ tildes.
 
-## Table
+### <span class='custom-order'>3</span> Alerts
 
-| a   | b   |   c |  d  |
-| --- | :-- | --: | :-: |
+Some alerts
 
-## Tasklist
+> [!note]
+> Useful information that users should know, even when skimming content.
 
-- [ ] to do
-- [x] done
+> [!tip]
+> Useful information that users should know, even when skimming content.
+
+> [!important]
+> Useful information that users should know, even when skimming content.
+
+> [!warning]
+> Useful information that users should know, even when skimming content.
+
+> [!caution]
+> Useful information that users should know, even when skimming content.
+
+### <span class='custom-order'>4</span> Table
 
 | Columna 1 | Columna 2 | Columna 3 |
 | --------- | --------- | --------- |
 | Dato A    | Dato B    | Dato C    |
 | Dato D    | Dato E    | Dato F    |
+
+### <span class='custom-order'>5</span> Tasklist
+
+- [ ] to do
+- [x] done
