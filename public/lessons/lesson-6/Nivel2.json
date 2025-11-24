@@ -1,0 +1,10 @@
+{
+  "markdownUrl": "lessons/lesson-6/Nivel2.md",
+  "lesson": "Efectos secundarios",
+  "nivel": "Nivel 1",
+  "prev": "/lesson/6/1",
+  "next": "/lesson/6/3",
+  "files": {
+    "/App.js": "import React, { useState, useEffect } from 'react';\r\n\r\nfunction App() {\r\n  const [nombre, setNombre] = useState('');\r\n  const [edad, setEdad] = useState(0);\r\n  const [saludo, setSaludo] = useState('');\r\n  const [mensajeBienvenida, setMensajeBienvenida] = useState('Cargando...');\r\n  \r\n  // Implementa aqu\u00ED el useEffect que observa 'nombre'\r\n  \r\n  // Implementa aqu\u00ED el useEffect que se ejecuta solo una vez\r\n  \r\n  return (\r\n    <div>\r\n      <h2>Control de Efectos</h2>\r\n      <p>{mensajeBienvenida}</p>\r\n      \r\n      <div>\r\n        <label>Nombre: </label>\r\n        <input \r\n          type=\"text\" \r\n          value={nombre} \r\n          onChange={(e) => setNombre(e.target.value)} \r\n        />\r\n      </div>\r\n      \r\n      <div>\r\n        <label>Edad: </label>\r\n        <input \r\n          type=\"number\" \r\n          value={edad} \r\n          onChange={(e) => setEdad(Number(e.target.value))} \r\n        />\r\n      </div>\r\n      \r\n      <p>{saludo}</p>\r\n      <p style={{ fontSize: '14px', color: '#64748b' }}>\r\n        Escribe tu nombre y observa c\u00F3mo solo ese efecto se ejecuta\r\n      </p>\r\n    </div>\r\n  );\r\n}\r\n\r\nexport default App;"
+  }
+}

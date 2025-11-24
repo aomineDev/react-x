@@ -1,6 +1,8 @@
 import { Button } from '@/components/ui/button'
 import { Link } from 'react-router'
 
+// const
+
 const HomePage = () => {
   return (
     <>
