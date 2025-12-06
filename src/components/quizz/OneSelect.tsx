@@ -63,10 +63,10 @@ export default function OneSelect({ opciones }: { opciones?: Opciones }) {
 
   const getTextoBoton = () => {
     if (estado == 'correcto') {
-      return 'Correcto'
+      return '¡Correcto¡'
     }
     if (estado === 'incorrecto') {
-      return 'Intentarlo de nuevo'
+      return 'Intentalo de nuevo'
     }
     return 'Verificar'
   }
