@@ -1,12 +1,10 @@
 import { createBrowserRouter } from 'react-router'
-import HomePage from './pages/HomePage'
-import FormPage from './pages/FormPage'
-import Layout from './layout/AppLayout'
-import Markdown from './pages/Markdown'
-import CodeChallengue from './pages/CodeChallengePage'
+import HomePage from '@/pages/HomePage'
+import Layout from '@/layout/AppLayout'
 import LessonPage from '@/pages/LessonPage'
-
-import QuizPage from './pages/QuizzPage'
+import QuizPage from '@/pages/QuizzPage'
+import LoginPage from '@/pages/LoginPage'
+import MarkdownPage from '@/pages/MarkdownPage'
 
 export const router = createBrowserRouter([
   {
@@ -18,18 +16,6 @@ export const router = createBrowserRouter([
         Component: HomePage,
       },
       {
-        path: 'challenge',
-        Component: CodeChallengue,
-      },
-      {
-        path: 'form',
-        Component: FormPage,
-      },
-      {
-        path: 'markdown',
-        Component: Markdown,
-      },
-      {
         path: 'lesson/:lessonId/:nivelId',
         Component: LessonPage,
       },
@@ -37,6 +23,14 @@ export const router = createBrowserRouter([
         path: 'quizz/:lessonId/:quizzId',
         Component: QuizPage,
       },
+      {
+        path: 'markdown',
+        Component: MarkdownPage,
+      },
     ],
+  },
+  {
+    path: '/login',
+    Component: LoginPage,
   },
 ])

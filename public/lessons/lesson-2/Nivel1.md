@@ -1,16 +1,15 @@
-# Componentes dinamicos
+# Componentes Dinámicos
 
 Las **props** permiten que los componentes reciban datos del componente padre. Son como los argumentos de una función, hacen que tus componentes sean dinámicos y reutilizables.
 
-- OBJETIVO:
-
-  En este nivel, crearas una tarjeta de perfil dinamica, que puedes usar muchas veces con diferentes datos.
+- **OBJETIVO:**
+  En este nivel, crearás una tarjeta de perfil dinámica, que puedes usar muchas veces con diferentes datos.
 
 ---
 
-## Paso 1 - Pasa el nombre como prop
+## <span class='custom-order'>1</span> Pasa el nombre como prop
 
-En el componente `App.js`, agrega el componente `TarjetaPerfil.tsx` enviando un nombre
+En el componente `App.jsx`, agrega el componente `TarjetaPerfil.jsx` enviando un nombre
 
 ```jsx showLineNumbers {6}
 import TarjetaPerfil from './TarjetaPerfil.jsx'
@@ -24,7 +23,7 @@ export default function App() {
 }
 ```
 
-En el componente `TarjetaPerfil.tsx`, muestralo atraves del `prop`
+En el componente `TarjetaPerfil.jsx`, muéstralo a través del `prop`
 
 ```jsx showLineNumbers {4}
 export default function TarjetaPerfil(props) {
@@ -36,17 +35,20 @@ export default function TarjetaPerfil(props) {
 }
 ```
 
+> [!note]
+> Las props se pasan como atributos en JSX y se reciben como un objeto en el componente hijo.
+
 ---
 
-## Paso 2 - Agrega el nombre de usuario como prop
+## <span class='custom-order'>2</span> Agrega el nombre de usuario como prop
 
-En `App.js`, agrega la prop
+En `App.jsx`, agrega la prop
 
 ```jsx showLineNumbers
 username = 'leonardo19'
 ```
 
-En `tarjetaPerfil.jsx`, muestralo asi
+En `TarjetaPerfil.jsx`, muéstralo así
 
 ```jsx showLineNumbers
 <p>Nombre de usuario: @{props.username}</p>
@@ -54,25 +56,28 @@ En `tarjetaPerfil.jsx`, muestralo asi
 
 ---
 
-## Paso 3 - Agrega biografia y seguidores
+## <span class='custom-order'>3</span> Agrega biografía y seguidores
 
-En `App.js`, agrega las nuevas props
+En `App.jsx`, agrega las nuevas props
 
 ```jsx showLineNumbers
 bio="Desarrollador Frontend | React lover💙"
 seguidores={1250}
 ```
 
-En `TarjetaPerfil.jsx`, muestralas
+En `TarjetaPerfil.jsx`, muéstralas
 
 ```jsx showLineNumbers
-<p>Biografia: {props.bio}</p>
-<p>Seguidores: {props.seguidores} folowers</p>
+<p>Biografía: {props.bio}</p>
+<p>Seguidores: {props.seguidores} followers</p>
 ```
+
+> [!important]
+> Los valores de texto se pasan entre comillas `"texto"`, pero los números y expresiones JavaScript deben ir entre llaves `{1250}`.
 
 ---
 
-## Paso 4 - Resultado final es `App.js`
+## <span class='custom-order'>4</span> Resultado final en `App.jsx`
 
 ```jsx showLineNumbers
 import TarjetaPerfil from './TarjetaPerfil.jsx'
@@ -91,7 +96,9 @@ export default function App() {
 }
 ```
 
-## Paso 5 - Resultado final es `TarjetaPerfil.tsx`
+---
+
+## <span class='custom-order'>5</span> Resultado final en `TarjetaPerfil.jsx`
 
 ```jsx showLineNumbers
 export default function TarjetaPerfil(props) {
@@ -99,16 +106,17 @@ export default function TarjetaPerfil(props) {
     <div className="tarjeta">
       <h2>{props.nombre}</h2>
       <p>Nombre de usuario: @{props.username}</p>
-      <p>Biografia: {props.bio}</p>
-      <p>Seguidores: {props.seguidores} folowers</p>
+      <p>Biografía: {props.bio}</p>
+      <p>Seguidores: {props.seguidores} followers</p>
     </div>
   )
 }
 ```
 
-De esta manera puedes agregar componenetes con datos dinamicos
-
-```jsx
-<TarjetaPerfil nombre="Carlos López" ... />
-<TarjetaPerfil nombre="María Torres" ... />
-```
+> [!tip]
+> De esta manera puedes reutilizar el componente con datos diferentes:
+>
+> ```jsx
+> <TarjetaPerfil nombre="Carlos López" username="carlos_dev" ... />
+> <TarjetaPerfil nombre="María Torres" username="maria_codes" ... />
+> ```

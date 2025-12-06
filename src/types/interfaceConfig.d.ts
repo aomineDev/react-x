@@ -4,5 +4,5 @@ export interface LessonConfig {
   nivel: string
   next: string
   prev?: string
-  files: Record<string, string>
+  files?: Record<string, string>
 }

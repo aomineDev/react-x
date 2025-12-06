@@ -22,7 +22,12 @@ const LessonCode = ({ files }: LessonCodeProps) => {
       files={files}
     >
       <SandpackLayout className="flex-col h-full">
-        <SandpackCodeEditor showInlineErrors showLineNumbers wrapContent />
+        <SandpackCodeEditor
+          showInlineErrors
+          showLineNumbers
+          wrapContent
+          className="custom-scroll"
+        />
         <SandpackPreview showOpenInCodeSandbox={false} />
       </SandpackLayout>
     </SandpackProvider>

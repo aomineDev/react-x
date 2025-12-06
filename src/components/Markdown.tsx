@@ -1,6 +1,8 @@
 import { MarkdownHooks as ReactMarkdown } from 'react-markdown'
 import remarkgfm from 'remark-gfm'
+import remarkAlert from 'remark-github-blockquote-alert'
 import rehypePrettyCode from 'rehype-pretty-code'
+import rehypeRaw from 'rehype-raw'
 import { Button } from './ui/button'
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip'
 import { Check, Copy } from 'lucide-react'
@@ -51,35 +53,33 @@ const Markdown = ({ children, full = false }: MarkdownProps) => {
   return (
     <div className={'prose dark:prose-invert ' + (full ? 'min-w-full p-5' : 'mx-auto')}>
       <ReactMarkdown
-        remarkPlugins={[remarkgfm]}
+        remarkPlugins={[remarkgfm, remarkAlert]}
         rehypePlugins={[
           [
             rehypePrettyCode,
             {
               theme: {
                 dark: 'rose-pine',
-                light: 'catppuccin-latte',
+                light: 'one-light',
               },
-              bypassInlineCodes: true,
             },
           ],
+          rehypeRaw,
         ]}
         components={{
-          h1(props) {
-            const { children, ...rest } = { ...props }
+          h1({ children, ...rest }) {
             delete rest.node
 
             return (
               <h1
-                className="bg-linear-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent"
+                className="bg-linear-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent inline-block mb-3"
                 {...rest}
               >
                 {children}
               </h1>
             )
           },
-          code(props) {
-            const { children, ...rest } = { ...props }
+          code({ children, ...rest }) {
             delete rest.node
 
             if (isCodeHighlight(rest)) return <code {...rest}>{children}</code>
@@ -88,15 +88,14 @@ const Markdown = ({ children, full = false }: MarkdownProps) => {
                 <span className="bg-sky-200/30 dark:bg-sky-200/10 inline-block rounded-sm px-2">
                   <code
                     {...rest}
-                    className="bg-linear-to-r from-sky-500 to-indigo-400 inline-block bg-clip-text text-transparent not-prose font-semibold text-[0.875em]"
+                    className="secondary-gradient not-prose font-semibold text-[0.875em]"
                   >
                     {children}
                   </code>
                 </span>
               )
           },
-          pre(props) {
-            const { children, ...rest } = { ...props }
+          pre({ children, ...rest }) {
             delete rest.node
 
             return (
