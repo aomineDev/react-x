@@ -2,55 +2,62 @@
 
 En React, un componente es una función que devuelve parte de la interfaz de usuario (UI). Cada botón, tarjeta o página puede ser un componente.
 
-- OBJETIVO:
-
+- **OBJETIVO:**
   En este nivel, aprenderás cómo crear y exportar un componente.
 
 ---
 
-## Paso 1 - Define tu componente
+## <span class='custom-order'>1</span> Define tu componente
 
 Crea un componente llamado **Saludo** y agrega un **export** para poder reutilizarlo.
 
-```jsx
+```jsx showLineNumbers /export/#i /Saludo/#s
 export default function Saludo() {}
 ```
 
+> [!note]
+> Los nombres de componentes en React siempre empiezan con mayúscula. Esto los diferencia de las etiquetas HTML normales.
+
 ---
 
-## Paso 2 - Retorna contenido JSX
+## <span class='custom-order'>2</span> Retorna contenido JSX
 
 React requiere que cada componente retorne **un único elemento contenedor**, agrega un return con un `<div>`
 
-```jsx
-return (
-  <div>
-    <h1>Bienvenido a React</h1>
-  </div>
-)
+```jsx showLineNumbers  /div/#i
+export default function Saludo() {
+  return (
+    <div>
+      <h1>Bienvenido a React</h1>
+    </div>
+  )
+}
 ```
 
 ---
 
-## Paso 3 - Usa un Fragment en su lugar
+## <span class='custom-order'>3</span> Usa un Fragment en su lugar
 
 Si no quieres un `<div>` extra en tu HTML, usa un **Fragment** `<></>`
 
-```jsx showLineNumbers {2, 4}
-return (
-  <>
-    <h1>Bienvenido a React</h1>
-  </>
-)
+```jsx showLineNumbers {3, 5}
+export default function Saludo() {
+  return (
+    <>
+      <h1>Bienvenido a React</h1>
+    </>
+  )
+}
 ```
 
-> Los Fragments mantienen tu DOM limpio sin agregar elementos HTML innecesarios.
+> [!tip]
+> Los Fragments `<></>` mantienen tu DOM limpio sin agregar elementos HTML innecesarios. Son perfectos cuando solo necesitas agrupar elementos sin añadir estructura extra.
 
 ---
 
-## Paso 4 - Resultado final
+## <span class='custom-order'>4</span> Resultado final
 
-```jsx
+```jsx showLineNumbers
 export default function Saludo() {
   return (
     <>

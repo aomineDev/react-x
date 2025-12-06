@@ -1,16 +1,15 @@
-# Sintanxis de JSX
+# Sintaxis de JSX
 
 JSX (JavaScript XML) es una extensión de sintaxis que te permite escribir código similar a HTML dentro de JavaScript. Es la forma principal de crear componentes en React.
 
-- OBJETIVO:
-
+- **OBJETIVO:**
   En este nivel, crearás una tarjeta de perfil de usuario y aprenderás las diferencias clave entre HTML y JSX.
 
 ---
 
-## Paso 1 - Crea el contenedor y el titulo
+## <span class='custom-order'>1</span> Crea el contenedor y el título
 
-Agrega un div con una clase y un titulo dentro del componenete
+Agrega un div con una clase y un título dentro del componente
 
 ```jsx showLineNumbers
 <div className="tarjeta">
@@ -18,11 +17,12 @@ Agrega un div con una clase y un titulo dentro del componenete
 </div>
 ```
 
-En JSX se usa `className` en lugar de `class` porque `class` es una palabra reservada en JavaScript.
+> [!important]
+> En JSX se usa `className` en lugar de `class` porque `class` es una palabra reservada en JavaScript.
 
 ---
 
-## Paso 2 - Agrega la imagen de perfil
+## <span class='custom-order'>2</span> Agrega la imagen de perfil
 
 Dentro del contenedor, debajo del título, agrega la imagen `<img/>`
 
@@ -34,25 +34,24 @@ Dentro del contenedor, debajo del título, agrega la imagen `<img/>`
 Para sacar una imagen usa este link: https://randomuser.me/api/portraits/men/1.jpg
 ```
 
-En jsx, todas las etiquetas deben cerrarse `<img/>`
+> [!note]
+> En JSX, todas las etiquetas deben cerrarse explícitamente: `<img />`, `<br />`, `<input />`, etc.
 
 ---
 
-## Paso 3 - Agrega información del usuario
+## <span class='custom-order'>3</span> Agrega información del usuario
 
 Agrega más detalles del perfil con un párrafo y un salto de línea:
 
 ```jsx showLineNumbers
 <br />
 <p>Sebastian García</p>
-<p>Desarrolladoror Frontend</p>
+<p>Desarrollador Frontend</p>
 ```
-
-`<br />` también debe cerrarse en JSX.
 
 ---
 
-## Paso 4 - Agrega un formulario de contacto
+## <span class='custom-order'>4</span> Agrega un formulario de contacto
 
 Completa la tarjeta agregando un campo de entrada con su etiqueta:
 
@@ -60,11 +59,12 @@ Completa la tarjeta agregando un campo de entrada con su etiqueta:
 <label htmlFor="email">Email:</label> <input type="email" id="email" />
 ```
 
-En JSX se usa `htmlFor`, no for.
+> [!important]
+> En JSX se usa `htmlFor` en lugar de `for` para asociar etiquetas con inputs.
 
 ---
 
-## Paso 5 - Union de todos los pasos
+## <span class='custom-order'>5</span> Unión de todos los pasos
 
 ```jsx showLineNumbers
 export default function Usuario() {
@@ -73,7 +73,6 @@ export default function Usuario() {
       <div className="tarjeta">
         <h1 className="titulo">Perfil de Usuario</h1>
         <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Foto de perfil" />
-
         <br />
         <p>Sebastian García</p>
         <p>Desarrollador Frontend</p>
@@ -83,3 +82,6 @@ export default function Usuario() {
   )
 }
 ```
+
+> [!tip]
+> El fragmento vacío `<>...</>` te permite retornar múltiples elementos sin agregar un nodo extra al DOM.

@@ -3,6 +3,7 @@
   "lesson": "Props",
   "nivel": "Nivel 5",
   "next": "/quizz/2/5",
+  "prev": "/lesson/2/4",
   "files": {
     "/App.js": "export default function App() {\n}",
     "/Boton.jsx": "export default function Boton() {\n}"
