@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
+import { useParams } from 'react-router-dom'
 import { Spinner } from '@/components/ui/spinner'
 import TrueFalse from '@/components/quizz/TrueFalse'
 import OneSelect from '@/components/quizz/OneSelect'
 import type { QuizConfig } from '@/types/quizConfirg'
+import SafeLayout from '@/layout/SafeLayout'
 
 export default function QuizPage() {
   const { lessonId, quizzId } = useParams()
@@ -31,10 +32,19 @@ export default function QuizPage() {
 
   switch (config.type) {
     case 'truefalse':
-      return <TrueFalse data={config} />
+      return (
+        <SafeLayout>
+          <TrueFalse data={config} />
+        </SafeLayout>
+      )
 
     case 'one-select':
-      return <OneSelect opciones={config} />
+      return (
+        <SafeLayout>
+          {' '}
+          <OneSelect opciones={config} />{' '}
+        </SafeLayout>
+      )
 
     default:
       return <div>Tipo de quiz no soportado</div>

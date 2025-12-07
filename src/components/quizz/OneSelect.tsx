@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/alert-dialog'
 import { ArrowRight, Trophy } from 'lucide-react'
 import Confetti from '@/components/Confetti'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import CodeBlock from '../CodeBlock'
 interface Opciones {
   pregunta: string
@@ -70,35 +70,32 @@ export default function OneSelect({ opciones }: { opciones?: Opciones }) {
     }
     return 'Verificar'
   }
-  const getClaseOpcion = (clave: string) => {
-    let clases = 'w-full text-left border-2 transition-all duration-200'
 
+  const getClaseOpcion = (clave: string) => {
     if (seleccion === clave) {
-      if (estado === 'correcto') {
-        clases += ' border-green-500 bg-green-50 text-green-800'
-      } else if (estado === 'incorrecto') {
-        clases += ' border-red-500 bg-red-50 text-red-800'
-      } else {
-        clases += ' border-blue-500 bg-blue-50 text-blue-800'
-      }
-    } else {
-      clases += ' border-gray-300 bg-white hover:bg-gray-50 text-gray-700'
+      let color = ''
+      if (estado === 'correcto') color = 'green'
+      else if (estado === 'incorrecto') color = 'red'
+      else color = 'blue'
+
+      return ` border-${color}-500 dark:border-${color}-500 bg-${color}-500/10 dark:bg-${color}-500/10 text-${color}-500 hover:bg-${color}-500/10 dark:hover:bg-${color}-500/10 hover:text-${color}-500`
     }
 
-    return clases
+    return ''
   }
 
   const getClaseBoton = () => {
     if (estado === 'correcto') {
-      return 'bg-green-600 hover:bg-green-700 text-white w-100'
+      return ' bg-green-600 hover:bg-green-700'
     } else if (estado === 'incorrecto') {
-      return 'bg-red-600 hover:bg-red-700 text-white w-100'
+      return ' bg-red-600 hover:bg-red-700'
     }
-    return 'bg-blue-600 hover:bg-blue-700 text-white w-100'
+    return ' bg-blue-600 hover:bg-blue-700'
   }
+
   return (
-    <div className="h-[calc(100vh-61px)]">
-      <div className="max-h-full flex flex-col gap-5  items-center overflow-auto p-5">
+    <>
+      <div className="max-h-full flex flex-col gap-5 items-center overflow-auto p-5">
         <h1 className="text-4xl capitalize font-bold primary-gradient">{nivel}</h1>
         <h3>{pregunta}</h3>
         {codigo && <CodeBlock>{codigo.toString()}</CodeBlock>}
@@ -106,7 +103,9 @@ export default function OneSelect({ opciones }: { opciones?: Opciones }) {
           {listaOpciones.map((opcion) => (
             <Button
               key={opcion.clave}
-              className={getClaseOpcion(opcion.clave)}
+              className={`w-full border-2 transition-all duration-200 border-b-4 cursor-pointer ${getClaseOpcion(
+                opcion.clave
+              )}`}
               onClick={() => setSeleccion(opcion.clave)}
               disabled={estado !== 'pendiente'}
               variant="outline"
@@ -116,13 +115,14 @@ export default function OneSelect({ opciones }: { opciones?: Opciones }) {
           ))}
         </div>
         <Button
-          className={getClaseBoton()}
+          className={`cursor-pointer text-white w-100 ${getClaseBoton()}`}
           size="lg"
           disabled={!seleccion}
           onClick={handleBotonPrincipal}
         >
           {getTextoBoton()}
         </Button>
+
         <AlertDialog open={showModal}>
           <AlertDialogContent>
             <AlertDialogHeader>
@@ -147,6 +147,6 @@ export default function OneSelect({ opciones }: { opciones?: Opciones }) {
         <Confetti show={success && showModal} />
         <Confetti show={success && showModal} fall />
       </div>
-    </div>
+    </>
   )
 }

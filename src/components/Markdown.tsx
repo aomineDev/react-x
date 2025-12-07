@@ -79,6 +79,15 @@ const Markdown = ({ children, full = false }: MarkdownProps) => {
               </h1>
             )
           },
+          del({ children, ...rest }) {
+            delete rest.node
+            console.log(children)
+            const text = children?.toString() ?? ''
+
+            if (text.match(/^\d+$/)) return <span className="custom-step">{children}</span>
+
+            return <del {...rest}>{children}</del>
+          },
           code({ children, ...rest }) {
             delete rest.node
 

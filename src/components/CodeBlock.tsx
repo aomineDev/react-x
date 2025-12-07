@@ -1,33 +1,22 @@
-import { useEffect, useState } from 'react'
-import { createHighlighterCore } from 'shiki/core'
-import { createOnigurumaEngine } from 'shiki/engine/oniguruma'
-
-const highlighter = await createHighlighterCore({
-  themes: [import('@shikijs/themes/kanagawa-wave')],
-  langs: [import('@shikijs/langs/jsx')],
-  engine: createOnigurumaEngine(() => import('shiki/wasm')),
-})
+import { useEffect, useRef } from 'react'
+import { highlight } from '@/util/highlight'
 
 interface CodeBlockProps {
   children: string
 }
 
 const CodeBlock = ({ children }: CodeBlockProps) => {
-  const [code, setCode] = useState(children)
+  const codeBlock = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
-    async function highlight() {
-      const result = highlighter.codeToHtml(children, {
-        lang: 'jsx',
-        theme: 'kanagawa-wave',
-      })
-      setCode(result)
+    async function getHighlighted() {
+      codeBlock.current!.innerHTML = await highlight(children)
     }
 
-    highlight()
-  })
+    getHighlighted()
+  }, [children])
 
-  if (!code) return <p>Loading</p>
-  return <div dangerouslySetInnerHTML={{ __html: code }}></div>
+  return <div ref={codeBlock}></div>
 }
 
 export default CodeBlock

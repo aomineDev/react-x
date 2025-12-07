@@ -1,17 +1,20 @@
-import Markdown from '@/components/Markdown'
-import { useEffect, useState } from 'react'
+import CompleteCode from '@/components/quizz/CompleteCode'
+import SafeLayout from '@/layout/SafeLayout'
 
 const MarkdownPage = () => {
-  const [markdown, setMarkdown] = useState('')
-
-  useEffect(() => {
-    fetch('/content.md')
-      .then((res) => res.text())
-      .then((text) => setMarkdown(text))
-      .catch((err) => console.error('Error al cargar Marckdown:', err))
-  })
-
-  return <Markdown>{markdown}</Markdown>
+  const code = [
+    "import { ___1_useState___ } from 'react';",
+    '',
+    'function Counter() {',
+    '   const [count, setCount] = useState(0);',
+    ' return <div>{ ___2_count___ }</div>;',
+    '}',
+  ]
+  return (
+    <SafeLayout>
+      <CompleteCode code={code} answer="Completa el siguiente componente" />
+    </SafeLayout>
+  )
 }
 
 export default MarkdownPage

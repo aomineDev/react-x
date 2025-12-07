@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/alert-dialog'
 import { ArrowRight, Trophy } from 'lucide-react'
 import Confetti from '@/components/Confetti'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 
 type EstadoRespuesta = 'pendiente' | 'correcto' | 'incorrecto'
 
