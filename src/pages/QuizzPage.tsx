@@ -5,6 +5,7 @@ import TrueFalse from '@/components/quizz/TrueFalse'
 import OneSelect from '@/components/quizz/OneSelect'
 import type { QuizConfig } from '@/types/quizConfig.d'
 import SafeLayout from '@/layout/SafeLayout'
+import CompleteCode from '@/components/quizz/CompleteCode'
 
 export default function QuizPage() {
   const { lessonId, quizzId } = useParams()
@@ -42,6 +43,13 @@ export default function QuizPage() {
       return (
         <SafeLayout>
           <OneSelect {...config} />
+        </SafeLayout>
+      )
+
+    case 'complete-code':
+      return (
+        <SafeLayout>
+          <CompleteCode {...config} />
         </SafeLayout>
       )
 
