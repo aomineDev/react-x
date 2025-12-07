@@ -5,17 +5,14 @@ import { highlight } from '@/util/highlight'
 import { Spinner } from '../ui/spinner'
 import parse, { type DOMNode, Element } from 'html-react-parser'
 import CodeInput from './CodeInput'
-
-interface CompleteCodeProps {
-  code: string[]
-  answer: string
-}
+import type { CompleteCodeQuizz } from '@/types/quizConfig'
+import { Link } from 'react-router-dom'
 
 type Answer = Record<string, string>
 
 const regex = /___([^_]+)_([^}]+)___/gi
 
-const CompleteCode = ({ code, answer }: CompleteCodeProps) => {
+const CompleteCode = ({ code, answer, nivel, next }: CompleteCodeQuizz) => {
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [html, setHtml] = useState('')
   const [correctAnswers, setCorrectAnswers] = useState<Answer>({})
@@ -85,21 +82,22 @@ const CompleteCode = ({ code, answer }: CompleteCodeProps) => {
   if (loading) return <Spinner />
 
   return (
-    <div className="flex flex-col items-center gap-5">
-      <h1>Title</h1>
+    <div className="flex flex-col items-center gap-5 py-6">
+      <h1 className="text-4xl capitalize font-bold primary-gradient">Quizz {nivel}</h1>
       <p>{answer}</p>
 
       {parse(html, options)}
 
       {quizzCompleted ? (
-        <div>
+        <div className="text-center">
           <Button
             size="lg"
             className="cursor-pointer text-white bg-green-500 border-b-4 border-b-green-900 hover:bg-green-600"
+            asChild
           >
-            Continuar
+            <Link to={next}>Continuar</Link>
           </Button>
-          <p>Quizz completado!</p>
+          <p className="text-lg mt-4">Quizz completado!</p>
         </div>
       ) : (
         <Button

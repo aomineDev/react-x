@@ -3,14 +3,14 @@ import { useParams } from 'react-router-dom'
 import { Spinner } from '@/components/ui/spinner'
 import TrueFalse from '@/components/quizz/TrueFalse'
 import OneSelect from '@/components/quizz/OneSelect'
-import type { QuizConfig } from '@/types/quizConfirg'
+import type { QuizConfig } from '@/types/quizConfig.d'
 import SafeLayout from '@/layout/SafeLayout'
 
 export default function QuizPage() {
   const { lessonId, quizzId } = useParams()
 
   const [loading, setLoading] = useState(true)
-  const [config, setConfig] = useState<QuizConfig | null>(null)
+  const [config, setConfig] = useState<QuizConfig>({} as QuizConfig)
 
   const quizFile = `/lessons/lesson-${lessonId}/Quizz${quizzId}.json`
 
@@ -34,15 +34,14 @@ export default function QuizPage() {
     case 'truefalse':
       return (
         <SafeLayout>
-          <TrueFalse data={config} />
+          <TrueFalse {...config} />
         </SafeLayout>
       )
 
     case 'one-select':
       return (
         <SafeLayout>
-          {' '}
-          <OneSelect opciones={config} />{' '}
+          <OneSelect {...config} />
         </SafeLayout>
       )
 

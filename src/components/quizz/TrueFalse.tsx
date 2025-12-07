@@ -12,25 +12,15 @@ import {
 import { ArrowRight, Trophy } from 'lucide-react'
 import Confetti from '@/components/Confetti'
 import { Link } from 'react-router-dom'
+import type { TrueFalseQuiz } from '@/types/quizConfig'
 
 type EstadoRespuesta = 'pendiente' | 'correcto' | 'incorrecto'
 
-interface OpcionesVF {
-  pregunta: string
-  nivel: string
-  correcta: 'V' | 'F'
-  next: string
-}
-
-export default function TrueFalse({ data }: { data?: OpcionesVF }) {
+export default function TrueFalse({ correcta, next, nivel, pregunta }: TrueFalseQuiz) {
   const [seleccion, setSeleccion] = useState<'V' | 'F' | ''>('')
   const [estado, setEstado] = useState<EstadoRespuesta>('pendiente')
   const [showModal, setShowModal] = useState(false)
   const [success, setSuccess] = useState(false)
-
-  if (!data) return <div>No hay pregunta disponible</div>
-
-  const { pregunta, nivel, correcta, next } = data
 
   const verificar = () => {
     if (!seleccion) return

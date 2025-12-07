@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from 'react'
+import { useState } from 'react'
 import { Button } from '../ui/button'
 import {
   AlertDialog,
@@ -13,18 +13,18 @@ import { ArrowRight, Trophy } from 'lucide-react'
 import Confetti from '@/components/Confetti'
 import { Link } from 'react-router-dom'
 import CodeBlock from '../CodeBlock'
-interface Opciones {
-  pregunta: string
-  codigo?: ReactNode
-  nivel: string
-  opciones: { clave: string; texto: string }[]
-  correcta: string
-  next: string
-}
+import type { OneSelectQuiz } from '@/types/quizConfig'
 
 type EstadoRespuesta = 'pendiente' | 'correcto' | 'incorrecto'
 
-export default function OneSelect({ opciones }: { opciones?: Opciones }) {
+export default function OneSelect({
+  correcta,
+  opciones,
+  next,
+  pregunta,
+  nivel,
+  codigo,
+}: OneSelectQuiz) {
   const [seleccion, setSeleccion] = useState<string>('')
   const [estado, setEstado] = useState<EstadoRespuesta>('pendiente')
   const [showModal, setShowModal] = useState(false)
@@ -33,8 +33,6 @@ export default function OneSelect({ opciones }: { opciones?: Opciones }) {
   if (!opciones) {
     return <div>No hay pregunta disponible</div>
   }
-
-  const { pregunta, nivel, codigo, opciones: listaOpciones, correcta, next } = opciones
 
   const handleSelect = () => {
     if (!seleccion) return
@@ -100,7 +98,7 @@ export default function OneSelect({ opciones }: { opciones?: Opciones }) {
         <h3>{pregunta}</h3>
         {codigo && <CodeBlock>{codigo.toString()}</CodeBlock>}
         <div className="flex flex-col gap-4 w-100">
-          {listaOpciones.map((opcion) => (
+          {opciones.map((opcion) => (
             <Button
               key={opcion.clave}
               className={`w-full border-2 transition-all duration-200 border-b-4 cursor-pointer ${getClaseOpcion(
