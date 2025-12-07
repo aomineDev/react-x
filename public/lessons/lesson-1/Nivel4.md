@@ -2,13 +2,12 @@
 
 El renderizado condicional te permite mostrar diferentes elementos según una condición.
 
-- OBJETIVO:
-
-En este nivel crearás un componente de Producto que sera para una labtop, donde aplicarás descuentos y alertas de stock.
+- **OBJETIVO:**
+  En este nivel crearás un componente de Producto que será para una laptop, donde aplicarás descuentos y alertas de stock.
 
 ---
 
-## Paso 1 - Agrega una variable descuento
+## <span class='custom-order'>1</span> Agrega una variable descuento
 
 Empieza creando una variable booleana para controlar el ternario
 
@@ -18,11 +17,11 @@ let tieneDescuento = true
 
 ---
 
-## Paso 2 - Aplica el opeador ternario `: ? `
+## <span class='custom-order'>2</span> Aplica el operador ternario `? :`
 
 Crea el ternario para controlar el descuento del producto
 
-```jsx showLineNumbers {2,4}
+```jsx showLineNumbers {2, 4}
 {
   tieneDescuento ? (
     <p style={{ color: 'red' }}>S/ {1500 - 1500 * 0.25} Con descuento</p>
@@ -32,13 +31,14 @@ Crea el ternario para controlar el descuento del producto
 }
 ```
 
-> Añade estilos para apresiar mejor el descuento, el precio puede ser estatico o puede ser dinamico depende de ti, juega con las variables
+> [!tip]
+> Añade estilos para apreciar mejor el descuento. El precio puede ser estático o dinámico dependiendo de ti, juega con las variables.
 
 ---
 
-## Paso 3 - Agrega una variable para controlar el descuento del producto
+## <span class='custom-order'>3</span> Agrega una variable para controlar el stock del producto
 
-Ahora crea una variable numerica para controlar si el producto tiene bajo stock
+Ahora crea una variable numérica para controlar si el producto tiene bajo stock
 
 ```jsx showLineNumbers
 let stock = 2
@@ -46,7 +46,7 @@ let stock = 2
 
 ---
 
-## Paso 4 - Aplica el operador `&&`
+## <span class='custom-order'>4</span> Aplica el operador `&&`
 
 Crea el operador `&&` para controlar el stock del producto
 
@@ -66,11 +66,12 @@ Crea el operador `&&` para controlar el stock del producto
 }
 ```
 
-> Añade estilos para apreciar mejor el stock disponible
+> [!important]
+> El operador `&&` renderiza el componente solo si **todas** las condiciones son verdaderas. Si cualquiera es falsa, no se muestra nada.
 
 ---
 
-## 5 - Resultado final
+## <span class='custom-order'>5</span> Resultado final
 
 ```jsx showLineNumbers
 export default function Producto() {
