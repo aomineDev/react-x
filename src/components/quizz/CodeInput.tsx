@@ -17,7 +17,7 @@ const CodeInput = ({
   handleInputChange,
   checkAnswer,
 }: CodeInputProps) => {
-  const color = checkAnswer(id) ? 'green' : 'red'
+  const isCorrect = checkAnswer(id)
 
   return (
     <Input
@@ -26,14 +26,10 @@ const CodeInput = ({
       style={{ width: `${width}px` }}
       className={`h-7 mx-1 
         ${
-          showFeedback
-            ? `text-${color}-500
-              border-${color}-500                     
-              focus-visible:ring-${color}-500         
-              focus-visible:border-${color}-500       
-              focus-visible:ring-offset-0          
-              focus-visible:ring-2`
-            : ''
+          showFeedback &&
+          (isCorrect
+            ? 'text-green-500 border-green-500 focus-visible:ring-green-500 focus-visible:border-green-500 focus-visible:ring-offset-0 focus-visible:ring-2'
+            : 'text-red-500 border-red-500 focus-visible:ring-red-500 focus-visible:border-red-500 focus-visible:ring-offset-0 focus-visible:ring-2')
         }
       `}
       onChange={(e) => handleInputChange(id, e.target.value)}

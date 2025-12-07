@@ -7,6 +7,7 @@ import parse, { type DOMNode, Element } from 'html-react-parser'
 import CodeInput from './CodeInput'
 import type { CompleteCodeQuizz } from '@/types/quizConfig'
 import { Link } from 'react-router-dom'
+import { Check } from 'lucide-react'
 
 type Answer = Record<string, string>
 
@@ -105,7 +106,9 @@ const CompleteCode = ({ code, answer, nivel, next }: CompleteCodeQuizz) => {
           className="cursor-pointer text-white bg-blue-500 border-b-4 border-b-blue-900 hover:bg-blue-600"
           onClick={handleVerification}
         >
-          <span className="text-base">Verificar</span>
+          <span className="text-base flex items-center gap-2">
+            Verificar <Check />
+          </span>
         </Button>
       )}
 

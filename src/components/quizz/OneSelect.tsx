@@ -71,12 +71,12 @@ export default function OneSelect({
 
   const getClaseOpcion = (clave: string) => {
     if (seleccion === clave) {
-      let color = ''
-      if (estado === 'correcto') color = 'green'
-      else if (estado === 'incorrecto') color = 'red'
-      else color = 'blue'
-
-      return ` border-${color}-500 dark:border-${color}-500 bg-${color}-500/10 dark:bg-${color}-500/10 text-${color}-500 hover:bg-${color}-500/10 dark:hover:bg-${color}-500/10 hover:text-${color}-500`
+      if (estado === 'correcto')
+        return 'border-green-500 dark:border-green-500 bg-green-500/10 dark:bg-green-500/10 text-green-500 hover:bg-green-500/10 dark:hover:bg-green-500/10 hover:text-green-500'
+      else if (estado === 'incorrecto')
+        return 'border-red-500 dark:border-red-500 bg-red-500/10 dark:bg-red-500/10 text-red-500 hover:bg-red-500/10 dark:hover:bg-red-500/10 hover:text-red-500'
+      else
+        return 'border-blue-500 dark:border-blue-500 bg-blue-500/10 dark:bg-blue-500/10 text-blue-500 hover:bg-blue-500/10 dark:hover:bg-blue-500/10 hover:text-blue-500'
     }
 
     return ''
