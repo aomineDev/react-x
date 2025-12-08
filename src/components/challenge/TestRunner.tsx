@@ -14,7 +14,7 @@ import {
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog'
 import Confetti from '@/components/Confetti'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 
 interface TestRunnerProps {
   onClick: () => void

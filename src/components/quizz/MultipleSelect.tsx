@@ -13,31 +13,50 @@ import { ArrowRight, Trophy } from 'lucide-react'
 import Confetti from '@/components/Confetti'
 import { Link } from 'react-router-dom'
 import CodeBlock from '../CodeBlock'
-import type { OneSelectQuiz } from '@/types/quizConfig'
+import type { MultiSelectQuiz } from '@/types/quizConfig'
 
 type EstadoRespuesta = 'pendiente' | 'correcto' | 'incorrecto'
 
-export default function OneSelect({
-  correcta,
+export default function MultiSelect({
+  correctas,
   opciones,
   next,
   pregunta,
   nivel,
   codigo,
-}: OneSelectQuiz) {
-  const [seleccion, setSeleccion] = useState<string>('')
+}: MultiSelectQuiz) {
+  const [selecciones, setSelecciones] = useState<string[]>([])
   const [estado, setEstado] = useState<EstadoRespuesta>('pendiente')
   const [showModal, setShowModal] = useState(false)
-
   const [success, setSuccess] = useState(false)
+
   if (!opciones) {
     return <div>No hay pregunta disponible</div>
   }
 
-  const handleSelect = () => {
-    if (!seleccion) return
+  const toggleSeleccion = (clave: string) => {
+    if (estado !== 'pendiente') return
 
-    if (seleccion === correcta) {
+    setSelecciones((prev) => {
+      if (prev.includes(clave)) {
+        return prev.filter((item) => item !== clave)
+      } else {
+        return [...prev, clave]
+      }
+    })
+  }
+
+  const handleSelect = () => {
+    if (selecciones.length === 0) return
+
+    const seleccionesOrdenadas = [...selecciones].sort()
+    const correctasOrdenadas = [...correctas].sort()
+
+    const esCorrect =
+      seleccionesOrdenadas.length === correctasOrdenadas.length &&
+      seleccionesOrdenadas.every((val, index) => val === correctasOrdenadas[index])
+
+    if (esCorrect) {
       setEstado('correcto')
       setSuccess(true)
       setShowModal(true)
@@ -47,7 +66,7 @@ export default function OneSelect({
   }
 
   const resetQuiz = () => {
-    setSeleccion('')
+    setSelecciones([])
     setEstado('pendiente')
   }
 
@@ -61,7 +80,7 @@ export default function OneSelect({
 
   const getTextoBoton = () => {
     if (estado == 'correcto') {
-      return '¡Correcto¡'
+      return '¡Correcto!'
     }
     if (estado === 'incorrecto') {
       return 'Intentalo de nuevo'
@@ -70,7 +89,7 @@ export default function OneSelect({
   }
 
   const getClaseOpcion = (clave: string) => {
-    if (seleccion === clave) {
+    if (selecciones.includes(clave)) {
       if (estado === 'correcto')
         return 'border-green-500 dark:border-green-500 bg-green-500/10 dark:bg-green-500/10 text-green-500 hover:bg-green-500/10 dark:hover:bg-green-500/10 hover:text-green-500'
       else if (estado === 'incorrecto')
@@ -97,6 +116,7 @@ export default function OneSelect({
         <h1 className="text-4xl capitalize font-bold primary-gradient">Quizz {nivel}</h1>
         <h3>{pregunta}</h3>
         {codigo && <CodeBlock>{codigo.toString()}</CodeBlock>}
+        <p className="text-sm text-gray-500">Selecciona todas las respuestas correctas</p>
         <div className="flex flex-col gap-4 w-100">
           {opciones.map((opcion) => (
             <Button
@@ -104,7 +124,7 @@ export default function OneSelect({
               className={`w-full border-2 transition-all duration-200 border-b-4 cursor-pointer ${getClaseOpcion(
                 opcion.clave
               )}`}
-              onClick={() => setSeleccion(opcion.clave)}
+              onClick={() => toggleSeleccion(opcion.clave)}
               disabled={estado !== 'pendiente'}
               variant="outline"
             >
@@ -115,7 +135,7 @@ export default function OneSelect({
         <Button
           className={`cursor-pointer text-white w-100 ${getClaseBoton()}`}
           size="lg"
-          disabled={!seleccion}
+          disabled={selecciones.length === 0}
           onClick={handleBotonPrincipal}
         >
           {getTextoBoton()}

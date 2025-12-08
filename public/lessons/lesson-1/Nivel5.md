@@ -7,7 +7,7 @@ El renderizado de listas te permite mostrar múltiples elementos de manera diná
 
 ---
 
-## <span class='custom-order'>1</span> Agrega un array de videojuegos
+## ~1~ Agrega un array de videojuegos
 
 Primero define un arreglo que contenga información de tus juegos favoritos. Cada juego debe tener un id único; esto será importante más adelante
 
@@ -26,7 +26,7 @@ const juegos = [
 
 ---
 
-## <span class='custom-order'>2</span> Renderiza la lista con `.map()`
+## ~2~ Renderiza la lista con `.map()`
 
 Agrega una lista y renderiza los elementos usando la función `.map()`
 
@@ -44,7 +44,7 @@ Agrega una lista y renderiza los elementos usando la función `.map()`
 
 ---
 
-## <span class='custom-order'>3</span> Agrega un filtro para mostrar solo las consolas Xbox
+## ~3~ Agrega un filtro para mostrar solo las consolas Xbox
 
 Usa `.filter()` + `.map()` para poder hacer este filtro
 
@@ -64,7 +64,7 @@ Usa `.filter()` + `.map()` para poder hacer este filtro
 
 ---
 
-## <span class='custom-order'>4</span> Resultado final
+## ~4~ Resultado final
 
 ```jsx showLineNumbers
 export default function VideoJuego() {

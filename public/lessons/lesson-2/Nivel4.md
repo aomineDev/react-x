@@ -7,7 +7,7 @@ Hasta ahora has escrito `props.nombre`, `props.edad` muchas veces. Existe una fo
 
 ---
 
-## <span class='custom-order'>1</span> El problema: código repetitivo
+## ~1~ El problema: código repetitivo
 
 Observa cuántas veces se repite `props.` en el componente `TarjetaUsuario.jsx`
 
@@ -48,7 +48,7 @@ export default function App() {
 
 ---
 
-## <span class='custom-order'>2</span> Desestructuración en los parámetros
+## ~2~ Desestructuración en los parámetros
 
 Extrae las props directamente en los parámetros de la función en `TarjetaUsuario.jsx`
 
@@ -89,7 +89,7 @@ export default function App() {
 
 ---
 
-## <span class='custom-order'>3</span> Agrega valores por defecto
+## ~3~ Agrega valores por defecto
 
 Crea otra tarjeta con otros campos y no le agregues ni la `ubicacion` ni `experiencia`
 
@@ -141,7 +141,7 @@ export default function TarjetaUsuario({
 
 ---
 
-## <span class='custom-order'>4</span> Resultado final de `App.jsx`
+## ~4~ Resultado final de `App.jsx`
 
 ```jsx showLineNumbers
 import TarjetaUsuario from './TarjetaUsuario.jsx'
@@ -168,7 +168,7 @@ export default function App() {
 
 ---
 
-## <span class='custom-order'>5</span> Resultado final de `TarjetaUsuario.jsx`
+## ~5~ Resultado final de `TarjetaUsuario.jsx`
 
 ```jsx showLineNumbers
 export default function TarjetaUsuario({

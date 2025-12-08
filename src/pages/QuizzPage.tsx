@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
+import { useParams } from 'react-router-dom'
 import { Spinner } from '@/components/ui/spinner'
 import TrueFalse from '@/components/quizz/TrueFalse'
 import OneSelect from '@/components/quizz/OneSelect'
-import type { QuizConfig } from '@/types/quizConfirg'
+import type { QuizConfig } from '@/types/quizConfig.d'
+import SafeLayout from '@/layout/SafeLayout'
+import CompleteCode from '@/components/quizz/CompleteCode'
+import MultiSelect from '@/components/quizz/MultipleSelect'
 
 export default function QuizPage() {
   const { lessonId, quizzId } = useParams()
 
   const [loading, setLoading] = useState(true)
-  const [config, setConfig] = useState<QuizConfig | null>(null)
+  const [config, setConfig] = useState<QuizConfig>({} as QuizConfig)
 
   const quizFile = `/lessons/lesson-${lessonId}/Quizz${quizzId}.json`
 
@@ -31,11 +34,31 @@ export default function QuizPage() {
 
   switch (config.type) {
     case 'truefalse':
-      return <TrueFalse data={config} />
+      return (
+        <SafeLayout>
+          <TrueFalse {...config} />
+        </SafeLayout>
+      )
 
     case 'one-select':
-      return <OneSelect opciones={config} />
+      return (
+        <SafeLayout>
+          <OneSelect {...config} />
+        </SafeLayout>
+      )
 
+    case 'complete-code':
+      return (
+        <SafeLayout>
+          <CompleteCode {...config} />
+        </SafeLayout>
+      )
+    case 'multi-select':
+      return (
+        <SafeLayout>
+          <MultiSelect {...config} />
+        </SafeLayout>
+      )
     default:
       return <div>Tipo de quiz no soportado</div>
   }

@@ -50,23 +50,23 @@ export default function Counter() {
 }
 ```
 
-Pretty neat, eh?
+Pretty **neat**, eh?
 
 ---
 
-## <span class='custom-order'>4</span> GFM
+## GFM
 
-### <span class='custom-order'>1</span> Autolink literals
+### ~1~ Autolink literals
 
 www.example.com, https://example.com, and contact@example.com.
 
-### <span class='custom-order'>2</span> Strikethrough
+### ~2~ Strikethrough
 
 ~one~ or ~~two~~ tildes.
 
-### <span class='custom-order'>3</span> Alerts
+### ~3~ Alerts
 
-Some alerts
+_Some_ `alerts`
 
 > [!note]
 > Useful information that users should know, even when skimming content.
@@ -83,14 +83,14 @@ Some alerts
 > [!caution]
 > Useful information that users should know, even when skimming content.
 
-### <span class='custom-order'>4</span> Table
+### ~4~ Table
 
 | Columna 1 | Columna 2 | Columna 3 |
 | --------- | --------- | --------- |
 | Dato A    | Dato B    | Dato C    |
 | Dato D    | Dato E    | Dato F    |
 
-### <span class='custom-order'>5</span> Tasklist
+### ~5~ Tasklist
 
 - [ ] to do
 - [x] done

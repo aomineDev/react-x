@@ -1,0 +1,15 @@
+{
+  "type": "multi-select",
+  "nivel": "3",
+  "pregunta": "¿Cuáles de las siguientes herramientas forman parte del ecosistema de React?",
+  "opciones": [
+    { "clave": "a", "texto": "React Router" },
+    { "clave": "b", "texto": "Tailwind CSS" },
+    { "clave": "c", "texto": "Redux" },
+    { "clave": "d", "texto": "Microsoft Word" },
+    { "clave": "e", "texto": "Next.js" },
+    { "clave": "f", "texto": "Netflix UI Framework" }
+  ],
+  "correctas": ["a", "b", "c", "e"],
+  "next": "/lesson/0/4"
+}
