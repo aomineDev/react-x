@@ -1,6 +1,6 @@
 export const NavLinks = () => {
   const links = [
-    { label: 'Inicio', href: '/' },
+    { label: 'Inicio', href: '#inicio' },
     { label: 'Nosotros', href: '#nosotros' },
     { label: 'Características', href: '#caracteristicas' },
     { label: 'Lecciones', href: '#lecciones' },
