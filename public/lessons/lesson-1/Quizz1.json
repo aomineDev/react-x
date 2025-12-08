@@ -1,13 +1,13 @@
 {
   "type": "multi-select",
   "nivel": "1",
-  "pregunta": "¿Cuáles de las siguientes son reglas válidas de JSX?",
+  "pregunta": "¿Cuál de las siguientes opciones es un retorno válido en un componente JSX?",
   "opciones": [
-    { "clave": "a", "texto": "Todos los elementos deben cerrarse" },
-    { "clave": "b", "texto": "Se usa className en lugar de class" },
-    { "clave": "c", "texto": "Se usa htmlFor en lugar de for" },
-    { "clave": "d", "texto": "Las etiquetas pueden estar sin cerrar" }
+    { "clave": "a", "texto": "Un div" },
+    { "clave": "b", "texto": "Un Fragment (<> </>)" },
+    { "clave": "c", "texto": "Una lista UL" },
+    { "clave": "d", "texto": "Dos elementos hermanos sin envolver" }
   ],
-  "correctas": ["a", "b", "c"],
+  "correctas": ["a", "b"],
   "next": "/lesson/1/2"
 }

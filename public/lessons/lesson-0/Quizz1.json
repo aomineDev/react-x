@@ -1,0 +1,16 @@
+{
+  "type": "one-select",
+  "nivel": "1",
+  "pregunta": "¿Qué describe mejor lo que es React?",
+  "opciones": [
+    { "clave": "a", "texto": "Un lenguaje de programación que reemplaza a JavaScript" },
+    { "clave": "b", "texto": "Un framework completo para crear servidores web" },
+    {
+      "clave": "c",
+      "texto": "Una librería basada en componentes para construir interfaces "
+    },
+    { "clave": "d", "texto": "Una base de datos para almacenar información " }
+  ],
+  "correcta": "c",
+  "next": "/lesson/0/2"
+}

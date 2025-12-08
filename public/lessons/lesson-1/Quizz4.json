@@ -1,14 +1,7 @@
 {
-  "type": "one-select",
-  "nivel": "4",
-  "pregunta": "¿Qué se mostrará en pantalla?",
-  "codigo": "export default function Producto() {\n  const tieneDescuento = false;\n  const stock = 3;\n  const precio = 2000;\n\n  return (\n    <div>\n      {\n        tieneDescuento\n          ? <p>S/ {precio - precio * 0.20} con descuento</p>\n          : <p>Sin descuento: S/ {precio}</p>\n      }\n\n      {\n        stock < 5 && <p>¡Solo quedan {stock} unidades!</p>\n      }\n    </div>\n  );\n}",
-  "opciones": [
-    { "clave": "a", "texto": "S/ 1600 con descuento" },
-    { "clave": "b", "texto": "Sin descuento: S/ 2000 y ¡Solo quedan 3 unidades!" },
-    { "clave": "c", "texto": "Sin descuento: S/ 2000" },
-    { "clave": "d", "texto": "¡Solo quedan 3 unidades!" }
-  ],
-  "correcta": "b",
+  "type": "truefalse",
+  "nivel": "Quizz 4",
+  "pregunta": "En React, el renderizado condicional permite insertar expresiones JavaScript dentro del JSX para decidir qué contenido o componente se muestra.",
+  "correcta": "V",
   "next": "/lesson/1/5"
 }
