@@ -9,6 +9,10 @@ html {
   scroll-behavior: smooth;
 }
 
+.anchor-section {
+  scroll-margin-top: 110px;
+}
+
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));

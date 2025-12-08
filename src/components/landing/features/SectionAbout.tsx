@@ -1,9 +1,12 @@
+import { BlurBlob } from '@/components/ui/blur-blob'
 import { Button } from '@/components/ui/button'
 import { CheckCircle } from 'lucide-react'
 
 export const SectionAbout = () => {
   return (
-    <section className="relative py-28" id="nosotros">
+    <section className="relative py-28 scroll-mt-32" id="nosotros">
+      <BlurBlob className="-translate-y-[calc(100%)]" />
+
       <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-12 grid md:grid-cols-2 gap-16 items-center">
         <div className="flex justify-center md:justify-end">
           <img

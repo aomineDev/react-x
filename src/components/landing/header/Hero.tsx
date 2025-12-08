@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button'
 
 export const Hero = () => {
   return (
-    <section className="relative pt-28 pb-12 overflow-hidden" id="inicio">
+    <section className="pt-28 pb-12 overflow-hidden anchor-section" id="inicio">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-12 text-center">
         <img
           src="src/assets/images/logo/logo-reactX.png"
