@@ -1,6 +1,6 @@
 {
   "type": "one-select",
-  "nivel": "Quizz 4",
+  "nivel": "4",
   "pregunta": "¿Qué se mostrará en pantalla?",
   "codigo": "export default function Producto() {\n  const tieneDescuento = false;\n  const stock = 3;\n  const precio = 2000;\n\n  return (\n    <div>\n      {\n        tieneDescuento\n          ? <p>S/ {precio - precio * 0.20} con descuento</p>\n          : <p>Sin descuento: S/ {precio}</p>\n      }\n\n      {\n        stock < 5 && <p>¡Solo quedan {stock} unidades!</p>\n      }\n    </div>\n  );\n}",
   "opciones": [

@@ -7,7 +7,7 @@ En el nivel anterior solo pasaste strings y números. Ahora aprenderás a pasar 
 
 ---
 
-## <span class='custom-order'>1</span> Crea la ficha básica con strings y números
+## ~1~ Crea la ficha básica con strings y números
 
 En el componente `App.jsx`, agrega el componente `FichaLibro.jsx` enviando el título, autor y páginas
 
@@ -36,7 +36,7 @@ export default function FichaLibro(props) {
 
 ---
 
-## <span class='custom-order'>2</span> Agrega disponibilidad con un boolean
+## ~2~ Agrega disponibilidad con un boolean
 
 Ahora en `FichaLibro.jsx` indica si el libro está disponible usando un valor booleano:
 
@@ -61,7 +61,7 @@ Y en el componente padre `App.jsx`
 
 ---
 
-## <span class='custom-order'>3</span> Agrega las categorías con un array
+## ~3~ Agrega las categorías con un array
 
 Ahora en `FichaLibro.jsx` agrega las categorías del libro usando un array:
 
@@ -85,7 +85,7 @@ Y en el componente padre `App.jsx`
 
 ---
 
-## <span class='custom-order'>4</span> Agrega información de la editorial con un objeto
+## ~4~ Agrega información de la editorial con un objeto
 
 Ahora en `FichaLibro.jsx` agrega los datos de la editorial usando un objeto:
 
@@ -116,7 +116,7 @@ Y en el componente padre `App.jsx`
 
 ---
 
-## <span class='custom-order'>5</span> Resultado final en `FichaLibro.jsx`
+## ~5~ Resultado final en `FichaLibro.jsx`
 
 ```jsx showLineNumbers
 export default function FichaLibro(props) {
@@ -148,7 +148,7 @@ export default function FichaLibro(props) {
 
 ---
 
-## <span class='custom-order'>6</span> Resultado final en `App.jsx`
+## ~6~ Resultado final en `App.jsx`
 
 ```jsx showLineNumbers
 import FichaLibro from './FichaLibro.jsx'

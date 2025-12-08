@@ -1,6 +1,6 @@
 {
   "type": "one-select",
-  "nivel": "Quizz 5",
+  "nivel": "5",
   "pregunta": "¿Dónde está el error?",
   "codigo": "function App() {\n  function manejarSaludo() {\n    alert('Hola!');\n  }\n\n  return <Boton onClick={manejarSaludo()} />;\n}\n\nfunction Boton({ onClick }) {\n  return <button onClick={onClick}>Saludar</button>;\n}",
   "opciones": [

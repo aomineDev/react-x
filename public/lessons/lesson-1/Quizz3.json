@@ -1,7 +1,21 @@
 {
-  "type": "truefalse",
-  "pregunta": "Dentro de las llaves {} no se pueden hacer operaciones matemáticas, solo mostrar texto.",
-  "nivel": "Quizz 3",
-  "correcta": "F",
+  "type": "complete-code",
+  "code": [
+    "function Perfil() {",
+    "  const nombre = \"carlos\";",
+    "  const edad = 30;",
+    "  const salario = 2500;",
+    "",
+    "  return (",
+    "    <div>",
+    "      <h1>Empleado { ___1_nombre___ }</h1>",
+    "      <p>Edad: { ___2_edad___ }</p>",
+    "      <p>Salario: { ___3_salario___ }</p>",
+    "    </div>",
+    "  );",
+    "}"
+  ],
+  "answer": "Completa los espacios para que el código funcione correctamente.",
+  "nivel": "3",
   "next": "/lesson/1/4"
 }

@@ -7,7 +7,7 @@ Hasta ahora has pasado datos (strings, números, objetos) como props. Pero ¿có
 
 ---
 
-## <span class='custom-order'>1</span> Tu primer callback: el hijo ejecuta una función del padre
+## ~1~ Tu primer callback: el hijo ejecuta una función del padre
 
 Comienza creando un botón que ejecuta una función del padre:
 
@@ -45,7 +45,7 @@ export default function App() {
 
 ---
 
-## <span class='custom-order'>2</span> Pasa datos desde el hijo al padre
+## ~2~ Pasa datos desde el hijo al padre
 
 Ahora haz que el botón le diga al padre qué botón fue presionado
 
@@ -82,7 +82,7 @@ export default function App() {
 
 ---
 
-## <span class='custom-order'>3</span> Resultado final en `App.jsx`
+## ~3~ Resultado final en `App.jsx`
 
 ```jsx showLineNumbers
 import Boton from './Boton.jsx'
@@ -106,7 +106,7 @@ export default function App() {
 
 ---
 
-## <span class='custom-order'>4</span> Resultado final en `Boton.jsx`
+## ~4~ Resultado final en `Boton.jsx`
 
 ```jsx showLineNumbers
 export default function Boton({ etiqueta, accion }) {

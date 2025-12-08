@@ -6,6 +6,7 @@ import OneSelect from '@/components/quizz/OneSelect'
 import type { QuizConfig } from '@/types/quizConfig.d'
 import SafeLayout from '@/layout/SafeLayout'
 import CompleteCode from '@/components/quizz/CompleteCode'
+import MultiSelect from '@/components/quizz/MultipleSelect'
 
 export default function QuizPage() {
   const { lessonId, quizzId } = useParams()
@@ -52,7 +53,12 @@ export default function QuizPage() {
           <CompleteCode {...config} />
         </SafeLayout>
       )
-
+    case 'multi-select':
+      return (
+        <SafeLayout>
+          <MultiSelect {...config} />
+        </SafeLayout>
+      )
     default:
       return <div>Tipo de quiz no soportado</div>
   }

@@ -7,7 +7,7 @@ El renderizado condicional te permite mostrar diferentes elementos según una co
 
 ---
 
-## <span class='custom-order'>1</span> Agrega una variable descuento
+## ~1~ Agrega una variable descuento
 
 Empieza creando una variable booleana para controlar el ternario
 
@@ -17,7 +17,7 @@ let tieneDescuento = true
 
 ---
 
-## <span class='custom-order'>2</span> Aplica el operador ternario `? :`
+## ~2~ Aplica el operador ternario `? :`
 
 Crea el ternario para controlar el descuento del producto
 
@@ -36,7 +36,7 @@ Crea el ternario para controlar el descuento del producto
 
 ---
 
-## <span class='custom-order'>3</span> Agrega una variable para controlar el stock del producto
+## ~3~ Agrega una variable para controlar el stock del producto
 
 Ahora crea una variable numérica para controlar si el producto tiene bajo stock
 
@@ -46,7 +46,7 @@ let stock = 2
 
 ---
 
-## <span class='custom-order'>4</span> Aplica el operador `&&`
+## ~4~ Aplica el operador `&&`
 
 Crea el operador `&&` para controlar el stock del producto
 
@@ -71,7 +71,7 @@ Crea el operador `&&` para controlar el stock del producto
 
 ---
 
-## <span class='custom-order'>5</span> Resultado final
+## ~5~ Resultado final
 
 ```jsx showLineNumbers
 export default function Producto() {

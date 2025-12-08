@@ -1,0 +1,13 @@
+{
+  "type": "multi-select",
+  "nivel": "1",
+  "pregunta": "¿Cuáles de las siguientes son reglas válidas de JSX?",
+  "opciones": [
+    { "clave": "a", "texto": "Todos los elementos deben cerrarse" },
+    { "clave": "b", "texto": "Se usa className en lugar de class" },
+    { "clave": "c", "texto": "Se usa htmlFor en lugar de for" },
+    { "clave": "d", "texto": "Las etiquetas pueden estar sin cerrar" }
+  ],
+  "correctas": ["a", "b", "c"],
+  "next": "/lesson/1/2"
+}
