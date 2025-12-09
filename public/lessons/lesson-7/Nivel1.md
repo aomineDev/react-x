@@ -8,7 +8,7 @@ En esta actividad aprenderás a usar `useReducer` para manejar estados complejos
 
 Un reducer es una función que recibe el estado actual y una acción, y retorna el nuevo estado. Aquí un ejemplo:
 
-## <span class='custom-order'>1</span>Definicion del reducer
+## ~1~ Definicion del reducer
 
 ```javascript showLineNumbers
 function reducer(state, action) {
@@ -27,7 +27,7 @@ function reducer(state, action) {
 - Cada caso devuelve un nuevo objeto de estado, nunca se modifica el existente.
 - Si la acción no existe, se devuelve el estado actual.
 
-## <span class='custom-order'>2</span>Como usar `useReducer` en el componente
+## ~2~ Como usar `useReducer` en el componente
 
 ```javascript showLineNumber {4,9}
 import { useReducer } from 'react'
@@ -48,7 +48,7 @@ export default function App() {
 
 - `state` contiene el estado actualizado.
 
-## <span class='custom-order'>3</span>Enviar acciones con dispatch
+## ~3~ Enviar acciones con dispatch
 
 ```javascript
 <button onClick={() => dispatch({ type: 'incrementar' })}>+</button>

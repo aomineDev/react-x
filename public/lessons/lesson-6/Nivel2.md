@@ -8,7 +8,7 @@ _En esta actividad aprenderás a controlar la ejecución de efectos._
 
 El array de dependencias es el segundo argumento de `useEffect`. Permite controlar exactamente cuándo se ejecuta el efecto. Aquí un ejemplo:
 
-## <span class='custom-order'>1</span> Definir estados
+## ~1~ Definir estados
 
 ```javascript showLineNumbers {2-3}
 export default function App() {
@@ -18,7 +18,7 @@ export default function App() {
 
 - El efecto dependerá de este estado.
 
-## <span class='custom-order'>2</span>Anadir dependencia
+## ~2~ dependencia
 
 ```javascript showLineNumbers {3}
   useEffect(() => {

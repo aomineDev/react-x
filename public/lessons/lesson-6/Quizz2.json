@@ -1,6 +1,6 @@
 {
   "type": "one-select",
-  "nivel": "Quizz 2",
+  "nivel": "2",
   "pregunta": "¿Cuál de estos efectos se ejecutará solo una vez cuando el componente se monte?",
   "codigo": "import { useState, useEffect } from 'react'\n\nexport default function App() {\n  const [nombre, setNombre] = useState('Carlos');\n  const [mensaje, setMensaje] = useState('');\n\n  useEffect(() => {\n    console.log('Nombre cambiado:', nombre);\n  }, [nombre]);\n\n  useEffect(() => {\n    setMensaje('Componente montado');\n  }, []);\n\n  return <p>{mensaje}</p>;\n}",
   "opciones": [

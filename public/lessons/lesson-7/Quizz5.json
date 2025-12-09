@@ -1,6 +1,6 @@
 {
   "type": "one-select",
-  "nivel": "Quizz 5",
+  "nivel": "5",
   "pregunta": "¿Por qué startTransition se usa para actualizar la lista grande en lugar de usar setState directamente?",
   "codigo": "startTransition(() => {\n  const nuevaLista = Array(20000).fill(input)\n  setLista(nuevaLista)\n})",
   "opciones": [

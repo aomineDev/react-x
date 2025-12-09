@@ -6,7 +6,7 @@ Para escribir efectos eficientes, necesitas entender estas situaciones y cómo e
 
 En esta actividad aprenderás a identificar y corregir errores comunes con efectos.
 
-## <span class='custom-order'>1</span> Bucle Infinito
+## ~1~ Bucle Infinito
 
 Este código crea un bucle infinito:
 
@@ -23,7 +23,7 @@ useEffect(() => {
 
 **Solución**: Agrega el array de dependencias correcto.
 
-## <span class='custom-order'>2</span>Stale Closure (Cierre Obsoleto)
+## ~2~ Closure (Cierre Obsoleto)
 
 Este código no funciona como esperas:
 

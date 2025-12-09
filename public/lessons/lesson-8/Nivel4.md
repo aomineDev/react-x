@@ -8,7 +8,7 @@ En esta actividad aprenderás a usar propTypes para validar props.
 
 PropTypes permite especificar el tipo de dato esperado para cada prop y si es requerida. Aquí un ejemplo:
 
-## <span class='custom-order'>1</span>Definir el componente y recibir props
+## ~1~ Definir el componente y recibir props
 
 ```javascript showLineNumbers
 import PropTypes from 'prop-types'
@@ -19,7 +19,7 @@ function Boton({ texto, tipo, onClick, deshabilitado }) {
 - El componente recibe varias props: texto, tipo, etc.
 - PropTypes permitirá validar qué tipo debe tener cada una.
 
-## <span class='custom-order'>2</span>Render del botón
+## ~2~ Render del botón
 
 ```javascript showLineNumbers
   return (
@@ -38,7 +38,7 @@ function Boton({ texto, tipo, onClick, deshabilitado }) {
 - Estilo cambia según el tipo de botón.
 - `{texto}` muestra el texto enviado por props.
 
-## <span class='custom-order'>3</span>Validación de props con PropTypes
+## ~3~ Validación de props con PropTypes
 
 ```javascript showLineNumbers
 Boton.propTypes = {
@@ -55,7 +55,7 @@ Boton.propTypes = {
 - deshabilitado: debe ser booleano.
   > Esto ayuda a evitar errores al usar el componente.
 
-## <span class='custom-order'>4</span>Valores por defecto
+## ~4~ Valores por defecto
 
 ```javascript showLineNumbers
 Boton.defaultProps = {
