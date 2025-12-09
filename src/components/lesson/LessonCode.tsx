@@ -5,14 +5,14 @@ import {
   SandpackPreview,
 } from '@codesandbox/sandpack-react'
 import { atomDark, aquaBlue } from '@codesandbox/sandpack-themes'
-import { useTheme } from '@/store/theme'
+import { useTheme } from '@/store'
 
 interface LessonCodeProps {
   files: Record<string, string>
 }
 
 const LessonCode = ({ files }: LessonCodeProps) => {
-  const theme = useTheme((state) => state.theme)
+  const { theme } = useTheme()
 
   return (
     <SandpackProvider

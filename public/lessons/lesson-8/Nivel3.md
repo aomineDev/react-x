@@ -8,13 +8,13 @@ En esta actividad aprenderás a crear componentes con múltiples slots de conten
 
 En lugar de solo usar children, puedes aceptar múltiples props que contengan JSX. Aquí un ejemplo:
 
-## <span class='custom-order'>1</span>Recibir varias props JSX
+## ~1~ Recibir varias props JSX
 
 ```javascript showLineNumber
 function Modal({ titulo, contenido, acciones }) {
 ```
 
-## <span class='custom-order'>2</span>Renderizar cada slot en su lugar
+## ~2~ Renderizar cada slot en su lugar
 
 ```javascript showLineNumbers
 return (
@@ -30,7 +30,7 @@ return (
 - Cada prop representa un "slot" o ranura de contenido
 - Puedes pasar cualquier JSX como valor de la prop
 
-## <span class='custom-order'>3</span>Enviar el contenido desde el padre
+## ~3~ Enviar el contenido desde el padre
 
 ```javascript showLineNumbers
 export default function App() {

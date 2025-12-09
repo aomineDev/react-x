@@ -1,6 +1,6 @@
 {
   "type": "one-select",
-  "nivel": "Quizz 1",
+  "nivel": "1",
   "pregunta": "¿Cuál es la función principal de props.children en un componente contenedor?",
   "codigo": "import React from 'react'\n\nfunction Tarjeta({ children }) {\n  return (\n    <div\n      style={{\n        border: '2px solid #e2e8f0',\n        borderRadius: '8px',\n        padding: '20px',\n        marginBottom: '20px',\n        backgroundColor: '#ffffff'\n      }}\n    >\n      {children}\n    </div>\n  )\n}\n\nfunction Alerta({ children, tipo = 'info' }) {\n  const colores = {\n    info: '#dbeafe',\n    exito: '#dcfce7',\n    error: '#fee2e2'\n  }\n\n  return (\n    <div\n      style={{\n        backgroundColor: colores[tipo],\n        padding: '15px',\n        borderRadius: '8px',\n        marginBottom: '15px'\n      }}\n    >\n      {children}\n    </div>\n  )\n}\n\nexport default function App() {\n  return (\n    <div style={{ padding: '20px' }}>\n      <Tarjeta>\n        <h2>Bienvenido</h2>\n        <p>Este contenido está dentro de Tarjeta.</p>\n      </Tarjeta>\n\n      <Alerta tipo='info'>Mensaje informativo</Alerta>\n      <Alerta tipo='exito'>Operación realizada con éxito</Alerta>\n      <Alerta tipo='error'>Ha ocurrido un error</Alerta>\n    </div>\n  )\n}",
   "opciones": [

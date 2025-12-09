@@ -6,7 +6,7 @@ Para ejecutar código después del render, React utiliza el hook `useEffect`.
 
 El hook que permite ejecutar efectos secundarios es `useEffect`. Aquí un ejemplo de cómo utilizar `useEffect` en un componente:
 
-## <span class='custom-order'>1</span> Importar los Hooks
+## ~1~ Importar los Hooks
 
 ```javascript
 import { useState, useEffect } from 'react'
@@ -15,7 +15,7 @@ import { useState, useEffect } from 'react'
 > [!important]
 > Debes importar `useEffect` desde React junto con otros hooks
 
-## <span class='custom-order'>2</span> Crear el efecto con `useEffect`
+## ~2~ Crear el efecto con `useEffect`
 
 ```javascript showLineNumbers {4-6}
 function App() {
@@ -30,7 +30,7 @@ function App() {
 - Muestra en consola el valor actual del contador.
 - No tiene array de dependencias, por eso se ejecuta siempre.
 
-## <span class='custom-order'>3</span> Render y actualización del estado
+## ~3~ Render y actualización del estado
 
 ```javascript showLineNumbers {2}
   return (

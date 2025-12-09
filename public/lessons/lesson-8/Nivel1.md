@@ -8,7 +8,7 @@ En esta actividad aprenderás a usar `props.children` para crear componentes con
 
 `props.children` contiene todo lo que colocas entre las etiquetas de apertura y cierre de un componente. Aquí un ejemplo:
 
-## <span class='custom-order'>1</span>Componente contenedor usando `children`
+## ~1~ Componente contenedor usando `children`
 
 ```javascript showLineNumbers
 function Tarjeta({ children }) {
@@ -20,7 +20,7 @@ function Tarjeta({ children }) {
 - Representa todo lo que coloques dentro del componente.
 - Permite crear componentes genéricos y reutilizables
 
-## <span class='custom-order'>2</span>Uso del componente contenedor
+## ~2~ Uso del componente contenedor
 
 ```javascript showLineNumbers
 export default function App() {

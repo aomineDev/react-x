@@ -1,6 +1,6 @@
 {
   "type": "one-select",
-  "nivel": "Quizz 1",
+  "nivel": "1",
   "pregunta": "¿Qué se mostrará en consola cuando el componente se renderiza y cada vez que el contador cambie?",
   "codigo": "import { useState, useEffect } from 'react'\n\nexport default function Contador() {\n  const [contador, setContador] = useState(0);\n\n  useEffect(() => {\n    console.log('El efecto se ejecutó. Contador:', contador);\n  });\n\n  return (\n    <button onClick={() => setContador(contador + 1)}>\n      Clicks: {contador}\n    </button>\n  );\n}",
   "opciones": [

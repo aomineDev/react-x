@@ -1,16 +1,10 @@
 import NavItem from './NavItem'
 import { House, Moon, Sun } from 'lucide-react'
 import { Button } from './ui/button'
-import { useTheme } from '@/store/theme'
+import { useTheme } from '@/store'
 
 const Header = () => {
-  const theme = useTheme((state) => state.theme)
-  const toggletheme = useTheme((state) => state.toggleTheme)
-
-  function handleSwithTheme() {
-    toggletheme()
-    document.documentElement.classList.toggle('dark')
-  }
+  const { theme, toggleTheme } = useTheme()
 
   return (
     <nav className="fixed top-0 left-0 right-0 flex items-center justify-between px-10 py-3 border-b border-gray-600 bg-background">
@@ -21,7 +15,7 @@ const Header = () => {
           className="rounded-full cursor-pointer"
           variant="ghost"
           size="icon"
-          onClick={handleSwithTheme}
+          onClick={toggleTheme}
         >
           {theme === 'dark' ? <Sun /> : <Moon />}
         </Button>

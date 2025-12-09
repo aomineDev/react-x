@@ -8,7 +8,7 @@ En esta actividad aprenderás a usar `useRef` para acceder al DOM y almacenar va
 
 `useRef` retorna un objeto con una propiedad `current` que persiste durante toda la vida del componente. Aquí un ejemplo:
 
-## <span class='custom-order'>1</span>Importación del hook
+## ~1~ Importación del hook
 
 ```javascript showLineNumbers
 import { useRef } from 'react'
@@ -16,7 +16,7 @@ import { useRef } from 'react'
 
 - Se importa `useRef`, un hook que permite crear una referencia que no se pierde entre renders.
 
-## <span class='custom-order'>2</span>Crear una referencia
+## ~2~ Crear una referencia
 
 ```javascript showLineNumbers
 const inputRef = useRef(null)
@@ -26,7 +26,7 @@ const inputRef = useRef(null)
 - Aquí `.current` comenzará como `null`.
 - Esta referencia apuntará al `<input>` cuando React lo renderice.
 
-## <span class='custom-order'>3</span>Función que usa la referencia
+## ~3~ Función que usa la referencia
 
 ```javascript showLineNumbers
 const enfocarInput = () => {
@@ -37,7 +37,7 @@ const enfocarInput = () => {
 - Se accede al elemento DOM real mediante `inputRef.current`.
 - Se llama al método `.focus()` para enfocar el input.
 
-## <span class='custom-order'>4</span>Asociar la referencia al elemento
+## ~4~ Asociar la referencia al elemento
 
 ```javascript showLineNumbers
 <input ref={inputRef} type="text" />
@@ -47,7 +47,7 @@ const enfocarInput = () => {
 
 - Después del render, `inputRef.current` será el input real del DOM.
 
-## <span class='custom-order'>5</span> Botón que activa la acción
+## ~5~  Botón que activa la acción
 
 ```javascript showLineNumbers
 <button onClick={enfocarInput}>Enfocar</button>

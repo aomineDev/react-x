@@ -14,7 +14,7 @@ Context permite compartir valores entre componentes sin pasar props manualmente.
 import { createContext, useContext, useState } from 'react'
 ```
 
-## <span class='custom-order'>1</span>`createContext`
+## ~1~ `createContext`
 
 ```javascript showLineNumbers
 const TemaContext = createContext()
@@ -23,7 +23,7 @@ const TemaContext = createContext()
 - Crea un contexto llamado TemaContext.
 - Sirve para compartir datos (en este caso, el tema) entre componentes.
 
-## <span class='custom-order'>2</span>Estado en el componente principal
+## ~2~ Estado en el componente principal
 
 ```javascript showLineNumbers
 export default function App() {
@@ -33,7 +33,7 @@ export default function App() {
 - Se define un estado `tema` con valor inicial `"claro"`.
 - `setTema` es la función para cambiar el estado.
 
-## <span class='custom-order'>3</span>Proveedor del contexto
+## ~3~ Proveedor del contexto
 
 ```javascript showLineNumbers
 return (
@@ -47,7 +47,7 @@ return (
 - Proporciona el valor { `tema`, `setTema` } a todos los componentes dentro de él.
 - Así, `ComponenteHijo` puede acceder directamente al tema y a la función para cambiarlo.
 
-## <span class='custom-order'>4</span>Consumidor del contexto
+## ~4~ Consumidor del contexto
 
 ```javascript showLineNumbers
 function ComponenteHijo() {
@@ -57,7 +57,7 @@ function ComponenteHijo() {
 - `useContext` permite acceder al valor del contexto (`tema` y `setTema`).
 - Ya no es necesario recibirlos como props.
 
-## <span class='custom-order'>5</span>Componente hijo
+## ~5~ Componente hijo
 
 ```javascript showLineNumbers
 return <button onClick={() => setTema('oscuro')}>{tema}</button>

@@ -1,6 +1,6 @@
 {
   "type": "one-select",
-  "nivel": "Quizz 1",
+  "nivel": "1",
   "pregunta": "¿Qué acción dentro del reducer es la correcta para evitar que 'completadas' supere el total de 'tareas'?",
   "codigo": "function reducer(state, action) {\n  switch (action.type) {\n    case 'completar':\n      return {\n        ...state,\n        completadas: state.completadas < state.tareas\n          ? state.completadas + 1\n          : state.completadas\n      }\n    default:\n      return state;\n  }\n}",
   "opciones": [
