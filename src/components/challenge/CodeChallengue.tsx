@@ -9,7 +9,7 @@ import {
 import { atomDark, aquaBlue } from '@codesandbox/sandpack-themes'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import TestRunner from './TestRunner'
-import { useTheme } from '@/store/theme'
+import { useTheme } from '@/store/useTheme'
 import Markdown from '@/components/Markdown'
 
 interface CodeChallengeProps {

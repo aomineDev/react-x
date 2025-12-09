@@ -1,7 +1,7 @@
 import Lesson from '@/components/lesson/Lesson'
 import { Spinner } from '@/components/ui/spinner'
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { type LessonConfig } from '@/types/interfaceConfig.d'
 import SafeLayout from '@/layout/SafeLayout'
 
@@ -9,16 +9,20 @@ const LessonPage = () => {
   const { lessonId, nivelId } = useParams()
   const [loading, setLoading] = useState(true)
   const [config, setConfig] = useState<LessonConfig>({} as LessonConfig)
+  const navigate = useNavigate()
 
   const nivel = `/lessons/lesson-${lessonId}/Nivel${nivelId}.json`
-  console.log(nivel)
+
   useEffect(() => {
     fetch(nivel)
       .then((res) => res.json())
       .then((data) => setConfig(data))
-      .catch((err) => console.error('Error al cargar Marckdown:', err))
+      .catch((err) => {
+        navigate('/')
+        console.error('Error al cargar Marckdown:', err)
+      })
       .finally(() => setLoading(false))
-  }, [nivel])
+  }, [nivel, navigate])
 
   if (loading)
     return (

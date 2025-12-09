@@ -1,6 +1,6 @@
 import { BookOpen, Code2, FileEdit, Layers, NotebookText } from 'lucide-react'
 import { BlurBlob } from '@/components/ui/blur-blob'
-import { SpotlightCard } from '@/components/ui/SpotlightCard'
+import { SpotlightCard } from '@/components/SpotlightCard'
 
 export const SectionCharacteristics = () => {
   const features = [
