@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { NavLinks } from './NavLinks'
 import { MobileNav } from './MobileNav'
+import { Link } from 'react-router-dom'
 
 export const Navbar = () => {
   return (
@@ -14,9 +15,11 @@ export const Navbar = () => {
 
         <div className="hidden md:flex items-center gap-3">
           <Button variant="ghost" className="text-sm">
-            Iniciar Sesión
+            <Link to="/login">Iniciar Sesión</Link>
           </Button>
-          <Button className="text-sm">Regístrate</Button>
+          <Button className="text-sm">
+            <Link to="/signup">Regístrate</Link>
+          </Button>
         </div>
 
         <MobileNav />

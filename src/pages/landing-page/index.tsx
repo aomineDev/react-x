@@ -15,7 +15,6 @@ export default function LandingPage() {
       <SectionCharacteristics />
       <SectionCarousel />
       <SectionContact />
-
       <Footer />
     </>
   )

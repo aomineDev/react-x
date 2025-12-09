@@ -18,6 +18,10 @@ import { BlurBlob } from '@/components/ui/blur-blob'
 import { Link } from 'react-router-dom'
 
 const formSchema = z.object({
+  fullName: z
+    .string()
+    .min(3, 'El nombre completo debe tener al menos 3 caracteres')
+    .max(50, 'El nombre completo debe tener como máximo 50 caracteres'),
   email: z.string().email('Ingresa un email válido'),
   password: z
     .string()
@@ -33,6 +37,7 @@ const FormPage = () => {
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      fullName: '',
       email: '',
       password: '',
     },
@@ -62,12 +67,29 @@ const FormPage = () => {
 
         <Card className="w-full sm:w-md border border-white/10 bg-black/10 rounded-2xl">
           <CardHeader>
-            <CardTitle>Login</CardTitle>
-            <CardDescription>Ingresa tu email abajo para ingresar a tu cuenta.</CardDescription>
+            <CardTitle>Registrarse</CardTitle>
+            <CardDescription>Ingresa tu informacion abajo para crear tu cuenta.</CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={form.handleSubmit(onSubmit)} id="form">
               <FieldGroup>
+                <Controller
+                  name="fullName"
+                  control={form.control}
+                  render={({ field, fieldState }) => (
+                    <Field data-invalid={fieldState.invalid}>
+                      <FieldLabel htmlFor="fullName">Nombre completo</FieldLabel>
+                      <Input
+                        {...field}
+                        id="fullName"
+                        placeholder="Jhordan Calixto"
+                        aria-invalid={fieldState.invalid}
+                        autoComplete="off"
+                      />
+                      {fieldState.error && <FieldError>{fieldState.error.message}</FieldError>}
+                    </Field>
+                  )}
+                />
                 <Controller
                   name="email"
                   control={form.control}
@@ -111,13 +133,13 @@ const FormPage = () => {
               form="form"
               className="w-full bg-blue-500 hover:bg-blue-600 text-white shadow-lg shadow-blue-500/50 cursor-pointer"
             >
-              Iniciar sesión
+              Registrarse
             </Button>
 
             <FieldDescription className="text-center">
-              ¿Nuevo en ReactX?{' '}
-              <Link className="underline" to="/signup">
-                Crea una cuenta
+              ¿Ya tienes una cuenta?{' '}
+              <Link className="underline" to="/login">
+                Iniciar sesión
               </Link>
             </FieldDescription>
           </CardFooter>

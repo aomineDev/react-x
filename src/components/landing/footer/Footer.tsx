@@ -1,16 +1,6 @@
-import { BlurBlob } from '@/components/ui/blur-blob'
-
 export const Footer = () => {
   return (
     <footer className="max-w-6xl mx-auto py-12">
-      <BlurBlob
-        className="-translate-y-[calc(-250%)]"
-        colorFrom="rgba(0,150,255,0.25)"
-        colorMid="rgba(30,143,255,0.18)"
-        colorTo="rgba(15,23,42,0.08)"
-        blur={220}
-      />
-
       <div className="container flex flex-col items-center gap-6">
         <img src="src/assets/images/logo/logo-reactX.png" alt="ReactX" className="h-8 opacity-90" />
 

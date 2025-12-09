@@ -1,7 +1,20 @@
 import { useState } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import {
+  Activity,
+  BookOpen,
+  Boxes,
+  ChevronLeft,
+  ChevronRight,
+  FileInput,
+  GalleryVertical,
+  GitCompareArrows,
+  Layers,
+  MousePointerClick,
+  Sparkles,
+} from 'lucide-react'
+import { BlurBlob } from '@/components/ui/blur-blob'
+import { SpotlightCard } from '@/components/ui/SpotlightCard'
 
 const niveles = [
   {
@@ -9,39 +22,59 @@ const niveles = [
     titulo: 'Nivel 0 — Fundamentos',
     descripcion:
       'Conceptos básicos de programación, estructura de archivos y cómo funciona React al nivel más esencial.',
+    icon: <BookOpen className="w-6 h-6" />,
   },
   {
     id: 1,
     titulo: 'Nivel 1 — Componentes',
     descripcion:
-      'Aprende qué es un componente, cómo se construye y cómo reutilizarlo en toda tu interfaz.',
+      'Aprende qué es un componente, cómo se construye y cómo reutilizarlo eficientemente.',
+    icon: <Boxes className="w-6 h-6" />,
   },
   {
     id: 2,
-    titulo: 'Nivel 2 — Props',
+    titulo: 'Nivel 2 — Props de un Componente',
     descripcion:
       'Comunicación entre componentes, paso de datos y creación de interfaces dinámicas.',
+    icon: <GitCompareArrows className="w-6 h-6" />,
   },
   {
     id: 3,
-    titulo: 'Nivel 3 — Estado y Hooks',
-    descripcion: 'useState, useEffect y lógica interactiva para hacer apps realmente vivas.',
+    titulo: 'Nivel 3 — Eventos y Estado',
+    descripcion: 'Interactividad, manejo de eventos, useState y lógica reactiva.',
+    icon: <MousePointerClick className="w-6 h-6" />,
   },
   {
     id: 4,
-    titulo: 'Nivel 4 — Rutas',
-    descripcion: 'React Router, navegación por páginas, rutas dinámicas y estructura profesional.',
+    titulo: 'Nivel 4 — Formularios',
+    descripcion:
+      'Inputs controlados, validación, manejo de datos y patrones para formularios limpios.',
+    icon: <FileInput className="w-6 h-6" />,
   },
   {
     id: 5,
-    titulo: 'Nivel 5 — Consumo de APIs',
-    descripcion: 'Fetch, Axios, loaders, manejo de errores y datos reales conectados a tu UI.',
+    titulo: 'Nivel 5 — Renderizado',
+    descripcion: 'Re-render, reconciliación, key, listas, condicionales y optimización visual.',
+    icon: <GalleryVertical className="w-6 h-6" />,
   },
   {
     id: 6,
-    titulo: 'Nivel 6 — Proyecto Final',
+    titulo: 'Nivel 6 — Efectos Secundarios',
+    descripcion: 'Uso correcto de useEffect, dependencias, ciclos de vida y patrones estables.',
+    icon: <Activity className="w-6 h-6" />,
+  },
+  {
+    id: 7,
+    titulo: 'Nivel 7 — Hooks',
+    descripcion: 'Hooks fundamentales, hooks personalizados y composición de lógica avanzada.',
+    icon: <Layers className="w-6 h-6" />,
+  },
+  {
+    id: 8,
+    titulo: 'Nivel 8 — Patrones y Mejores Prácticas',
     descripcion:
-      'Construye un proyecto completo aplicando todo lo aprendido, con buenas prácticas y despliegue.',
+      'Clean code, arquitectura de componentes, buenas prácticas y escalabilidad en React.',
+    icon: <Sparkles className="w-6 h-6" />,
   },
 ]
 
@@ -58,6 +91,14 @@ export const SectionCarousel = () => {
 
   return (
     <section id="lecciones" className="py-28 anchor-section">
+      <BlurBlob
+        className="-translate-y-[calc(-250%)]"
+        colorFrom="rgba(0,150,255,0.25)"
+        colorMid="rgba(30,143,255,0.18)"
+        colorTo="rgba(15,23,42,0.08)"
+        blur={220}
+      />
+
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-12">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <h2 className="text-3xl md:text-4xl font-bold">Ruta de Aprendizaje</h2>
@@ -78,16 +119,11 @@ export const SectionCarousel = () => {
 
           {/* Card */}
           <div className="w-full max-w-xl">
-            <Card className="border border-white/10 bg-black/10 rounded-2xl">
-              <CardHeader>
-                <CardTitle className="text-xl font-semibold">{niveles[index].titulo}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground text-base leading-relaxed">
-                  {niveles[index].descripcion}
-                </p>
-              </CardContent>
-            </Card>
+            <SpotlightCard
+              icon={niveles[index].icon}
+              title={niveles[index].titulo}
+              description={niveles[index].descripcion}
+            />
           </div>
 
           <Button

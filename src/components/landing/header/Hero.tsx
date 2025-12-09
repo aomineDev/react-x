@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button'
+import { Link } from 'react-router-dom'
 
 export const Hero = () => {
   return (
@@ -17,7 +18,7 @@ export const Hero = () => {
 
         <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row justify-center gap-4">
           <Button size="lg" className="w-full sm:w-auto">
-            Regístrate
+            <Link to="/signup">Crear cuenta</Link>
           </Button>
           <Button size="lg" variant="outline" className="w-full sm:w-auto">
             <a href="#lecciones">Ver lecciones</a>

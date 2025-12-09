@@ -1,6 +1,6 @@
-import { Card, CardContent } from '@/components/ui/card'
 import { BookOpen, Code2, FileEdit, Layers, NotebookText } from 'lucide-react'
 import { BlurBlob } from '@/components/ui/blur-blob'
+import { SpotlightCard } from '@/components/ui/SpotlightCard'
 
 export const SectionCharacteristics = () => {
   const features = [
@@ -44,29 +44,15 @@ export const SectionCharacteristics = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {features.slice(0, 2).map(({ icon, title, description }) => (
-            <Card key={title} className="border border-white/10 bg-black/10 rounded-2xl">
-              <CardContent className="p-6">
-                <div className="p-3 bg-white/10 rounded-xl inline-flex mb-4">{icon}</div>
-
-                <h3 className="text-lg font-semibold mb-1">{title}</h3>
-                <p className="text-sm text-muted-foreground">{description}</p>
-              </CardContent>
-            </Card>
+          {features.slice(0, 2).map((f) => (
+            <SpotlightCard key={f.title} {...f} />
           ))}
+        </div>
 
-          <div className="sm:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {features.slice(2).map(({ icon, title, description }) => (
-              <Card key={title} className="border border-white/10 bg-black/10 rounded-2xl">
-                <CardContent className="p-6">
-                  <div className="p-3 bg-white/10 rounded-xl inline-flex mb-4">{icon}</div>
-
-                  <h3 className="text-lg font-semibold mb-1">{title}</h3>
-                  <p className="text-sm text-muted-foreground">{description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-6">
+          {features.slice(2).map((f) => (
+            <SpotlightCard key={f.title} {...f} />
+          ))}
         </div>
       </div>
     </section>

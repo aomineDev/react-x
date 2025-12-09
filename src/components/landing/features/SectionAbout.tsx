@@ -1,5 +1,4 @@
 import { BlurBlob } from '@/components/ui/blur-blob'
-import { Button } from '@/components/ui/button'
 import { CheckCircle } from 'lucide-react'
 
 export const SectionAbout = () => {
@@ -51,10 +50,6 @@ export const SectionAbout = () => {
               </span>
             </li>
           </ul>
-
-          <Button size="lg" className="px-6 mx-auto md:mx-0">
-            Saber más
-          </Button>
         </div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { Menu } from 'lucide-react'
 import { Sheet, SheetTrigger, SheetContent } from '@/components/ui/sheet'
+import { Link } from 'react-router-dom'
 
 export const MobileNav = () => {
   const links = [
@@ -33,8 +34,12 @@ export const MobileNav = () => {
             ))}
 
             <div className="pt-4 border-t mt-4 flex flex-col gap-3">
-              <Button variant="ghost">Iniciar Sesión</Button>
-              <Button>Regístrate</Button>
+              <Button variant="ghost" className="text-sm">
+                <Link to="/login">Iniciar Sesión</Link>
+              </Button>
+              <Button className="text-sm">
+                <Link to="/signup">Regístrate</Link>
+              </Button>
             </div>
           </nav>
         </SheetContent>
