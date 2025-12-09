@@ -261,7 +261,7 @@
   }
 
   /* Code line */
-  pre [data-line] {
+  [data-line] {
     @apply border-l-2 border-l-transparent;
   }
 

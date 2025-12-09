@@ -51,7 +51,7 @@ const Markdown = ({ children, full = false }: MarkdownProps) => {
   }
 
   return (
-    <div className={'prose dark:prose-invert ' + (full ? 'min-w-full p-5' : 'mx-auto')}>
+    <div className={'prose dark:prose-invert ' + (full ? 'min-w-full p-8' : 'mx-auto')}>
       <ReactMarkdown
         remarkPlugins={[remarkgfm, remarkAlert]}
         rehypePlugins={[
@@ -109,7 +109,7 @@ const Markdown = ({ children, full = false }: MarkdownProps) => {
 
             return (
               <div className="relative group">
-                <div className="absolute right-3 top-3 opacity-0 group-hover:opacity-100">
+                <div className="absolute right-1 top-1 opacity-0 group-hover:opacity-100">
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Button

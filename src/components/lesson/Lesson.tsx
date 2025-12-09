@@ -24,7 +24,7 @@ const HomePage = ({ config: { markdownUrl, files, lesson, nivel, next, prev } }:
     <div className="min-w-full h-full flex flex-col md:flex-row">
       <div className="basis-1/2 grow overflow-y-scroll custom-scroll relative">
         <div
-          className={`p-5 flex items-center justify-between sticky top-0 left-o w-full bg-background z-50 border-b border-gray-300 dark:border-gray-700 ${
+          className={`px-8 py-4 flex items-center justify-between sticky top-0 left-o w-full bg-background z-50 border-b border-gray-300 dark:border-gray-700 ${
             files === undefined ? 'mb-5 max-w-[65ch] mx-auto' : ''
           }`}
         >
