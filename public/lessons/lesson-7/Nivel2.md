@@ -8,45 +8,58 @@ En esta actividad aprenderás a usar `useRef` para acceder al DOM y almacenar va
 
 `useRef` retorna un objeto con una propiedad `current` que persiste durante toda la vida del componente. Aquí un ejemplo:
 
-## Paso 1 - Importación del hook
-```javascript
-import { useRef } from 'react';
+## <span class='custom-order'>1</span>Importación del hook
+
+```javascript showLineNumbers
+import { useRef } from 'react'
 ```
+
 - Se importa `useRef`, un hook que permite crear una referencia que no se pierde entre renders.
-## Paso 2 - Crear una referencia
-```javascript
-const inputRef = useRef(null);
+
+## <span class='custom-order'>2</span>Crear una referencia
+
+```javascript showLineNumbers
+const inputRef = useRef(null)
 ```
+
 - `useRef` devuelve un objeto con una propiedad `.current`.
 - Aquí `.current` comenzará como `null`.
 - Esta referencia apuntará al `<input>` cuando React lo renderice.
-## Paso 3 - Función que usa la referencia
-```javascript
+
+## <span class='custom-order'>3</span>Función que usa la referencia
+
+```javascript showLineNumbers
 const enfocarInput = () => {
-  inputRef.current.focus();
-};
+  inputRef.current.focus()
+}
 ```
+
 - Se accede al elemento DOM real mediante `inputRef.current`.
 - Se llama al método `.focus()` para enfocar el input.
 
-## Paso 4 - Asociar la referencia al elemento
-```javascript
+## <span class='custom-order'>4</span>Asociar la referencia al elemento
+
+```javascript showLineNumbers
 <input ref={inputRef} type="text" />
 ```
+
 - El atributo `ref` conecta el input con `inputRef`.
 
 - Después del render, `inputRef.current` será el input real del DOM.
 
-## Paso 5 - Botón que activa la acción
-```javascript
+## <span class='custom-order'>5</span> Botón que activa la acción
+
+```javascript showLineNumbers
 <button onClick={enfocarInput}>Enfocar</button>
 ```
+
 - Al hacer clic, se ejecuta enfocarInput.
 - Esto enfoca inmediatamente el campo de texto.
 
-> ## Nota sobre `useRef`
-> 
-> - **Acceder al DOM**: Obtener referencia a elementos reales para manipularlos  
+> [!note]
+> Nota sobre `useRef`
+>
+> - **Acceder al DOM**: Obtener referencia a elementos reales para manipularlos
 > - **Almacenar valores mutables**: Guardar valores que no causan re-render cuando cambian
 
 ---

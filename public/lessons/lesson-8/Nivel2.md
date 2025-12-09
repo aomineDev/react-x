@@ -8,9 +8,9 @@ En esta actividad aprenderás a crear layouts con props.children.
 
 Un Layout define la estructura visual y delega el contenido específico a children. Aquí un ejemplo:
 
-## **Paso 1 - Componente Layout**
+## <span class='custom-order'>1</span>Componente Layout
 
-```javascript
+```javascript showLineNumbers
 function PageLayout({ children }) {
   return (
     <div>
@@ -30,9 +30,9 @@ function PageLayout({ children }) {
 - `children` representa el contenido variable de cada página
 - Puedes reutilizar el mismo Layout en múltiples páginas
 
-## **Paso 2 - Uso del Layout**
+## <span class='custom-order'>2</span> Uso del Layout
 
-```javascript
+```javascript showLineNumbers
 export default function App() {
   return (
     <PageLayout>
@@ -63,7 +63,7 @@ Implementa el componente `Sidebar` que:
 - Tenga un sidebar lateral con navegación
 - Use flexbox para la disposición
 
-```javascript
+```javascript showLineNumbers
 function Sidebar({ children }) {
   return (
     <div style={{ display: 'flex', gap: '20px' }}>

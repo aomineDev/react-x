@@ -8,9 +8,9 @@ _En esta actividad aprenderás a controlar la ejecución de efectos._
 
 El array de dependencias es el segundo argumento de `useEffect`. Permite controlar exactamente cuándo se ejecuta el efecto. Aquí un ejemplo:
 
-## **Paso 1 - Definir estados**
+## <span class='custom-order'>1</span> Definir estados
 
-```javascript
+```javascript showLineNumbers {2-3}
 export default function App() {
   const [nombre, setNombre] = useState('')
   const [edad, setEdad] = useState(0)
@@ -18,9 +18,9 @@ export default function App() {
 
 - El efecto dependerá de este estado.
 
-## **Paso 2 - Anadir dependencia**
+## <span class='custom-order'>2</span>Anadir dependencia
 
-```javascript
+```javascript showLineNumbers {3}
   useEffect(() => {
     console.log('El nombre cambió:', nombre)
   }, [nombre])
@@ -32,6 +32,7 @@ export default function App() {
 - El array `[nombre]`controla cuándo se ejecuta el efecto.
 - Solo corre cuando `nombre` cambia.
 
+> [!important]
 > Tres casos importantes a tener en cuenta:
 
 - **Sin array**: El efecto se ejecuta después de cada render
@@ -44,7 +45,7 @@ export default function App() {
 
 Implementa un `useEffect` que se ejecute solo cuando cambie `nombre`. Actualiza el saludo con:
 
-```javascript
+```javascript showLineNumbers
 setSaludo(`Hola ${nombre}!`)
 ```
 
@@ -54,11 +55,12 @@ El array de dependencias debe ser `[nombre]`.
 
 Implementa un `useEffect` que se ejecute solo al montar el componente. Actualiza el mensaje de bienvenida con:
 
-```javascript
+```javascript showLineNumbers
 setMensajeBienvenida('Componente montado correctamente')
 ```
 
-El array de dependencias debe ser `[]`.
+> [!important]
+> El array de dependencias debe ser `[]`.
 
 ---
 

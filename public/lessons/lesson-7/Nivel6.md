@@ -8,34 +8,39 @@ En esta actividad aprenderás a crear Custom Hooks.
 
 Un Custom Hook es simplemente una función que usa otros hooks. Por convención, su nombre debe empezar con "use". Aquí un ejemplo:
 
-## Paso 1 - **Definir el Custom Hook**
-```javascript
+## <span class='custom-order'>1</span>Definir el Custom Hook
+
+```javascript showLineNumbers
 function useContador(inicial = 0) {
-  const [count, setCount] = useState(inicial);
+  const [count, setCount] = useState(inicial)
 
-  const incrementar = () => setCount(c => c + 1);
-  const decrementar = () => setCount(c => c - 1);
-  const reset = () => setCount(inicial);
+  const incrementar = () => setCount((c) => c + 1)
+  const decrementar = () => setCount((c) => c - 1)
+  const reset = () => setCount(inicial)
 
-  return { count, incrementar, decrementar, reset };
+  return { count, incrementar, decrementar, reset }
 }
 ```
+
 - Es una función normal, pero su nombre inicia con use.
 - Maneja un estado (`count`) internamente.
 - Expone funciones para modificar ese estado (`incrementar`, `decrementar`, `reset`).
 - Devuelve un objeto con todo lo necesario para reutilizarlo.
 
-## Paso 2 - **Usar el Custom Hook dentro del componente**
-```javascript
+## <span class='custom-order'>2</span>Usar el Custom Hook dentro del componente
+
+```javascript showLineNumbers {2}
 export default function App() {
   const { count, incrementar, decrementar } = useContador(0);
 ```
+
 - Aquí se "consume" el hook igual que si fuera `useState`.
 - `useContador(0)` inicializa el contador en 0.
 - Obtienes solo lo que necesitas del hook.
 
-## Paso 3 - **UI que usa las funciones del custom hook**
-```javascript
+## <span class='custom-order'>3</span>UI que usa las funciones del custom hook
+
+```javascript showLineNumbers {4,5}
   return (
     <div>
       <p>{count}</p>
@@ -45,6 +50,7 @@ export default function App() {
   );
 }
 ```
+
 - La UI muestra el estado (`count`).
 - Los botones llaman a las funciones internas del custom hook.
 
@@ -53,27 +59,30 @@ export default function App() {
 ## Crear el Custom Hook useToggle
 
 Implementa el hook `useToggle` que:
+
 1. Use `useState` internamente con el valor inicial
 2. Cree una función `toggle` que invierta el valor booleano
 3. Retorne un array con `[valor, toggle]`
-```javascript
+
+```javascript showLineNumbers
 function useToggle(inicial = false) {
-  const [valor, setValor] = useState(inicial);
-  
+  const [valor, setValor] = useState(inicial)
+
   const toggle = () => {
-    setValor(v => !v);
-  };
-  
-  return [valor, toggle];
+    setValor((v) => !v)
+  }
+
+  return [valor, toggle]
 }
 ```
 
 ## Usar el Custom Hook en el componente
 
 En el componente `App`, usa el hook dos veces:
-```javascript
-const [mostrarTexto, toggleTexto] = useToggle(false);
-const [modoOscuro, toggleModo] = useToggle(false);
+
+```javascript showLineNumbers
+const [mostrarTexto, toggleTexto] = useToggle(false)
+const [modoOscuro, toggleModo] = useToggle(false)
 ```
 
 ---

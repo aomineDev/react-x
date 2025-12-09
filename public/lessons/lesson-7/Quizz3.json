@@ -1,0 +1,14 @@
+{
+  "type": "one-select",
+  "nivel": "Quizz 3",
+  "pregunta": "¿Por qué el cálculo dentro de useMemo no se vuelve a ejecutar cuando cambia el input?",
+  "codigo": "const calculoCostoso = useMemo(() => {\n  console.log('Calculando...')\n  return count * 2\n}, [count])",
+  "opciones": [
+    { "clave": "a", "texto": "Porque useMemo bloquea todos los renders del componente" },
+    { "clave": "b", "texto": "Porque el cálculo solo depende de count, no de input" },
+    { "clave": "c", "texto": "Porque input y count siempre cambian juntos" },
+    { "clave": "d", "texto": "Porque useMemo recalcula siempre sin importar dependencias" }
+  ],
+  "correcta": "b",
+  "next": "/lesson/7/4"
+}
