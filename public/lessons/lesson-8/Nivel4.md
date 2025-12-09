@@ -8,9 +8,9 @@ En esta actividad aprenderás a usar propTypes para validar props.
 
 PropTypes permite especificar el tipo de dato esperado para cada prop y si es requerida. Aquí un ejemplo:
 
-## **Paso 1 - Definir el componente y recibir props**
+## <span class='custom-order'>1</span>Definir el componente y recibir props
 
-```javascript
+```javascript showLineNumbers
 import PropTypes from 'prop-types'
 
 function Boton({ texto, tipo, onClick, deshabilitado }) {
@@ -19,9 +19,9 @@ function Boton({ texto, tipo, onClick, deshabilitado }) {
 - El componente recibe varias props: texto, tipo, etc.
 - PropTypes permitirá validar qué tipo debe tener cada una.
 
-## **Paso 2 - Render del botón**
+## <span class='custom-order'>2</span>Render del botón
 
-```javascript
+```javascript showLineNumbers
   return (
     <button
       onClick={onClick}
@@ -38,9 +38,9 @@ function Boton({ texto, tipo, onClick, deshabilitado }) {
 - Estilo cambia según el tipo de botón.
 - `{texto}` muestra el texto enviado por props.
 
-## **Paso 3 - Validación de props con PropTypes**
+## <span class='custom-order'>3</span>Validación de props con PropTypes
 
-```javascript
+```javascript showLineNumbers
 Boton.propTypes = {
   texto: PropTypes.string.isRequired,
   tipo: PropTypes.oneOf(['primario', 'secundario']),
@@ -55,9 +55,9 @@ Boton.propTypes = {
 - deshabilitado: debe ser booleano.
   > Esto ayuda a evitar errores al usar el componente.
 
-## **Paso 4 - Valores por defecto**
+## <span class='custom-order'>4</span>Valores por defecto
 
-```javascript
+```javascript showLineNumbers
 Boton.defaultProps = {
   tipo: 'primario',
   deshabilitado: false,
@@ -78,7 +78,7 @@ Para el componente `Tarjeta`, define propTypes que especifiquen:
 - `imagen`: string opcional
 - `destacado`: boolean opcional
 
-```javascript
+```javascript showLineNumbers
 Tarjeta.propTypes = {
   titulo: PropTypes.string.isRequired,
   descripcion: PropTypes.string.isRequired,
@@ -99,7 +99,8 @@ Para el componente `Badge`, define propTypes que especifiquen:
 - `color`: debe ser uno de ['azul', 'verde', 'rojo', 'gris']
 - `tamaño`: debe ser uno de ['pequeño', 'mediano', 'grande']
 
-## Observar las advertencias
+> [!warning]
+> Observar las advertencias
 
 Intenta pasar props de tipo incorrecto y observa las advertencias en la consola del navegador.
 

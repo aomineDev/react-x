@@ -1,4 +1,4 @@
-# Nivel 2 - Handlers (Funciones manejadoras de eventos)
+# Handlers (Funciones manejadoras de eventos)
 
 Los handlers son funciones que React ejecuta cuando ocurre un evento en la UI.
 

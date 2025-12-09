@@ -8,9 +8,9 @@ En esta actividad aprenderás a usar `props.children` para crear componentes con
 
 `props.children` contiene todo lo que colocas entre las etiquetas de apertura y cierre de un componente. Aquí un ejemplo:
 
-## **Paso 1 - Componente contenedor usando `children`**
+## <span class='custom-order'>1</span>Componente contenedor usando `children`
 
-```javascript
+```javascript showLineNumbers
 function Tarjeta({ children }) {
   return <div style={{ border: '1px solid #ccc', padding: '20px' }}> {children} </div>
 }
@@ -20,9 +20,9 @@ function Tarjeta({ children }) {
 - Representa todo lo que coloques dentro del componente.
 - Permite crear componentes genéricos y reutilizables
 
-## **Paso 2 - Uso del componente contenedor**
+## <span class='custom-order'>2</span>Uso del componente contenedor
 
-```javascript
+```javascript showLineNumbers
 export default function App() {
   return (
     <Tarjeta>
@@ -41,7 +41,7 @@ export default function App() {
 
 Implementa el componente `Tarjeta` que reciba `children` y lo renderice dentro de un contenedor con estilos:
 
-```javascript
+```javascript showLineNumbers {12}
 function Tarjeta({ children }) {
   return (
     <div
@@ -63,7 +63,7 @@ function Tarjeta({ children }) {
 
 Implementa el componente `Alerta` que reciba `children` y `tipo` (puede ser 'info', 'exito', o 'error'):
 
-```javascript
+```javascript showLineNumbers
 function Alerta({ children, tipo = 'info' }) {
   const colores = {
     info: '#dbeafe',

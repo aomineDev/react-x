@@ -94,7 +94,7 @@ export default function OneSelect({
   return (
     <>
       <div className="max-h-full flex flex-col gap-5 items-center overflow-auto p-5">
-        <h1 className="text-4xl capitalize font-bold primary-gradient">{nivel}</h1>
+        <h1 className="text-4xl capitalize font-bold primary-gradient">Quizz {nivel}</h1>
         <h3>{pregunta}</h3>
         {codigo && <CodeBlock>{codigo.toString()}</CodeBlock>}
         <div className="flex flex-col gap-4 w-100">

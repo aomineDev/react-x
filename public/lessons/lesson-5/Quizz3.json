@@ -1,0 +1,26 @@
+{
+  "type": "one-select",
+  "nivel": "Quizz 3",
+  "pregunta": "¿Cuál de las siguientes afirmaciones describe correctamente cuándo React vuelve a renderizar este componente?",
+  "codigo": "export default function App() {\n  let contador = 0;\n\n  function handleClick() {\n    contador = contador + 1;\n    console.log(\"Contador:\", contador);\n  }\n\n  return <button onClick={_______}>Sumar</button>;\n}",
+  "opciones": [
+    {
+      "clave": "a",
+      "texto": "React renderiza cada vez que haces clic en el botón, sin importar si el estado cambia o no."
+    },
+    {
+      "clave": "b",
+      "texto": "React solo renderiza si el nuevo estado es diferente del estado anterior. Si setCount() recibe el mismo valor, NO renderiza."
+    },
+    {
+      "clave": "c",
+      "texto": "React renderiza cuando cualquier componente de la app cambia, sin importar si este componente tiene estado o no."
+    },
+    {
+      "clave": "d",
+      "texto": "React solo renderiza una vez: durante el renderizado inicial, y nunca más a menos que recargues la página."
+    }
+  ],
+  "correcta": "b",
+  "next": "/lesson/5/4"
+}

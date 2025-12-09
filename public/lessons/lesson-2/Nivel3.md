@@ -7,7 +7,7 @@ Hasta ahora has pasado datos específicos como `nombre`, `edad`, etc. Pero ¿qu�
 
 ---
 
-## <span class='custom-order'>1</span> Crea la tarjeta básica con `children`
+## ~1~ Crea la tarjeta básica con `children`
 
 Comienza creando una tarjeta básica en `TarjetaEmpleado.jsx` que puede envolver cualquier contenido
 
@@ -51,7 +51,7 @@ export default function App() {
 
 ---
 
-## <span class='custom-order'>2</span> Añade props como profesión y color
+## ~2~ Añade props como profesión y color
 
 Ahora la `TarjetaEmpleado.jsx` debe recibir nueva información del empleado para volverse más completa, para ello hay que modificarla
 
@@ -94,7 +94,7 @@ export default function App() {
 
 ---
 
-## <span class='custom-order'>3</span> Resultado final de `TarjetaEmpleado.jsx`
+## ~3~ Resultado final de `TarjetaEmpleado.jsx`
 
 ```jsx showLineNumbers
 export default function TarjetaEmpleado({ children, profesion, color }) {
@@ -116,7 +116,7 @@ export default function TarjetaEmpleado({ children, profesion, color }) {
 
 ---
 
-## <span class='custom-order'>4</span> Resultado final de `App.jsx`
+## ~4~ Resultado final de `App.jsx`
 
 ```jsx showLineNumbers
 import TarjetaEmpleado from './TarjetaEmpleado.jsx'

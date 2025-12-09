@@ -7,7 +7,7 @@ Las **props** permiten que los componentes reciban datos del componente padre. S
 
 ---
 
-## <span class='custom-order'>1</span> Pasa el nombre como prop
+## ~1~ Pasa el nombre como prop
 
 En el componente `App.jsx`, agrega el componente `TarjetaPerfil.jsx` enviando un nombre
 
@@ -40,7 +40,7 @@ export default function TarjetaPerfil(props) {
 
 ---
 
-## <span class='custom-order'>2</span> Agrega el nombre de usuario como prop
+## ~2~ Agrega el nombre de usuario como prop
 
 En `App.jsx`, agrega la prop
 
@@ -56,7 +56,7 @@ En `TarjetaPerfil.jsx`, muéstralo así
 
 ---
 
-## <span class='custom-order'>3</span> Agrega biografía y seguidores
+## ~3~ Agrega biografía y seguidores
 
 En `App.jsx`, agrega las nuevas props
 
@@ -77,7 +77,7 @@ En `TarjetaPerfil.jsx`, muéstralas
 
 ---
 
-## <span class='custom-order'>4</span> Resultado final en `App.jsx`
+## ~4~ Resultado final en `App.jsx`
 
 ```jsx showLineNumbers
 import TarjetaPerfil from './TarjetaPerfil.jsx'
@@ -98,7 +98,7 @@ export default function App() {
 
 ---
 
-## <span class='custom-order'>5</span> Resultado final en `TarjetaPerfil.jsx`
+## ~5~ Resultado final en `TarjetaPerfil.jsx`
 
 ```jsx showLineNumbers
 export default function TarjetaPerfil(props) {

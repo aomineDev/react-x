@@ -1,0 +1,20 @@
+{
+  "type": "one-select",
+  "nivel": "Quizz 5",
+  "pregunta": "¿Por qué startTransition se usa para actualizar la lista grande en lugar de usar setState directamente?",
+  "codigo": "startTransition(() => {\n  const nuevaLista = Array(20000).fill(input)\n  setLista(nuevaLista)\n})",
+  "opciones": [
+    { "clave": "a", "texto": "Porque startTransition hace la operación más rápida que setState" },
+    {
+      "clave": "b",
+      "texto": "Porque startTransition marca la actualización como no urgente, evitando que la UI se congele"
+    },
+    { "clave": "c", "texto": "Porque startTransition actualiza el estado sin re-renderizar" },
+    {
+      "clave": "d",
+      "texto": "Porque startTransition evita que se ejecute el código dentro del callback"
+    }
+  ],
+  "correcta": "b",
+  "next": "/lesson/7/6"
+}

@@ -1,6 +1,6 @@
 {
   "type": "one-select",
-  "nivel": "Quizz 2",
+  "nivel": "2",
   "pregunta": "¿Donde esta el error?",
   "codigo": "export default function TarjetaProducto() {\n  return (\n    <div className='producto-card'>\n      <h2>Producto Destacado</h2>\n      <img src='https://picsum.photos/200' alt='Foto del producto' />\n      <p>Nombre: Audífonos Pro</p>\n      <button className='btn-comprar'>Comprar ahora</button>\n      <label for='cantidad'>Cantidad:</label>\n      <input type='number' id='cantidad'/>\n    </div>\n  );\n}",
   "opciones": [

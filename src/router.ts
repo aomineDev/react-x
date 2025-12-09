@@ -4,7 +4,9 @@ import Layout from '@/layout/AppLayout'
 import LessonPage from '@/pages/LessonPage'
 import QuizPage from '@/pages/QuizzPage'
 import LoginPage from '@/pages/LoginPage'
+import SignupPage from '@/pages/SignupPage'
 import MarkdownPage from '@/pages/MarkdownPage'
+import LandingPage from './pages/landing-page'
 
 export const router = createBrowserRouter([
   {
@@ -30,8 +32,16 @@ export const router = createBrowserRouter([
     ],
   },
   {
+    path: '/landing',
+    Component: LandingPage,
+  },
+  {
     path: '/login',
     Component: LoginPage,
+  },
+  {
+    path: '/signup',
+    Component: SignupPage,
   },
   {
     path: '*',

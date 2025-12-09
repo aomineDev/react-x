@@ -24,4 +24,14 @@ export interface CompleteCodeQuizz {
   next: string
 }
 
-export type QuizConfig = TrueFalseQuiz | OneSelectQuiz | CompleteCodeQuizz
+export interface MultiSelectQuiz {
+  type: 'multi-select'
+  pregunta: string
+  codigo?: string[]
+  nivel: string
+  opciones: Record<'clave' | 'texto', string>[]
+  correctas: string[]
+  next: string
+}
+
+export type QuizConfig = TrueFalseQuiz | OneSelectQuiz | CompleteCodeQuizz | MultiSelectQuiz

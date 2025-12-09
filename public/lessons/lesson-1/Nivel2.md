@@ -7,7 +7,7 @@ JSX (JavaScript XML) es una extensión de sintaxis que te permite escribir códi
 
 ---
 
-## <span class='custom-order'>1</span> Crea el contenedor y el título
+## ~1~ Crea el contenedor y el título
 
 Agrega un div con una clase y un título dentro del componente
 
@@ -22,7 +22,7 @@ Agrega un div con una clase y un título dentro del componente
 
 ---
 
-## <span class='custom-order'>2</span> Agrega la imagen de perfil
+## ~2~ Agrega la imagen de perfil
 
 Dentro del contenedor, debajo del título, agrega la imagen `<img/>`
 
@@ -31,7 +31,6 @@ Dentro del contenedor, debajo del título, agrega la imagen `<img/>`
 ```
 
 ```
-Para sacar una imagen usa este link: https://randomuser.me/api/portraits/men/1.jpg
 ```
 
 > [!note]
@@ -39,7 +38,7 @@ Para sacar una imagen usa este link: https://randomuser.me/api/portraits/men/1.j
 
 ---
 
-## <span class='custom-order'>3</span> Agrega información del usuario
+## ~3~ Agrega información del usuario
 
 Agrega más detalles del perfil con un párrafo y un salto de línea:
 
@@ -51,7 +50,7 @@ Agrega más detalles del perfil con un párrafo y un salto de línea:
 
 ---
 
-## <span class='custom-order'>4</span> Agrega un formulario de contacto
+## ~4~ Agrega un formulario de contacto
 
 Completa la tarjeta agregando un campo de entrada con su etiqueta:
 
@@ -64,7 +63,7 @@ Completa la tarjeta agregando un campo de entrada con su etiqueta:
 
 ---
 
-## <span class='custom-order'>5</span> Unión de todos los pasos
+## ~5~ Resultado final
 
 ```jsx showLineNumbers
 export default function Usuario() {
@@ -72,7 +71,6 @@ export default function Usuario() {
     <>
       <div className="tarjeta">
         <h1 className="titulo">Perfil de Usuario</h1>
-        <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Foto de perfil" />
         <br />
         <p>Sebastian García</p>
         <p>Desarrollador Frontend</p>

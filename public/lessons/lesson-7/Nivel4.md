@@ -9,56 +9,69 @@ En esta actividad aprenderás a usar Context para compartir datos globalmente.
 Context permite compartir valores entre componentes sin pasar props manualmente. Aquí un ejemplo:
 
 - Importamos nuestros hooks
-```javascript
-import { createContext, useContext, useState } from 'react';
+
+```javascript showLineNumbers
+import { createContext, useContext, useState } from 'react'
 ```
-## Paso 1 - `createContext`
-```javascript
-const TemaContext = createContext();
+
+## <span class='custom-order'>1</span>`createContext`
+
+```javascript showLineNumbers
+const TemaContext = createContext()
 ```
+
 - Crea un contexto llamado TemaContext.
 - Sirve para compartir datos (en este caso, el tema) entre componentes.
 
-## Paso 2 - Estado en el componente principal
-```javascript
+## <span class='custom-order'>2</span>Estado en el componente principal
+
+```javascript showLineNumbers
 export default function App() {
   const [tema, setTema] = useState('claro');
- ```
- - Se define un estado `tema` con valor inicial `"claro"`.
+```
+
+- Se define un estado `tema` con valor inicial `"claro"`.
 - `setTema` es la función para cambiar el estado.
 
-## Paso 3 - Proveedor del contexto
-```javascript
-  return (
-    <TemaContext.Provider value={{ tema, setTema }}>
-      <ComponenteHijo />
-    </TemaContext.Provider>
-  );
+## <span class='custom-order'>3</span>Proveedor del contexto
+
+```javascript showLineNumbers
+return (
+  <TemaContext.Provider value={{ tema, setTema }}>
+    <ComponenteHijo />
+  </TemaContext.Provider>
+)
 ```
+
 - El `Provider` envuelve a `ComponenteHijo`.
 - Proporciona el valor { `tema`, `setTema` } a todos los componentes dentro de él.
 - Así, `ComponenteHijo` puede acceder directamente al tema y a la función para cambiarlo.
 
-## Paso 4 - Consumidor del contexto
-```javascript
+## <span class='custom-order'>4</span>Consumidor del contexto
+
+```javascript showLineNumbers
 function ComponenteHijo() {
   const { tema, setTema } = useContext(TemaContext);
 ```
+
 - `useContext` permite acceder al valor del contexto (`tema` y `setTema`).
 - Ya no es necesario recibirlos como props.
 
-## Paso 5 - Componente hijo
-```javascript
-  return <button onClick={() => setTema('oscuro')}>{tema}</button>;
+## <span class='custom-order'>5</span>Componente hijo
+
+```javascript showLineNumbers
+return <button onClick={() => setTema('oscuro')}>{tema}</button>
 ```
+
 - Muestra un botón con el texto del tema actual (`claro` u `oscuro`).
 - Al hacer clic, cambia el tema a `"oscuro"` usando `setTema`.
 
-Tres pasos para usar Context:
-
-- **Crear el Context**: Usa `createContext()` fuera del componente
-- **Proveer el valor**: Envuelve componentes con `Provider` y pasa el valor
-- **Consumir el valor**: Usa `useContext()` en cualquier componente hijo
+> [!tip]
+> Tres pasos para usar Context:
+>
+> - **Crear el Context**: Usa `createContext()` fuera del componente
+> - **Proveer el valor**: Envuelve componentes con `Provider` y pasa el valor
+> - **Consumir el valor**: Usa `useContext()` en cualquier componente hijo
 
 ---
 
@@ -67,9 +80,11 @@ Tres pasos para usar Context:
 En `Header` y `Contenido`, usa `useContext(TemaContext)` para obtener `tema` y `cambiarTema`.
 
 Implementa:
-```javascript
-const { tema, cambiarTema } = useContext(TemaContext);
+
+```javascript showLineNumbers
+const { tema, cambiarTema } = useContext(TemaContext)
 ```
+
 ---
 
 Implementa el código. Observa cómo ambos componentes pueden acceder al tema sin necesidad de pasar props.
