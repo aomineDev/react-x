@@ -8,9 +8,9 @@ En esta actividad aprenderás a hacer peticiones HTTP con `useEffect`.
 
 El patrón para hacer fetch con useEffect maneja múltiples estados. Aquí un ejemplo:
 
-## **Paso 1 - `useEffect` con función async interna**
+## <span class='custom-order'>1</span> `useEffect` con función async interna
 
-```javascript
+```javascript showLineNumber {2-4}
 useEffect(() => {
   const obtenerDatos = async () => {
     // ...
@@ -24,9 +24,9 @@ useEffect(() => {
 - Perfecto para realizar peticiones a una API.
 - Se usa dentro del efecto porque `useEffect` no puede ser declarado como `async`.
 
-## **Paso 2 - Pedir datos a la API**
+## <span class='custom-order'>2</span>Pedir datos a la API
 
-```javascript
+```javascript showLineNumbers {2-5}
 try{
   const res = await fetch("https://PETICION_A_TU_API");
   const data = await res.json();
@@ -38,9 +38,9 @@ try{
 - Convierte la respuesta a JSON.
 - Guarda los datos en el estado (setDatos).
 
-## **Paso 3 - Manejo de errores y finalizacion del proceso**
+## <span class='custom-order'>3</span>Manejo de errores y finalizacion del proceso
 
-```javascript
+```javascript showLineNumbers {2,4}
 } catch (err) {
   setError(err.message);
 } finally {
@@ -52,7 +52,8 @@ try{
 - Se ejecuta siempre, haya error o no.
 - Marca que la carga terminó (loading = false), para mostrar la data o el mensaje adecuado.
 
-Tres estados importantes:
+> [!important]
+> Tres estados importantes:
 
 - **loading**: Indica que la petición está en proceso
 - **error**: Almacena cualquier error que ocurra
@@ -65,12 +66,13 @@ Tres estados importantes:
 Implementa un `useEffect` que:
 
 1. Establecer los estados, usuarios([]), loading(true) y error(null)
-2. Haga fetch a `'https://thesimpsonsapi.com/api/characters'` o tambien puedes intentar con `'https://jsonplaceholder.typicode.com/users'`
+2. Haga fetch a `https://thesimpsonsapi.com/api/characters` o tambien puedes intentar con `https://jsonplaceholder.typicode.com/users`
 3. Convierta la respuesta a JSON
 4. Actualice el estado `usuarios` con los datos
 5. Cambie `loading` a `false` al terminar
 6. Maneje errores con `.catch()` actualizando el estado `error`
 
+> [!warning]
 > El array de dependencias debe ser `[]` para que solo se ejecute una vez.
 
 ---

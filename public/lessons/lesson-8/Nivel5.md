@@ -61,7 +61,7 @@ Implementa:
 
 Estructura del Custom Hook:
 
-```javascript
+```javascript showLineNumbers
 function useContador(inicial = 0) {
   const [valor, setValor] = useState(inicial)
 

@@ -8,15 +8,15 @@ En esta actividad aprenderás a crear componentes con múltiples slots de conten
 
 En lugar de solo usar children, puedes aceptar múltiples props que contengan JSX. Aquí un ejemplo:
 
-## **Paso 1 - Recibir varias props JSX**
+## <span class='custom-order'>1</span>Recibir varias props JSX
 
-```javascript
+```javascript showLineNumber
 function Modal({ titulo, contenido, acciones }) {
 ```
 
-## **Paso 2 - Renderizar cada slot en su lugar**
+## <span class='custom-order'>2</span>Renderizar cada slot en su lugar
 
-```javascript
+```javascript showLineNumbers
 return (
   <div style={{ border: '1px solid #ccc', padding: '20px', borderRadius: '8px' }}>
     <header style={{ borderBottom: '1px solid #e2e8f0', paddingBottom: '10px' }}>{titulo}</header>
@@ -30,9 +30,9 @@ return (
 - Cada prop representa un "slot" o ranura de contenido
 - Puedes pasar cualquier JSX como valor de la prop
 
-## **Paso 3 - Enviar el contenido desde el padre**
+## <span class='custom-order'>3</span>Enviar el contenido desde el padre
 
-```javascript
+```javascript showLineNumbers
 export default function App() {
   return (
     <Modal
@@ -57,7 +57,7 @@ Implementa el componente `Card` que reciba tres slots:
 - `body`: Para el contenido principal (usa children como alternativa)
 - `footer`: Para acciones o información adicional
 
-```javascript
+```javascript showLineNumbers
 function Card({ header, children, footer }) {
   return (
     <div
@@ -104,7 +104,8 @@ Implementa el componente `Dashboard` que reciba:
 - `main`: Contenido principal
 - `widgets`: Widgets adicionales
 
-Usa flexbox para organizar los slots.
+> [!note]
+> Usa flexbox para organizar los slots.
 
 ## Usar los componentes con slots
 

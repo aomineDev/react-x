@@ -6,17 +6,18 @@ Para ejecutar código después del render, React utiliza el hook `useEffect`.
 
 El hook que permite ejecutar efectos secundarios es `useEffect`. Aquí un ejemplo de cómo utilizar `useEffect` en un componente:
 
-## Paso 1 - Importar los Hooks
+## <span class='custom-order'>1</span> Importar los Hooks
 
 ```javascript
 import { useState, useEffect } from 'react'
 ```
 
-- Debes importar `useEffect` desde React junto con otros hooks
+> [!important]
+> Debes importar `useEffect` desde React junto con otros hooks
 
-## Paso 2 - Crear el efecto con `useEffect`
+## <span class='custom-order'>2</span> Crear el efecto con `useEffect`
 
-```javascript
+```javascript showLineNumbers {4-6}
 function App() {
   const [contador, setContador] = useState(0);
 
@@ -29,9 +30,9 @@ function App() {
 - Muestra en consola el valor actual del contador.
 - No tiene array de dependencias, por eso se ejecuta siempre.
 
-## Paso 3 - Render y actualización del estado
+## <span class='custom-order'>3</span> Render y actualización del estado
 
-```javascript
+```javascript showLineNumbers {2}
   return (
     <button onClick={() => setContador(contador + 1)}>
       Clicks: {contador}
@@ -49,12 +50,13 @@ function App() {
 
 Agrega un `useEffect` después del estado `clicks` que actualice el mensaje. Usa el siguiente código como implementación:
 
-```javascript
+```javascript showLineNumbers {2}
 useEffect(() => {
   setMensaje(`El botón fue clickeado ${clicks} veces`)
 })
 ```
 
+> [!note]
 > Agrega tu código para completar la funcionalidad.
 
 ---
