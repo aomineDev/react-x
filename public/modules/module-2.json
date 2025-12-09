@@ -1,0 +1,12 @@
+{
+  "moduleId": 2,
+  "title": "Props de un Componente",
+  "image": "/src/assets/images/background/space5.png",
+  "levels": [
+    { "id": 1, "title": "Nivel 1 — Componentes Dinámicos" },
+    { "id": 2, "title": "Nivel 2 — Tipos de Datos en Props" },
+    { "id": 3, "title": "Nivel 3 — Children Props" },
+    { "id": 4, "title": "Nivel 4 — Desestructuración y Valores por Defecto" },
+    { "id": 5, "title": "Nivel 5 — Callbacks como Props" }
+  ]
+}

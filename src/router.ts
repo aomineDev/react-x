@@ -7,6 +7,7 @@ import LoginPage from '@/pages/LoginPage'
 import SignupPage from '@/pages/SignupPage'
 import MarkdownPage from '@/pages/MarkdownPage'
 import LandingPage from './pages/landing-page'
+import ModulePage from './pages/ModulePage'
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         Component: HomePage,
+      },
+      {
+        path: 'modulo/:moduleId',
+        Component: ModulePage,
       },
       {
         path: 'lesson/:lessonId/:nivelId',
