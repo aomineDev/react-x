@@ -1,8 +1,9 @@
 import Lesson from '@/components/lesson/Lesson'
 import { Spinner } from '@/components/ui/spinner'
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
+import { useParams } from 'react-router-dom'
 import { type LessonConfig } from '@/types/interfaceConfig.d'
+import SafeLayout from '@/layout/SafeLayout'
 
 const LessonPage = () => {
   const { lessonId, nivelId } = useParams()
@@ -25,7 +26,11 @@ const LessonPage = () => {
         <Spinner className="scale-200" />
       </div>
     )
-  return <Lesson config={config}></Lesson>
+  return (
+    <SafeLayout full>
+      <Lesson config={config}></Lesson>
+    </SafeLayout>
+  )
 }
 
 export default LessonPage

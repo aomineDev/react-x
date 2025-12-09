@@ -1,6 +1,6 @@
 {
   "type": "one-select",
-  "nivel": "Quizz 5",
+  "nivel": "5",
   "pregunta": "¿Qué se mostrará en pantalla?",
   "codigo": "export default function Productos() {\n  const productos = [\n    { id: 1, nombre: 'Laptop', precio: 1200 },\n    { id: 2, nombre: 'Mouse', precio: 25 },\n  ];\n\n  return (\n    <ul>\n      {productos.map((producto) => (\n        <li key={producto.id}>\n          {producto.nombre} - {producto.precio}\n        </li>\n      ))}\n    </ul>\n  );\n}",
   "opciones": [

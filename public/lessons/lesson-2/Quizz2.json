@@ -1,0 +1,15 @@
+{
+  "type": "multi-select",
+  "nivel": "2",
+  "pregunta": "¿Cuáles de los siguientes valores pueden enviarse como props en React?",
+  "opciones": [
+    { "clave": "a", "texto": "Strings" },
+    { "clave": "b", "texto": "Números" },
+    { "clave": "c", "texto": "Booleanos" },
+    { "clave": "d", "texto": "Arrays" },
+    { "clave": "e", "texto": "Objetos" },
+    { "clave": "f", "texto": "Funciones ZIP comprimidas (.zip)" }
+  ],
+  "correctas": ["a", "b", "c", "d", "e"],
+  "next": "/lesson/2/3"
+}

@@ -7,7 +7,7 @@ En React, un componente es una función que devuelve parte de la interfaz de usu
 
 ---
 
-## <span class='custom-order'>1</span> Define tu componente
+## ~1~ Define tu componente
 
 Crea un componente llamado **Saludo** y agrega un **export** para poder reutilizarlo.
 
@@ -20,7 +20,7 @@ export default function Saludo() {}
 
 ---
 
-## <span class='custom-order'>2</span> Retorna contenido JSX
+## ~2~ Retorna contenido JSX
 
 React requiere que cada componente retorne **un único elemento contenedor**, agrega un return con un `<div>`
 
@@ -36,7 +36,7 @@ export default function Saludo() {
 
 ---
 
-## <span class='custom-order'>3</span> Usa un Fragment en su lugar
+## ~3~ Usa un Fragment en su lugar
 
 Si no quieres un `<div>` extra en tu HTML, usa un **Fragment** `<></>`
 
@@ -55,7 +55,7 @@ export default function Saludo() {
 
 ---
 
-## <span class='custom-order'>4</span> Resultado final
+## ~4~ Resultado final
 
 ```jsx showLineNumbers
 export default function Saludo() {

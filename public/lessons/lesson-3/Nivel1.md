@@ -1,4 +1,4 @@
-# Nivel 1 - Eventos (onClick, onChange, onSubmit)
+# Eventos (onClick, onChange, onSubmit)
 
 En React, los eventos se manejan como funciones que se ejecutan cuando el usuario interactúa con la UI.
 

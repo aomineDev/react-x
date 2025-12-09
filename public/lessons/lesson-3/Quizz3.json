@@ -1,0 +1,14 @@
+{
+  "type": "one-select",
+  "nivel": "Quizz 3",
+  "pregunta": "¿Qué número se mostrará en pantalla después del clic?",
+  "codigo": "import { useState } from \"react\";\n\nexport default function CounterTest() {\n  const [count, setCount] = useState(0);\n\n  function handleClick() {\n    setCount(count + 1);\n    setCount(count + 1);\n    setCount(count + 1);\n  }\n\n  return <button onClick={handleClick}>{count}</button>;\n}",
+  "opciones": [
+    { "clave": "a", "texto": "1" },
+    { "clave": "b", "texto": "2" },
+    { "clave": "c", "texto": "3" },
+    { "clave": "d", "texto": "4" }
+  ],
+  "correcta": "b",
+  "next": "/lesson/3/4"
+}

@@ -1,6 +1,18 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+.anchor-section {
+  scroll-margin-top: 110px;
+}
+
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
@@ -41,7 +53,10 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  /* my vars */
   --color-brand: var(--brand);
+  --spacing-nav-h: var(--nav-h);
+  --spacing-screen-safe: calc(100vh - var(--nav-h));
 }
 
 :root {
@@ -77,7 +92,9 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  /* my vars */
   --brand: oklch(59.667% 0.22126 258.047);
+  --nav-h: 61px;
 }
 
 .dark {
@@ -218,6 +235,17 @@
     @apply fill-red-400;
   }
 
+  /* Shiki */
+  .dark .shiki,
+  .dark .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+  }
+
+  pre.shiki {
+    @apply p-5 rounded-xl;
+  }
+
   /* PRETTY CODE HIGHLIGHT */
 
   /* Theme */
@@ -287,16 +315,23 @@
     @apply text-purple-200 bg-purple-800/75 dark:bg-purple-800/50 border-b-purple-800 dark:border-b-purple-600 font-bold;
   }
 
-  /* Custom Order */
-  .custom-order {
+  /* Custom Step */
+  .custom-step {
     @apply text-xs size-9 aspect-square flex justify-center items-center relative rounded-full;
   }
-  .custom-order::after {
+
+  .custom-step::after {
     @apply content-[''] absolute inset-0 rounded-full p-0.5 bg-linear-to-tr from-cyan-500 to-blue-500;
     mask: linear-gradient(white) content-box, linear-gradient(white);
     mask-composite: subtract;
   }
-  *:has(> .custom-order) {
-    @apply flex items-center gap-3;
+
+  *:has(> .custom-step) {
+    @apply flex items-center gap-3 pb-2;
+  }
+
+  /* Confetti */
+  .index-module_canvas__H2w7d {
+    z-index: 100;
   }
 }

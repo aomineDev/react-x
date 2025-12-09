@@ -2,7 +2,7 @@
   "markdownUrl": "lessons/lesson-5/Nivel1.md",
   "lesson": "Renderizado",
   "nivel": "Nivel 1",
-  "next": "/lesson/5/2",
+  "next": "/quizz/5/1",
   "files": {
     "/App.js": "export default function App() {\n}"
   }

@@ -7,7 +7,7 @@ Las llaves `{}` te permiten ejecutar código JavaScript dentro de JSX. Puedes us
 
 ---
 
-## <span class='custom-order'>1</span> Agrega el nombre del producto
+## ~1~ Agrega el nombre del producto
 
 Comienza creando un componente con el nombre del producto
 
@@ -28,7 +28,7 @@ export default function TarjetaProducto() {
 
 ---
 
-## <span class='custom-order'>2</span> Agrega un precio al producto y realiza una operación matemática
+## ~2~ Agrega un precio al producto y realiza una operación matemática
 
 Muestra el precio del producto y calcula el precio con IGV
 
@@ -51,7 +51,7 @@ export default function TarjetaProducto() {
 
 ---
 
-## <span class='custom-order'>3</span> Agrega un stock y valida la disponibilidad con un ternario
+## ~3~ Agrega un stock y valida la disponibilidad con un ternario
 
 Muestra un mensaje de disponibilidad que cambie según el stock:
 
@@ -76,7 +76,7 @@ export default function TarjetaProducto() {
 
 ---
 
-## <span class='custom-order'>4</span> Agrega estilos dinámicos con doble llave
+## ~4~ Agrega estilos dinámicos con doble llave
 
 Aplica estilos en línea según la disponibilidad del producto:
 
@@ -88,7 +88,7 @@ Aplica estilos en línea según la disponibilidad del producto:
 
 ---
 
-## <span class='custom-order'>5</span> Resultado final
+## ~5~ Resultado final
 
 ```jsx showLineNumbers
 export default function TarjetaProducto() {
