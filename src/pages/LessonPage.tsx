@@ -15,13 +15,13 @@ const LessonPage = () => {
 
   useEffect(() => {
     fetch(nivel)
-      .then((res) => res.json())
+      .then((res) => res.json() as Promise<LessonConfig>)
       .then((data) => setConfig(data))
+      .then(() => setLoading(false))
       .catch((err) => {
         navigate('/')
-        console.error('Error al cargar Marckdown:', err)
+        console.error('Error al cargar lección:', err)
       })
-      .finally(() => setLoading(false))
   }, [nivel, navigate])
 
   if (loading)
@@ -30,9 +30,10 @@ const LessonPage = () => {
         <Spinner className="scale-200" />
       </div>
     )
+
   return (
     <SafeLayout full>
-      <Lesson config={config}></Lesson>
+      <Lesson {...config}></Lesson>
     </SafeLayout>
   )
 }

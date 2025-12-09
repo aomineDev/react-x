@@ -11,8 +11,9 @@ import {
 } from '@/components/ui/alert-dialog'
 import { ArrowRight, Trophy } from 'lucide-react'
 import Confetti from '@/components/Confetti'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import type { TrueFalseQuiz } from '@/types/quizConfig'
+import { useCompleteQuizz } from '../hooks/useCompleteQuizz'
 
 type EstadoRespuesta = 'pendiente' | 'correcto' | 'incorrecto'
 
@@ -21,13 +22,18 @@ export default function TrueFalse({ correcta, next, nivel, pregunta }: TrueFalse
   const [estado, setEstado] = useState<EstadoRespuesta>('pendiente')
   const [showModal, setShowModal] = useState(false)
   const [success, setSuccess] = useState(false)
+  const { handleCompleteQuizz } = useCompleteQuizz()
+  const { lessonId, quizzId } = useParams()
 
-  const verificar = () => {
+  const verificar = async () => {
     if (!seleccion) return
 
     if (seleccion === correcta) {
       setEstado('correcto')
       setSuccess(true)
+
+      await handleCompleteQuizz(lessonId, quizzId, next)
+
       setShowModal(true)
     } else {
       setEstado('incorrecto')

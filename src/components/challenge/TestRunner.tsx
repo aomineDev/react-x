@@ -14,21 +14,24 @@ import {
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog'
 import Confetti from '@/components/Confetti'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import { useCompleteLesson } from '../hooks/useCompleteLesson'
 
 interface TestRunnerProps {
+  next: string
   onClick: () => void
 }
 
-const TestRunner = ({ onClick }: TestRunnerProps) => {
+const TestRunner = ({ next, onClick }: TestRunnerProps) => {
   const [tests, setTests] = useState<Test>({})
   const [loading, setLoading] = useState(false)
   const [isTestsInitialized, setIsTestsInitialized] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const [success, setSuccess] = useState(false)
-
+  const { handleCompleteLesson } = useCompleteLesson()
   const testRef = useRef<Test>({})
   const { listen } = useSandpack()
+  const { lessonId } = useParams()
 
   useEffect(() => {
     const unsubscribe = listen((msg) => {
@@ -52,7 +55,6 @@ const TestRunner = ({ onClick }: TestRunnerProps) => {
         setLoading(false)
         setIsTestsInitialized(false)
         if (Object.values(testRef.current).every((passed) => passed)) {
-          setShowModal(true)
           setSuccess(true)
         }
       }
@@ -60,6 +62,17 @@ const TestRunner = ({ onClick }: TestRunnerProps) => {
 
     return unsubscribe
   }, [listen])
+
+  useEffect(() => {
+    async function handleSuccess() {
+      if (success) {
+        await handleCompleteLesson(lessonId)
+        setShowModal(true)
+      }
+    }
+
+    handleSuccess()
+  }, [success, handleCompleteLesson, lessonId])
 
   const handleClick = () => {
     setLoading(true)
@@ -102,8 +115,8 @@ const TestRunner = ({ onClick }: TestRunnerProps) => {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogAction>
-              <Link to="/" className="flex items-center gap-2">
+            <AlertDialogAction asChild>
+              <Link to={next} className="flex items-center gap-2">
                 Continuar <ArrowRight />
               </Link>
             </AlertDialogAction>

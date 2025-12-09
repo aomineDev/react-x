@@ -62,7 +62,12 @@ export const SectionContact = () => {
                       render={({ field, fieldState }) => (
                         <Field data-invalid={fieldState.invalid}>
                           <FieldLabel>Nombre</FieldLabel>
-                          <Input {...field} placeholder="Ingresa tu nombre" autoComplete="off" />
+                          <Input
+                            {...field}
+                            placeholder="Ingresa tu nombre"
+                            autoComplete="off"
+                            aria-invalid={fieldState.invalid}
+                          />
                           {fieldState.error && <FieldError>{fieldState.error.message}</FieldError>}
                         </Field>
                       )}
@@ -79,6 +84,7 @@ export const SectionContact = () => {
                             type="email"
                             placeholder="Ingresa tu email"
                             autoComplete="off"
+                            aria-invalid={fieldState.invalid}
                           />
                           {fieldState.error && <FieldError>{fieldState.error.message}</FieldError>}
                         </Field>
@@ -96,6 +102,7 @@ export const SectionContact = () => {
                             placeholder="Ingresa tu mensaje"
                             className="h-20 resize-none"
                             autoComplete="off"
+                            aria-invalid={fieldState.invalid}
                           />
                           {fieldState.error && <FieldError>{fieldState.error.message}</FieldError>}
                         </Field>

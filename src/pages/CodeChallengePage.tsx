@@ -1,6 +1,8 @@
 import CodeChallenge from '@/components/challenge/CodeChallengue'
+import type { ChallengeConfig } from '@/types/challengeConfig'
 
-const props = {
+const props: ChallengeConfig = {
+  type: 'code',
   markdownUrl: 'content.md',
   files: {
     '/App.js': `export default function Counter() {
@@ -50,6 +52,7 @@ test('usa useState', () => {
   expect(code).toMatch(/useState/);
 });`,
   },
+  next: '/lesson/0/1',
 }
 
 const CodeChallengue = () => {

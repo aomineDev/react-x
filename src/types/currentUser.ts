@@ -1,5 +1,5 @@
 export interface CurrentUser {
-  _id: string
+  id: string
   email: string
   name: string
   role: string

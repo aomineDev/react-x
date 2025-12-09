@@ -6,11 +6,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { type LessonConfig } from '@/types/interfaceConfig.d'
 
-interface LessonProps {
-  config: LessonConfig
-}
-
-const HomePage = ({ config: { markdownUrl, files, lesson, nivel, next, prev } }: LessonProps) => {
+const HomePage = ({ markdownUrl, files, lesson, nivel, next, prev }: LessonConfig) => {
   const [markdown, setMarkdown] = useState('')
 
   useEffect(() => {

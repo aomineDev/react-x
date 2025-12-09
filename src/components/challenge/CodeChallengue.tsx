@@ -11,15 +11,9 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import TestRunner from './TestRunner'
 import { useTheme } from '@/store/useTheme'
 import Markdown from '@/components/Markdown'
+import type { CodeChallengeConfig } from '@/types/challengeConfig'
 
-interface CodeChallengeProps {
-  markdownUrl: string
-  files: Record<string, string>
-  testFiles: Record<string, string>
-  showTest?: boolean
-}
-
-const CodeChallenge = ({ markdownUrl, files, testFiles, showTest }: CodeChallengeProps) => {
+const CodeChallenge = ({ markdownUrl, files, testFiles, next, showTest }: CodeChallengeConfig) => {
   const [markdown, setMarkdown] = useState('')
   const testRunnerRef = useRef<HTMLDivElement>(null)
   const theme = useTheme((state) => state.theme)
@@ -88,7 +82,7 @@ const CodeChallenge = ({ markdownUrl, files, testFiles, showTest }: CodeChalleng
               <SandpackPreview showOpenInCodeSandbox={false} />
             </SandpackLayout>
             <div>
-              <TestRunner onClick={handleClick} />
+              <TestRunner onClick={handleClick} next={next} />
             </div>
           </div>
           <div ref={testRunnerRef}>

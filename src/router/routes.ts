@@ -5,13 +5,21 @@ import LessonPage from '@/pages/LessonPage'
 import QuizPage from '@/pages/QuizzPage'
 import LoginPage from '@/pages/LoginPage'
 import SignupPage from '@/pages/SignupPage'
-import MarkdownPage from '@/pages/MarkdownPage'
-import LandingPage from './pages/landing-page'
+import LandingPage from '@/pages/landing-page'
+import {
+  ChallengeLoader,
+  LessonLoader,
+  protectedLoader,
+  publicOnlyLoader,
+  QuizzLoader,
+} from './guard'
+import ChallengePage from '@/pages/ChallengePage'
 
-export const router = createBrowserRouter([
+export const routes = createBrowserRouter([
   {
     path: '/',
     Component: Layout,
+    loader: protectedLoader,
     children: [
       {
         index: true,
@@ -20,14 +28,17 @@ export const router = createBrowserRouter([
       {
         path: 'lesson/:lessonId/:nivelId',
         Component: LessonPage,
+        loader: LessonLoader,
       },
       {
         path: 'quizz/:lessonId/:quizzId',
         Component: QuizPage,
+        loader: QuizzLoader,
       },
       {
-        path: 'markdown',
-        Component: MarkdownPage,
+        path: 'challenge/:lessonId',
+        Component: ChallengePage,
+        loader: ChallengeLoader,
       },
     ],
   },
@@ -38,13 +49,15 @@ export const router = createBrowserRouter([
   {
     path: '/login',
     Component: LoginPage,
+    loader: publicOnlyLoader,
   },
   {
     path: '/signup',
     Component: SignupPage,
+    loader: publicOnlyLoader,
   },
   {
     path: '*',
-    loader: () => redirect('/'),
+    loader: () => redirect('/login'),
   },
 ])

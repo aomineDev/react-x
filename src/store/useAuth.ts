@@ -1,18 +1,20 @@
 import { create } from 'zustand'
 import type { CurrentUser } from '@/types/currentUser'
 
-type AuthState = {
+interface AuthState {
   token: string | null
   user: CurrentUser | null
 }
 
-type AuthActions = {
+interface AuthActions {
   setToken: (token: string) => void
   setUser: (user: CurrentUser) => void
-  logout: () => void
+  completeQuizz: (level: number) => void
+  completeLesson: () => void
+  clear: () => void
 }
 
-type AuthStore = AuthState & AuthActions
+interface AuthStore extends AuthState, AuthActions {}
 
 const getInitialUser = () => {
   const user = localStorage.getItem('user')
@@ -39,5 +41,49 @@ export const useAuth = create<AuthStore>((set) => ({
     localStorage.setItem('user', JSON.stringify(user))
     set({ user })
   },
-  logout: () => set({ token: null, user: null }),
+  completeQuizz: (level: number) => {
+    set((state) => {
+      const currentUser = state.user
+
+      if (!currentUser) return state
+
+      const user = {
+        ...currentUser,
+        currentLevel: level,
+      }
+
+      localStorage.setItem('user', JSON.stringify(user))
+
+      return {
+        ...state,
+        user,
+      }
+    })
+  },
+  completeLesson: () => {
+    set((state) => {
+      const currentUser = state.user
+
+      if (!currentUser) return state
+
+      const user = {
+        ...currentUser,
+        currentLesson: currentUser.currentLesson + 1,
+        currentLevel: 1,
+      }
+
+      localStorage.setItem('user', JSON.stringify(user))
+
+      return {
+        ...state,
+        user,
+      }
+    })
+  },
+  clear: () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('user')
+
+    set({ token: null, user: null })
+  },
 }))

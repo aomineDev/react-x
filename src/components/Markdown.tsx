@@ -41,7 +41,6 @@ const Markdown = ({ children, full = false }: MarkdownProps) => {
   const handleCopy = async (code: ReactNode) => {
     let codeText = ''
     if (isReactElement(code)) {
-      console.log(code.props.children)
       codeText = getTextFromReactNode(code.props.children)
     }
 
@@ -81,7 +80,7 @@ const Markdown = ({ children, full = false }: MarkdownProps) => {
           },
           del({ children, ...rest }) {
             delete rest.node
-            console.log(children)
+
             const text = children?.toString() ?? ''
 
             if (text.match(/^\d+$/)) return <span className="custom-step">{children}</span>

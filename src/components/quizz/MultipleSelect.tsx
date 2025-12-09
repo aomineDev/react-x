@@ -11,9 +11,10 @@ import {
 } from '@/components/ui/alert-dialog'
 import { ArrowRight, Trophy } from 'lucide-react'
 import Confetti from '@/components/Confetti'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import CodeBlock from '../CodeBlock'
 import type { MultiSelectQuiz } from '@/types/quizConfig'
+import { useCompleteQuizz } from '../hooks/useCompleteQuizz'
 
 type EstadoRespuesta = 'pendiente' | 'correcto' | 'incorrecto'
 
@@ -29,10 +30,8 @@ export default function MultiSelect({
   const [estado, setEstado] = useState<EstadoRespuesta>('pendiente')
   const [showModal, setShowModal] = useState(false)
   const [success, setSuccess] = useState(false)
-
-  if (!opciones) {
-    return <div>No hay pregunta disponible</div>
-  }
+  const { handleCompleteQuizz } = useCompleteQuizz()
+  const { lessonId, quizzId } = useParams()
 
   const toggleSeleccion = (clave: string) => {
     if (estado !== 'pendiente') return
@@ -46,7 +45,7 @@ export default function MultiSelect({
     })
   }
 
-  const handleSelect = () => {
+  const handleSelect = async () => {
     if (selecciones.length === 0) return
 
     const seleccionesOrdenadas = [...selecciones].sort()
@@ -59,6 +58,9 @@ export default function MultiSelect({
     if (esCorrect) {
       setEstado('correcto')
       setSuccess(true)
+
+      await handleCompleteQuizz(lessonId, quizzId, next)
+
       setShowModal(true)
     } else {
       setEstado('incorrecto')
