@@ -11,9 +11,10 @@ import {
 } from '@/components/ui/alert-dialog'
 import { ArrowRight, Trophy } from 'lucide-react'
 import Confetti from '@/components/Confetti'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import CodeBlock from '../CodeBlock'
 import type { OneSelectQuiz } from '@/types/quizConfig'
+import { useCompleteQuizz } from '../hooks/useCompleteQuizz'
 
 type EstadoRespuesta = 'pendiente' | 'correcto' | 'incorrecto'
 
@@ -28,18 +29,20 @@ export default function OneSelect({
   const [seleccion, setSeleccion] = useState<string>('')
   const [estado, setEstado] = useState<EstadoRespuesta>('pendiente')
   const [showModal, setShowModal] = useState(false)
+  const { handleCompleteQuizz } = useCompleteQuizz()
+  const { lessonId, quizzId } = useParams()
 
   const [success, setSuccess] = useState(false)
-  if (!opciones) {
-    return <div>No hay pregunta disponible</div>
-  }
 
-  const handleSelect = () => {
+  const handleSelect = async () => {
     if (!seleccion) return
 
     if (seleccion === correcta) {
       setEstado('correcto')
       setSuccess(true)
+
+      await handleCompleteQuizz(lessonId, quizzId, next)
+
       setShowModal(true)
     } else {
       setEstado('incorrecto')
@@ -126,9 +129,9 @@ export default function OneSelect({
             <AlertDialogHeader>
               <AlertDialogTitle>¡Reto Superado!</AlertDialogTitle>
               <AlertDialogDescription>
-                <div className="p-5 flex justify-center">
+                <span className="p-5 flex justify-center">
                   <Trophy className="text-yellow-500" size={75}></Trophy>
-                </div>
+                </span>
                 ¡Felicitaciones, has superado el reto! Puedes avanzar a la siguiente sección.
               </AlertDialogDescription>
             </AlertDialogHeader>

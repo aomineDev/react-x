@@ -1,18 +1,6 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-html {
-  scroll-behavior: smooth;
-}
-
-.anchor-section {
-  scroll-margin-top: 110px;
-}
-
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
@@ -132,7 +120,13 @@ html {
 }
 
 @layer base {
+  .anchor-section {
+    scroll-margin-top: 110px;
+  }
+
   * {
+    scroll-behavior: smooth;
+
     @apply border-border outline-ring/50;
   }
 
@@ -334,4 +328,23 @@ html {
   .index-module_canvas__H2w7d {
     z-index: 100;
   }
+}
+
+/* Scrollbar fino y elegante */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.45);
 }

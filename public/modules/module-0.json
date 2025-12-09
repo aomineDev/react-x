@@ -1,0 +1,11 @@
+{
+  "moduleId": 0,
+  "title": "Fundamentos",
+  "image": "/src/assets/images/background/space3.png",
+  "levels": [
+    { "id": 1, "title": "Nivel 1 — React" },
+    { "id": 2, "title": "Nivel 2 — DOM y Virtual DOM y JSX" },
+    { "id": 3, "title": "Nivel 3 — Ecosistema de React" },
+    { "id": 4, "title": "Nivel 4 — Creación de un proyecto en React" }
+  ]
+}

@@ -1,5 +1,6 @@
 import { config } from '@/config'
-import type { CurrentUser, NewUser, User } from '@/types'
+import type { NewUser, User } from '@/types'
+import type { LoginResponse } from '@/types/loginResponse'
 
 const { API_URL } = config
 const service = '/api/auth'
@@ -25,7 +26,7 @@ export const authService = {
 
     const data = await response.json()
 
-    return data as CurrentUser
+    return data as LoginResponse
   },
 
   register: async (user: NewUser) => {

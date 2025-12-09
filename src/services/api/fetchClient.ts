@@ -1,4 +1,5 @@
 import { config } from '@/config'
+import { useAuth } from '@/store'
 
 type Options = Omit<RequestInit, 'headers'> & {
   headers?: HeadersInit
@@ -7,7 +8,7 @@ type Options = Omit<RequestInit, 'headers'> & {
 const { API_URL } = config
 
 export const fetchClient = async <T>(path: string, options: Options = {}): Promise<T> => {
-  const token = ''
+  const { token } = useAuth.getState()
 
   const headers = new Headers(options.headers)
   headers.set('Content-Type', 'application/json')

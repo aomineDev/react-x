@@ -6,8 +6,9 @@ import { Spinner } from '../ui/spinner'
 import parse, { type DOMNode, Element } from 'html-react-parser'
 import CodeInput from './CodeInput'
 import type { CompleteCodeQuizz } from '@/types/quizConfig'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Check } from 'lucide-react'
+import { useCompleteQuizz } from '../hooks/useCompleteQuizz'
 
 type Answer = Record<string, string>
 
@@ -21,6 +22,8 @@ const CompleteCode = ({ code, answer, nivel, next }: CompleteCodeQuizz) => {
   const [showFeedback, setShowFeedback] = useState(false)
   const [quizzCompleted, setQuizzCompleted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const { handleCompleteQuizz } = useCompleteQuizz()
+  const { lessonId, quizzId } = useParams()
 
   useEffect(() => {
     async function getHighlighted() {
@@ -72,13 +75,17 @@ const CompleteCode = ({ code, answer, nivel, next }: CompleteCodeQuizz) => {
 
   const checkAnswer = (id: string) => answers[id] === correctAnswers[id]
 
-  const handleVerification = () => {
+  const handleVerification = async () => {
     setShowFeedback(true)
     const keys = Object.keys(answers)
 
     const allCorrect = keys.length > 0 && Object.keys(correctAnswers).every((id) => checkAnswer(id))
 
-    if (allCorrect) setQuizzCompleted(true)
+    if (allCorrect) {
+      await handleCompleteQuizz(lessonId, quizzId, next)
+
+      setQuizzCompleted(true)
+    }
   }
 
   if (loading) return <Spinner />

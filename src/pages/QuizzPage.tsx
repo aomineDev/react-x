@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Spinner } from '@/components/ui/spinner'
 import TrueFalse from '@/components/quizz/TrueFalse'
 import OneSelect from '@/components/quizz/OneSelect'
@@ -13,15 +13,19 @@ export default function QuizPage() {
 
   const [loading, setLoading] = useState(true)
   const [config, setConfig] = useState<QuizConfig>({} as QuizConfig)
-
+  const navigate = useNavigate()
   const quizFile = `/lessons/lesson-${lessonId}/Quizz${quizzId}.json`
 
   useEffect(() => {
     fetch(quizFile)
       .then((res) => res.json())
       .then((data) => setConfig(data))
-      .finally(() => setLoading(false))
-  }, [quizFile])
+      .then(() => setLoading(false))
+      .catch((err) => {
+        navigate('/')
+        console.error('Error al cargar quizz:', err)
+      })
+  }, [quizFile, navigate])
 
   if (loading)
     return (
@@ -29,8 +33,6 @@ export default function QuizPage() {
         <Spinner />
       </div>
     )
-
-  if (!config) return <div>No se encontró el quiz</div>
 
   switch (config.type) {
     case 'truefalse':
