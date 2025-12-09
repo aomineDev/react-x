@@ -20,7 +20,7 @@ export const Hero = () => {
             Regístrate
           </Button>
           <Button size="lg" variant="outline" className="w-full sm:w-auto">
-            Ver lecciones
+            <a href="#lecciones">Ver lecciones</a>
           </Button>
         </div>
       </div>

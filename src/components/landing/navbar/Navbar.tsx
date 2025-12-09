@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { NavLinks } from './NavLinks'
+import { MobileNav } from './MobileNav'
 
 export const Navbar = () => {
   return (
@@ -17,6 +18,8 @@ export const Navbar = () => {
           </Button>
           <Button className="text-sm">Regístrate</Button>
         </div>
+
+        <MobileNav />
       </div>
     </header>
   )
