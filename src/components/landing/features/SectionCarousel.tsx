@@ -14,7 +14,7 @@ import {
   Sparkles,
 } from 'lucide-react'
 import { BlurBlob } from '@/components/ui/blur-blob'
-import { SpotlightCard } from '@/components/ui/SpotlightCard'
+import { SpotlightCard } from '@/components/SpotlightCard'
 
 const niveles = [
   {

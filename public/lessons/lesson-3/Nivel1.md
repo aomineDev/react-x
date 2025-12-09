@@ -17,7 +17,7 @@ Incluye 3 interacciones:
 
 Todo terminará en un ejemplo final funcional.
 
-## Paso 1 - Crear el componente base
+## ~1~ - Crear el componente base
 
 Comenzamos con un componente vacío. Solo muestra un título y un input que todavía no hace nada.
 
@@ -34,7 +34,7 @@ export default function App() {
 }
 ```
 
-## Paso 2 - Manejar un clic (onClick)
+## ~2~ - Manejar un clic (onClick)
 
 Queremos que el botón muestre un mensaje cuando el usuario haga clic.
 
@@ -58,7 +58,7 @@ export default function App() {
 }
 ```
 
-## Paso 3 - Detectar lo que el usuario escribe (onChange)
+## ~3~ - Detectar lo que el usuario escribe (onChange)
 
 Queremos guardar lo que el usuario escribe en el input.
 
@@ -105,7 +105,7 @@ export default function App() {
 
 Ahora reconocemos lo que el usuario escribe.
 
-## Paso 4 - Manejar el submit del formulario (onSubmit)
+## ~4~ - Manejar el submit del formulario (onSubmit)
 
 Ahora queremos que el saludo dependa del texto que escribió el usuario.
 
@@ -152,7 +152,7 @@ export default function App() {
 }
 ```
 
-## Paso 5 — Unión de todos los pasos (Ejemplo final para Sandpack)
+## ~5~ — Unión de todos los pasos (Ejemplo final para Sandpack)
 
 ```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 import { useState } from 'react'
