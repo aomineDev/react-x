@@ -1,5 +1,5 @@
 import { redirect, type LoaderFunctionArgs } from 'react-router-dom'
-import { isAuthenticated, canAccess, canAccessChallenge } from '@/util/authHelpers'
+import { isAuthenticated, canAccess, canAccessChallenge, canAccessModule } from '@/util/authHelpers'
 
 export const protectedLoader = () => {
   if (!isAuthenticated()) {
@@ -15,6 +15,16 @@ export const publicOnlyLoader = () => {
   }
 
   return null
+}
+
+export const moduleLoader = ({ params }: LoaderFunctionArgs) => {
+  const { moduleId } = params
+
+  if (canAccessModule(moduleId)) {
+    return null
+  }
+
+  return redirect('/')
 }
 
 export const LessonLoader = ({ params }: LoaderFunctionArgs) => {

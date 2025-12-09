@@ -9,11 +9,13 @@ import LandingPage from '@/pages/landing-page'
 import {
   ChallengeLoader,
   LessonLoader,
+  moduleLoader,
   protectedLoader,
   publicOnlyLoader,
   QuizzLoader,
 } from './guard'
 import ChallengePage from '@/pages/ChallengePage'
+import ModulePage from '@/pages/ModulePage'
 
 export const routes = createBrowserRouter([
   {
@@ -24,6 +26,11 @@ export const routes = createBrowserRouter([
       {
         index: true,
         Component: HomePage,
+      },
+      {
+        path: 'modulo/:moduleId',
+        Component: ModulePage,
+        loader: moduleLoader,
       },
       {
         path: 'lesson/:lessonId/:nivelId',

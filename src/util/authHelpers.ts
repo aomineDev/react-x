@@ -2,6 +2,8 @@ import { useAuth } from '@/store'
 
 export const isAuthenticated = () => !!useAuth.getState().token
 
+export const canAccessModule = (lessonStr: string | undefined) => canAccess(lessonStr, '0')
+
 export const canAccess = (lessonStr: string | undefined, levelStr: string | undefined) => {
   const { user } = useAuth.getState()
 
