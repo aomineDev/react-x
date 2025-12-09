@@ -1,6 +1,6 @@
 {
   "type": "one-select",
-  "nivel": "Quizz 3",
+  "nivel": "3",
   "pregunta": "¿Por qué el cálculo dentro de useMemo no se vuelve a ejecutar cuando cambia el input?",
   "codigo": "const calculoCostoso = useMemo(() => {\n  console.log('Calculando...')\n  return count * 2\n}, [count])",
   "opciones": [

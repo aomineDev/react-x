@@ -8,7 +8,7 @@ En esta actividad aprenderás a usar estos hooks modernos de React.
 
 `useLayoutEffect` es similar a `useEffect`, pero se ejecuta síncronamente después de todas las mutaciones del DOM. Aquí un ejemplo con `useTransition`:
 
-## <span class='custom-order'>1</span>Importación de hooks
+## ~1~ Importación de hooks
 
 ```javascript showLineNumbers
 import { useState, useTransition } from 'react'
@@ -16,7 +16,7 @@ import { useState, useTransition } from 'react'
 
 - `useTransition` permite marcar actualizaciones como no urgentes, evitando bloquear la UI.
 
-## <span class='custom-order'>2</span>Estados del componente\*\*
+## ~2~ Estados del componente\*\*
 
 ```javascript showLineNumbers
 export default function App() {
@@ -29,7 +29,7 @@ export default function App() {
 - `lista `- lista grande que “pesa” en rendimiento.
 - `startTransition `- permite hacer actualizaciones sin bloquear el input.
 
-## <span class='custom-order'>3</span>Manejador del input
+## ~3~ Manejador del input
 
 ```javascript showLineNumbers
 const manejarCambio = (e) => {
@@ -38,7 +38,7 @@ const manejarCambio = (e) => {
 
 - La actualización del input es urgente (UI inmediata).
 
-## <span class='custom-order'>4</span>Actualización no urgente con startTransition
+## ~4~ Actualización no urgente con startTransition
 
 ```javascript showLineNumbers
   startTransition(() => {
@@ -52,7 +52,7 @@ const manejarCambio = (e) => {
 - Como es pesado, se marca como no urgente usando `startTransition`.
 - Evita que la UI se congele al escribir.
 
-## <span class='custom-order'>5</span>Render simple
+## ~5~ Render simple
 
 ```javascript showLineNumbers
 return <input value={input} onChange={manejarCambio} />

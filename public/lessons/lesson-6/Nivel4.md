@@ -8,7 +8,7 @@ En esta actividad aprenderás a hacer peticiones HTTP con `useEffect`.
 
 El patrón para hacer fetch con useEffect maneja múltiples estados. Aquí un ejemplo:
 
-## <span class='custom-order'>1</span> `useEffect` con función async interna
+## ~1~ `useEffect` con función async interna
 
 ```javascript showLineNumber {2-4}
 useEffect(() => {
@@ -24,7 +24,7 @@ useEffect(() => {
 - Perfecto para realizar peticiones a una API.
 - Se usa dentro del efecto porque `useEffect` no puede ser declarado como `async`.
 
-## <span class='custom-order'>2</span>Pedir datos a la API
+## ~2~ datos a la API
 
 ```javascript showLineNumbers {2-5}
 try{
@@ -38,7 +38,7 @@ try{
 - Convierte la respuesta a JSON.
 - Guarda los datos en el estado (setDatos).
 
-## <span class='custom-order'>3</span>Manejo de errores y finalizacion del proceso
+## ~3~ de errores y finalizacion del proceso
 
 ```javascript showLineNumbers {2,4}
 } catch (err) {

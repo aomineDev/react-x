@@ -8,7 +8,7 @@ En esta actividad aprenderás a crear Custom Hooks.
 
 Un Custom Hook es simplemente una función que usa otros hooks. Por convención, su nombre debe empezar con "use". Aquí un ejemplo:
 
-## <span class='custom-order'>1</span>Definir el Custom Hook
+## ~1~ Definir el Custom Hook
 
 ```javascript showLineNumbers
 function useContador(inicial = 0) {
@@ -27,7 +27,7 @@ function useContador(inicial = 0) {
 - Expone funciones para modificar ese estado (`incrementar`, `decrementar`, `reset`).
 - Devuelve un objeto con todo lo necesario para reutilizarlo.
 
-## <span class='custom-order'>2</span>Usar el Custom Hook dentro del componente
+## ~2~ Usar el Custom Hook dentro del componente
 
 ```javascript showLineNumbers {2}
 export default function App() {
@@ -38,7 +38,7 @@ export default function App() {
 - `useContador(0)` inicializa el contador en 0.
 - Obtienes solo lo que necesitas del hook.
 
-## <span class='custom-order'>3</span>UI que usa las funciones del custom hook
+## ~3~ UI que usa las funciones del custom hook
 
 ```javascript showLineNumbers {4,5}
   return (

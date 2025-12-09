@@ -8,7 +8,7 @@ En esta actividad aprenderás a limpiar recursos correctamente.
 
 La función de limpieza se retorna desde el efecto. React la ejecutará automáticamente cuando sea necesario. Aquí un ejemplo con un intervalo:
 
-## <span class='custom-order'>1</span> `useEffect` para iniciar el intervalo
+## ~1~ `useEffect` para iniciar el intervalo
 
 ```javascript showLineNumbers {5-7}
 function Cronometro() {
@@ -23,7 +23,7 @@ function Cronometro() {
 - Crea un intervalo que suma 1 cada segundo.
 - Usa la forma `s => s + 1` para asegurarse de que siempre toma el valor más reciente.
 
-## <span class='custom-order'>2</span>Cleanup del intervalo
+## ~2~ del intervalo
 
 ```javascript showLineNumbers { 2}
     return () => {
