@@ -11,7 +11,8 @@ import { Check } from 'lucide-react'
 
 type Answer = Record<string, string>
 
-const regex = /___([^_]+)_([^}]+)___/gi
+// const regex = /___([^_]+)_([^}]+)___/gi
+const regex = /___(\d+)_(.*?)___/gi
 
 const CompleteCode = ({ code, answer, nivel, next }: CompleteCodeQuizz) => {
   const [answers, setAnswers] = useState<Record<string, string>>({})

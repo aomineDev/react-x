@@ -10,7 +10,7 @@ El patrón para hacer fetch con useEffect maneja múltiples estados. Aquí un ej
 
 ## ~1~ `useEffect` con función async interna
 
-```javascript showLineNumber {2-4}
+```javascript showLineNumbers {2-4}
 useEffect(() => {
   const obtenerDatos = async () => {
     // ...

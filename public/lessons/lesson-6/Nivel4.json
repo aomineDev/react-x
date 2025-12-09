@@ -3,7 +3,7 @@
   "lesson": "Efectos secundarios",
   "nivel": "Nivel 1",
   "prev": "/lesson/6/3",
-  "next": "/lesson/6/5",
+  "next": "/quizz/6/4",
   "files": {
     "/App.js": "//no te olvides de importar el hook\r\n    import React, { useState } from \"react\";\r\n    \r\n    export default function App() {\r\n      // estados iniciales\r\n      const [loading, setLoading] = useState(true)\r\n    \r\n    \r\n      /* implementar useEffect con Fetch\r\n         recuerda obtener el array de objetos de la peticion con data.results */\r\n      \r\n    \r\n      if (loading) return <h2>Cargando personajes...</h2>;\r\n      if (error) return <h2>Error: {error}</h2>;\r\n    \r\n      return (\r\n        <div>\r\n          <h2 style={{textAlign:\"center\"}}>Personajes de Los Simpsons</h2>\r\n          <ul style={{ listStyle: \"none\", display: \"flex\", flexWrap: \"wrap\", gap: \"15px\" }} >\r\n            { \r\n              usuarios.map( (u) => (\r\n                <li \r\n                  key={u.id} \r\n                  style={{ width: \"120px\", backgroundColor: \"#f1f5f9\", borderRadius: \"8px\", textAlign: \"center\", border:\"2px dashed black\" }}>\r\n                  <img \r\n                    src={\"https://cdn.thesimpsonsapi.com/500\"+ u.portrait_path} \r\n                    alt={u.name} \r\n                    style={{ width: \"80px\", borderRadius: \"8px\", marginBottom: \"10px\" }} \r\n                  />\r\n                  <p>{u.name}</p>\r\n                </li>\r\n              ) )\r\n            }\r\n          </ul>\r\n        </div>\r\n      );\r\n    }"
   }
