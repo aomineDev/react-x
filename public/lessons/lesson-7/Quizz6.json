@@ -1,0 +1,25 @@
+{
+  "type": "multi-select",
+  "nivel": "1",
+  "pregunta": "¿Cuál de las siguientes afirmaciones describe correctamente a un Custom Hook en React?",
+  "opciones": [
+    {
+      "clave": "a",
+      "texto": "Es una función cuyo nombre debe comenzar con 'use' y permite reutilizar lógica con otros hooks."
+    },
+    {
+      "clave": "b",
+      "texto": "Puede manejar estado interno usando useState u otros hooks de React."
+    },
+    {
+      "clave": "c",
+      "texto": "Debe devolver obligatoriamente un componente JSX."
+    },
+    {
+      "clave": "d",
+      "texto": "Sirve para extraer lógica repetitiva de los componentes y mantenerlos más limpios."
+    }
+  ],
+  "correctas": ["a", "b", "d"],
+  "next": "/lesson/2/1"
+}
