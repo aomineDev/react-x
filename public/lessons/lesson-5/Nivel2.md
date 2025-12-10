@@ -8,6 +8,9 @@ Renderizar listas es una de las tareas más comunes en interfaces dinámicas. En
 
 - Métodos como `.filter()` y `.sort()` para modificar la lista antes de renderizarla
 
+> [!note]
+> React necesita **keys únicas y estables** para optimizar la actualización del DOM virtual. Nunca uses índices como key si la lista puede cambiar de orden o eliminar elementos.
+
 Hoy aprenderás a:
 
 - Renderizar una lista con `.map()`
@@ -20,7 +23,7 @@ Hoy aprenderás a:
 
 - Aplicar todo en un ejemplo paso a paso
 
-## Paso 1 — Crear una lista y renderizarla con .map()
+## ~1~ Crear una lista y renderizarla con .map()
 
 Queremos mostrar una lista de estudiantes. Luego agregaremos:
 
@@ -45,9 +48,13 @@ export default function App() {
 }
 ```
 
+> [!tip]
+> .map() transforma un array de datos en un array de elementos JSX. Esto evita escribir elementos manualmente y facilita el render dinámico.
+
+> [!note]
 > React generará 3 <li> automáticamente.
 
-## Paso 2 — Usar keys (muy importante)
+## ~2~ Usar keys (muy importante)
 
 React necesita saber cuál elemento pertenece a cuál dato, especialmente cuando la lista cambia.
 
@@ -59,9 +66,13 @@ React necesita saber cuál elemento pertenece a cuál dato, especialmente cuando
 </ul>
 ```
 
-> La key debe ser estable y única
+> [!important]
+> La key debe ser única y estable para cada elemento de la lista. React usa la key para identificar cambios y evitar renders innecesarios.
 
-## Paso 3 — Filtrar listas antes de renderizar
+> [!caution]
+> Evita usar índices de .map() como key si la lista puede reordenarse o eliminar elementos. Esto puede causar errores en el DOM virtual.
+
+## ~3~ Filtrar listas antes de renderizar
 
 Queremos mostrar solo estudiantes aprobados.
 
@@ -87,7 +98,10 @@ Y renderizamos:
 </ul>
 ```
 
-## Paso 4 — Ordenar listas
+> [!tip]
+> .filter() te permite mostrar solo los elementos que cumplen cierta condición, manteniendo la lista original intacta.
+
+## ~4~ Ordenar listas
 
 Queremos ordenar por nombre.
 
@@ -95,7 +109,13 @@ Queremos ordenar por nombre.
 const sorted = [...students].sort((a, b) => a.name.localeCompare(b.name))
 ```
 
-## Paso 5 — Resultado final
+> [!note]
+> Usamos el operador [...] para clonar el array antes de ordenar, evitando mutar el estado original.
+
+> [!warning]
+> Mutar directamente el estado (students.sort()) puede causar bugs inesperados en React.
+
+## ~5~ Resultado final
 
 ```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 import { useState } from 'react'
@@ -125,5 +145,14 @@ export default function StudentList() {
   )
 }
 ```
+
+> [!note]
+> Ahora puedes filtrar, ordenar y renderizar listas dinámicamente de forma segura y eficiente.
+
+> [!tip]
+> Este patrón es la base para listas más complejas como tareas, productos o usuarios.
+
+> [!caution]
+> Siempre asegúrate de que cada key sea única, incluso si los datos provienen de un backend.
 
 `Ahora es tu turno de implementarlo, gran trabajo`

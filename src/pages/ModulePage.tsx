@@ -8,6 +8,7 @@ import { SquareDashedBottomCodeIcon } from 'lucide-react'
 interface ModuleConfig {
   moduleId: number
   title: string
+  planet: string
   image: string
   levels: { id: number; title: string }[]
 }
@@ -42,12 +43,22 @@ const ModulePage = () => {
 
   return (
     <div
-      className="relative w-full min-h-screen bg-cover bg-center flex flex-col items-center"
+      className="relative w-full bg-fixed min-h-screen bg-cover bg-center flex flex-col items-center"
       style={{ backgroundImage: `url(${config.image})` }}
     >
       <div className="absolute inset-0 bg-black/50"></div>
 
       <div className="relative z-10 w-full max-w-6xl px-6 py-24 flex flex-col items-center">
+        {config.planet && (
+          <div className="relative w-40 h-40 md:w-40 md:h-40 mb-8">
+            <img
+              src={config.planet}
+              alt="Planeta del módulo"
+              className="w-full h-full object-contain animate-float shadow-2xl"
+            />
+          </div>
+        )}
+
         <h1 className="text-4xl md:text-5xl font-extrabold text-white text-center drop-shadow-lg mb-12">
           {config.title}
         </h1>

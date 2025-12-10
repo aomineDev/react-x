@@ -328,23 +328,36 @@
   .index-module_canvas__H2w7d {
     z-index: 100;
   }
-}
+  /* Scrollbar fino y elegante */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
 
-/* Scrollbar fino y elegante */
-::-webkit-scrollbar {
-  width: 8px;
-}
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
 
-::-webkit-scrollbar-track {
-  background: transparent;
-}
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+  }
 
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.25);
-  border-radius: 4px;
-  transition: background 0.3s ease;
-}
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.45);
+  }
 
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.45);
+  @keyframes bounceArrow {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-bounceArrow {
+    animation: bounceArrow 1s ease-in-out infinite;
+  }
 }

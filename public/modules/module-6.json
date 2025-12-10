@@ -1,6 +1,7 @@
 {
   "moduleId": 6,
   "title": "Efectos secundarios",
+  "planet": "/src/assets/images/planets/planeta7.png",
   "image": "/src/assets/images/background/space3.png",
   "levels": [
     { "id": 1, "title": "Nivel 1 — Introducción a useEffect" },

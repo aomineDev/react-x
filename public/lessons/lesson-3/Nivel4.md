@@ -2,6 +2,9 @@
 
 En este nivel aprenderás cómo actualizar estado usando el valor anterior, una técnica esencial cuando el nuevo estado depende directamente del estado previo.
 
+> [!note]
+> React puede agrupar o aplazar actualizaciones de estado por eficiencia. Por eso, cuando el nuevo valor depende del anterior, **siempre usa la función basada en prevState**.
+
 La idea será construir un pequeño ejemplo práctico:
 
 - un texto editable dentro de un `<div>`
@@ -28,9 +31,13 @@ export default function App() {
 }
 ```
 
-- `isEditable` → indica si el contenido es editable
-- `setIsEditable` → función para cambiarlo
-- `useState(true)` → empieza como editable
+> [!note]
+> - `isEditable` → indica si el contenido es editable
+> - `setIsEditable` → función para cambiarlo
+> - `useState(true)` → empieza como editable
+
+> [!tip]
+> Siempre inicializa el estado de manera clara según el comportamiento esperado. Esto ayuda a evitar errores en el render inicial.
 
 ## ~2~ Usar el estado en el JSX
 
@@ -48,6 +55,9 @@ export default function App() {
 }
 ```
 
+> [!important]
+> contentEditable es un atributo booleano. React actualizará automáticamente el DOM según el valor de isEditable.
+
 ## ~3~ Crear un handler que usa prevState
 
 Para alternar el valor (toggle) es obligatorio usar la forma basada en el estado previo:
@@ -58,14 +68,18 @@ function toggleEditable() {
 }
 ```
 
-Esto es más seguro que:
+> [!warning]
+> Evita hacer esto cuando depende del estado anterior:
 
 ```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 setIsEditable(!isEditable)
 ```
 
-> [!warning]
-> Evitarlo cuando depende del estado anterior.
+> [!caution]
+> Usar directamente !isEditable puede funcionar a veces, pero falla si React agrupa múltiples actualizaciones en un mismo render. Siempre usa prevState para cambios dependientes del estado anterior.
+
+> [!tip]
+> Esta técnica también es útil para toggles de checkboxes, modales, menús desplegables, o cualquier estado booleano que deba alternar.
 
 ## ~4~ Unir todo (ejemplo final)
 
@@ -92,5 +106,14 @@ export default function App() {
   )
 }
 ```
+
+> [!note]
+> Ahora tu toggle es seguro y confiable incluso si React procesa varias actualizaciones a la vez.
+
+> [!tip]
+> Puedes combinar este patrón con otros estados para crear paneles complejos y ediciones condicionales.
+
+> [!caution]
+> No mezcles manipulaciones directas del DOM con contentEditable sin estado de React. Esto puede generar inconsistencias.
 
 `Ahora es tu turno de implementarlo, gran trabajo`

@@ -1,6 +1,7 @@
 {
   "moduleId": 3,
   "title": "Eventos y estado",
+  "planet": "/src/assets/images/planets/planeta4.png",
   "image": "/src/assets/images/background/space6.png",
   "levels": [
     { "id": 1, "title": "Nivel 1 — Eventos (onClick, onChange, onSubmit)" },
