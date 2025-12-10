@@ -1,6 +1,6 @@
 {
   "type": "multi-select",
-  "nivel": "1",
+  "nivel": "6",
   "pregunta": "¿Cuál de las siguientes afirmaciones describe correctamente a un Custom Hook en React?",
   "opciones": [
     {
