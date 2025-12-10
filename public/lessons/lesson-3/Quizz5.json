@@ -1,0 +1,29 @@
+{
+  "type": "multi-select",
+  "nivel": "5",
+  "pregunta": "Empareja cada patrón de actualización de estado con su descripción correcta en React:",
+  "opciones": [
+    {
+      "clave": "1",
+      "texto": "setState({...state, nuevoValor }) - Actualizar un objeto creando una copia superficial del anterior"
+    },
+    {
+      "clave": "2",
+      "texto": "setState(prev => prev.map(...)) - El patrón correcto para editar un elemento dentro de un array"
+    },
+    {
+      "clave": "3",
+      "texto": "setState(prev => [...prev, nuevoItem]) - Agregar un nuevo elemento a un array sin mutarlo"
+    },
+    {
+      "clave": "4",
+      "texto": "setState(prev => prev.filter(...)) - El patrón correcto para eliminar elementos de un array"
+    },
+    {
+      "clave": "5",
+      "texto": "Inmutabilidad - El principio clave que evita modificar directamente el estado"
+    }
+  ],
+  "correctas": ["1", "2", "3", "4", "5"],
+  "next": "/lesson/3/6"
+}
