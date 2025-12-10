@@ -1,4 +1,4 @@
-# Nivel 2 — Distintos tipos de Inputs (select, checkbox, radio, textarea)
+# Distintos tipos de Inputs (select, checkbox, radio, textarea)
 
 Los formularios reales rara vez usan solo `<input type="text">`.
 React trabaja igual para todos: cada input tiene un value y un handler que actualiza el estado.

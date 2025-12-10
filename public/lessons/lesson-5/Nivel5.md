@@ -1,4 +1,4 @@
-# Nivel 5 — Evitar re-renders innecesarios en React
+# Evitar re-renders innecesarios en React
 
 Cuando una app crece, lo que más suele causar lentitud no es “mucho código”, sino componentes que se vuelven a renderizar cuando no deberían.
 

@@ -1,0 +1,15 @@
+{
+  "moduleId": 8,
+  "title": "Patrones y mejores practicas",
+  "image": "/src/assets/images/background/space4.png",
+  "levels": [
+    { "id": 1, "title": "Nivel 1 — props.children: Componentes Contenedores" },
+    { "id": 2, "title": "Nivel 2 — Patrón Layout: Estructura Reutilizable" },
+    { "id": 3, "title": "Nivel 3 — Inyección de Contenido Múltiple (Slots)" },
+    {
+      "id": 4,
+      "title": "Nivel 4 — Buenas Prácticas: Tipado y Defaults"
+    },
+    { "id": 5, "title": "Nivel 5 — Arquitectura: Reglas de Reutilización" }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "moduleId": 5,
+  "title": "Renderizado",
+  "image": "/src/assets/images/background/space8.png",
+  "levels": [
+    { "id": 1, "title": "Nivel 1 — Renderizado Condicional en React" },
+    { "id": 2, "title": "Nivel 2 — Listas en React: keys, filtros y ordenamiento" },
+    { "id": 3, "title": "Nivel 3 — ¿Cuándo React renderiza algo?" },
+    {
+      "id": 4,
+      "title": "Nivel 4 — Optimización Básica en React (memo, useCallback, useMemo)"
+    },
+    { "id": 5, "title": "Nivel 5 — Evitar re-renders innecesarios en React" }
+  ]
+}

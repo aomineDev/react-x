@@ -1,4 +1,4 @@
-# Nivel 3 – Validación Básica de Formularios en React
+# Validación Básica de Formularios en React
 
 En este nivel aprenderás a realizar validaciones simples directamente desde el componente, sin librerías externas.
 

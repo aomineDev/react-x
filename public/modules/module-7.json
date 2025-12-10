@@ -1,0 +1,19 @@
+{
+  "moduleId": 7,
+  "title": "Hooks",
+  "image": "/src/assets/images/background/space6.png",
+  "levels": [
+    { "id": 1, "title": "Nivel 1 — Estado Complejo y useReducer" },
+    { "id": 2, "title": "Nivel 2 — Referencias y DOM" },
+    { "id": 3, "title": "Nivel 3 — Optimización por Memorización" },
+    {
+      "id": 4,
+      "title": "Nivel 4 — Propagación de Datos Global"
+    },
+    { "id": 5, "title": "Nivel 5 — Efectos de Renderizado y Concurrencia" },
+    {
+      "id": 6,
+      "title": "Nivel 6 — Lógica Reutilizable"
+    }
+  ]
+}
