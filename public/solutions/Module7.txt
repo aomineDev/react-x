@@ -1,0 +1,54 @@
+import { useReducer, useRef } from 'react';
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'INCREMENTAR':
+      return { count: state.count + 1 };
+    case 'DECREMENTAR':
+      return { count: state.count - 1 };
+    case 'RESET':
+      return { count: 0 };
+    default:
+      return state;
+  }
+}
+
+export default function ContadorAvanzado() {
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
+  const inputRef = useRef(null);
+  
+  const enfocarInput = () => {
+    inputRef.current.focus();
+  };
+  
+  return (
+    <div>
+      <h1>Contador Avanzado</h1>
+      <p>Contador: {state.count}</p>
+      
+      <div>
+        <input 
+          ref={inputRef}
+          type="number" 
+          placeholder="Salto personalizado"
+          defaultValue={5}
+        />
+      </div>
+      
+      <div>
+        <button onClick={() => dispatch({ type: 'INCREMENTAR' })}>
+          Incrementar
+        </button>
+        <button onClick={() => dispatch({ type: 'DECREMENTAR' })}>
+          Decrementar
+        </button>
+        <button onClick={() => dispatch({ type: 'RESET' })}>
+          Reset
+        </button>
+        <button onClick={enfocarInput}>
+          Enfocar Input
+        </button>
+      </div>
+    </div>
+  );
+}
