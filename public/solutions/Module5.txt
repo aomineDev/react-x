@@ -1,0 +1,52 @@
+// Challenge: Renderizado en React
+// Objetivo: practicar renderizado condicional, listas, optimización y evitar re-renders
+
+import { useState, useMemo, useCallback } from 'react';
+
+const usersData = [
+  { id: 1, nombre: 'Juan', edad: 25 },
+  { id: 2, nombre: 'María', edad: 30 },
+  { id: 3, nombre: 'Pedro', edad: 20 },
+  { id: 4, nombre: 'Lucía', edad: 28 }
+];
+
+function UserItem({ user, onClick }) {
+  return <li onClick={() => onClick(user.id)}>{user.nombre} - {user.edad}</li>;
+}
+
+export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [filter, setFilter] = useState('');
+  const [sortByAge, setSortByAge] = useState(false);
+
+  const handleClick = useCallback((id) => {
+    console.log('Usuario clickeado', id);
+  }, []);
+
+  const displayedUsers = useMemo(() => {
+    return usersData
+      .filter(u => u.nombre.toLowerCase().includes(filter.toLowerCase()))
+      .sort((a,b) => sortByAge ? a.edad - b.edad : 0);
+  }, [filter, sortByAge]);
+
+  return (
+    <div>
+      <h1>Challenge: Renderizado en React</h1>
+
+      {/* Renderizado condicional */}
+      {isLoggedIn ? <p>Bienvenido, usuario</p> : <p>Por favor inicia sesión</p>}
+      <button onClick={() => setIsLoggedIn(!isLoggedIn)}>Toggle Login</button>
+
+      {/* Input para filtrar */}
+      <input placeholder="Filtrar usuarios" value={filter} onChange={e => setFilter(e.target.value)} />
+      <button onClick={() => setSortByAge(!sortByAge)}>Ordenar por edad</button>
+
+      {/* Lista de usuarios */}
+      <ul>
+        {displayedUsers.map(user => (
+          <UserItem key={user.id} user={user} onClick={handleClick} />
+        ))}
+      </ul>
+    </div>
+  );
+}

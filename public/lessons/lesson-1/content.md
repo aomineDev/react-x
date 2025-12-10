@@ -1,5 +1,3 @@
-
-xx
 # Challenge Final – Tienda de Videojuegos
 
 ### Introducción

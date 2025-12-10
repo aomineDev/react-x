@@ -1,0 +1,31 @@
+function Card({ titulo, children }) {
+  return (
+    <div style={{ 
+      border: '2px solid #e2e8f0', 
+      padding: '20px', 
+      margin: '10px 0',
+      borderRadius: '8px',
+      backgroundColor: '#ffffff'
+    }}>
+      <h2 style={{ marginTop: 0 }}>{titulo}</h2>
+      {children}
+    </div>
+  );
+}
+
+export default function PerfilUsuario() {
+  return (
+    <div style={{ padding: '20px' }}>
+      <h1>Perfil de Usuario</h1>
+      
+      <Card titulo="Información Personal">
+        <p><strong>Nombre:</strong> Juan Pérez</p>
+        <p><strong>Edad:</strong> 25 años</p>
+      </Card>
+      
+      <Card titulo="Contacto">
+        <p><strong>Email:</strong> juan@example.com</p>
+      </Card>
+    </div>
+  );
+}
