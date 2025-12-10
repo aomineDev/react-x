@@ -1,0 +1,275 @@
+// Challenge: Formulario de Registro Completo
+// Objetivo: implementar un formulario con validaciones y diferentes tipos de inputs
+
+import { useState } from 'react';
+
+export default function RegistrationForm() {
+  // Estado del formulario
+  const [formData, setFormData] = useState({
+    nombre: '',
+    email: '',
+    password: '',
+    pais: '',
+    intereses: [],
+    nivel: '',
+    biografia: ''
+  });
+
+  // Estado de errores
+  const [errors, setErrors] = useState({
+    nombre: '',
+    email: '',
+    password: '',
+    pais: '',
+    intereses: '',
+    nivel: '',
+    biografia: ''
+  });
+
+  // Validación de nombre (mínimo 3 caracteres)
+  function validateNombre(value) {
+    if (value.length > 0 && value.length < 3) {
+      setErrors(prev => ({ ...prev, nombre: 'El nombre debe tener al menos 3 caracteres' }));
+    } else {
+      setErrors(prev => ({ ...prev, nombre: '' }));
+    }
+  }
+
+  // Validación de email (debe contener @ y .)
+  function validateEmail(value) {
+    if (value.length > 0 && (!value.includes('@') || !value.includes('.'))) {
+      setErrors(prev => ({ ...prev, email: 'Email inválido' }));
+    } else {
+      setErrors(prev => ({ ...prev, email: '' }));
+    }
+  }
+
+  // Validación de password (mínimo 6 caracteres)
+  function validatePassword(value) {
+    if (value.length > 0 && value.length < 6) {
+      setErrors(prev => ({ ...prev, password: 'La contraseña debe tener al menos 6 caracteres' }));
+    } else {
+      setErrors(prev => ({ ...prev, password: '' }));
+    }
+  }
+
+  // Maneja el cambio de inputs de texto
+  function handleInputChange(field, value) {
+    setFormData(prev => ({ ...prev, [field]: value }));
+    
+    // Ejecuta la validación correspondiente
+    if (field === 'nombre') validateNombre(value);
+    if (field === 'email') validateEmail(value);
+    if (field === 'password') validatePassword(value);
+    if (field === 'pais' && value) {
+      setErrors(prev => ({ ...prev, pais: '' }));
+    }
+    if (field === 'nivel' && value) {
+      setErrors(prev => ({ ...prev, nivel: '' }));
+    }
+  }
+
+  // Maneja el cambio de checkboxes
+  function handleCheckboxChange(e) {
+    const valor = e.target.value;
+    setFormData(prev => ({
+      ...prev,
+      intereses: e.target.checked
+        ? [...prev.intereses, valor]
+        : prev.intereses.filter(i => i !== valor)
+    }));
+    
+    // Valida que haya al menos un interés seleccionado
+    const nuevosIntereses = e.target.checked
+      ? [...formData.intereses, valor]
+      : formData.intereses.filter(i => i !== valor);
+    
+    if (nuevosIntereses.length === 0) {
+      setErrors(prev => ({ ...prev, intereses: 'Selecciona al menos un interés' }));
+    } else {
+      setErrors(prev => ({ ...prev, intereses: '' }));
+    }
+  }
+
+  // Maneja el submit del formulario
+  function handleSubmit(e) {
+    e.preventDefault();
+    
+    // Verifica que no haya errores y el formulario esté completo
+    if (!hasErrors && !isFormIncomplete) {
+      alert(`Usuario registrado: ${formData.nombre}`);
+    }
+  }
+
+  // Calcula si hay errores
+  const hasErrors = Object.values(errors).some(error => error !== '');
+  
+  // Calcula si el formulario está incompleto
+  const isFormIncomplete = !formData.nombre || 
+                           !formData.email || 
+                           !formData.password || 
+                           !formData.pais || 
+                           formData.intereses.length === 0 || 
+                           !formData.nivel;
+
+  return (
+    <div>
+      <h1>Formulario de Registro</h1>
+      
+      <form onSubmit={handleSubmit}>
+        {/* Input de Nombre */}
+        <div>
+          <label htmlFor="nombre">Nombre:</label>
+          <input
+            id="nombre"
+            type="text"
+            value={formData.nombre}
+            onChange={(e) => handleInputChange('nombre', e.target.value)}
+          />
+          {errors.nombre && <p style={{ color: 'red' }}>{errors.nombre}</p>}
+        </div>
+
+        {/* Input de Email */}
+        <div>
+          <label htmlFor="email">Email:</label>
+          <input
+            id="email"
+            type="email"
+            value={formData.email}
+            onChange={(e) => handleInputChange('email', e.target.value)}
+          />
+          {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
+        </div>
+
+        {/* Input de Contraseña */}
+        <div>
+          <label htmlFor="password">Contraseña:</label>
+          <input
+            id="password"
+            type="password"
+            value={formData.password}
+            onChange={(e) => handleInputChange('password', e.target.value)}
+          />
+          {errors.password && <p style={{ color: 'red' }}>{errors.password}</p>}
+        </div>
+
+        {/* Select de País */}
+        <div>
+          <label htmlFor="pais">País:</label>
+          <select
+            id="pais"
+            value={formData.pais}
+            onChange={(e) => handleInputChange('pais', e.target.value)}
+          >
+            <option value="">Selecciona un país</option>
+            <option value="peru">Perú</option>
+            <option value="colombia">Colombia</option>
+            <option value="mexico">México</option>
+            <option value="argentina">Argentina</option>
+            <option value="chile">Chile</option>
+          </select>
+          {errors.pais && <p style={{ color: 'red' }}>{errors.pais}</p>}
+        </div>
+
+        {/* Checkboxes de Intereses */}
+        <div>
+          <label>Intereses:</label>
+          <div>
+            <label>
+              <input
+                type="checkbox"
+                value="tecnologia"
+                checked={formData.intereses.includes('tecnologia')}
+                onChange={handleCheckboxChange}
+              />
+              Tecnología
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                value="deportes"
+                checked={formData.intereses.includes('deportes')}
+                onChange={handleCheckboxChange}
+              />
+              Deportes
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                value="arte"
+                checked={formData.intereses.includes('arte')}
+                onChange={handleCheckboxChange}
+              />
+              Arte
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                value="musica"
+                checked={formData.intereses.includes('musica')}
+                onChange={handleCheckboxChange}
+              />
+              Música
+            </label>
+          </div>
+          {errors.intereses && <p style={{ color: 'red' }}>{errors.intereses}</p>}
+        </div>
+
+        {/* Radio buttons de Nivel */}
+        <div>
+          <label>Nivel de experiencia:</label>
+          <div>
+            <label>
+              <input
+                type="radio"
+                name="nivel"
+                value="principiante"
+                checked={formData.nivel === 'principiante'}
+                onChange={(e) => handleInputChange('nivel', e.target.value)}
+              />
+              Principiante
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="nivel"
+                value="intermedio"
+                checked={formData.nivel === 'intermedio'}
+                onChange={(e) => handleInputChange('nivel', e.target.value)}
+              />
+              Intermedio
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="nivel"
+                value="avanzado"
+                checked={formData.nivel === 'avanzado'}
+                onChange={(e) => handleInputChange('nivel', e.target.value)}
+              />
+              Avanzado
+            </label>
+          </div>
+          {errors.nivel && <p style={{ color: 'red' }}>{errors.nivel}</p>}
+        </div>
+
+        {/* Textarea de Biografía */}
+        <div>
+          <label htmlFor="biografia">Biografía:</label>
+          <textarea
+            id="biografia"
+            value={formData.biografia}
+            onChange={(e) => handleInputChange('biografia', e.target.value)}
+            maxLength={200}
+          />
+          <p>{formData.biografia.length}/200 caracteres</p>
+        </div>
+
+        {/* Botón de submit */}
+        <button type="submit" disabled={hasErrors || isFormIncomplete}>
+          Registrarse
+        </button>
+      </form>
+    </div>
+  );
+}
