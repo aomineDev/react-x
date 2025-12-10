@@ -121,7 +121,11 @@ export const AvatarMenu: React.FC = () => {
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel>Nombre</FieldLabel>
-                    <Input {...field} placeholder="Ingresa tu nombre" />
+                    <Input
+                      {...field}
+                      placeholder="Ingresa tu nombre"
+                      aria-invalid={fieldState.invalid}
+                    />
                     {fieldState.error && <FieldError>{fieldState.error.message}</FieldError>}
                   </Field>
                 )}
@@ -133,7 +137,11 @@ export const AvatarMenu: React.FC = () => {
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel>Apellido</FieldLabel>
-                    <Input {...field} placeholder="Ingresa tu apellido" />
+                    <Input
+                      {...field}
+                      placeholder="Ingresa tu apellido"
+                      aria-invalid={fieldState.invalid}
+                    />
                     {fieldState.error && <FieldError>{fieldState.error.message}</FieldError>}
                   </Field>
                 )}
@@ -145,7 +153,12 @@ export const AvatarMenu: React.FC = () => {
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel>Email</FieldLabel>
-                    <Input {...field} type="email" placeholder="Ingresa tu email" />
+                    <Input
+                      {...field}
+                      type="email"
+                      placeholder="Ingresa tu email"
+                      aria-invalid={fieldState.invalid}
+                    />
                     {fieldState.error && <FieldError>{fieldState.error.message}</FieldError>}
                   </Field>
                 )}
