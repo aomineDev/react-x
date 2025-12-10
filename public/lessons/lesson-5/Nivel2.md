@@ -1,4 +1,4 @@
-# Nivel 2 — Listas en React: keys, filtros y ordenamiento
+# Listas en React: keys, filtros y ordenamiento
 
 Renderizar listas es una de las tareas más comunes en interfaces dinámicas. En React, esto se hace combinando:
 

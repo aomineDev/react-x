@@ -61,6 +61,7 @@ export default function QuizPage() {
           <MultiSelect {...config} />
         </SafeLayout>
       )
+
     default:
       return <div>Tipo de quiz no soportado</div>
   }

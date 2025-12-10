@@ -1,4 +1,5 @@
 import CodeChallenge from '@/components/challenge/CodeChallengue'
+import CarouselChallenge from '@/components/quizz/CarouselChallenge'
 import { Spinner } from '@/components/ui/spinner'
 import type { ChallengeConfig } from '@/types/challengeConfig'
 import { useEffect, useState } from 'react'
@@ -32,7 +33,9 @@ const ChallengePage = () => {
 
   if (config.type === 'code') return <CodeChallenge {...config}></CodeChallenge>
 
-  if (config.type === 'quizz') return <p>componente de quizzes</p>
+  if (config.type === 'quizz') {
+    return <CarouselChallenge {...config}> </CarouselChallenge>
+  }
 }
 
 export default ChallengePage

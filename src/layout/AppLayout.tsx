@@ -1,10 +1,15 @@
-import { Outlet } from 'react-router-dom'
-import Header from '@/components/Header'
+import { Outlet, useLocation } from 'react-router-dom'
+import Header from '@/components/Header' // Header general
+import { Navbar } from '@/components/home/navbar/Navbar'
 
 const AppLayout = () => {
+  const location = useLocation()
+
+  const showHomeNavbar = location.pathname === '/' || location.pathname.startsWith('/modulo/')
+
   return (
     <>
-      <Header />
+      {showHomeNavbar ? <Navbar /> : <Header />}
       <Outlet />
     </>
   )

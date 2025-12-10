@@ -8,6 +8,8 @@ import {
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '@/store'
+import NavItem from '@/components/NavItem'
+import { House } from 'lucide-react'
 
 export const AvatarMenu: React.FC = () => {
   const { user, clear } = useAuth()
@@ -22,7 +24,7 @@ export const AvatarMenu: React.FC = () => {
       <DropdownMenuTrigger asChild>
         <button className="flex items-center gap-2 rounded-full focus:outline-none">
           <Avatar className="w-8 h-8">
-            <AvatarImage src="/src/assets/images/avatar-placeholder.png" />
+            <AvatarImage src="src/assets/images/avatar-placeholder.png" />
             <AvatarFallback>U</AvatarFallback>
           </Avatar>
         </button>
@@ -34,7 +36,9 @@ export const AvatarMenu: React.FC = () => {
           <div className="text-xs text-muted-foreground">Mi cuenta</div>
         </div>
 
-        <DropdownMenuItem onSelect={() => console.log('Ir a Perfil')}>Perfil</DropdownMenuItem>
+        <DropdownMenuItem>
+          <NavItem title="Home" to="/" Icon={House} />
+        </DropdownMenuItem>
         <DropdownMenuItem onSelect={logout}>Cerrar sesión</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

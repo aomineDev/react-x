@@ -1,4 +1,4 @@
-# Nivel 3 — ¿Cuándo React renderiza algo?
+# ¿Cuándo React renderiza algo?
 
 En React, un render es cuando tu componente se vuelve a ejecutar para “calcular” el nuevo JSX que debería mostrarse en pantalla.
 

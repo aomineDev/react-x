@@ -17,6 +17,7 @@ import { Link } from 'react-router-dom'
 import { authService } from '@/services/auth'
 import { useAuth } from '@/store'
 import { useNavigate } from 'react-router-dom'
+import { Navbar } from '@/components/landing/navbar/Navbar'
 
 const formSchema = z.object({
   email: z.string().email('Ingresa un email válido'),
@@ -54,6 +55,7 @@ const FormPage = () => {
 
   return (
     <div className="flex justify-center items-center relative h-screen max-h-screen overflow-hidden">
+      <Navbar />
       <BlurBlob
         className="-translate-y-[calc(0%)]"
         colorFrom="rgba(0,150,255,0.25)"

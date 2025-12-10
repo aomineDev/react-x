@@ -1,4 +1,4 @@
-# Nivel 4 — Optimización Básica en React (memo, useCallback, useMemo)
+# Optimización Básica en React (memo, useCallback, useMemo)
 
 En este nivel vamos a aprender a evitar renders innecesarios y mejorar el rendimiento.
 
