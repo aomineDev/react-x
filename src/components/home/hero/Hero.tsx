@@ -54,7 +54,9 @@ export const Hero: React.FC = () => {
         />
 
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
-          <h1 className="text-5xl md:text-7xl font-extrabold text-white drop-shadow-lg">React X</h1>
+          <h1 className="text-5xl md:text-7xl font-extrabold text-white drop-shadow-lg ">
+            React X
+          </h1>
           <p className="mt-4 text-lg md:text-xl text-white/90 max-w-xl">
             Aprende React de forma interactiva con quizzes, retos y desafíos que te ayudarán a
             dominar cada concepto paso a paso.
