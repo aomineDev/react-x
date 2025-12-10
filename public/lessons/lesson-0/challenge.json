@@ -13,23 +13,26 @@
     {
       "type": "one-select",
       "nivel": "Pregunta 2",
-      "pregunta": "¿Qué es JSX?",
+      "pregunta": "¿Qué es el Virtual DOM?",
       "opciones": [
-        { "clave": "a", "texto": "Un lenguaje de programación" },
-        { "clave": "b", "texto": "Sintaxis de JavaScript extendida" },
-        { "clave": "c", "texto": "Un framework" }
+        { "clave": "a", "texto": "El árbol HTML real que renderiza el navegador" },
+        {
+          "clave": "b",
+          "texto": "Una copia ligera y virtual del DOM real usada para optimizar actualizaciones"
+        },
+        { "clave": "c", "texto": "Una librería usada para manipular el DOM directamente" }
       ],
       "correcta": "b",
       "next": ""
     },
     {
       "type": "multi-select",
-      "nivel": "Pregunta 3",
-      "pregunta": "¿Cuáles son hooks de React?",
+      "nivel": "Pregunta 3 – Creación de un proyecto en React",
+      "pregunta": "¿Cuáles de las siguientes herramientas permiten crear un proyecto en React?",
       "opciones": [
-        { "clave": "a", "texto": "useState" },
-        { "clave": "b", "texto": "useEffect" },
-        { "clave": "c", "texto": "useClass" }
+        { "clave": "a", "texto": "Vite" },
+        { "clave": "b", "texto": "Create React App (CRA)" },
+        { "clave": "c", "texto": "Postman" }
       ],
       "correctas": ["a", "b"],
       "next": ""

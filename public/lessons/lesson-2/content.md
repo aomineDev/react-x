@@ -1,5 +1,3 @@
-
-xx
 # Challenge Final – Sistema de Reseñas de Películas
 
 ### Introducción

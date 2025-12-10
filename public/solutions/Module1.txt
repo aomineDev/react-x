@@ -1,0 +1,41 @@
+export default function CatalogoProductos() {
+  const juegos = [
+    { id: 1, nombre: "The Last of Us Part II", precio: 60, stock: 2, categoria: "PlayStation" },
+    { id: 2, nombre: "God of War Ragnarök", precio: 70, stock: 0, categoria: "PlayStation" },
+    { id: 3, nombre: "Halo Infinite", precio: 60, stock: 10, categoria: "Xbox" },
+    { id: 4, nombre: "Elden Ring", precio: 60, stock: 4, categoria: "PlayStation" }
+  ];
+
+  return (
+    <div>
+      <h1>Mi Tienda Online</h1>
+      
+      <h2>Todos los Juegos</h2>
+      {juegos.map((juego) => (
+        <div key={juego.id}>
+          <h3>{juego.nombre}</h3>
+          <p>Precio: ${juego.precio}</p>
+          <p style={{ color: juego.stock > 0 ? 'green' : 'red' }}>
+            {juego.stock > 0 ? 'Disponible' : 'Agotado'}
+          </p>
+          {juego.stock < 5 && juego.stock > 0 && (
+            <p style={{ backgroundColor: 'orange', padding: '5px' }}>
+              ¡Solo quedan {juego.stock} unidades!
+            </p>
+          )}
+        </div>
+      ))}
+      
+      <h2>Juegos de PlayStation</h2>
+      {juegos
+        .filter((juego) => juego.categoria === "PlayStation")
+        .map((juego) => (
+          <div key={juego.id}>
+            <h3>{juego.nombre}</h3>
+            <p>Precio: ${juego.precio}</p>
+          </div>
+        ))
+      }
+    </div>
+  );
+}
