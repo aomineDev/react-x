@@ -1,0 +1,26 @@
+{
+  "type": "one-select",
+  "nivel": "2",
+  "pregunta": "¿Cuál será el output exacto que React renderizará?",
+  "codigo": "export default function App() {\n  const users = [\n    { id: 1, name: 'Carlos', age: 22 },\n    { id: 2, name: 'Ana', age: 28 },\n    { id: 3, name: 'Beto', age: 19 },\n    { id: 4, name: 'Daniela', age: 30 },\n  ]\n\n  const filtered = users\n    .filter((u) => u.age >= 21)\n    .sort((a, b) => a.name.localeCompare(b.name))\n\n  return (\n    <ul>\n      {filtered.map((user) => (\n        <li key={user.id}>\n          {user.name} - {user.age}\n        </li>\n      ))}\n    </ul>\n  )\n}",
+  "opciones": [
+    {
+      "clave": "a",
+      "texto": "- Ana - 28\n- Carlos - 22\n- Daniela - 30"
+    },
+    {
+      "clave": "b",
+      "texto": "- Carlos - 22\n- Ana - 28\n- Daniela - 30"
+    },
+    {
+      "clave": "c",
+      "texto": "- Beto - 19\n- Carlos - 22\n- Ana - 28\n- Daniela - 30"
+    },
+    {
+      "clave": "d",
+      "texto": "- Ana (28)\n- Beto (19)\n- Carlos (22)\n- Daniela (30)"
+    }
+  ],
+  "correcta": "a",
+  "next": "/lesson/5/3"
+}

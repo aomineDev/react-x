@@ -115,9 +115,16 @@ export default function OneSelect({
           {opciones.map((opcion) => (
             <Button
               key={opcion.clave}
-              className={`w-full border-2 transition-all duration-200 border-b-4 cursor-pointer ${getClaseOpcion(
-                opcion.clave
-              )}`}
+              className={`   w-full
+    border-2
+    border-b-4
+    transition-all
+    duration-200
+    cursor-pointer
+    whitespace-normal
+    wrap-break-words
+    text-left
+    p-6  ${getClaseOpcion(opcion.clave)}`}
               onClick={() => setSeleccion(opcion.clave)}
               disabled={estado !== 'pendiente'}
               variant="outline"

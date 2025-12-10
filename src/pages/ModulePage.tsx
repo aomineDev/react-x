@@ -2,7 +2,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { Spinner } from '@/components/ui/spinner'
 import SafeLayout from '@/layout/SafeLayout'
-import { useAuth } from '@/store'
+import { useAuth, useTheme } from '@/store'
 import { SpotlightCard } from '@/components/SpotlightCard'
 import { SquareDashedBottomCodeIcon } from 'lucide-react'
 
@@ -19,15 +19,18 @@ const ModulePage = () => {
   const [loading, setLoading] = useState(true)
   const [config, setConfig] = useState<ModuleConfig | null>(null)
   const { user } = useAuth()
+  const { setTheme } = useTheme()
 
   const url = `/modules/module-${moduleId}.json`
 
   useEffect(() => {
+    setTheme('dark')
+
     fetch(url)
       .then((res) => res.json())
       .then((data) => setConfig(data))
       .finally(() => setLoading(false))
-  }, [url])
+  }, [url, setTheme])
 
   if (loading)
     return (

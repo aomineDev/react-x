@@ -1,6 +1,6 @@
 {
   "type": "one-select",
-  "nivel": "Quizz 2",
+  "nivel": "3",
   "pregunta": "¿Cuál es la razón más común para usar `e.preventDefault()` en un formulario con React?",
   "opciones": [
     { "clave": "a", "texto": "Para evitar que React borre el estado del componente." },

@@ -1,0 +1,13 @@
+{
+  "type": "multi-select",
+  "nivel": "2",
+  "pregunta": "¿Cuál input necesita un handler especial porque no usa 'value' sino 'checked'?",
+  "opciones": [
+    { "clave": "a", "texto": "select" },
+    { "clave": "b", "texto": "textarea" },
+    { "clave": "c", "texto": "checkbox" },
+    { "clave": "d", "texto": "text input" }
+  ],
+  "correctas": ["c"],
+  "next": "/lesson/4/3"
+}

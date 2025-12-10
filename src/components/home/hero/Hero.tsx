@@ -58,7 +58,7 @@ export const Hero: React.FC = () => {
             aventura en React comienza aquí!
           </p>
 
-          <div className="relative w-20 md:w-30 animate-float mt-40">
+          <div className="relative w-20 md:w-30 animate-float mt-10">
             <img
               src="src/assets/images/background/astronaut.png"
               alt="Astronauta"
@@ -68,8 +68,9 @@ export const Hero: React.FC = () => {
 
           <Button
             size="lg"
-            className="mt-8"
+            className="mt-8 border-2 ring dark:ring-white!"
             onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+            variant="outline"
           >
             ↓ Scrollear abajo
           </Button>
