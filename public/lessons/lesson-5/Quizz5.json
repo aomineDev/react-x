@@ -1,0 +1,34 @@
+{
+  "type": "multi-select",
+  "nivel": "5",
+  "pregunta": "¿Cuáles de las siguientes prácticas ayudan a evitar re-renderizados innecesarios en React?",
+  "opciones": [
+    {
+      "clave": "a",
+      "texto": "Evitar crear funciones dentro del JSX cuando dependen de valores que no cambian"
+    },
+    {
+      "clave": "b",
+      "texto": "Usar React.memo en componentes que reciben props que casi nunca cambian"
+    },
+    {
+      "clave": "c",
+      "texto": "Evitar actualizar el estado cuando el nuevo valor es igual al anterior"
+    },
+    {
+      "clave": "d",
+      "texto": "Declarar todos los estados dentro de un mismo componente, aunque no sean necesarios ahí"
+    },
+    {
+      "clave": "e",
+      "texto": "Usar useCallback y useMemo para memoizar funciones y valores costosos"
+    },
+    { "clave": "f", "texto": "Guardar objetos y arrays directamente en el state sin clonarlos" },
+    {
+      "clave": "g",
+      "texto": "Dividir componentes grandes en componentes más pequeños con responsabilidad clara"
+    }
+  ],
+  "correctas": ["a", "b", "c", "e", "g"],
+  "next": "/lesson/6/1"
+}
