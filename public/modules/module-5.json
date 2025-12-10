@@ -2,7 +2,7 @@
   "moduleId": 5,
   "title": "Renderizado",
   "planet": "/src/assets/images/planets/planeta6.png",
-  "image": "/src/assets/images/background/space8.png",
+  "image": "/src/assets/images/background/space8.jpg",
   "levels": [
     { "id": 1, "title": "Nivel 1 — Renderizado Condicional en React" },
     { "id": 2, "title": "Nivel 2 — Listas en React: keys, filtros y ordenamiento" },

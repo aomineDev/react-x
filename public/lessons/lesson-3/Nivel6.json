@@ -2,7 +2,7 @@
   "markdownUrl": "lessons/lesson-3/Nivel6.md",
   "lesson": "Interactividad y estado",
   "nivel": "Nivel 6",
-  "next": "/lesson/4/1",
+  "next": "/quizz/3/6",
   "prev": "/lesson/3/5",
   "files": {
     "/App.js": "export default function App() {\n}"
