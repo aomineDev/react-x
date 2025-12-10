@@ -1,0 +1,70 @@
+import { useState } from 'react';
+
+export default function TaskManager() {
+  // Estado inicial con las tareas de ejemplo
+  const [tasks, setTasks] = useState([
+    { id: 1, text: 'Aprender React', done: false },
+    { id: 2, text: 'Practicar useState', done: false }
+  ]);
+
+  // Estado para el input de nueva tarea
+  const [newTask, setNewTask] = useState('');
+
+  // Función para agregar tareas usando prevState
+  function addTask() {
+    if (!newTask.trim()) return; // Evita agregar tareas vacías
+    
+    setTasks(prev => [
+      ...prev,
+      { id: crypto.randomUUID(), text: newTask, done: false }
+    ]);
+    
+    setNewTask(''); // Limpia el input después de agregar
+  }
+
+  // Función para marcar/desmarcar tareas usando prevState
+  function toggleTask(id) {
+    setTasks(prev => 
+      prev.map(task => 
+        task.id === id ? { ...task, done: !task.done } : task
+      )
+    );
+  }
+
+  return (
+    <div>
+      {/* Título principal */}
+      <h1>Mi Lista de Tareas</h1>
+      
+      {/* Input controlado y botón para agregar */}
+      <input
+        type="text"
+        value={newTask}
+        onChange={(e) => setNewTask(e.target.value)}
+        placeholder="Nueva tarea..."
+      />
+      <button onClick={addTask}>Agregar Tarea</button>
+
+      {/* Lista de todas las tareas */}
+      <h2>Tareas</h2>
+      {tasks.map(task => (
+        <div key={task.id}>
+          <input
+            type="checkbox"
+            checked={task.done}
+            onChange={() => toggleTask(task.id)}
+          />
+          <span style={{ textDecoration: task.done ? 'line-through' : 'none' }}>
+            {task.text}
+          </span>
+        </div>
+      ))}
+
+      {/* Sección de tareas completadas */}
+      <h2>Tareas Completadas</h2>
+      {tasks.filter(task => task.done).map(task => (
+        <div key={task.id}>{task.text}</div>
+      ))}
+    </div>
+  );
+}

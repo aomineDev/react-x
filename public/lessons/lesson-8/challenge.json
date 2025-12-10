@@ -7,6 +7,6 @@
   "testFiles": {
     "/App.test.js": "import { render, screen } from '@testing-library/react';\nimport '@testing-library/jest-dom';\nimport PerfilUsuario from './App';\n\ntest('muestra el título principal', () => {\n  render(<PerfilUsuario />);\n  expect(screen.getByText(/perfil de usuario/i)).toBeInTheDocument();\n});\n\ntest('muestra el nombre del usuario', () => {\n  render(<PerfilUsuario />);\n  expect(screen.getByText(/juan pérez/i)).toBeInTheDocument();\n});\n\ntest('muestra el email del usuario', () => {\n  render(<PerfilUsuario />);\n  expect(screen.getByText(/juan@example.com/i)).toBeInTheDocument();\n});\n\ntest('muestra la edad del usuario', () => {\n  render(<PerfilUsuario />);\n  expect(screen.getByText(/25 años/i)).toBeInTheDocument();\n});\n\ntest('muestra el título Información Personal', () => {\n  render(<PerfilUsuario />);\n  expect(screen.getByText(/información personal/i)).toBeInTheDocument();\n});\n\ntest('muestra el título Contacto', () => {\n  render(<PerfilUsuario />);\n  expect(screen.getByText(/contacto/i)).toBeInTheDocument();\n});"
   },
-  "next": "/lesson/9/1",
-  "showTest": true
+  "next": "/",
+  "showTest": false
 }

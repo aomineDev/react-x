@@ -1,6 +1,6 @@
 {
   "type": "truefalse",
-  "nivel": "Quizz 2",
+  "nivel": "2",
   "pregunta": "El Virtual DOM modifica directamente el DOM real cada vez que ocurre un cambio en la interfaz.",
   "correcta": "F",
   "next": "/lesson/0/3"

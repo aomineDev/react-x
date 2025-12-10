@@ -10,6 +10,8 @@ import { Button } from '@/components/ui/button'
 
 import { Field, FieldGroup, FieldLabel, FieldError } from '@/components/ui/field'
 import Confetti from 'react-confetti-boom'
+import { toast } from 'sonner'
+import { contactService } from '@/services/api/contactService'
 
 const contactSchema = z.object({
   name: z.string().min(3, 'El nombre debe tener al menos 3 caracteres'),
@@ -34,9 +36,16 @@ export const SectionContact = () => {
     },
   })
 
-  const onSubmit = (data: ContactData) => {
-    console.log(data)
-    setSuccessSubmit(true)
+  const onSubmit = async (data: ContactData) => {
+    try {
+      await contactService.create(data)
+      setSuccessSubmit(true)
+      toast.success('Mensaje enviado correctamente')
+      form.reset()
+    } catch (error) {
+      console.error(error)
+      toast.error('Error al enviar el mensaje')
+    }
   }
 
   return (

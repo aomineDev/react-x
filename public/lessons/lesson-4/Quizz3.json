@@ -12,5 +12,5 @@
     { "clave": "d", "texto": "Para impedir que se renderice el componente nuevamente." }
   ],
   "correcta": "b",
-  "next": "/lesson/5/1"
+  "next": "/challenge/4"
 }

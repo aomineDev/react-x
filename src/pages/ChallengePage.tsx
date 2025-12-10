@@ -1,16 +1,34 @@
-import CodeChallenge from '@/components/challenge/CodeChallengue'
-import CarouselChallenge from '@/components/quizz/CarouselChallenge'
+import CodeChallenge from '@/components/challenge/CodeChallenge'
+import QuizzChallenge from '@/components/challenge/QuizzChallenge'
+import { useCompleteLesson } from '@/components/hooks/useCompleteLesson'
 import { Spinner } from '@/components/ui/spinner'
 import type { ChallengeConfig } from '@/types/challengeConfig'
 import { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog'
+import { ArrowRight, Trophy } from 'lucide-react'
+import Confetti from '@/components/Confetti'
+import SafeLayout from '@/layout/SafeLayout'
 
 const ChallengePage = () => {
   const { lessonId } = useParams()
+  const navigate = useNavigate()
 
+  const [success, setSuccess] = useState(false)
   const [loading, setLoading] = useState(true)
   const [config, setConfig] = useState<ChallengeConfig>({} as ChallengeConfig)
-  const navigate = useNavigate()
+
+  const { handleCompleteLesson } = useCompleteLesson()
+
   const challengeFile = `/lessons/lesson-${lessonId}/challenge.json`
 
   useEffect(() => {
@@ -24,6 +42,15 @@ const ChallengePage = () => {
       })
   }, [challengeFile, navigate])
 
+  const handleSuccess = async () => {
+    await handleCompleteLesson(lessonId)
+    setSuccess(true)
+  }
+
+  const handleContinue = () => {
+    navigate(config.next)
+  }
+
   if (loading)
     return (
       <div className="fixed w-full h-screen flex justify-center items-center">
@@ -31,11 +58,45 @@ const ChallengePage = () => {
       </div>
     )
 
-  if (config.type === 'code') return <CodeChallenge {...config}></CodeChallenge>
+  return (
+    <>
+      {config.type === 'code' && (
+        <SafeLayout full>
+          <CodeChallenge {...config} onSuccess={handleSuccess} />
+        </SafeLayout>
+      )}
 
-  if (config.type === 'quizz') {
-    return <CarouselChallenge {...config}> </CarouselChallenge>
-  }
+      {config.type === 'quizz' && (
+        <SafeLayout>
+          <QuizzChallenge {...config} onSuccess={handleSuccess} onContinue={handleContinue} />
+        </SafeLayout>
+      )}
+
+      <AlertDialog open={success}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>¡Reto Superado!</AlertDialogTitle>
+            <AlertDialogDescription>
+              <div className="p-5 flex justify-center">
+                <Trophy className="text-yellow-500" size={75}></Trophy>
+              </div>
+              ¡Felicitaciones, has superado el reto! Puedes avanzar a la siguiente lección.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogAction asChild>
+              <Link to={config.next} className="flex items-center gap-2">
+                Continuar <ArrowRight />
+              </Link>
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      <Confetti show={success} />
+      <Confetti show={success} fall />
+    </>
+  )
 }
 
 export default ChallengePage

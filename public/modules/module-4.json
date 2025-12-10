@@ -6,6 +6,7 @@
   "levels": [
     { "id": 1, "title": "Nivel 1 — Inputs Controlados" },
     { "id": 2, "title": "Nivel 2 — Distintos tipos de Inputs (select, checkbox, radio, textarea)" },
-    { "id": 3, "title": "Nivel 3 — Validación Básica de Formularios en React" }
+    { "id": 3, "title": "Nivel 3 — Validación Básica de Formularios en React" },
+    { "id": 4, "title": "Challenge final" }
   ]
 }

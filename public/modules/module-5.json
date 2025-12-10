@@ -2,7 +2,7 @@
   "moduleId": 5,
   "title": "Renderizado",
   "planet": "/src/assets/images/planets/planeta6.png",
-  "image": "/src/assets/images/background/space8.png",
+  "image": "/src/assets/images/background/space8.jpg",
   "levels": [
     { "id": 1, "title": "Nivel 1 — Renderizado Condicional en React" },
     { "id": 2, "title": "Nivel 2 — Listas en React: keys, filtros y ordenamiento" },
@@ -11,6 +11,7 @@
       "id": 4,
       "title": "Nivel 4 — Optimización Básica en React (memo, useCallback, useMemo)"
     },
-    { "id": 5, "title": "Nivel 5 — Evitar re-renders innecesarios en React" }
+    { "id": 5, "title": "Nivel 5 — Evitar re-renders innecesarios en React" },
+    { "id": 6, "title": "Challenge final" }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "type": "truefalse",
-  "nivel": "Quizz 4",
+  "nivel": "4",
   "pregunta": "El Context de React permite compartir datos entre múltiples componentes sin necesidad de pasarlos manualmente como props.",
   "correcta": "V",
   "next": "/lesson/7/5"

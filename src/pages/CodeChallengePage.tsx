@@ -1,4 +1,4 @@
-import CodeChallenge from '@/components/challenge/CodeChallengue'
+import CodeChallenge from '@/components/challenge/CodeChallenge'
 import type { ChallengeConfig } from '@/types/challengeConfig'
 
 const props: ChallengeConfig = {

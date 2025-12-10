@@ -15,9 +15,11 @@ import * as z from 'zod'
 import { BlurBlob } from '@/components/ui/blur-blob'
 import { Link } from 'react-router-dom'
 import { authService } from '@/services/auth'
-import { useAuth } from '@/store'
+import { useAuth, useTheme } from '@/store'
 import { useNavigate } from 'react-router-dom'
 import { Navbar } from '@/components/landing/navbar/Navbar'
+import { useEffect } from 'react'
+import { toast } from 'sonner'
 
 const formSchema = z.object({
   email: z.string().email('Ingresa un email válido'),
@@ -30,6 +32,12 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>
 
 const FormPage = () => {
+  const { setTheme } = useTheme()
+
+  useEffect(() => {
+    setTheme('dark')
+  }, [setTheme])
+
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -47,8 +55,10 @@ const FormPage = () => {
       setToken(user.token)
       setUser(user.user)
       navigate('/')
+      toast.success('Sesión iniciada correctamente')
     } catch (error) {
       form.resetField('password')
+      toast.error('Error al iniciar sesión')
       console.log(error)
     }
   }

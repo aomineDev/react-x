@@ -1,0 +1,85 @@
+import TarjetaPelicula from './TarjetaPelicula';
+
+export default function App() {
+  function cambiarCalificacion(titulo, nuevaCalificacion) {
+    alert(`${titulo} ahora tiene ${nuevaCalificacion} estrellas`);
+  }
+
+  return (
+    <div>
+      <h1>CineMax - Sistema de Reseñas</h1>
+      
+      <TarjetaPelicula
+        titulo="Inception"
+        año={2010}
+        generos={["Ciencia Ficción", "Thriller"]}
+        director={{ nombre: "Christopher Nolan", nacionalidad: "Británico" }}
+        calificacion={9}
+        onCambiarCalificacion={cambiarCalificacion}
+      >
+        <p>Un ladrón que roba secretos a través de sueños.</p>
+      </TarjetaPelicula>
+      
+      <TarjetaPelicula
+        titulo="Parasite"
+        año={2019}
+        generos={["Drama", "Thriller"]}
+        director={{ nombre: "Bong Joon-ho", nacionalidad: "Surcoreano" }}
+        calificacion={8}
+        onCambiarCalificacion={cambiarCalificacion}
+      >
+        <p>Una familia pobre se infiltra en la vida de una familia rica.</p>
+      </TarjetaPelicula>
+      
+      <TarjetaPelicula
+        titulo="The Room"
+        año={2003}
+        generos={["Drama"]}
+        director={{ nombre: "Tommy Wiseau", nacionalidad: "Estadounidense" }}
+        calificacion={3}
+        onCambiarCalificacion={cambiarCalificacion}
+      >
+        <p>Una película de culto conocida por ser "tan mala que es buena".</p>
+      </TarjetaPelicula>
+    </div>
+  );
+}
+
+----------------------------
+
+
+
+export default function TarjetaPelicula({
+  titulo,
+  año,
+  generos,
+  director,
+  calificacion = 5,
+  onCambiarCalificacion,
+  children
+}) {
+  return (
+    <div style={{ border: '2px solid #ddd', padding: '15px', margin: '10px', borderRadius: '8px' }}>
+      <h2>{titulo}</h2>
+      <p><strong>Año:</strong> {año}</p>
+      <p>
+        <strong>Géneros:</strong> {generos.map((genero, index) => (
+          <span key={index}>{genero}{index < generos.length - 1 ? ', ' : ''}</span>
+        ))}
+      </p>
+      <p><strong>Director:</strong> {director.nombre} ({director.nacionalidad})</p>
+      <p style={{ 
+        color: calificacion >= 7 ? 'green' : calificacion >= 5 ? 'orange' : 'red',
+        fontWeight: 'bold'
+      }}>
+        <strong>Calificación:</strong> {calificacion}/10
+      </p>
+      <div style={{ fontStyle: 'italic', marginTop: '10px' }}>
+        {children}
+      </div>
+      <button onClick={() => onCambiarCalificacion(titulo, 10)}>
+        ⭐ Calificar con 10
+      </button>
+    </div>
+  );
+}

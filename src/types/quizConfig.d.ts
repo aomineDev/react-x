@@ -1,4 +1,4 @@
-export interface TrueFalseQuiz {
+export interface TrueFalseConfig {
   type: 'truefalse'
   nivel: string
   pregunta: string
@@ -6,7 +6,7 @@ export interface TrueFalseQuiz {
   next: string
 }
 
-export interface OneSelectQuiz {
+export interface OneSelectConfig {
   type: 'one-select'
   pregunta: string
   codigo?: string
@@ -16,7 +16,7 @@ export interface OneSelectQuiz {
   next: string
 }
 
-export interface CompleteCodeQuizz {
+export interface CompleteCodeConfig {
   type: 'complete-code'
   code: string[]
   answer: string
@@ -24,7 +24,7 @@ export interface CompleteCodeQuizz {
   next: string
 }
 
-export interface MultiSelectQuiz {
+export interface MultiSelectConfig {
   type: 'multi-select'
   pregunta: string
   codigo?: string[]
@@ -34,4 +34,4 @@ export interface MultiSelectQuiz {
   next: string
 }
 
-export type QuizConfig = TrueFalseQuiz | OneSelectQuiz | CompleteCodeQuizz | MultiSelectQuiz
+export type QuizzConfig = TrueFalseConfig | OneSelectConfig | CompleteCodeConfig | MultiSelectConfig

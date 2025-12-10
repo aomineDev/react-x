@@ -1,174 +1,73 @@
 import { useState } from 'react'
-import { Button } from '../ui/button'
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogTitle,
-  AlertDialogFooter,
-  AlertDialogHeader,
-} from '@/components/ui/alert-dialog'
-import { ArrowRight, Trophy } from 'lucide-react'
-import Confetti from '@/components/Confetti'
-import { Link, useParams } from 'react-router-dom'
 import CodeBlock from '../CodeBlock'
-import type { OneSelectQuiz } from '@/types/quizConfig'
-import { useCompleteQuizz } from '../hooks/useCompleteQuizz'
+import type { OneSelectConfig, QuizzProps, QuizzStatus } from '@/types'
+import {
+  QuizzButton,
+  QuizzButtonGroup,
+  QuizzDescription,
+  QuizzOptionButton,
+  QuizzTitle,
+  Quizz,
+} from '@/components/quizz'
 
-type EstadoRespuesta = 'pendiente' | 'correcto' | 'incorrecto'
-
-interface OneSelectProps extends OneSelectQuiz {
-  onComplete?: () => void
-}
+interface OneSelectProps extends OneSelectConfig, QuizzProps {}
 
 export default function OneSelect({
   correcta,
   opciones,
-  next,
   pregunta,
   nivel,
   codigo,
-  onComplete,
+  onContinue,
+  onSuccess,
 }: OneSelectProps) {
-  const [seleccion, setSeleccion] = useState<string>('')
-  const [estado, setEstado] = useState<EstadoRespuesta>('pendiente')
-  const [showModal, setShowModal] = useState(false)
-  const { handleCompleteQuizz } = useCompleteQuizz()
-  const { lessonId, quizzId } = useParams()
+  const [selection, setSelection] = useState<string>('')
+  const [status, setStatus] = useState<QuizzStatus>('idle')
 
-  const [success, setSuccess] = useState(false)
+  const verifySelection = async () => {
+    if (!selection) return
 
-  const handleSelect = async () => {
-    if (!seleccion) return
+    if (selection === correcta) {
+      setStatus('success')
 
-    if (seleccion === correcta) {
-      setEstado('correcto')
-      setSuccess(true)
-
-      await handleCompleteQuizz(lessonId, quizzId, next)
-
-      // Si hay callback (está en carousel), úsalo en lugar del modal
-      if (onComplete) {
-        onComplete()
-      } else {
-        // Si no hay callback (quiz individual), muestra el modal
-        setShowModal(true)
-      }
+      await onSuccess()
     } else {
-      setEstado('incorrecto')
+      setStatus('error')
     }
   }
 
-  const resetQuiz = () => {
-    setSeleccion('')
-    setEstado('pendiente')
+  const resetQuizz = () => {
+    setSelection('')
+    setStatus('idle')
   }
 
-  const handleBotonPrincipal = () => {
-    if (estado === 'incorrecto') {
-      resetQuiz()
-    } else {
-      handleSelect()
-    }
-  }
-
-  const getTextoBoton = () => {
-    if (estado == 'correcto') {
-      return '¡Correcto!'
-    }
-    if (estado === 'incorrecto') {
-      return 'Intentalo de nuevo'
-    }
-    return 'Verificar'
-  }
-
-  const getClaseOpcion = (clave: string) => {
-    if (seleccion === clave) {
-      if (estado === 'correcto')
-        return 'border-green-500 dark:border-green-500 bg-green-500/10 dark:bg-green-500/10 text-green-500 hover:bg-green-500/10 dark:hover:bg-green-500/10 hover:text-green-500'
-      else if (estado === 'incorrecto')
-        return 'border-red-500 dark:border-red-500 bg-red-500/10 dark:bg-red-500/10 text-red-500 hover:bg-red-500/10 dark:hover:bg-red-500/10 hover:text-red-500'
-      else
-        return 'border-blue-500 dark:border-blue-500 bg-blue-500/10 dark:bg-blue-500/10 text-blue-500 hover:bg-blue-500/10 dark:hover:bg-blue-500/10 hover:text-blue-500'
-    }
-
-    return ''
-  }
-
-  const getClaseBoton = () => {
-    if (estado === 'correcto') {
-      return ' bg-green-600 hover:bg-green-700'
-    } else if (estado === 'incorrecto') {
-      return ' bg-red-600 hover:bg-red-700'
-    }
-    return ' bg-blue-600 hover:bg-blue-700'
+  const handleQuizzBtnClick = () => {
+    if (status === 'success') onContinue()
+    else if (status === 'error') resetQuizz()
+    else verifySelection()
   }
 
   return (
-    <>
-      <div className="max-h-full flex flex-col gap-5 items-center overflow-auto p-5">
-        <h1 className="text-4xl capitalize font-bold primary-gradient">Quizz {nivel}</h1>
-        <h3>{pregunta}</h3>
-        {codigo && <CodeBlock>{codigo.toString()}</CodeBlock>}
-        <div className="flex flex-col gap-4 w-100">
-          {opciones.map((opcion) => (
-            <Button
-              key={opcion.clave}
-              className={`   w-full
-    border-2
-    border-b-4
-    transition-all
-    duration-200
-    cursor-pointer
-    whitespace-normal
-    wrap-break-words
-    text-left
-    p-6  ${getClaseOpcion(opcion.clave)}`}
-              onClick={() => setSeleccion(opcion.clave)}
-              disabled={estado !== 'pendiente'}
-              variant="outline"
-            >
-              {opcion.texto}
-            </Button>
-          ))}
-        </div>
-        <Button
-          className={`cursor-pointer text-white w-100 ${getClaseBoton()}`}
-          size="lg"
-          disabled={!seleccion}
-          onClick={handleBotonPrincipal}
-        >
-          {getTextoBoton()}
-        </Button>
+    <Quizz>
+      <QuizzTitle>Quizz {nivel}</QuizzTitle>
+      <QuizzDescription>{pregunta}</QuizzDescription>
 
-        {/* Solo mostrar modal si NO está en carousel */}
-        {!onComplete && (
-          <AlertDialog open={showModal}>
-            <AlertDialogContent>
-              <AlertDialogHeader>
-                <AlertDialogTitle>¡Reto Superado!</AlertDialogTitle>
-                <AlertDialogDescription>
-                  <span className="p-5 flex justify-center">
-                    <Trophy className="text-yellow-500" size={75}></Trophy>
-                  </span>
-                  ¡Felicitaciones, has superado el reto! Puedes avanzar a la siguiente sección.
-                </AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogAction>
-                  <Link to={`${next}`} className="flex items-center gap-2">
-                    Continuar <ArrowRight />
-                  </Link>
-                </AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
-        )}
+      {codigo && <CodeBlock>{codigo.toString()}</CodeBlock>}
 
-        <Confetti show={success && (showModal || !!onComplete)} />
-        <Confetti show={success && (showModal || !!onComplete)} fall />
-      </div>
-    </>
+      <QuizzButtonGroup>
+        {opciones.map(({ clave, texto }) => (
+          <QuizzOptionButton<string>
+            isSelected={selection === clave}
+            status={status}
+            id={clave}
+            text={texto}
+            onClick={setSelection}
+            key={clave}
+          />
+        ))}
+
+        <QuizzButton status={status} disabled={!selection} onClick={handleQuizzBtnClick} />
+      </QuizzButtonGroup>
+    </Quizz>
   )
 }
