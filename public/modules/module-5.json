@@ -11,6 +11,7 @@
       "id": 4,
       "title": "Nivel 4 — Optimización Básica en React (memo, useCallback, useMemo)"
     },
-    { "id": 5, "title": "Nivel 5 — Evitar re-renders innecesarios en React" }
+    { "id": 5, "title": "Nivel 5 — Evitar re-renders innecesarios en React" },
+    { "id": 6, "title": "Challenge final" }
   ]
 }

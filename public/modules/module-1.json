@@ -8,6 +8,7 @@
     { "id": 2, "title": "Nivel 2 — Sintaxis de JSX" },
     { "id": 3, "title": "Nivel 3 — Expresiones JavaScript en JSX" },
     { "id": 4, "title": "Nivel 4 — Renderizado Condicional" },
-    { "id": 5, "title": "Nivel 5 — Renderizado de Listas" }
+    { "id": 5, "title": "Nivel 5 — Renderizado de Listas" },
+    { "id": 6, "title": "Challenge final" }
   ]
 }

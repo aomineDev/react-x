@@ -1,7 +1,7 @@
 {
   "markdownUrl": "lessons/lesson-3/Nivel1.md",
   "lesson": "Interactividad y estado",
-  "nivel": "Nivel 1",
+  "nivel": "1",
   "next": "/quizz/3/1",
   "files": {
     "/App.js": "export default function App() {\n  return (\n    <div>\n      <h1>Formulario de saludo</h1>\n\n      <input type=\"text\" placeholder=\"Escribe tu nombre...\" />\n      <button>Saludar</button>\n    </div>\n  )\n}"
