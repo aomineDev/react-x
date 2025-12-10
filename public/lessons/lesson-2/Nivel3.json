@@ -2,7 +2,7 @@
   "markdownUrl": "lessons/lesson-2/Nivel3.md",
   "lesson": "Props",
   "nivel": "Nivel 3",
-  "next": "/lesson/2/4",
+  "next": "/quizz/2/3",
   "prev": "/lesson/2/2",
   "files": {
     "/App.js": "export default function App() {\n}",

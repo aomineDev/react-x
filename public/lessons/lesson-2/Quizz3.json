@@ -1,0 +1,16 @@
+{
+  "type": "multi-select",
+  "nivel": "3",
+  "pregunta": "¿Cuál de las siguientes afirmaciones sobre la prop 'children' es correcta?",
+  "opciones": [
+    { "clave": "a", "texto": "'children' permite enviar contenido dentro de un componente." },
+    { "clave": "b", "texto": "Solo se puede pasar texto dentro de 'children'." },
+    {
+      "clave": "c",
+      "texto": "'children' se usa cuando un componente debe envolver otros elementos."
+    },
+    { "clave": "d", "texto": "'children' es lo mismo que cualquier otra prop como 'profesion'." }
+  ],
+  "correctas": ["a", "c"],
+  "next": "/lesson/2/4"
+}
