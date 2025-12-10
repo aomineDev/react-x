@@ -1,7 +1,7 @@
 {
   "type": "truefalse",
   "pregunta": "La función de limpieza (return dentro de useEffect) se ejecuta automáticamente cuando el componente se desmonta o cuando el efecto vuelve a ejecutarse.",
-  "nivel": "Quizz 3",
+  "nivel": "3",
   "correcta": "V",
   "next": "/lesson/6/4"
 }

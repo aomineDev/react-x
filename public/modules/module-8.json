@@ -11,6 +11,7 @@
       "id": 4,
       "title": "Nivel 4 — Buenas Prácticas: Tipado y Defaults"
     },
-    { "id": 5, "title": "Nivel 5 — Arquitectura: Reglas de Reutilización" }
+    { "id": 5, "title": "Nivel 5 — Arquitectura: Reglas de Reutilización" },
+    { "id": 6, "title": "Challenge final" }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "type": "truefalse",
-  "nivel": "Quizz 4",
+  "nivel": "4",
   "pregunta": "En React, el renderizado condicional permite insertar expresiones JavaScript dentro del JSX para decidir qué contenido o componente se muestra.",
   "correcta": "V",
   "next": "/lesson/1/5"

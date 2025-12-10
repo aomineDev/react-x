@@ -1,6 +1,6 @@
 {
   "type": "one-select",
-  "nivel": "Quizz 3",
+  "nivel": "3",
   "pregunta": "¿Cuál de las siguientes afirmaciones describe correctamente cuándo React vuelve a renderizar este componente?",
   "codigo": "export default function App() {\n  let contador = 0;\n\n  function handleClick() {\n    contador = contador + 1;\n    console.log(\"Contador:\", contador);\n  }\n\n  return <button onClick={_______}>Sumar</button>;\n}",
   "opciones": [

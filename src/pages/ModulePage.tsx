@@ -88,7 +88,16 @@ const ModulePage = () => {
                 title={level.title}
                 disabled={!unlocked}
                 completed={completed}
-                onClick={() => unlocked && navigate(`/lesson/${config.moduleId}/${level.id}`)}
+                onClick={() => {
+                  if (!unlocked) return
+
+                  const isLastLevel = level.id === config.levels.length
+                  if (isLastLevel) {
+                    navigate(`/challenge/${config.moduleId}`)
+                  } else {
+                    navigate(`/lesson/${config.moduleId}/${level.id}`)
+                  }
+                }}
               />
             )
           })}

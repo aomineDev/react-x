@@ -1,7 +1,7 @@
 {
   "type": "truefalse",
   "pregunta": "Un “early return” sirve para mostrar una UI alternativa cuando una condición NO se cumple, evitando renderizar el resto del componente.",
-  "nivel": "Nivel 1",
+  "nivel": "1",
   "correcta": "V",
   "next": "/lesson/5/2"
 }

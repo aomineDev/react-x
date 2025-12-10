@@ -14,9 +14,11 @@ import { Controller, useForm } from 'react-hook-form'
 import * as z from 'zod'
 import { BlurBlob } from '@/components/ui/blur-blob'
 import { Link, useNavigate } from 'react-router-dom'
-import { useAuth } from '@/store'
+import { useAuth, useTheme } from '@/store'
 import { authService } from '@/services/auth'
 import { Navbar } from '@/components/landing/navbar/Navbar'
+import { useEffect } from 'react'
+import { toast } from 'sonner'
 
 const formSchema = z.object({
   name: z
@@ -37,6 +39,12 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>
 
 const FormPage = () => {
+  const { setTheme } = useTheme()
+
+  useEffect(() => {
+    setTheme('dark')
+  }, [setTheme])
+
   const { setUser, setToken } = useAuth()
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -56,9 +64,11 @@ const FormPage = () => {
       setToken(user.token)
       setUser(user.user)
       navigate('/')
+      toast.success('Cuenta creada correctamente')
     } catch (error) {
       form.resetField('password')
       console.log(error)
+      toast.error('Error al crear cuenta')
     }
   }
 
