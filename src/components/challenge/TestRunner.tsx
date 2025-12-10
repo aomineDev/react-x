@@ -69,11 +69,13 @@ const TestRunner = ({ onClick, onSuccess, initialFiles, challengeId }: TestRunne
           modifiedFiles[key] = files[key].code
         }
       })
-
-      if (user && lessonId && user.currentLesson === parseInt(lessonId)) {
-        await challengeService.create({ lesson: parseInt(lessonId), files: modifiedFiles })
-      } else {
-        if (challengeId) await challengeService.update(challengeId, { files: modifiedFiles })
+      if (user && lessonId) {
+        if (user.currentLesson === parseInt(lessonId)) {
+          await challengeService.create({ lesson: parseInt(lessonId), files: modifiedFiles })
+        } else {
+          if (challengeId) await challengeService.update(challengeId, { files: modifiedFiles })
+          else await challengeService.create({ lesson: parseInt(lessonId), files: modifiedFiles })
+        }
       }
 
       await onSuccess()

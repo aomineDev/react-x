@@ -1,4 +1,3 @@
---
 # Challenge: Contador Avanzado con useReducer y useRef
 
 Aplica los hooks avanzados que aprendiste en este desafío práctico.

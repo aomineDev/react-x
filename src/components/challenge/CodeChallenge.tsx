@@ -44,9 +44,14 @@ const CodeChallenge = ({
   useEffect(() => {
     async function getChallenge() {
       if (user && lessonId && user.currentLesson > parseInt(lessonId)) {
-        const challenge = await challengeService.getOneByLesson(parseInt(lessonId))
-        setCurrentFiles(challenge.files)
-        setChallengeId(challenge._id)
+        try {
+          const challenge = await challengeService.getOneByLesson(parseInt(lessonId))
+          setCurrentFiles(challenge.files)
+          setChallengeId(challenge._id)
+        } catch (error) {
+          console.error(error)
+          console.log('challenge not resolved')
+        }
       }
 
       setIsLoading(false)

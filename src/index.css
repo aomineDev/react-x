@@ -360,4 +360,15 @@
   .animate-bounceArrow {
     animation: bounceArrow 1s ease-in-out infinite;
   }
+
+  .my-planet:hover {
+    animation: spin 20s linear infinite;
+    filter: drop-shadow(0 0 16px rgba(0 0 0 / 0.4));
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }

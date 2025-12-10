@@ -64,7 +64,7 @@ export const Hero: React.FC = () => {
           </Button>
         </div>
 
-        <div className="h-50 absolute bottom-0 left-0 w-full z-10 bg-linear-to-t from-background to-black/0"></div>
+        <div className="h-50 absolute bottom-0 left-0 w-full z-10 bg-linear-to-t from-background to-black/0 pointer-events-none"></div>
       </section>
 
       <div className="py-30 bg-background ">

@@ -29,14 +29,14 @@ const Planet = ({ id, img, title }: PlanetProps) => {
         <img
           src="src/assets/images/background/nave.png"
           alt="Nave"
-          className="absolute z-10 -top-10 w-12 md:w-36 animate-bounce"
+          className="absolute z-10 -top-10 w-12 md:w-36 animate-bounce "
         />
       )}
 
       <img
         src={img}
         alt={title}
-        className={`w-32 sm:w-40 md:w-70 transition-transform hover:scale-110 ${
+        className={`w-32 sm:w-40 md:w-70 transition-transform hover:scale-110 my-planet ${
           isLocked ? 'filter grayscale' : ''
         }`}
       />
