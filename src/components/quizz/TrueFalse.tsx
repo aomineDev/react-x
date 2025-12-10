@@ -17,7 +17,11 @@ import { useCompleteQuizz } from '../hooks/useCompleteQuizz'
 
 type EstadoRespuesta = 'pendiente' | 'correcto' | 'incorrecto'
 
-export default function TrueFalse({ correcta, next, nivel, pregunta }: TrueFalseQuiz) {
+interface TrueFalseProps extends TrueFalseQuiz {
+  onComplete?: () => void
+}
+
+export default function TrueFalse({ correcta, next, nivel, pregunta, onComplete }: TrueFalseProps) {
   const [seleccion, setSeleccion] = useState<'V' | 'F' | ''>('')
   const [estado, setEstado] = useState<EstadoRespuesta>('pendiente')
   const [showModal, setShowModal] = useState(false)
@@ -34,7 +38,13 @@ export default function TrueFalse({ correcta, next, nivel, pregunta }: TrueFalse
 
       await handleCompleteQuizz(lessonId, quizzId, next)
 
-      setShowModal(true)
+      // Si hay callback (está en carousel), úsalo en lugar del modal
+      if (onComplete) {
+        onComplete()
+      } else {
+        // Si no hay callback (quiz individual), muestra el modal
+        setShowModal(true)
+      }
     } else {
       setEstado('incorrecto')
     }
@@ -106,32 +116,34 @@ export default function TrueFalse({ correcta, next, nivel, pregunta }: TrueFalse
           {getTextoBoton()}
         </Button>
 
-        {/* MODAL */}
-        <AlertDialog open={showModal}>
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <AlertDialogTitle>¡Reto Superado!</AlertDialogTitle>
-              <AlertDialogDescription>
-                <div className="p-5 flex flex-col items-center text-center gap-3">
-                  <Trophy className="text-yellow-500" size={75} />
-                  <p>¡Excelente! Puedes avanzar a la siguiente sección.</p>
-                </div>
-              </AlertDialogDescription>
-            </AlertDialogHeader>
+        {/* Solo mostrar modal si NO está en carousel */}
+        {!onComplete && (
+          <AlertDialog open={showModal}>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>¡Reto Superado!</AlertDialogTitle>
+                <AlertDialogDescription>
+                  <div className="p-5 flex flex-col items-center text-center gap-3">
+                    <Trophy className="text-yellow-500" size={75} />
+                    <p>¡Excelente! Puedes avanzar a la siguiente sección.</p>
+                  </div>
+                </AlertDialogDescription>
+              </AlertDialogHeader>
 
-            <AlertDialogFooter>
-              <AlertDialogAction>
-                <Link to={next} className="flex items-center gap-2">
-                  Continuar
-                  <ArrowRight />
-                </Link>
-              </AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
+              <AlertDialogFooter>
+                <AlertDialogAction>
+                  <Link to={next} className="flex items-center gap-2">
+                    Continuar
+                    <ArrowRight />
+                  </Link>
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        )}
 
-        <Confetti show={success && showModal} />
-        <Confetti show={success && showModal} fall />
+        <Confetti show={success && (showModal || !!onComplete)} />
+        <Confetti show={success && (showModal || !!onComplete)} fall />
       </div>
     </div>
   )

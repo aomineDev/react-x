@@ -18,6 +18,10 @@ import { useCompleteQuizz } from '../hooks/useCompleteQuizz'
 
 type EstadoRespuesta = 'pendiente' | 'correcto' | 'incorrecto'
 
+interface MultiSelectProps extends MultiSelectQuiz {
+  onComplete?: () => void
+}
+
 export default function MultiSelect({
   correctas,
   opciones,
@@ -25,7 +29,8 @@ export default function MultiSelect({
   pregunta,
   nivel,
   codigo,
-}: MultiSelectQuiz) {
+  onComplete,
+}: MultiSelectProps) {
   const [selecciones, setSelecciones] = useState<string[]>([])
   const [estado, setEstado] = useState<EstadoRespuesta>('pendiente')
   const [showModal, setShowModal] = useState(false)
@@ -61,7 +66,13 @@ export default function MultiSelect({
 
       await handleCompleteQuizz(lessonId, quizzId, next)
 
-      setShowModal(true)
+      // Si hay callback (está en carousel), úsalo en lugar del modal
+      if (onComplete) {
+        onComplete()
+      } else {
+        // Si no hay callback (quiz individual), muestra el modal
+        setShowModal(true)
+      }
     } else {
       setEstado('incorrecto')
     }
@@ -143,29 +154,32 @@ export default function MultiSelect({
           {getTextoBoton()}
         </Button>
 
-        <AlertDialog open={showModal}>
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <AlertDialogTitle>¡Reto Superado!</AlertDialogTitle>
-              <AlertDialogDescription>
-                <div className="p-5 flex justify-center">
-                  <Trophy className="text-yellow-500" size={75}></Trophy>
-                </div>
-                ¡Felicitaciones, has superado el reto! Puedes avanzar a la siguiente sección.
-              </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogAction>
-                <Link to={`${next}`} className="flex items-center gap-2">
-                  Continuar <ArrowRight />
-                </Link>
-              </AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
+        {/* Solo mostrar modal si NO está en carousel */}
+        {!onComplete && (
+          <AlertDialog open={showModal}>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>¡Reto Superado!</AlertDialogTitle>
+                <AlertDialogDescription>
+                  <div className="p-5 flex justify-center">
+                    <Trophy className="text-yellow-500" size={75}></Trophy>
+                  </div>
+                  ¡Felicitaciones, has superado el reto! Puedes avanzar a la siguiente sección.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogAction>
+                  <Link to={`${next}`} className="flex items-center gap-2">
+                    Continuar <ArrowRight />
+                  </Link>
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        )}
 
-        <Confetti show={success && showModal} />
-        <Confetti show={success && showModal} fall />
+        <Confetti show={success && (showModal || !!onComplete)} />
+        <Confetti show={success && (showModal || !!onComplete)} fall />
       </div>
     </>
   )

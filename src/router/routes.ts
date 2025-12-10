@@ -53,6 +53,7 @@ export const routes = createBrowserRouter([
     path: '/landing',
     Component: LandingPage,
   },
+
   {
     path: '/login',
     Component: LoginPage,
