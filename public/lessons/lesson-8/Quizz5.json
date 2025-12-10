@@ -3,5 +3,5 @@
   "pregunta": "Los Custom Hooks son la opción recomendada en React moderno cuando necesitas reutilizar lógica de estado sin acoplarla a una interfaz.",
   "nivel": "Quizz 5",
   "correcta": "V",
-  "next": "/lesson/9/1"
+  "next": "/challenge/8"
 }
