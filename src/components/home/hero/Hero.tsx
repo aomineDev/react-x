@@ -76,11 +76,11 @@ export const Hero: React.FC = () => {
 
           <Button
             size="lg"
-            className="mt-8 border-2 ring dark:ring-white! flex items-center gap-2 transition-transform duration-300 hover:scale-105 hover:bg-white/10"
+            className="mt-8 border-2 ring dark:ring-white! flex items-center gap-2 transition-transform duration-300 hover:scale-105 hover:bg-white/10 rounded-full cursor-pointer"
             onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
             variant="outline"
           >
-            <ArrowDown className="w-6 h-6 animate-bounceArrow" /> Scrollear abajo
+            <ArrowDown className="w-6 h-6 animate-bounceArrow" /> Scroll
           </Button>
         </div>
       </section>
