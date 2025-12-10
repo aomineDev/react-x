@@ -2,9 +2,10 @@
 
 En muchos componentes necesitas manejar información que cambia a medida que el usuario interactúa. React maneja estos cambios usando estado, una especie de pequeña “memoria viva” dentro del componente.
 
-Cuando el estado cambia, React vuelve a renderizar el componente para mostrar la nueva información.
+> [!note]
+> Cuando el estado cambia, React vuelve a renderizar el componente para mostrar la nueva información.
 
-## Paso 1 - Importar useState
+## ~1~ Importar useState
 
 Primero traemos el hook desde React:
 
@@ -12,7 +13,7 @@ Primero traemos el hook desde React:
 import { useState } from 'react'
 ```
 
-## Paso 2 - Declarar estado
+## ~2~ Declarar estado
 
 Construyamos un pequeño contador de `Likes`, como si estuviéramos armando un prototipo para una app social.
 
@@ -32,9 +33,10 @@ export default function App() {
 - `setLikes` es la función que cambia ese valor
 - `useState(0)` indica que el contador inicia en 0
 
+> [!important]
 > La convención es nombrar variables de estado como `[algo, setAlgo]` usando desestructuración de arrays.
 
-## Paso 3 — Actualizar estado al hacer clic
+## ~3~ Actualizar estado al hacer clic
 
 Ahora le damos vida real: cuando el usuario hace clic, incrementamos los likes.
 

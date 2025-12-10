@@ -1,7 +1,7 @@
 {
   "type": "truefalse",
   "pregunta": "Pasar funciones por props es una forma válida de permitir que un componente hijo actualice el estado que vive en su padre.",
-  "nivel": "Nivel 6",
+  "nivel": "6",
   "correcta": "V",
   "next": "/lesson/4/1"
 }

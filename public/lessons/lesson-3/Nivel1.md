@@ -4,6 +4,7 @@ En React, los eventos se manejan como funciones que se ejecutan cuando el usuari
 
 Son equivalentes a eventos del DOM, pero se escriben en camelCase y se pasan como funciones, no como strings.
 
+> [!note]
 > React NO modifica directamente el DOM, sino que recibe tu intención a través de handlers.
 
 vamos a construir un pequeño “Formulario de saludo”.

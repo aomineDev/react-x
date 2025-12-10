@@ -24,6 +24,6 @@
     "}"
   ],
   "answer": "Completa los espacios usando la forma funcional de setState para que cada toggle se base en el estado anterior.",
-  "nivel": "3",
+  "nivel": "4",
   "next": "/lesson/3/5"
 }
