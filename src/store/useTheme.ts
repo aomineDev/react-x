@@ -24,7 +24,12 @@ const theme = getInitialTheme()
 
 export const useTheme = create<ThemeStore>((set) => ({
   theme,
-  setTheme: (theme: Theme) => set({ theme }),
+  setTheme: (theme: Theme) => {
+    if (theme === 'dark') document.documentElement.classList.add('dark')
+    else document.documentElement.classList.remove('dark')
+
+    return set({ theme })
+  },
   toggleTheme: () => {
     document.documentElement.classList.toggle('dark')
 
