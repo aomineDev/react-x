@@ -21,7 +21,7 @@ Queremos construir un pequeño ejemplo de lista de tareas, donde:
 
 - Podremos marcar tareas como completadas.
 
-## Paso 1 — Declarar un estado con un array
+## ~1~ Declarar un estado con un array
 
 Usaremos `useState` para guardar una lista inicial de tareas:
 
@@ -41,7 +41,7 @@ export default function App() {
 - El estado contiene un array de objetos.
 - Cada objeto representa una tarea.
 
-## Paso 2 — Mostrar las tareas usando .map
+## ~2~ Mostrar las tareas usando .map
 
 Para renderizar la lista:
 
@@ -60,7 +60,7 @@ return (
 )
 ```
 
-## Paso 3 — Agregar una nueva tarea
+## ~3~ Agregar una nueva tarea
 
 Queremos un `input` y un botón que agregue una tarea.
 
@@ -98,7 +98,7 @@ JSX para escribir y agregar:
 <button onClick={addTask}>Agregar</button>
 ```
 
-## Paso 4 — Marcar una tarea como completada
+## ~4~ Marcar una tarea como completada
 
 Necesitamos un handler que reciba el id y cambie solo esa tarea.
 
@@ -114,7 +114,7 @@ Luego conectamos el checkbox:
 <input type="checkbox" checked={task.done} onChange={() => toggleTask(task.id)} />
 ```
 
-## Paso 5 — Resultado final
+## ~5~ Resultado final
 
 ```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 import { useState } from 'react'

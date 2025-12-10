@@ -39,15 +39,19 @@ export const SpotlightCard = ({
       onMouseMove={handleMouseMove}
       onClick={() => !disabled && onClick?.()}
       className={`
-  relative overflow-hidden group rounded-2xl border transition-all duration-300
-  ${disabled ? 'border-white/5 bg-black/10 opacity-40 pointer-events-none' : ''}
-  ${completed ? 'border-white/10 bg-black/20 hover:border-white/30 cursor-pointer' : ''}
-  ${
-    !disabled && !completed
-      ? 'border-white/10 bg-black/20 hover:border-white/30 cursor-pointer'
-      : ''
-  }
-`}
+    relative overflow-hidden group rounded-2xl border transition-all duration-300
+    ${disabled ? 'border-white/5 bg-black/10 opacity-40 pointer-events-none backdrop-blur-sm' : ''}
+    ${
+      completed
+        ? 'border-white/10 bg-black/20 hover:border-white/30 cursor-pointer backdrop-blur-sm'
+        : ''
+    }
+    ${
+      !disabled && !completed
+        ? 'border-white/10 bg-black/20 hover:border-white/30 cursor-pointer backdrop-blur-sm'
+        : ''
+    }
+  `}
     >
       {!disabled && (
         <div

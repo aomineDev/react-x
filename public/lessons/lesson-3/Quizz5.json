@@ -1,0 +1,33 @@
+{
+  "type": "multi-select",
+  "nivel": "5",
+  "pregunta": "Selecciona las combinaciones correctas de actualización de estado en React con su descripción correspondiente:",
+  "opciones": [
+    {
+      "clave": "a",
+      "texto": "setState({...state, nuevoValor }) — Actualizar un objeto creando una copia superficial del anterior"
+    },
+    {
+      "clave": "b",
+      "texto": "setState(prev => prev.map(...)) — El patrón correcto para editar un elemento dentro de un array"
+    },
+    {
+      "clave": "c",
+      "texto": "setState(prev => [...prev, nuevoItem]) — Modificar directamente el array original"
+    },
+    {
+      "clave": "d",
+      "texto": "setState(prev => prev.filter(...)) — El patrón correcto para eliminar elementos de un array"
+    },
+    {
+      "clave": "e",
+      "texto": "Inmutabilidad — El principio clave que evita modificar directamente el estado"
+    },
+    {
+      "clave": "f",
+      "texto": "setState(prev => prev.push(nuevoItem)) — La forma correcta de agregar elementos a un array"
+    }
+  ],
+  "correctas": ["a", "b", "d", "e"],
+  "next": "/lesson/3/6"
+}

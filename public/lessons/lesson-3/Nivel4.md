@@ -16,7 +16,7 @@ setIsEditable((prev) => !prev)
 
 Esto evita errores cuando React agrupa o aplaza actualizaciones.
 
-## Paso 1 - Declarar el estado inicial
+## ~1~ Declarar el estado inicial
 
 Primero definimos la propiedad que controlaremos.
 
@@ -32,7 +32,7 @@ export default function App() {
 - `setIsEditable` → función para cambiarlo
 - `useState(true)` → empieza como editable
 
-## Paso 2 - Usar el estado en el JSX
+## ~2~ Usar el estado en el JSX
 
 Ahora queremos que el `<div>` sea editable solo cuando `isEditable` sea `true`.
 
@@ -48,7 +48,7 @@ export default function App() {
 }
 ```
 
-## Paso 3 - Crear un handler que usa prevState
+## ~3~ Crear un handler que usa prevState
 
 Para alternar el valor (toggle) es obligatorio usar la forma basada en el estado previo:
 
@@ -64,9 +64,10 @@ Esto es más seguro que:
 setIsEditable(!isEditable)
 ```
 
-Evitarlo cuando depende del estado anterior.
+> [!warning]
+> Evitarlo cuando depende del estado anterior.
 
-## Paso 4 — Unir todo (ejemplo final)
+## ~4~ Unir todo (ejemplo final)
 
 ```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 import { useState } from 'react'

@@ -14,7 +14,7 @@ Vamos a construir un ejemplo práctico, queremos dos componentes:
 
 Ambos dependen del mismo estado, por lo tanto el estado debe vivir en el componente padre.
 
-## Paso 1 — Componente padre que guarda el estado
+## ~1~ Componente padre que guarda el estado
 
 ```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 import { useState } from 'react'
@@ -39,7 +39,7 @@ Aquí ocurre la magia:
 
 - InfoPanel recibe solo el valor para mostrarlo
 
-## Paso 2 — Componente que modifica el estado
+## ~2~ Componente que modifica el estado
 
 ```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 function CounterButton({ count, setCount }) {
@@ -51,7 +51,7 @@ function CounterButton({ count, setCount }) {
 }
 ```
 
-## Paso 3 — Componente que solo lee el estado
+## ~3~ Componente que solo lee el estado
 
 ```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 function InfoPanel({ count }) {
@@ -59,7 +59,7 @@ function InfoPanel({ count }) {
 }
 ```
 
-## Paso 4 — Resultado final
+## ~4~ Resultado final
 
 ```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 import { useState } from 'react'

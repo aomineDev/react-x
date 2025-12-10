@@ -1,0 +1,25 @@
+{
+  "type": "complete-code",
+  "code": [
+    "___1_importReactUseStateUseCallback___",
+    "",
+    "export default function Parent() {",
+    "  ___2_countSetCount___",
+    "",
+    "  ___3_handleIncrement___",
+    "",
+    "  return <Child onIncrement={___4_handleIncrement___} count={___5_count___} />;",
+    "}",
+    "",
+    "export default React.memo(function Child({ count, onIncrement }) {",
+    "  return (",
+    "    <button onClick={___6_onIncrement___}>",
+    "      Incrementar ({___7_count___})",
+    "    </button>",
+    "  );",
+    "});"
+  ],
+  "answer": "Completa los espacios para formar un componente que use React.memo + useCallback correctamente. Omite puntos y parentesis",
+  "nivel": "4",
+  "next": "/lesson/5/5"
+}

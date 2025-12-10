@@ -1,0 +1,29 @@
+{
+  "type": "complete-code",
+  "code": [
+    "import { useState } from 'react';",
+    "",
+    "export default function EditableTest() {",
+    "  const [isEditable, setIsEditable] = useState(true);",
+    "",
+    "  function tripleToggle() {",
+    "    setIsEditable(___1_prevState___ => !___2_prevState___);",
+    "    setIsEditable(___3_prevState___ => !___4_prevState___);",
+    "    setIsEditable(___5_prevState___ => !___6_prevState___);",
+    "  }",
+    "",
+    "  return (",
+    "    <div>",
+    "      <div contentEditable={isEditable}>Edita si está activo.</div>",
+    "",
+    "      <button onClick={___7_tripleToggle___}>Triple toggle</button>",
+    "",
+    "      <p>Estado final: {String(isEditable)}</p>",
+    "    </div>",
+    "  );",
+    "}"
+  ],
+  "answer": "Completa los espacios usando la forma funcional de setState para que cada toggle se base en el estado anterior.",
+  "nivel": "4",
+  "next": "/lesson/3/5"
+}
