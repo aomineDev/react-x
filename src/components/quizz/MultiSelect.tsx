@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import CodeBlock from '../CodeBlock'
-import type { OneSelectConfig, QuizzProps, QuizzStatus } from '@/types'
+import type { MultiSelectConfig, QuizzProps, QuizzStatus } from '@/types'
 import {
   QuizzButton,
   QuizzButtonGroup,
@@ -10,24 +10,39 @@ import {
   Quizz,
 } from '@/components/quizz'
 
-interface OneSelectProps extends OneSelectConfig, QuizzProps {}
+interface MultiSelectProps extends MultiSelectConfig, QuizzProps {}
 
-export default function OneSelect({
-  correcta,
+export default function MultiSelect({
+  correctas,
   opciones,
   pregunta,
   nivel,
   codigo,
-  onContinue,
   onSuccess,
-}: OneSelectProps) {
-  const [selection, setSelection] = useState<string>('')
+  onContinue,
+}: MultiSelectProps) {
+  const [selections, setSelections] = useState<string[]>([])
   const [status, setStatus] = useState<QuizzStatus>('idle')
 
-  const verifySelection = async () => {
-    if (!selection) return
+  const toggleSelection = (id: string) => {
+    if (status !== 'idle') return
 
-    if (selection === correcta) {
+    setSelections((prev) => {
+      if (prev.includes(id)) {
+        return prev.filter((item) => item !== id)
+      } else {
+        return [...prev, id]
+      }
+    })
+  }
+
+  const verifySelection = async () => {
+    if (selections.length === 0) return
+
+    if (
+      selections.length === correctas.length &&
+      correctas.every((val) => selections.includes(val))
+    ) {
       setStatus('success')
 
       await onSuccess()
@@ -37,7 +52,7 @@ export default function OneSelect({
   }
 
   const resetQuizz = () => {
-    setSelection('')
+    setSelections([])
     setStatus('idle')
   }
 
@@ -51,22 +66,25 @@ export default function OneSelect({
     <Quizz>
       <QuizzTitle>Quizz {nivel}</QuizzTitle>
       <QuizzDescription>{pregunta}</QuizzDescription>
-
       {codigo && <CodeBlock>{codigo.toString()}</CodeBlock>}
 
       <QuizzButtonGroup>
+        <p className="text-sm text-gray-500">Selecciona todas las respuestas correctas</p>
         {opciones.map(({ clave, texto }) => (
           <QuizzOptionButton<string>
-            isSelected={selection === clave}
+            isSelected={selections.includes(clave)}
             status={status}
             id={clave}
             text={texto}
-            onClick={setSelection}
+            onClick={toggleSelection}
             key={clave}
           />
         ))}
-
-        <QuizzButton status={status} disabled={!selection} onClick={handleQuizzBtnClick} />
+        <QuizzButton
+          status={status}
+          disabled={selections.length === 0}
+          onClick={handleQuizzBtnClick}
+        />
       </QuizzButtonGroup>
     </Quizz>
   )

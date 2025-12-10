@@ -1,23 +1,24 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { Spinner } from '@/components/ui/spinner'
-import TrueFalse from '@/components/quizz/TrueFalse'
-import OneSelect from '@/components/quizz/OneSelect'
-import type { QuizConfig } from '@/types/quizConfig.d'
+import type { QuizzConfig } from '@/types/quizConfig'
 import SafeLayout from '@/layout/SafeLayout'
-import CompleteCode from '@/components/quizz/CompleteCode'
-import MultiSelect from '@/components/quizz/MultipleSelect'
+import { TrueFalse, OneSelect, MultiSelect, CompleteCode } from '@/components/quizz'
+import SpinnerPage from '@/components/SpinnerPage'
+import Confetti from '@/components/Confetti'
+import { useCompleteQuizz } from '@/components/hooks/useCompleteQuizz'
 
 export default function QuizPage() {
   const { lessonId, quizzId } = useParams()
+  const [config, setConfig] = useState<QuizzConfig>({} as QuizzConfig)
+  const navigate = useNavigate()
 
   const [loading, setLoading] = useState(true)
-  const [config, setConfig] = useState<QuizConfig>({} as QuizConfig)
-  const navigate = useNavigate()
-  const quizFile = `/lessons/lesson-${lessonId}/Quizz${quizzId}.json`
+  const [success, setSuccess] = useState(false)
+  const { handleCompleteQuizz } = useCompleteQuizz()
+  const quizzFile = `/lessons/lesson-${lessonId}/Quizz${quizzId}.json`
 
   useEffect(() => {
-    fetch(quizFile)
+    fetch(quizzFile)
       .then((res) => res.json())
       .then((data) => setConfig(data))
       .then(() => setLoading(false))
@@ -25,44 +26,38 @@ export default function QuizPage() {
         navigate('/')
         console.error('Error al cargar quizz:', err)
       })
-  }, [quizFile, navigate])
+  }, [quizzFile, navigate])
 
-  if (loading)
-    return (
-      <div className="fixed w-full h-screen flex justify-center items-center">
-        <Spinner />
-      </div>
-    )
-
-  switch (config.type) {
-    case 'truefalse':
-      return (
-        <SafeLayout>
-          <TrueFalse {...config} />
-        </SafeLayout>
-      )
-
-    case 'one-select':
-      return (
-        <SafeLayout>
-          <OneSelect {...config} />
-        </SafeLayout>
-      )
-
-    case 'complete-code':
-      return (
-        <SafeLayout>
-          <CompleteCode {...config} />
-        </SafeLayout>
-      )
-    case 'multi-select':
-      return (
-        <SafeLayout>
-          <MultiSelect {...config} />
-        </SafeLayout>
-      )
-
-    default:
-      return <div>Tipo de quiz no soportado</div>
+  const handleSuccess = async () => {
+    await handleCompleteQuizz(lessonId, quizzId, config.next)
+    setSuccess(true)
   }
+
+  const handleContinue = () => {
+    navigate(config.next)
+  }
+
+  if (loading) return <SpinnerPage />
+
+  return (
+    <>
+      <SafeLayout>
+        {config.type === 'truefalse' && (
+          <TrueFalse {...config} onSuccess={handleSuccess} onContinue={handleContinue} />
+        )}
+        {config.type === 'one-select' && (
+          <OneSelect {...config} onSuccess={handleSuccess} onContinue={handleContinue} />
+        )}
+        {config.type === 'complete-code' && (
+          <CompleteCode {...config} onSuccess={handleSuccess} onContinue={handleContinue} />
+        )}
+        {config.type === 'multi-select' && (
+          <MultiSelect {...config} onSuccess={handleSuccess} onContinue={handleContinue} />
+        )}
+      </SafeLayout>
+
+      <Confetti show={success} />
+      <Confetti show={success} fall />
+    </>
+  )
 }

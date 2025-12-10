@@ -4,7 +4,7 @@ interface CodeInputProps {
   id: string
   width: string
   showFeedback: boolean
-  quizzCompleted: boolean
+  readOnly: boolean
   handleInputChange: (id: string, value: string) => void
   checkAnswer: (id: string) => boolean
 }
@@ -13,7 +13,7 @@ const CodeInput = ({
   id,
   width,
   showFeedback,
-  quizzCompleted,
+  readOnly,
   handleInputChange,
   checkAnswer,
 }: CodeInputProps) => {
@@ -34,7 +34,7 @@ const CodeInput = ({
       `}
       onChange={(e) => handleInputChange(id, e.target.value)}
       autoComplete="off"
-      readOnly={quizzCompleted}
+      readOnly={readOnly}
     />
   )
 }

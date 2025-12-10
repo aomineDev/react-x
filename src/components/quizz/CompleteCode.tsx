@@ -1,29 +1,30 @@
 import { useEffect, useState } from 'react'
-import { Button } from '@/components/ui/button'
-import Confetti from '@/components/Confetti'
 import { highlight } from '@/util/highlight'
 import { Spinner } from '../ui/spinner'
 import parse, { type DOMNode, Element } from 'html-react-parser'
 import CodeInput from './CodeInput'
-import type { CompleteCodeQuizz } from '@/types/quizConfig'
-import { Link, useParams } from 'react-router-dom'
-import { Check } from 'lucide-react'
-import { useCompleteQuizz } from '../hooks/useCompleteQuizz'
+import type { CompleteCodeConfig, QuizzProps, QuizzStatus } from '@/types'
+import {
+  QuizzButton,
+  QuizzButtonGroup,
+  QuizzDescription,
+  QuizzTitle,
+  Quizz,
+} from '@/components/quizz'
 
 type Answer = Record<string, string>
 
-// const regex = /___([^_]+)_([^}]+)___/gi
-const regex = /___(\d+)_(.*?)___/gi
+interface CompleteCodeProps extends CompleteCodeConfig, QuizzProps {}
 
-const CompleteCode = ({ code, answer, nivel, next }: CompleteCodeQuizz) => {
+const regex = /___([^_]+)_(.*?)___/gi
+
+const CompleteCode = ({ code, answer, nivel, onSuccess, onContinue }: CompleteCodeProps) => {
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [html, setHtml] = useState('')
   const [correctAnswers, setCorrectAnswers] = useState<Answer>({})
   const [showFeedback, setShowFeedback] = useState(false)
-  const [quizzCompleted, setQuizzCompleted] = useState(false)
+  const [status, setStatus] = useState<QuizzStatus>('idle')
   const [loading, setLoading] = useState(false)
-  const { handleCompleteQuizz } = useCompleteQuizz()
-  const { lessonId, quizzId } = useParams()
 
   useEffect(() => {
     async function getHighlighted() {
@@ -55,7 +56,7 @@ const CompleteCode = ({ code, answer, nivel, next }: CompleteCodeQuizz) => {
             id={id}
             width={width}
             showFeedback={showFeedback}
-            quizzCompleted={quizzCompleted}
+            readOnly={status !== 'idle'}
             handleInputChange={handleInputChange}
             checkAnswer={checkAnswer}
           />
@@ -69,60 +70,55 @@ const CompleteCode = ({ code, answer, nivel, next }: CompleteCodeQuizz) => {
       ...prev,
       [id]: value,
     }))
+  }
 
+  const resetQuizz = () => {
+    setAnswers((prev) => {
+      const keys = Object.keys(answers)
+      return keys.reduce((acc, key) => ({ ...acc, [key]: checkAnswer(key) ? prev[key] : '' }), {})
+    })
     setShowFeedback(false)
+    setStatus('idle')
   }
 
   const checkAnswer = (id: string) => answers[id] === correctAnswers[id]
 
-  const handleVerification = async () => {
+  const verifyAnswers = async () => {
     setShowFeedback(true)
     const keys = Object.keys(answers)
 
     const allCorrect = keys.length > 0 && Object.keys(correctAnswers).every((id) => checkAnswer(id))
 
     if (allCorrect) {
-      await handleCompleteQuizz(lessonId, quizzId, next)
+      await onSuccess()
 
-      setQuizzCompleted(true)
+      setStatus('success')
+    } else {
+      setStatus('error')
     }
   }
+
+  const handleQuizzBtnClick = () => {
+    if (status === 'success') onContinue()
+    else if (status === 'error') resetQuizz()
+    else verifyAnswers()
+  }
+
+  const allFilled = Object.keys(correctAnswers).every((id) => answers[id]?.trim())
 
   if (loading) return <Spinner />
 
   return (
-    <div className="flex flex-col items-center gap-5 py-6">
-      <h1 className="text-4xl capitalize font-bold primary-gradient">Quizz {nivel}</h1>
-      <p>{answer}</p>
+    <Quizz>
+      <QuizzTitle>Quizz {nivel}</QuizzTitle>
+      <QuizzDescription>{answer}</QuizzDescription>
 
       {parse(html, options)}
 
-      {quizzCompleted ? (
-        <div className="text-center">
-          <Button
-            size="lg"
-            className="cursor-pointer text-white bg-green-500 border-b-4 border-b-green-900 hover:bg-green-600"
-            asChild
-          >
-            <Link to={next}>Continuar</Link>
-          </Button>
-          <p className="text-lg mt-4">Quizz completado!</p>
-        </div>
-      ) : (
-        <Button
-          size="lg"
-          className="cursor-pointer text-white bg-blue-500 border-b-4 border-b-blue-900 hover:bg-blue-600"
-          onClick={handleVerification}
-        >
-          <span className="text-base flex items-center gap-2">
-            Verificar <Check />
-          </span>
-        </Button>
-      )}
-
-      <Confetti show={quizzCompleted} fall />
-      <Confetti show={quizzCompleted} />
-    </div>
+      <QuizzButtonGroup>
+        <QuizzButton status={status} disabled={!allFilled} onClick={handleQuizzBtnClick} />
+      </QuizzButtonGroup>
+    </Quizz>
   )
 }
 

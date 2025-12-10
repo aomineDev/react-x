@@ -52,45 +52,43 @@ const CodeChallenge = ({ markdownUrl, files, testFiles, next, showTest }: CodeCh
   }, [])
 
   return (
-    <>
-      <div className="w-full h-[calc(100vh-61px)]">
-        <SandpackProvider
-          className="h-full!"
-          template="react"
-          files={allFiles}
-          theme={theme === 'dark' ? atomDark : aquaBlue}
-          options={{
-            activeFile: Object.keys(files)[0],
-            visibleFiles,
-          }}
-          customSetup={dependencies}
-        >
-          <div className="grid grid-cols-2 grid-rows-2 h-full">
-            <div className="max-h-full overflow-y-auto custom-scroll">
-              <Markdown full>{markdown}</Markdown>
-            </div>
+    <div className="w-full h-[calc(100vh-61px)]">
+      <SandpackProvider
+        className="h-full!"
+        template="react"
+        files={allFiles}
+        theme={theme === 'dark' ? atomDark : aquaBlue}
+        options={{
+          activeFile: Object.keys(files)[0],
+          visibleFiles,
+        }}
+        customSetup={dependencies}
+      >
+        <div className="grid grid-cols-2 grid-rows-2 h-full">
+          <div className="max-h-full overflow-y-auto custom-scroll">
+            <Markdown full>{markdown}</Markdown>
+          </div>
 
-            <SandpackLayout className="row-span-2 flex-col h-full">
-              <SandpackCodeEditor
-                showLineNumbers
-                wrapContent
-                showTabs
-                showRunButton
-                showInlineErrors
-                className="custom-scroll"
-              />
-              <SandpackPreview showOpenInCodeSandbox={false} />
-            </SandpackLayout>
-            <div>
-              <TestRunner onClick={handleClick} next={next} />
-            </div>
+          <SandpackLayout className="row-span-2 flex-col h-full">
+            <SandpackCodeEditor
+              showLineNumbers
+              wrapContent
+              showTabs
+              showRunButton
+              showInlineErrors
+              className="custom-scroll"
+            />
+            <SandpackPreview showOpenInCodeSandbox={false} />
+          </SandpackLayout>
+          <div>
+            <TestRunner onClick={handleClick} next={next} />
           </div>
-          <div ref={testRunnerRef}>
-            <SandpackTests watchMode={false} hidden />
-          </div>
-        </SandpackProvider>
-      </div>
-    </>
+        </div>
+        <div ref={testRunnerRef}>
+          <SandpackTests watchMode={false} hidden />
+        </div>
+      </SandpackProvider>
+    </div>
   )
 }
 
