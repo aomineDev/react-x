@@ -1,8 +1,11 @@
+import { Button } from '@/components/ui/button'
+import { useAuth } from '@/store'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export const Hero: React.FC = () => {
   const navigate = useNavigate()
+  const { user } = useAuth()
 
   const goToModule = (id: number) => {
     navigate(`/modulo/${id}`)
@@ -38,17 +41,38 @@ export const Hero: React.FC = () => {
   return (
     <div className="w-full overflow-hidden">
       {/* SECTION 1 */}
-      <section className="relative h-screen w-full overflow-hidden">
+      <section className="relative h-screen w-full">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('src/assets/images/background/space0.png')" }}
+          style={{ backgroundImage: "url('src/assets/images/background/space1.png')" }}
         />
 
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
           <h1 className="text-5xl md:text-7xl font-extrabold text-white drop-shadow-lg">React X</h1>
           <p className="mt-4 text-lg md:text-xl text-white/90 max-w-xl">
-            Aprende react de forma interactiva con quizzes y retos.
+            Aprende React de forma interactiva con quizzes, retos y desafíos que te ayudarán a
+            dominar cada concepto paso a paso.
           </p>
+          <p className="mt-2 text-md md:text-lg text-white/80 max-w-xl">
+            Explora los módulos, practica tus habilidades y sigue tu progreso en tiempo real. ¡Tu
+            aventura en React comienza aquí!
+          </p>
+
+          <div className="mt-10 relative w-20 md:w-30 animate-float mt-60">
+            <img
+              src="src/assets/images/background/astronaut.png"
+              alt="Astronauta"
+              className="w-full"
+            />
+          </div>
+
+          <Button
+            size="lg"
+            className="mt-8"
+            onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+          >
+            ↓ Scrollear abajo
+          </Button>
         </div>
       </section>
 
@@ -63,34 +87,46 @@ export const Hero: React.FC = () => {
           {slides.map((pair, i) => (
             <div
               key={i}
-              className="snap-start h-screen w-full flex flex-col items-center justify-center px-6"
+              className="snap-start min-h-[100vh] w-full flex flex-col items-center justify-center px-6"
             >
               <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-62">
-                {/* izquierda */}
-                <button
-                  onClick={() => goToModule(pair[0].id)}
-                  className="flex flex-col items-center group pointer-events-auto cursor-pointer"
-                >
-                  <img
-                    src={pair[0].img}
-                    alt={pair[0].title}
-                    className="w-32 sm:w-40 md:w-48 transition-transform group-hover:scale-110"
-                  />
-                  <span className="mt-3 text-white/90 text-lg font-medium">{pair[0].title}</span>
-                </button>
+                {user &&
+                  pair.map((planet) => {
+                    const isActive = planet.id === user?.currentLesson
+                    const isLocked = planet.id > user?.currentLesson
 
-                {/* derecha */}
-                <button
-                  onClick={() => goToModule(pair[1].id)}
-                  className="flex flex-col items-center group pointer-events-auto cursor-pointer"
-                >
-                  <img
-                    src={pair[1].img}
-                    alt={pair[1].title}
-                    className="w-32 sm:w-40 md:w-48 transition-transform group-hover:scale-110"
-                  />
-                  <span className="mt-3 text-white/90 text-lg font-medium">{pair[1].title}</span>
-                </button>
+                    return (
+                      <div
+                        key={planet.id}
+                        className={`relative flex flex-col items-center group pointer-events-auto ${
+                          isLocked ? 'cursor-not-allowed' : 'cursor-pointer'
+                        }`}
+                        onClick={() => !isLocked && goToModule(planet.id)}
+                      >
+                        {isActive && (
+                          <img
+                            src="src/assets/images/background/nave.png"
+                            alt="Nave"
+                            className="absolute z-10 -top-10 w-12 md:w-36 animate-bounce"
+                          />
+                        )}
+
+                        <img
+                          src={planet.img}
+                          alt={planet.title}
+                          className={`w-32 sm:w-40 md:w-80 transition-transform group-hover:scale-110 
+          ${isLocked ? 'filter grayscale' : ''}`}
+                        />
+                        <span
+                          className={`mt-3 text-lg font-medium ${
+                            isLocked ? 'text-white/50' : 'text-white'
+                          }`}
+                        >
+                          {planet.title}
+                        </span>
+                      </div>
+                    )
+                  })}
               </div>
             </div>
           ))}

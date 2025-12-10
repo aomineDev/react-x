@@ -1,4 +1,4 @@
-# Nivel 1 — Renderizado Condicional en React
+# Renderizado Condicional en React
 
 En React, el renderizado condicional te permite mostrar u ocultar partes de la UI según una condición.
 

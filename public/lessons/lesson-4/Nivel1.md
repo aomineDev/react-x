@@ -1,4 +1,4 @@
-# Nivel 1 — Inputs Controlados
+# Inputs Controlados
 
 En React, un input controlado es un campo del formulario cuyo valor lo maneja React, no el DOM.
 
