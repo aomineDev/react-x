@@ -26,7 +26,7 @@ test('muestra el contador inicial en 0', () => {
   expect(screen.getByText(/contador:/i)).toBeInTheDocument();
 });
 
-test('incrementa el contador al hacer clic', () => {
+test('incrementa el contador al hacer click', () => {
   render(<Counter />);
   const button = screen.getByRole('button', { name: /incrementar/i });
   

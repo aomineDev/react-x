@@ -58,7 +58,7 @@ export const Hero: React.FC = () => {
             aventura en React comienza aquí!
           </p>
 
-          <div className="mt-10 relative w-20 md:w-30 animate-float mt-60">
+          <div className="relative w-20 md:w-30 animate-float mt-60">
             <img
               src="src/assets/images/background/astronaut.png"
               alt="Astronauta"
@@ -87,7 +87,7 @@ export const Hero: React.FC = () => {
           {slides.map((pair, i) => (
             <div
               key={i}
-              className="snap-start min-h-[100vh] w-full flex flex-col items-center justify-center px-6"
+              className="snap-start min-h-screen w-full flex flex-col items-center justify-center px-6"
             >
               <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-62">
                 {user &&

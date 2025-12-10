@@ -142,7 +142,7 @@ export default function MultiSelect({
     duration-200
     cursor-pointer
     whitespace-normal
-    break-words
+    wrap-break-words
     text-left
     p-6
     ${getClaseOpcion(opcion.clave)}
