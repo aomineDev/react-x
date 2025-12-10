@@ -10,17 +10,18 @@ Eso significa:
 
 - El JSX siempre muestra el valor actual del estado.
 
+> [!important]
 > React no deja el input “a la deriva”: tú controlas su valor.
 
 Vamos a construir un pequeño formulario que muestre:
 
-Un `<input>` controlado
+- Un `<input>` controlado
 
-Estado que refleja exactamente lo que el usuario escribe
+- Estado que refleja exactamente lo que el usuario escribe
 
-Un mensaje dinámico debajo del input
+- Un mensaje dinámico debajo del input
 
-## Paso 1 — Declarar estado para guardar lo que el usuario escribe
+## ~1~ Declarar estado para guardar lo que el usuario escribe
 
 Creamos un estado llamado `nombre` para guardar el texto:
 
@@ -34,7 +35,10 @@ export default function App() {
 }
 ```
 
-## Paso 2 — Crear un input cuyo value dependa del estado
+> [!note]
+> Cada input controlado necesita un estado en el componente que lo contiene. Sin estado, el input se comporta como no controlado (DOM “libre”).
+
+## ~2~ Crear un input cuyo value dependa del estado
 
 Ahora enlazamos:
 
@@ -63,7 +67,13 @@ export default function App() {
 }
 ```
 
-## Paso 3 — Mostrar en pantalla el valor del estado
+> [!tip]
+> Puedes usar la misma función handleChange para múltiples inputs si usas nombre de propiedad dinámico: setState(prev => ({ ...prev, [name]: value })).
+
+> [!important]
+> Siempre pasa el valor actual del input al estado. Esto mantiene la fuente de la verdad única en React.
+
+## ~3~ Mostrar en pantalla el valor del estado
 
 Así comprobamos que el input está completamente controlado:
 
@@ -84,6 +94,15 @@ export default function App() {
   )
 }
 ```
+
+> [!note]
+> El input controlado siempre sigue esta fórmula: estado → valor del input → onChange → actualizar estado.
+
+> [!tip]
+> Puedes usar esta técnica para formularios completos y validar campos al vuelo antes de enviar.
+
+> [!caution]
+> Evita mezclar inputs controlados con no controlados (defaultValue). Esto puede generar advertencias de React y comportamientos inconsistentes.
 
 ### Concepto clave
 

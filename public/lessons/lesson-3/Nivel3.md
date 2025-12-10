@@ -5,6 +5,9 @@ En muchos componentes necesitas manejar información que cambia a medida que el 
 > [!note]
 > Cuando el estado cambia, React vuelve a renderizar el componente para mostrar la nueva información.
 
+> [!tip]
+> El estado permite que tus componentes sean dinámicos y reactivos. Cada cambio de estado provoca un re-render del componente, pero React optimiza el proceso usando el **DOM virtual**.
+
 ## ~1~ Importar useState
 
 Primero traemos el hook desde React:
@@ -12,6 +15,9 @@ Primero traemos el hook desde React:
 ```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 import { useState } from 'react'
 ```
+
+> [!important]
+> Siempre importa useState desde 'react' antes de usarlo. De lo contrario, el hook no funcionará y el componente lanzará errores.
 
 ## ~2~ Declarar estado
 
@@ -32,6 +38,12 @@ export default function App() {
 - `likes` es el valor actual
 - `setLikes` es la función que cambia ese valor
 - `useState(0)` indica que el contador inicia en 0
+
+> [!note]
+> likes es el valor actual, setLikes la función que lo cambia, y useState(0) indica que el contador inicia en 0.
+
+> [!tip]
+> Puedes usar cualquier tipo de valor en el estado: números, strings, booleanos, arrays u objetos. React los manejará correctamente si usas setEstado.
 
 > [!important]
 > La convención es nombrar variables de estado como `[algo, setAlgo]` usando desestructuración de arrays.
@@ -60,5 +72,11 @@ Aquí pasa algo crucial:
 - El estado cambia
 - React vuelve a renderizar
 - El botón muestra el nuevo número
+
+> [!note]
+> Cada vez que llamas setLikes(likes + 1), React vuelve a renderizar el componente y muestra el nuevo número.
+
+> [!tip]
+> Puedes usar funciones dentro de setLikes para manejar actualizaciones basadas en el estado anterior, útil si hay múltiples actualizaciones rápidas:
 
 `Ahora es tu turno de implementarlo, gran trabajo`

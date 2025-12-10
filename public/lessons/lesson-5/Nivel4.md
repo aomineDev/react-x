@@ -8,7 +8,7 @@ Una lista grande de usuarios donde un botón que no tiene nada que ver con la li
 
 Vamos a construirlo primero sin optimizaciones, luego agregaremos memo, useCallback, y useMemo, paso por paso.
 
-## Paso 1 — El Problema (Componente que se renderiza de más)
+## ~1~ El Problema (Componente que se renderiza de más)
 
 Queremos una lista con 1000 usuarios, y un contador independiente.
 
@@ -48,7 +48,7 @@ function UserList({ users }) {
 
 > Problema: cada vez que tocamos el contador, `<UserList>` vuelve a renderizar aunque la lista no cambió.
 
-## Paso 2 — Solución 1: memo() para evitar renders innecesarios
+## ~2~ Solución 1: memo() para evitar renders innecesarios
 
 `memo` funciona como un guardia:
 
@@ -75,7 +75,7 @@ Pero… hay un problema:
 
 La optimización no funciona todavía.
 
-## Paso 3 — Solución 2: useMemo() para estabilizar datos
+## ~3~ Solución 2: useMemo() para estabilizar datos
 
 Creamos la lista una sola vez.
 
@@ -94,7 +94,7 @@ Ahora:
 
 - `<UserList>` ya no se re-renderiza al cambiar el contador
 
-## Paso 4 — Solución 3: useCallback() para estabilizar funciones
+## ~4~ Solución 3: useCallback() para estabilizar funciones
 
 Para completar el ejemplo, agregamos una función para seleccionar usuarios.
 
@@ -118,7 +118,7 @@ const selectUser = useCallback((id) => {
 
 Ahora React genera la función una sola vez, y memo funciona sin problemas.
 
-## Paso 5 — Resultado final
+## ~5~ Resultado final
 
 ```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 import { useState, useMemo, useCallback, memo } from 'react'

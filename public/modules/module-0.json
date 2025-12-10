@@ -1,6 +1,7 @@
 {
   "moduleId": 0,
   "title": "Fundamentos",
+  "planet": "/src/assets/images/planets/planeta1.png",
   "image": "/src/assets/images/background/space3.png",
   "levels": [
     { "id": 1, "title": "Nivel 1 — React" },

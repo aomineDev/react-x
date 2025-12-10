@@ -31,7 +31,7 @@ Vamos a construir un componente que dependiendo del estado muestre:
 
 Además tendrá un mensaje especial usando `&&` solo si el usuario está logueado.
 
-## Paso 1 — Crear el estado `mode`
+## ~1~ Crear el estado `mode`
 
 ```jsx showLineNumbers {4} title="App.tsx" /MarkdownHooks/
 import { useState } from 'react'
@@ -43,7 +43,7 @@ export default function App() {
 }
 ```
 
-## Paso 2 — Renderizado condicional básico con ternario
+## ~2~ Renderizado condicional básico con ternario
 
 Para `loading` vs los demás:
 
@@ -53,9 +53,10 @@ if (mode === 'loading') {
 }
 ```
 
+> [!note]
 > Este es el primer ejemplo de early return.
 
-## Paso 3 — Mostrar vista según el estado con switch()
+## ~3~ Mostrar vista según el estado con switch()
 
 Después del early return:
 
@@ -76,7 +77,7 @@ switch (mode) {
 }
 ```
 
-## Paso 4 — Mostrar un mensaje extra solo si el usuario está logueado (&&)
+## ~4~ Mostrar un mensaje extra solo si el usuario está logueado (&&)
 
 ```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 {
@@ -84,7 +85,7 @@ switch (mode) {
 }
 ```
 
-## Paso 5 — Resultado final
+## ~5~ Resultado final
 
 ```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 import { useState } from 'react'

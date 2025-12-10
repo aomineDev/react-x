@@ -10,5 +10,5 @@
     { "clave": "d", "texto": "Error porque falta el índice en map" }
   ],
   "correcta": "a",
-  "next": "/lesson/2/1"
+  "next": "/challenge/1"
 }
