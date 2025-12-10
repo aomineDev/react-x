@@ -1,0 +1,25 @@
+{
+  "type": "multi-select",
+  "nivel": "4",
+  "pregunta": "¿Qué función cumplen los PropTypes en un componente de React?",
+  "opciones": [
+    {
+      "clave": "a",
+      "texto": "Validar el tipo de las props."
+    },
+    {
+      "clave": "b",
+      "texto": "Evitar errores al usar props."
+    },
+    {
+      "clave": "c",
+      "texto": "Optimizar el rendimiento del componente."
+    },
+    {
+      "clave": "d",
+      "texto": "Documentar qué props acepta un componente."
+    }
+  ],
+  "correctas": ["a", "b", "d"],
+  "next": "/lesson/8/5"
+}

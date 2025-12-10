@@ -1,0 +1,26 @@
+{
+  "type": "multi-select",
+  "nivel": "1",
+  "pregunta": "¿Cuáles de las siguientes afirmaciones sobre inputs controlados en React son correctas?",
+  "opciones": [
+    {
+      "clave": "a",
+      "texto": "Un input controlado obtiene su valor directamente del estado de React"
+    },
+    {
+      "clave": "b",
+      "texto": "En un input controlado, el usuario modifica el valor directamente en el DOM"
+    },
+    { "clave": "c", "texto": "Cada cambio en el input dispara un handler que actualiza el estado" },
+    {
+      "clave": "d",
+      "texto": "Para que un input sea controlado, debes asegurarte de asignar tanto value como un onChange"
+    },
+    {
+      "clave": "e",
+      "texto": "Los inputs controlados permiten sincronizar la UI con el estado en todo momento"
+    }
+  ],
+  "correctas": ["a", "b", "c", "d"],
+  "next": "/lesson/4/2"
+}

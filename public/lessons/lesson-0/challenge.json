@@ -1,0 +1,38 @@
+{
+  "type": "quizz",
+  "nivel": "Challenge Final - Lección 1",
+  "next": "/lesson/2",
+  "quizzes": [
+    {
+      "type": "truefalse",
+      "nivel": "Pregunta 1",
+      "pregunta": "React es un framework",
+      "correcta": "F",
+      "next": ""
+    },
+    {
+      "type": "one-select",
+      "nivel": "Pregunta 2",
+      "pregunta": "¿Qué es JSX?",
+      "opciones": [
+        { "clave": "a", "texto": "Un lenguaje de programación" },
+        { "clave": "b", "texto": "Sintaxis de JavaScript extendida" },
+        { "clave": "c", "texto": "Un framework" }
+      ],
+      "correcta": "b",
+      "next": ""
+    },
+    {
+      "type": "multi-select",
+      "nivel": "Pregunta 3",
+      "pregunta": "¿Cuáles son hooks de React?",
+      "opciones": [
+        { "clave": "a", "texto": "useState" },
+        { "clave": "b", "texto": "useEffect" },
+        { "clave": "c", "texto": "useClass" }
+      ],
+      "correctas": ["a", "b"],
+      "next": ""
+    }
+  ]
+}

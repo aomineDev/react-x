@@ -1,0 +1,12 @@
+{
+  "type": "code",
+  "markdownUrl": "/lessons/lesson-6/content.md",
+  "files": {
+    "/App.js": "export default function UserProfile() {\n  // Crea un componente que muestre informacion del usuario\n  // Usa useState para manejar el estado\n  \n  return (\n    <div>\n      <h1>Perfil de Usuario</h1>\n      {/* Tu código aquí */}\n    </div>\n  );\n}"
+  },
+  "testFiles": {
+    "/App.test.js": "import { render, screen, fireEvent } from '@testing-library/react';\nimport '@testing-library/jest-dom';\nimport UserProfile from './App';\n\ntest('muestra el nombre del usuario', () => {\n  render(<UserProfile />);\n  const heading = screen.getByRole('heading', { level: 1 });\n  expect(heading).toBeInTheDocument();\n});\n\ntest('permite editar el nombre del usuario', () => {\n  render(<UserProfile />);\n  const input = screen.getByRole('textbox');\n  \n  fireEvent.change(input, { target: { value: 'Juan Pérez' } });\n  expect(input.value).toBe('Juan Pérez');\n});\n\ntest('muestra el botón de guardar', () => {\n  render(<UserProfile />);\n  const button = screen.getByRole('button', { name: /guardar/i });\n  expect(button).toBeInTheDocument();\n});\n\ntest('actualiza el nombre al hacer clic en guardar', () => {\n  render(<UserProfile />);\n  const input = screen.getByRole('textbox');\n  const button = screen.getByRole('button', { name: /guardar/i });\n  \n  fireEvent.change(input, { target: { value: 'María García' } });\n  fireEvent.click(button);\n  \n  expect(screen.getByText(/maría garcía/i)).toBeInTheDocument();\n});\n\ntest('usa useState correctamente', () => {\n  const code = UserProfile.toString();\n  expect(code).toMatch(/useState/);\n});"
+  },
+  "next": "/lesson/7/1",
+  "showTest": true
+}

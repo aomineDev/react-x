@@ -8,9 +8,9 @@
     "",
     "  return (",
     "    <div>",
-    "      <h1>Empleado { ___1_nombre___ }</h1>",
-    "      <p>Edad: { ___2_edad___ }</p>",
-    "      <p>Salario: { ___3_salario___ }</p>",
+    "      <h1>Empleado ___1_nombre___</h1>",
+    "      <p>Edad:___2_edad___</p>",
+    "      <p>Salario:___3_salario___</p>",
     "    </div>",
     "  );",
     "}"
