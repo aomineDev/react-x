@@ -11,9 +11,17 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import TestRunner from './TestRunner'
 import { useTheme } from '@/store/useTheme'
 import Markdown from '@/components/Markdown'
-import type { CodeChallengeConfig } from '@/types/challengeConfig'
+import type { CodeChallengeConfig, QuizzProps } from '@/types'
 
-const CodeChallenge = ({ markdownUrl, files, testFiles, next, showTest }: CodeChallengeConfig) => {
+interface CodeChallengeProps extends CodeChallengeConfig, Omit<QuizzProps, 'onContinue'> {}
+
+const CodeChallenge = ({
+  markdownUrl,
+  files,
+  testFiles,
+  showTest,
+  onSuccess,
+}: CodeChallengeProps) => {
   const [markdown, setMarkdown] = useState('')
   const testRunnerRef = useRef<HTMLDivElement>(null)
   const theme = useTheme((state) => state.theme)
@@ -52,7 +60,7 @@ const CodeChallenge = ({ markdownUrl, files, testFiles, next, showTest }: CodeCh
   }, [])
 
   return (
-    <div className="w-full h-[calc(100vh-61px)]">
+    <div className="w-full h-full">
       <SandpackProvider
         className="h-full!"
         template="react"
@@ -81,7 +89,7 @@ const CodeChallenge = ({ markdownUrl, files, testFiles, next, showTest }: CodeCh
             <SandpackPreview showOpenInCodeSandbox={false} />
           </SandpackLayout>
           <div>
-            <TestRunner onClick={handleClick} next={next} />
+            <TestRunner onClick={handleClick} onSuccess={onSuccess} />
           </div>
         </div>
         <div ref={testRunnerRef}>

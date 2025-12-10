@@ -62,8 +62,7 @@ const ChallengePage = () => {
     <>
       {config.type === 'code' && (
         <SafeLayout full>
-          <CodeChallenge {...config} />
-          {/* <CodeChallenge {...config} onSuccess={handleSuccess} onContinue={handleContinue} /> */}
+          <CodeChallenge {...config} onSuccess={handleSuccess} />
         </SafeLayout>
       )}
 

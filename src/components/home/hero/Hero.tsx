@@ -54,7 +54,9 @@ export const Hero: React.FC = () => {
         />
 
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
-          <h1 className="text-5xl md:text-7xl font-extrabold text-white drop-shadow-lg">React X</h1>
+          <h1 className="text-5xl md:text-7xl font-extrabold text-white drop-shadow-lg ">
+            React X
+          </h1>
           <p className="mt-4 text-lg md:text-xl text-white/90 max-w-xl">
             Aprende React de forma interactiva con quizzes, retos y desafíos que te ayudarán a
             dominar cada concepto paso a paso.
@@ -74,11 +76,11 @@ export const Hero: React.FC = () => {
 
           <Button
             size="lg"
-            className="mt-8 border-2 ring dark:ring-white! flex items-center gap-2 transition-transform duration-300 hover:scale-105 hover:bg-white/10"
+            className="mt-8 border-2 ring dark:ring-white! flex items-center gap-2 transition-transform duration-300 hover:scale-105 hover:bg-white/10 rounded-full cursor-pointer"
             onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
             variant="outline"
           >
-            <ArrowDown className="w-6 h-6 animate-bounceArrow" /> Scrollear abajo
+            <ArrowDown className="w-6 h-6 animate-bounceArrow" /> Scroll
           </Button>
         </div>
       </section>

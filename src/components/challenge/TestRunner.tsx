@@ -2,36 +2,21 @@ import { useSandpack } from '@codesandbox/sandpack-react'
 import { useEffect, useRef, useState } from 'react'
 import { type Test } from '@/types/test.d'
 import { Button } from '../ui/button'
-import { Play, Check, X, Trophy, ArrowRight } from 'lucide-react'
+import { Play, Check, X } from 'lucide-react'
 import { Spinner } from '../ui/spinner'
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from '@/components/ui/alert-dialog'
-import Confetti from '@/components/Confetti'
-import { Link, useParams } from 'react-router-dom'
-import { useCompleteLesson } from '../hooks/useCompleteLesson'
+import type { QuizzProps } from '@/types'
 
-interface TestRunnerProps {
-  next: string
+interface TestRunnerProps extends Omit<QuizzProps, 'onContinue'> {
   onClick: () => void
 }
 
-const TestRunner = ({ next, onClick }: TestRunnerProps) => {
+const TestRunner = ({ onClick, onSuccess }: TestRunnerProps) => {
   const [tests, setTests] = useState<Test>({})
   const [loading, setLoading] = useState(false)
   const [isTestsInitialized, setIsTestsInitialized] = useState(false)
-  const [showModal, setShowModal] = useState(false)
   const [success, setSuccess] = useState(false)
-  const { handleCompleteLesson } = useCompleteLesson()
   const testRef = useRef<Test>({})
   const { listen } = useSandpack()
-  const { lessonId } = useParams()
 
   useEffect(() => {
     const unsubscribe = listen((msg) => {
@@ -66,13 +51,12 @@ const TestRunner = ({ next, onClick }: TestRunnerProps) => {
   useEffect(() => {
     async function handleSuccess() {
       if (success) {
-        await handleCompleteLesson(lessonId)
-        setShowModal(true)
+        await onSuccess()
       }
     }
 
     handleSuccess()
-  }, [success, handleCompleteLesson, lessonId])
+  }, [success, onSuccess])
 
   const handleClick = () => {
     setLoading(true)
@@ -102,30 +86,6 @@ const TestRunner = ({ next, onClick }: TestRunnerProps) => {
           </p>
         ))}
       </div>
-
-      <AlertDialog open={showModal}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>¡Reto Superado!</AlertDialogTitle>
-            <AlertDialogDescription>
-              <div className="p-5 flex justify-center">
-                <Trophy className="text-yellow-500" size={75}></Trophy>
-              </div>
-              ¡Felicitaciones, has superado el reto! Puedes avanzar a la siguiente sección.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogAction asChild>
-              <Link to={next} className="flex items-center gap-2">
-                Continuar <ArrowRight />
-              </Link>
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-
-      <Confetti show={success && showModal} />
-      <Confetti show={success && showModal} fall />
     </>
   )
 }
