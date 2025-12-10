@@ -1,6 +1,7 @@
 {
   "moduleId": 4,
   "title": "Formularios",
+  "planet": "/src/assets/images/planets/planeta5.png",
   "image": "/src/assets/images/background/space7.png",
   "levels": [
     { "id": 1, "title": "Nivel 1 — Inputs Controlados" },
