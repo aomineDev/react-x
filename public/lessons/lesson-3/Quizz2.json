@@ -1,6 +1,6 @@
 {
   "type": "one-select",
-  "nivel": "Quizz 2",
+  "nivel": "2",
   "pregunta": "¿Dónde está el error en este código?",
   "codigo": "export default function App() {\n  let contador = 0;\n\n  function handleClick() {\n    contador = contador + 1;\n    console.log(\"Contador:\", contador);\n  }\n\n  return <button onClick={_______}>Sumar</button>;\n}",
   "opciones": [

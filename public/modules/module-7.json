@@ -1,6 +1,7 @@
 {
   "moduleId": 7,
   "title": "Hooks",
+  "planet": "/src/assets/images/planets/planeta8.png",
   "image": "/src/assets/images/background/space6.png",
   "levels": [
     { "id": 1, "title": "Nivel 1 — Estado Complejo y useReducer" },

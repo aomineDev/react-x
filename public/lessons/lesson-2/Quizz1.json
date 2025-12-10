@@ -1,11 +1,11 @@
 {
   "type": "complete-code",
   "code": [
-    "function Persona({___1_props___}) {",
+    "function Persona(___1_props___) {",
     "  return (",
     "    <div>",
-    "      <h2>Nombre: { props.___2_nombre___ }</h2>",
-    "      <p>Edad: { props.___3_edad___ } años</p>",
+    "      <h2>Nombre:props.___2_nombre___ </h2>",
+    "      <p>Edad: props.___3_edad___ años</p>",
     "    </div>",
     "  );",
     "}",

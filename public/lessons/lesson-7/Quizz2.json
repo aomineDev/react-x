@@ -43,6 +43,6 @@
     "export default App;"
   ],
   "answer": "Completa los espacios para usar correctamente useRef.",
-  "nivel": "4",
+  "nivel": "2",
   "next": "/lesson/7/3"
 }

@@ -13,6 +13,9 @@ En este nivel aprenderás:
 
 - Cómo hacer un ejemplo práctico estilo tutorial.
 
+> [!note]
+> React **no permite mutar directamente** el estado. Siempre crea copias nuevas al actualizar arrays u objetos para que React detecte los cambios y vuelva a renderizar.
+
 Queremos construir un pequeño ejemplo de lista de tareas, donde:
 
 - Guardaremos un array en el estado.
@@ -21,7 +24,7 @@ Queremos construir un pequeño ejemplo de lista de tareas, donde:
 
 - Podremos marcar tareas como completadas.
 
-## Paso 1 — Declarar un estado con un array
+## ~1~ Declarar un estado con un array
 
 Usaremos `useState` para guardar una lista inicial de tareas:
 
@@ -38,10 +41,13 @@ export default function App() {
 }
 ```
 
-- El estado contiene un array de objetos.
-- Cada objeto representa una tarea.
+> [!note]
+> Cada objeto representa una tarea. tasks es el array completo, setTasks actualiza el estado.
 
-## Paso 2 — Mostrar las tareas usando .map
+> [!tip]
+> Puedes usar crypto.randomUUID() o cualquier generador de IDs para nuevas tareas, asegurando que cada elemento tenga un key único al renderizar.
+
+## ~2~ Mostrar las tareas usando .map
 
 Para renderizar la lista:
 
@@ -60,7 +66,10 @@ return (
 )
 ```
 
-## Paso 3 — Agregar una nueva tarea
+> [!important]
+> Siempre usa key en elementos de listas renderizadas con .map. Esto ayuda a React a identificar elementos únicos y optimizar re-renderizados.
+
+## ~3~ Agregar una nueva tarea
 
 Queremos un `input` y un botón que agregue una tarea.
 
@@ -98,7 +107,13 @@ JSX para escribir y agregar:
 <button onClick={addTask}>Agregar</button>
 ```
 
-## Paso 4 — Marcar una tarea como completada
+> [!tip]
+> Usar prevState (prev => [...prev, nuevaTarea]) es más seguro que usar directamente tasks, especialmente si varias actualizaciones ocurren casi al mismo tiempo.
+
+> [!warning]
+> No mutes el array original con push. Siempre crea un nuevo array con spread [...] para mantener la inmutabilidad.
+
+## ~4~ Marcar una tarea como completada
 
 Necesitamos un handler que reciba el id y cambie solo esa tarea.
 
@@ -114,7 +129,13 @@ Luego conectamos el checkbox:
 <input type="checkbox" checked={task.done} onChange={() => toggleTask(task.id)} />
 ```
 
-## Paso 5 — Resultado final
+> [!important]
+> Nunca modifiques directamente task.done. Siempre crea un nuevo objeto usando spread { ...task, done: !task.done }.
+
+> [!caution]
+> Actualizaciones basadas en el estado previo (prev) evitan inconsistencias si React agrupa múltiples actualizaciones.
+
+## ~5~ Resultado final
 
 ```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 import { useState } from 'react'
@@ -171,5 +192,14 @@ export default function App() {
   )
 }
 ```
+
+> [!note]
+> Ahora manejas arrays y objetos en el estado de manera segura, sin mutaciones, y usando prevState para evitar errores.
+
+> [!tip]
+> Puedes ampliar este ejemplo agregando eliminación de tareas, edición de texto, o filtros para mostrar solo tareas completadas.
+
+> [!caution]
+> Evita actualizar el estado directamente o mutar objetos. Siempre crea copias nuevas para que React detecte los cambios correctamente.
 
 `Ahora es tu turno de implementarlo, gran trabajo`

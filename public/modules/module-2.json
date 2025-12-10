@@ -1,6 +1,7 @@
 {
   "moduleId": 2,
   "title": "Props de un Componente",
+  "planet": "/src/assets/images/planets/planeta3.png",
   "image": "/src/assets/images/background/space5.png",
   "levels": [
     { "id": 1, "title": "Nivel 1 — Componentes Dinámicos" },

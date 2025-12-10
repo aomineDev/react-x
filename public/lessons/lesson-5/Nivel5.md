@@ -14,7 +14,7 @@ React re-renderiza un componente cuando:
 
 > Evitar renders innecesarios NO significa “evitar renders por completo”, sino evitar los que no aportan nada.
 
-## Paso 1 - Creamos 3 componentes
+## ~1~ Creamos 3 componentes
 
 Añadimos una App donde tres componentes se están re-renderizando aunque no deberían.
 
@@ -51,7 +51,7 @@ function ProductList() {
 
 Aquí todo se re-renderiza cuando solo cambia `count`.
 
-## Paso 2 - Detectar re-renders usando la consola
+## ~2~ Detectar re-renders usando la consola
 
 En la consola vemos lo siguiente:
 
@@ -64,7 +64,7 @@ aunque nunca cambiaron.
 
 > ¿Por qué sucede? React re-renderiza a todos los hijos del componente que cambió de estado (App).
 
-## Paso 3 — Corregir con memo
+## ~3~ Corregir con memo
 
 ```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 const Header = React.memo(function Header() {
@@ -75,7 +75,7 @@ const Header = React.memo(function Header() {
 
 Ahora ya no renderiza Header.
 
-## Paso 4 — Evitar renders por props nuevas
+## ~4~ Evitar renders por props nuevas
 
 Por ejemplo:
 

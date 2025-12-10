@@ -1,0 +1,12 @@
+{
+  "type": "code",
+  "markdownUrl": "/lessons/lesson-8/content.md",
+  "files": {
+    "/App.js": "export default function PerfilUsuario() {\n  // Crea componentes reutilizables usando props.children\n  \n  return (\n    <div>\n      <h1>Perfil de Usuario</h1>\n      {/* Tu código aquí */}\n    </div>\n  );\n}"
+  },
+  "testFiles": {
+    "/App.test.js": "import { render, screen } from '@testing-library/react';\nimport '@testing-library/jest-dom';\nimport PerfilUsuario from './App';\n\ntest('muestra el título principal', () => {\n  render(<PerfilUsuario />);\n  const heading = screen.getByRole('heading', { level: 1 });\n  expect(heading).toBeInTheDocument();\n});\n\ntest('muestra el nombre del usuario', () => {\n  render(<PerfilUsuario />);\n  expect(screen.getByText(/juan pérez/i)).toBeInTheDocument();\n});\n\ntest('muestra el email del usuario', () => {\n  render(<PerfilUsuario />);\n  expect(screen.getByText(/juan@example.com/i)).toBeInTheDocument();\n});\n\ntest('muestra la edad del usuario', () => {\n  render(<PerfilUsuario />);\n  expect(screen.getByText(/25 años/i)).toBeInTheDocument();\n});\n\ntest('tiene al menos dos componentes Card', () => {\n  const code = PerfilUsuario.toString();\n  const cardMatches = code.match(/<Card/g);\n  expect(cardMatches).not.toBeNull();\n  expect(cardMatches.length).toBeGreaterThanOrEqual(2);\n});\n\ntest('el componente Card usa children', () => {\n  const code = PerfilUsuario.toString();\n  expect(code).toMatch(/function Card.*children/);\n});\n\ntest('muestra información en formato de tarjeta', () => {\n  const { container } = render(<PerfilUsuario />);\n  const cards = container.querySelectorAll('[style*=\"border\"]');\n  expect(cards.length).toBeGreaterThanOrEqual(2);\n});\n\ntest('tiene título Información Personal', () => {\n  render(<PerfilUsuario />);\n  expect(screen.getByText(/información personal/i)).toBeInTheDocument();\n});\n\ntest('tiene título Contacto', () => {\n  render(<PerfilUsuario />);\n  expect(screen.getByText(/contacto/i)).toBeInTheDocument();\n});"
+  },
+  "next": "/lesson/9/1",
+  "showTest": true
+}

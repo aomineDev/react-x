@@ -1,6 +1,7 @@
 {
   "moduleId": 1,
   "title": "Componentes",
+  "planet": "/src/assets/images/planets/planeta2.png",
   "image": "/src/assets/images/background/space4.png",
   "levels": [
     { "id": 1, "title": "Nivel 1 — Creando tu Primer Componente" },

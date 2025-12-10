@@ -5,27 +5,27 @@ React trabaja igual para todos: cada input tiene un value y un handler que actua
 
 Es por ellos que vamos a aprender a manejar en React:
 
-`<select>`
+- `<select>`
 
-`<checkbox>`
+- `<checkbox>`
 
-`<radio>`
+- `<radio>`
 
-`<textarea>`
+- `<textarea>`
 
 con sus diferencias en cómo actualizan el estado.
 
 A continuación, vamos a crear un formulario de “Preferencias de Usuario” con 4 campos:
 
-Nombre: `<input type="text">`
+- Nombre: `<input type="text">`
 
-Rol: `<select>`
+- Rol: `<select>`
 
-Acepta términos: `<input type="checkbox">`
+- Acepta términos: `<input type="checkbox">`
 
-Biografía: `<textarea>`
+- Biografía: `<textarea>`
 
-## Paso 1 — Definir el estado inicial
+## ~1~ Definir el estado inicial
 
 ```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 import { useState } from 'react'
@@ -42,7 +42,7 @@ export default function App() {
 }
 ```
 
-## Paso 2 — Handler genérico para inputs de texto, select y textarea
+## ~2~ Handler genérico para inputs de texto, select y textarea
 
 ```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 function handleChange(event) {
@@ -61,7 +61,7 @@ Este handler sirve para:
 - `<select>`
 - `<textarea>`
 
-## Paso 3 — Handler especial para checkbox
+## ~3~ Handler especial para checkbox
 
 (porque checkbox no usa `value`, sino `checked`)
 
@@ -76,7 +76,7 @@ function handleCheckbox(event) {
 }
 ```
 
-## Paso 4 — Construir el formulario en JSX
+## ~4~ Construir el formulario en JSX
 
 ```jsx showLineNumbers title="App.tsx" /MarkdownHooks/
 return (
