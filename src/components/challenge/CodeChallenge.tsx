@@ -12,6 +12,10 @@ import TestRunner from './TestRunner'
 import { useTheme } from '@/store/useTheme'
 import Markdown from '@/components/Markdown'
 import type { CodeChallengeConfig, QuizzProps } from '@/types'
+import { useParams } from 'react-router-dom'
+import { useAuth } from '@/store'
+import { challengeService } from '@/services/api/challengeService'
+import SpinnerPage from '../SpinnerPage'
 
 interface CodeChallengeProps extends CodeChallengeConfig, Omit<QuizzProps, 'onContinue'> {}
 
@@ -23,14 +27,33 @@ const CodeChallenge = ({
   onSuccess,
 }: CodeChallengeProps) => {
   const [markdown, setMarkdown] = useState('')
+  const [currentFiles, setCurrentFiles] = useState(files)
   const testRunnerRef = useRef<HTMLDivElement>(null)
   const theme = useTheme((state) => state.theme)
+  const { user } = useAuth()
+  const { lessonId } = useParams()
+  const [isLoading, setIsLoading] = useState(true)
+  const [challengeId, setChallengeId] = useState('')
 
   useEffect(() => {
     fetch(markdownUrl)
       .then((response) => response.text())
       .then((text) => setMarkdown(text))
   }, [markdownUrl])
+
+  useEffect(() => {
+    async function getChallenge() {
+      if (user && lessonId && user.currentLesson > parseInt(lessonId)) {
+        const challenge = await challengeService.getOneByLesson(parseInt(lessonId))
+        setCurrentFiles(challenge.files)
+        setChallengeId(challenge._id)
+      }
+
+      setIsLoading(false)
+    }
+
+    getChallenge()
+  }, [user, lessonId])
 
   const handleClick = useCallback(() => {
     if (!testRunnerRef.current) return
@@ -42,8 +65,8 @@ const CodeChallenge = ({
   }, [])
 
   const allFiles = useMemo(() => {
-    return { ...files, ...testFiles }
-  }, [files, testFiles])
+    return { ...currentFiles, ...testFiles }
+  }, [currentFiles, testFiles])
 
   const visibleFiles = useMemo(() => {
     return showTest ? [...Object.keys(files), ...Object.keys(testFiles)] : [...Object.keys(files)]
@@ -58,6 +81,8 @@ const CodeChallenge = ({
       },
     }
   }, [])
+
+  if (isLoading) return <SpinnerPage />
 
   return (
     <div className="w-full h-full">
@@ -89,7 +114,12 @@ const CodeChallenge = ({
             <SandpackPreview showOpenInCodeSandbox={false} />
           </SandpackLayout>
           <div>
-            <TestRunner onClick={handleClick} onSuccess={onSuccess} />
+            <TestRunner
+              onClick={handleClick}
+              onSuccess={onSuccess}
+              initialFiles={files}
+              challengeId={challengeId}
+            />
           </div>
         </div>
         <div ref={testRunnerRef}>

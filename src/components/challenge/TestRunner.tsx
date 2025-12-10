@@ -5,18 +5,26 @@ import { Button } from '../ui/button'
 import { Play, Check, X } from 'lucide-react'
 import { Spinner } from '../ui/spinner'
 import type { QuizzProps } from '@/types'
+import { useParams } from 'react-router-dom'
+import { useAuth } from '@/store'
+import { challengeService } from '@/services/api/challengeService'
 
 interface TestRunnerProps extends Omit<QuizzProps, 'onContinue'> {
   onClick: () => void
+  initialFiles: Record<string, string>
+  challengeId: string
 }
 
-const TestRunner = ({ onClick, onSuccess }: TestRunnerProps) => {
+const TestRunner = ({ onClick, onSuccess, initialFiles, challengeId }: TestRunnerProps) => {
   const [tests, setTests] = useState<Test>({})
   const [loading, setLoading] = useState(false)
   const [isTestsInitialized, setIsTestsInitialized] = useState(false)
   const [success, setSuccess] = useState(false)
   const testRef = useRef<Test>({})
-  const { listen } = useSandpack()
+  const { listen, sandpack } = useSandpack()
+  const { lessonId } = useParams()
+  const { user } = useAuth()
+  const [currentSucess, setCurrentSucess] = useState(false)
 
   useEffect(() => {
     const unsubscribe = listen((msg) => {
@@ -49,14 +57,30 @@ const TestRunner = ({ onClick, onSuccess }: TestRunnerProps) => {
   }, [listen])
 
   useEffect(() => {
+    if (currentSucess) return
+
     async function handleSuccess() {
-      if (success) {
-        await onSuccess()
+      setCurrentSucess(true)
+      const files = sandpack.files
+      const modifiedFiles: Record<string, string> = {}
+
+      Object.keys(initialFiles).forEach((key) => {
+        if (files[key]) {
+          modifiedFiles[key] = files[key].code
+        }
+      })
+
+      if (user && lessonId && user.currentLesson === parseInt(lessonId)) {
+        await challengeService.create({ lesson: parseInt(lessonId), files: modifiedFiles })
+      } else {
+        if (challengeId) await challengeService.update(challengeId, { files: modifiedFiles })
       }
+
+      await onSuccess()
     }
 
-    handleSuccess()
-  }, [success, onSuccess])
+    if (success) handleSuccess()
+  }, [success, onSuccess, lessonId, user, sandpack.files, initialFiles, currentSucess, challengeId])
 
   const handleClick = () => {
     setLoading(true)

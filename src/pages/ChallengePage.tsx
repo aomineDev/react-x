@@ -1,7 +1,6 @@
 import CodeChallenge from '@/components/challenge/CodeChallenge'
 import QuizzChallenge from '@/components/challenge/QuizzChallenge'
 import { useCompleteLesson } from '@/components/hooks/useCompleteLesson'
-import { Spinner } from '@/components/ui/spinner'
 import type { ChallengeConfig } from '@/types/challengeConfig'
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
@@ -18,6 +17,7 @@ import {
 import { ArrowRight, Trophy } from 'lucide-react'
 import Confetti from '@/components/Confetti'
 import SafeLayout from '@/layout/SafeLayout'
+import SpinnerPage from '@/components/SpinnerPage'
 
 const ChallengePage = () => {
   const { lessonId } = useParams()
@@ -51,12 +51,7 @@ const ChallengePage = () => {
     navigate(config.next)
   }
 
-  if (loading)
-    return (
-      <div className="fixed w-full h-screen flex justify-center items-center">
-        <Spinner />
-      </div>
-    )
+  if (loading) return <SpinnerPage />
 
   return (
     <>
@@ -77,9 +72,9 @@ const ChallengePage = () => {
           <AlertDialogHeader>
             <AlertDialogTitle>¡Reto Superado!</AlertDialogTitle>
             <AlertDialogDescription>
-              <div className="p-5 flex justify-center">
+              <span className="p-5 flex justify-center">
                 <Trophy className="text-yellow-500" size={75}></Trophy>
-              </div>
+              </span>
               ¡Felicitaciones, has superado el reto! Puedes avanzar a la siguiente lección.
             </AlertDialogDescription>
           </AlertDialogHeader>
