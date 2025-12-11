@@ -117,6 +117,9 @@ const CodeChallenge = ({
               className="custom-scroll"
             />
             <SandpackPreview showOpenInCodeSandbox={false} />
+            <div ref={testRunnerRef}>
+              <SandpackTests watchMode={false} hidden />
+            </div>
           </SandpackLayout>
           <div>
             <TestRunner
@@ -126,9 +129,6 @@ const CodeChallenge = ({
               challengeId={challengeId}
             />
           </div>
-        </div>
-        <div ref={testRunnerRef}>
-          <SandpackTests watchMode={false} hidden />
         </div>
       </SandpackProvider>
     </div>

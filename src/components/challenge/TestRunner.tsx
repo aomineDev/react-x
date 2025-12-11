@@ -76,9 +76,9 @@ const TestRunner = ({ onClick, onSuccess, initialFiles, challengeId }: TestRunne
         }
       })
       if (user && lessonId) {
-        if (user.currentLesson === parseInt(lessonId)) {
+        if (user.currentLesson === parseInt(lessonId))
           await challengeService.create({ lesson: parseInt(lessonId), files: modifiedFiles })
-        } else {
+        else {
           if (challengeId) await challengeService.update(challengeId, { files: modifiedFiles })
           else await challengeService.create({ lesson: parseInt(lessonId), files: modifiedFiles })
         }
@@ -110,7 +110,7 @@ const TestRunner = ({ onClick, onSuccess, initialFiles, challengeId }: TestRunne
           <p
             key={test}
             className={
-              'flex items-center gap-2 ' +
+              'flex items-center gap-2 text-sm font-semibold ' +
               (passed ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400')
             }
           >
