@@ -25,10 +25,13 @@ const TestRunner = ({ onClick, onSuccess, initialFiles, challengeId }: TestRunne
   const { lessonId } = useParams()
   const { user } = useAuth()
   const [currentSucess, setCurrentSucess] = useState(false)
+  const timeoutId = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     const unsubscribe = listen((msg) => {
       if (msg.type === 'start') {
+        clearTimeout(timeoutId.current ?? 0)
+        timeoutId.current = null
         testRef.current = {}
         setTests({})
         setIsTestsInitialized(false)
@@ -37,7 +40,10 @@ const TestRunner = ({ onClick, onSuccess, initialFiles, challengeId }: TestRunne
 
       if (msg.type !== 'test') return
 
-      if (msg.event === 'test_count') setTimeout(() => setIsTestsInitialized(true), 500)
+      if (msg.event === 'test_count') {
+        if (timeoutId.current === null)
+          timeoutId.current = setTimeout(() => setIsTestsInitialized(true), 500)
+      }
 
       if (msg.event === 'test_end') {
         testRef.current[msg.test.name] = msg.test.status === 'fail' ? false : true

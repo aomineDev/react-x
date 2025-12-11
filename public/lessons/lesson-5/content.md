@@ -1,5 +1,3 @@
-
-xx
 # Challenge Final – Renderizado en React
 
 ### Introducción
