@@ -37,7 +37,7 @@ const TestRunner = ({ onClick, onSuccess, initialFiles, challengeId }: TestRunne
 
       if (msg.type !== 'test') return
 
-      if (msg.event === 'test_count') setIsTestsInitialized(true)
+      if (msg.event === 'test_count') setTimeout(() => setIsTestsInitialized(true), 500)
 
       if (msg.event === 'test_end') {
         testRef.current[msg.test.name] = msg.test.status === 'fail' ? false : true
